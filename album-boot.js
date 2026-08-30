@@ -26,19 +26,23 @@
   }
   if (!document.getElementById('win-album')) {
     var win = el('<div id="win-album" class="win"></div>');
+    var src = 'https://fajartris17.github.io/gemini_generated_video_1c76450e.mp4';
     win.innerHTML = '<section class="py-16 px-4 min-h-[80vh]"><div class="max-w-5xl mx-auto">' +
       '<p class="text-center text-cyan-400 text-sm font-semibold uppercase mb-3">Album</p>' +
       '<h2 class="text-3xl font-bold text-center mb-3">Video promo & paket harga</h2>' +
-      '<div class="rounded-2xl overflow-hidden border border-slate-800 bg-black mb-8">' +
-      '<video class="w-full aspect-video" controls playsinline poster="1788097886220.jpg">' +
-      '<source src="gemini_generated_video_1c76450e.mp4" type="video/mp4"></video></div>' +
+      '<div class="rounded-2xl overflow-hidden border border-slate-800 bg-black mb-4">' +
+      '<video id="promoHome" class="w-full aspect-video" controls playsinline webkit-playsinline preload="auto">' +
+      '<source src="' + src + '" type="video/mp4">' +
+      '<source src="https://media.githubusercontent.com/media/fajartris17/fajartris17.github.io/main/gemini_generated_video_1c76450e.mp4" type="video/mp4"></video></div>' +
+      '<div class="flex flex-wrap justify-center gap-3 mb-8">' +
+      '<a class="bg-cyan-600 font-medium px-5 py-2 rounded-xl" href="' + src + '" target="_blank" rel="noopener">Buka video langsung</a>' +
+      '<a class="bg-cyan-700 font-medium px-5 py-2 rounded-xl" href="album.html">Album penuh</a></div>' +
       '<div class="grid md:grid-cols-2 gap-5 mb-8">' +
       '<a href="1788097886220.jpg" target="_blank"><img src="1788097886220.jpg" alt="Harga aplikasi" class="w-full rounded-2xl border border-cyan-500/30"></a>' +
       '<a href="1788097530299.jpg" target="_blank"><img src="1788097530299.jpg" alt="Harga desain" class="w-full rounded-2xl border border-violet-500/30"></a>' +
       '</div>' +
       '<div class="flex flex-wrap justify-center gap-3">' +
       '<a class="bg-emerald-600 font-medium px-7 py-3 rounded-xl" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20album%20paket%20harga.%20Ingin%20order%20aplikasi%20atau%20desain.">Order via WhatsApp</a>' +
-      '<a class="bg-cyan-700 font-medium px-7 py-3 rounded-xl" href="album.html">Buka album penuh</a>' +
       '<button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali</button></div></div></section>';
     var exp = document.getElementById('win-experience');
     if (exp) exp.parentNode.insertBefore(win, exp);
