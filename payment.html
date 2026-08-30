@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bayar | Fajar</title>
+<link rel="canonical" href="https://fajartris17.github.io/payment.html">
+<meta name="theme-color" content="#071427">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>body{background:#071427;margin:0} .card{background:#0b1220;border:1px solid #1e293b;border-radius:16px;padding:14px} img.bar{height:48px;width:100%;object-fit:contain;background:#fff;border-radius:8px;padding:6px}</style>
+</head>
+<body class="text-slate-100">
+<main class="max-w-md mx-auto px-4 py-6">
+  <p class="text-center text-amber-400 text-[11px] font-semibold tracking-widest uppercase">Payment</p>
+  <h1 class="text-2xl font-bold text-center mt-1">Bayar ke Fajar</h1>
+  <p class="text-center text-slate-400 text-xs mt-1">Scan QRIS, atau pindai barcode rekening.</p>
+
+  <section class="bg-white text-slate-900 rounded-2xl p-4 mt-5 text-center">
+    <p class="text-[11px] font-semibold text-slate-500">QRIS</p>
+    <p class="font-bold text-sm">FAJAR TRI SUHARTONO</p>
+    <p class="text-[11px] text-slate-500">TRANSPORTASI · NMID ID1025434177735</p>
+    <img src="qris-fajar.jpg" alt="QRIS" class="w-56 mx-auto mt-3 rounded-lg" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=8&data=ID1025434177735'">
+    <p class="text-[11px] text-slate-500 mt-2">GoPay · DANA · OVO · bank · QRIS</p>
+  </section>
+
+  <section class="space-y-3 mt-4 text-sm">
+    <div class="card">
+      <div class="flex justify-between items-start gap-3">
+        <div>
+          <p class="text-violet-300 text-[11px] font-semibold uppercase">Bank Jago</p>
+          <p class="font-mono font-bold text-lg leading-tight mt-1">1096 9586 4975</p>
+          <p class="text-slate-400 text-xs">a.n. FAJAR TRI SUHARTONO</p>
+        </div>
+        <button class="text-xs bg-violet-600 px-3 py-2 rounded-lg shrink-0" onclick="copyText('109695864975')">Salin</button>
+      </div>
+      <img class="bar mt-3" alt="Barcode Jago" src="https://barcode.tec-it.com/barcode.ashx?data=109695864975&code=Code128&translate-esc=false&dpi=96">
+    </div>
+
+    <div class="card">
+      <div class="flex justify-between items-start gap-3">
+        <div>
+          <p class="text-emerald-300 text-[11px] font-semibold uppercase">GoPay / WhatsApp</p>
+          <p class="font-mono font-bold text-lg leading-tight mt-1">0813-5651-0403</p>
+          <p class="text-slate-400 text-xs">Konfirmasi setelah bayar</p>
+        </div>
+        <a class="text-xs bg-emerald-600 px-3 py-2 rounded-lg shrink-0" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20sudah%20bayar.">WA</a>
+      </div>
+      <img class="bar mt-3" alt="Barcode WA" src="https://barcode.tec-it.com/barcode.ashx?data=081356510403&code=Code128&translate-esc=false&dpi=96">
+    </div>
+
+    <div class="card">
+      <div class="flex justify-between items-start gap-3">
+        <div>
+          <p class="text-fuchsia-300 text-[11px] font-semibold uppercase">KasPro</p>
+          <p class="font-mono font-bold text-lg leading-tight mt-1">0831-3535-1394</p>
+          <p class="text-slate-400 text-xs">a.n. FAJAR TRI SUHARTONO</p>
+        </div>
+        <button class="text-xs bg-fuchsia-600 px-3 py-2 rounded-lg shrink-0" onclick="copyText('083135351394')">Salin</button>
+      </div>
+      <img class="bar mt-3" alt="Barcode KasPro" src="https://barcode.tec-it.com/barcode.ashx?data=083135351394&code=Code128&translate-esc=false&dpi=96">
+    </div>
+  </section>
+
+  <p class="text-center text-slate-500 text-[11px] mt-5">Setelah bayar, kirim bukti ke WhatsApp.</p>
+  <div class="flex gap-2 justify-center mt-3 text-sm">
+    <a class="bg-slate-800 border border-slate-600 px-4 py-2 rounded-xl" href="album.html">Harga</a>
+    <a class="bg-slate-800 border border-slate-600 px-4 py-2 rounded-xl" href="links.html">Link-I</a>
+  </div>
+</main>
+<script>
+function copyText(t){
+  if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){alert('Disalin');});
+  else prompt('Salin:', t);
+}
+</script>
+</body>
+</html>
