@@ -3,26 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fajar Tri Suhartono — Site Manager &amp; AI Construction</title>
+<title>Fajar Tri Suhartono</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>.win{display:none}.win.active{display:block}</style>
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans antialiased pb-20 md:pb-0">
-<nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
-  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">FAJAR.TRI</span>
-    <div class="hidden md:flex items-center space-x-5 text-sm">
-      <a href="#home" class="hover:text-blue-400">Home</a>
-      <a href="#about" class="hover:text-blue-400">Profil</a>
-      <a href="#freelance" class="hover:text-blue-400">Freelance</a>
-      <a href="#experience" class="hover:text-blue-400">Pengalaman</a>
-      <a href="#documents" class="hover:text-blue-400">Dokumen</a>
-      <a href="#education" class="hover:text-blue-400">Pendidikan</a>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased pb-24 md:pb-0">
+<nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+    <button type="button" data-win="utama" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">FAJAR.TRI</button>
+    <div class="hidden md:flex items-center space-x-4 text-sm">
+      <button type="button" data-win="utama" class="hover:text-blue-400">Utama</button>
+      <button type="button" data-win="freelance" class="hover:text-blue-400">Freelance</button>
+      <button type="button" data-win="experience" class="hover:text-blue-400">Pengalaman</button>
+      <button type="button" data-win="documents" class="hover:text-blue-400">Dokumen</button>
+      <button type="button" data-win="education" class="hover:text-blue-400">Pendidikan</button>
     </div>
-    <a href="https://wa.me/6281356510403" class="text-sm px-3 py-1.5 rounded-lg bg-emerald-600">WhatsApp</a>
+    <a href="https://wa.me/6281356510403" class="text-sm px-3 py-1.5 rounded-lg bg-emerald-600 shrink-0">WhatsApp</a>
   </div>
 </nav>
-<section id="home" class="min-h-[88vh] flex items-center justify-center px-4 py-16">
+<div id="win-utama" class="win active">
+<section class="min-h-[70vh] flex items-center justify-center px-4 py-16">
   <div class="text-center max-w-3xl">
     <img src="https://fajartris17.github.io/foto.jpg" alt="Fajar Tri Suhartono" class="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover object-top mx-auto border-4 border-slate-700 shadow-xl bg-slate-800" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=256&background=0f172a&color=60a5fa&bold=true';">
     <span class="mt-6 inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 rounded-full border border-blue-400/20">Tersedia untuk posisi baru &amp; proyek freelance</span>
@@ -32,84 +33,119 @@
     <p class="mt-2 text-sm text-slate-500">Balikpapan · Jakarta · Batam · Kalimantan Timur · SIM A</p>
     <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
       <a href="https://wa.me/6281356510403" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-whatsapp text-green-400"></i> 0813-5651-0403</a>
-      <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="far fa-envelope text-blue-400"></i> fajartris1994@gmail.com</a>
+      <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="far fa-envelope text-blue-400"></i> Email</a>
       <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-linkedin text-blue-500"></i> LinkedIn</a>
       <a href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fas fa-briefcase text-amber-400"></i> Jobstreet</a>
       <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fas fa-bolt text-violet-400"></i> Fastwork</a>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <a href="#freelance" class="bg-violet-600 text-white font-medium px-7 py-3 rounded-xl">Layanan Freelance</a>
-      <a href="#experience" class="bg-blue-600 text-white font-medium px-7 py-3 rounded-xl">Lihat Pengalaman</a>
-      <a href="#documents" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl"><i class="fas fa-file-pdf text-red-400 mr-2"></i>CV + Lampiran</a>
+      <button type="button" data-win="freelance" class="bg-violet-600 text-white font-medium px-7 py-3 rounded-xl">Layanan Freelance</button>
+      <button type="button" data-win="experience" class="bg-blue-600 text-white font-medium px-7 py-3 rounded-xl">Pengalaman</button>
+      <button type="button" data-win="documents" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">CV + Lampiran</button>
     </div>
   </div>
 </section>
-<section id="about" class="py-20 max-w-5xl mx-auto px-4">
+<section class="py-16 max-w-5xl mx-auto px-4 border-t border-slate-800">
   <div class="grid md:grid-cols-3 gap-8">
     <h2 class="text-3xl font-bold border-l-4 border-emerald-500 pl-4">Profil<br>Profesional</h2>
     <div class="md:col-span-2 text-lg text-slate-400 space-y-4">
       <p>Site Manager dengan pengalaman supervisi konstruksi, perencanaan maintenance, manpower planning, monitoring progres, koordinasi sumber daya, pelaporan, dan pengendalian pekerjaan lapangan.</p>
       <p>Pengalaman terbaru sebagai Site Manager di PT Avindo Energi Nusantara (2024–2026), sesuai Surat Pengalaman Kerja No. SPK 016/AEN/VII/2026.</p>
-      <p>Di samping kerja lapangan, saya juga menerima proyek freelance: merancang prompt AI khusus dokumen konstruksi (RAB, method statement, shop drawing notes, checklist SNI, laporan proyek) lewat Fastwork.</p>
+      <p>Di samping kerja lapangan, saya juga menerima proyek freelance: merancang prompt AI khusus dokumen konstruksi lewat Fastwork.</p>
     </div>
   </div>
 </section>
-<section id="freelance" class="py-20 bg-slate-950 px-4">
+</div>
+<div id="win-freelance" class="win">
+<section class="py-16 px-4 min-h-[80vh]">
   <div class="max-w-5xl mx-auto">
-    <p class="text-center text-violet-400 text-sm font-semibold tracking-wider uppercase mb-3">Freelance · Fastwork</p>
+    <p class="text-center text-violet-400 text-sm font-semibold tracking-wider uppercase mb-3">Jendela Freelance</p>
     <h2 class="text-3xl font-bold text-center mb-3">Asisten AI Konstruksi 2026</h2>
     <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">Prompt RAB, Method Statement, Shop Drawing dan Laporan Proyek — siap pakai di ChatGPT, Claude, Gemini, atau Grok.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 text-sm">
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-calculator text-violet-400 mb-2"></i><p class="font-medium">RAB / BOQ</p><p class="text-slate-500 mt-1">Struktur item, satuan, volume, asumsi, catatan teknis.</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-list-check text-violet-400 mb-2"></i><p class="font-medium">Method Statement</p><p class="text-slate-500 mt-1">Per item: excavation, pile, concrete, formwork, steel, finishing.</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-clipboard-check text-violet-400 mb-2"></i><p class="font-medium">Checklist mutu dan K3</p><p class="text-slate-500 mt-1">Praktik lapangan + acuan SNI.</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-drafting-compass text-violet-400 mb-2"></i><p class="font-medium">Shop drawing dan RFI</p><p class="text-slate-500 mt-1">Deskripsi gambar, RFI, berita acara, notulen.</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-file-lines text-violet-400 mb-2"></i><p class="font-medium">Laporan proyek</p><p class="text-slate-500 mt-1">Laporan harian dan presentasi ke owner/pengawas.</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><i class="fas fa-image text-violet-400 mb-2"></i><p class="font-medium">Prompt visual</p><p class="text-slate-500 mt-1">Mockup bangunan, site layout, poster toolbox.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-calculator text-violet-400 mb-2"></i><p class="font-medium">RAB / BOQ</p><p class="text-slate-500 mt-1">Struktur item, satuan, volume, asumsi, catatan teknis.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-list-check text-violet-400 mb-2"></i><p class="font-medium">Method Statement</p><p class="text-slate-500 mt-1">Per item: excavation, pile, concrete, formwork, steel, finishing.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-clipboard-check text-violet-400 mb-2"></i><p class="font-medium">Checklist mutu dan K3</p><p class="text-slate-500 mt-1">Praktik lapangan + acuan SNI.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-drafting-compass text-violet-400 mb-2"></i><p class="font-medium">Shop drawing dan RFI</p><p class="text-slate-500 mt-1">Deskripsi gambar, RFI, berita acara, notulen.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-file-lines text-violet-400 mb-2"></i><p class="font-medium">Laporan proyek</p><p class="text-slate-500 mt-1">Laporan harian dan presentasi ke owner/pengawas.</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-image text-violet-400 mb-2"></i><p class="font-medium">Prompt visual</p><p class="text-slate-500 mt-1">Mockup bangunan, site layout, poster toolbox.</p></div>
     </div>
     <div class="grid md:grid-cols-3 gap-5 mb-10">
-      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">Basic</p><p class="text-2xl font-bold mt-1">Rp99 rb</p><p class="text-slate-500 text-sm mt-1">1 hari · 1x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>5 custom prompt AI konstruksi</li><li>1 contoh output</li><li>File Word/PDF siap pakai</li></ul></div>
-      <div class="bg-slate-900 rounded-2xl border border-violet-500/40 p-6"><p class="text-violet-400 text-xs uppercase tracking-wider">Standard</p><p class="text-2xl font-bold mt-1">Rp199 rb</p><p class="text-slate-500 text-sm mt-1">2 hari · 2x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>12 custom prompt + template reusable</li><li>Contoh output per jenis dokumen</li><li>Cara pakai singkat</li></ul></div>
-      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">PRO</p><p class="text-2xl font-bold mt-1">Rp399 rb</p><p class="text-slate-500 text-sm mt-1">4 hari · 3x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>25 prompt + workflow proyek</li><li>RAB, MS, shop notes, BA, laporan</li><li>Panduan pakai ulang</li></ul></div>
+      <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">Basic</p><p class="text-2xl font-bold mt-1">Rp99 rb</p><p class="text-slate-500 text-sm mt-1">1 hari · 1x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>5 custom prompt</li><li>1 contoh output</li><li>File Word/PDF</li></ul></div>
+      <div class="bg-slate-950 rounded-2xl border border-violet-500/40 p-6"><p class="text-violet-400 text-xs uppercase tracking-wider">Standard</p><p class="text-2xl font-bold mt-1">Rp199 rb</p><p class="text-slate-500 text-sm mt-1">2 hari · 2x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>12 prompt + template</li><li>Contoh output</li><li>Cara pakai singkat</li></ul></div>
+      <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">PRO</p><p class="text-2xl font-bold mt-1">Rp399 rb</p><p class="text-slate-500 text-sm mt-1">4 hari · 3x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>25 prompt + workflow</li><li>RAB, MS, shop notes, BA</li><li>Panduan pakai ulang</li></ul></div>
     </div>
-    <p class="text-center text-slate-500 text-sm mb-6">Cocok untuk Site Manager, Pengawas, QS, estimator, konsultan, kontraktor, dan owner.</p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="bg-violet-600 text-white font-medium px-7 py-3 rounded-xl">Order di Fastwork</a>
-      <a href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20ingin%20diskusi%20prompt%20AI%20konstruksi" target="_blank" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Diskusi WhatsApp</a>
+      <button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button>
     </div>
   </div>
 </section>
-<section id="experience" class="py-20 px-4">
+</div>
+<div id="win-experience" class="win">
+<section class="py-16 px-4 min-h-[80vh]">
   <div class="max-w-5xl mx-auto space-y-10">
-    <h2 class="text-3xl font-bold text-center mb-12">Pengalaman Kerja</h2>
+    <p class="text-center text-blue-400 text-sm font-semibold tracking-wider uppercase">Jendela Pengalaman</p>
+    <h2 class="text-3xl font-bold text-center">Pengalaman Kerja</h2>
     <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-blue-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Site Manager</h3><p class="text-blue-400">PT Avindo Energi Nusantara</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">2024 – 2026</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Memimpin dan mengoordinasikan pelaksanaan pekerjaan lapangan.</li><li>Mengawasi rencana kerja, metode, spesifikasi teknis, mutu, waktu, dan K3.</li><li>Koordinasi tenaga kerja, peralatan, material, dan operasional proyek.</li><li>Monitoring progres dan laporan perkembangan pekerjaan.</li><li>Koordinasi PM, CM, Engineering, QA/QC, HSE, vendor, dan subkontraktor.</li><li>Penerapan QHSE dan penggunaan sumber daya yang efisien.</li></ul></article>
     <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-emerald-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-emerald-400">RDMP Balikpapan JO</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Mar 2020 – Mei 2024</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Pekerjaan lapangan sesuai desain, spesifikasi, dan dokumen kontrak.</li><li>Inspeksi rutin, identifikasi masalah, dan penyelesaian kendala.</li><li>Pengendalian mutu material/pekerjaan dan kontrol produksi.</li><li>Jadwal pelaksanaan dan pengelolaan sumber daya manusia.</li></ul></article>
     <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-indigo-400">Hyundai Engineering Co., Ltd. — Balikpapan</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Nov 2019 – Mar 2020</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Supervisi lapangan sesuai desain, spesifikasi, dan kontrak.</li><li>Inspeksi, pengendalian mutu, dan kontrol produksi.</li></ul></article>
     <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-amber-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Planner</h3><p class="text-amber-400">Dizamatra Powerindo, Lahat</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Feb 2015 – Okt 2019</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, sistem backlog, dan manpower planning.</li><li>Laporan backlog dan prioritas tindakan perbaikan.</li></ul></article>
     <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Statutory Admin → Admin OB Diggers</h3><p class="text-slate-300">PT Bukit Makmur Mandiri Utama (BUMA), Berau</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Jun 2012 – Feb 2015</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, backlog, dan manpower planning di Binungan–Suaran.</li><li>Analisis data pemeliharaan untuk tren dan area perbaikan.</li></ul></article>
+    <div class="text-center pt-4"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
   </div>
 </section>
-<section id="documents" class="py-20 bg-slate-950 px-4">
+</div>
+<div id="win-documents" class="win">
+<section class="py-16 px-4 min-h-[80vh]">
   <div class="max-w-5xl mx-auto">
+    <p class="text-center text-red-400 text-sm font-semibold tracking-wider uppercase mb-3">Jendela Dokumen</p>
     <h2 class="text-3xl font-bold text-center mb-3">Dokumen Pendukung</h2>
     <p class="text-center text-slate-400 mb-10 text-sm">CV 6 halaman: ringkasan, SPK Avindo, SK RDMP, SK Hyundai, SK BUMA, dan ijazah.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-lines text-2xl"></i></p><p class="font-medium">Hal. 1 — Curriculum Vitae</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-contract text-2xl"></i></p><p class="font-medium">Hal. 2 — SPK Avindo 016/AEN/VII/2026</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 3 — SK RDMP JO</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 4 — SK Hyundai</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 5 — SK BUMA</p></div>
-      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-amber-400 mb-2"><i class="fas fa-graduation-cap text-2xl"></i></p><p class="font-medium">Hal. 6 — Ijazah SMK TI Pratama</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-lines text-2xl"></i></p><p class="font-medium">Hal. 1 — Curriculum Vitae</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-contract text-2xl"></i></p><p class="font-medium">Hal. 2 — SPK Avindo 016/AEN/VII/2026</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 3 — SK RDMP JO</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 4 — SK Hyundai</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 5 — SK BUMA</p></div>
+      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-amber-400 mb-2"><i class="fas fa-graduation-cap text-2xl"></i></p><p class="font-medium">Hal. 6 — Ijazah SMK TI Pratama</p></div>
     </div>
+    <div class="text-center mt-10"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
   </div>
 </section>
-<section id="education" class="py-20 px-4">
+</div>
+<div id="win-education" class="win">
+<section class="py-16 px-4 min-h-[80vh]">
   <div class="max-w-3xl mx-auto space-y-5">
+    <p class="text-center text-emerald-400 text-sm font-semibold tracking-wider uppercase">Jendela Pendidikan</p>
     <h2 class="text-3xl font-bold text-center mb-8">Pendidikan</h2>
-    <div class="p-7 bg-slate-900 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Teknik Komputer dan Informatika — Multimedia</h3><p class="text-blue-400">SMK TI Pratama Samarinda · 2011/2012</p></div>
-    <div class="p-7 bg-slate-900 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Ilmu Komunikasi dan Informasi</h3><p class="text-emerald-400">Institut Teknologi Bandung (ITB)</p></div>
+    <div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Teknik Komputer dan Informatika — Multimedia</h3><p class="text-blue-400">SMK TI Pratama Samarinda · 2011/2012</p></div>
+    <div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Ilmu Komunikasi dan Informasi</h3><p class="text-emerald-400">Institut Teknologi Bandung (ITB)</p></div>
     <p class="text-center text-slate-500 text-sm">Grobogan, 07 Maret 1994 · Domisili Balikpapan · WNI · SIM A</p>
+    <div class="text-center pt-6"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
   </div>
 </section>
-<footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800">© 2026 Fajar Tri Suhartono · <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" class="text-violet-400 hover:underline">Fastwork</a></footer>
+</div>
+<nav class="md:hidden fixed bottom-0 inset-x-0 bg-slate-950/95 border-t border-slate-800 grid grid-cols-5 text-[11px] text-center z-50">
+  <button type="button" data-win="utama" class="py-3">Utama</button>
+  <button type="button" data-win="freelance" class="py-3">Freelance</button>
+  <button type="button" data-win="experience" class="py-3">Kerja</button>
+  <button type="button" data-win="documents" class="py-3">Dokumen</button>
+  <button type="button" data-win="education" class="py-3">Sekolah</button>
+</nav>
+<script>
+function buka(id){
+  document.querySelectorAll('.win').forEach(function(w){w.classList.remove('active')});
+  var el=document.getElementById('win-'+id);
+  if(el) el.classList.add('active');
+  window.scrollTo(0,0);
+  if(history.replaceState) history.replaceState(null,'','#'+id);
+}
+document.querySelectorAll('[data-win]').forEach(function(btn){
+  btn.addEventListener('click', function(){ buka(btn.getAttribute('data-win')); });
+});
+var hash=(location.hash||'#utama').replace('#','');
+if(['utama','freelance','experience','documents','education'].indexOf(hash)===-1) hash='utama';
+buka(hash);
+</script>
 </body></html>
