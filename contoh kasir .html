@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#14532d" />
+  <title>Kasir Warung Berkah</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green: #15803d;
+      --green-dark: #14532d;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --line: #e7e5e4;
+      --bg: #f5f5f4;
+      --card: #fff;
+      --danger: #b91c1c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: var(--bg); color: var(--ink);
+      min-height: 100dvh;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      min-height: 100dvh;
+    }
+    @media (max-width: 860px) {
+      .app { grid-template-columns: 1fr; }
+      .bill { position: sticky; bottom: 0; max-height: 46dvh; border-radius: 20px 20px 0 0; box-shadow: 0 -10px 30px rgba(0,0,0,.12); }
+    }
+    header {
+      grid-column: 1 / -1;
+      background: var(--green-dark);
+      color: #fff;
+      padding: 14px 16px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .brand b { display: block; font-size: 16px; }
+    .brand span { font-size: 12px; opacity: .8; }
+    .stats { display: flex; gap: 8px; flex-wrap: wrap; }
+    .stat {
+      background: rgba(255,255,255,.12);
+      border-radius: 12px; padding: 8px 10px; font-size: 12px;
+    }
+    .stat strong { display: block; font-size: 14px; }
+    .left { padding: 14px; }
+    .tools { display: flex; gap: 8px; margin-bottom: 12px; }
+    .tools input, .tools select, .tools button, .pay input, .pay select, .pay button {
+      font: inherit;
+    }
+    .tools input {
+      flex: 1; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: #fff;
+    }
+    .tools button, .ghost {
+      border: 0; background: #fff; border-radius: 12px; padding: 10px 12px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .cats { display: flex; gap: 6px; overflow: auto; padding-bottom: 10px; }
+    .cats button {
+      border: 1px solid var(--line); background: #fff; border-radius: 999px;
+      padding: 7px 12px; font-weight: 600; font-size: 13px; cursor: pointer;
+    }
+    .cats button.on { background: var(--green); color: #fff; border-color: var(--green); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+    }
+    .item {
+      background: #fff; border: 0; border-radius: 16px; padding: 12px;
+      text-align: left; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.04);
+    }
+    .item .emo { font-size: 26px; }
+    .item h4 { font-size: 13px; margin: 6px 0 4px; }
+    .item p { font-size: 12px; color: var(--green-dark); font-weight: 800; }
+
+    .bill {
+      background: #fff; border-left: 1px solid var(--line);
+      display: flex; flex-direction: column; padding: 14px;
+    }
+    .bill h3 { font-size: 15px; margin-bottom: 8px; }
+    .rows { flex: 1; overflow: auto; min-height: 120px; }
+    .row {
+      display: grid; grid-template-columns: 1fr auto; gap: 6px;
+      padding: 8px 0; border-bottom: 1px solid #f5f5f4; font-size: 13px;
+    }
+    .qty { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+    .qty button {
+      width: 26px; height: 26px; border-radius: 8px; border: 1px solid var(--line);
+      background: #fff; cursor: pointer;
+    }
+    .sum { padding-top: 10px; font-size: 14px; }
+    .sum div { display: flex; justify-content: space-between; margin: 4px 0; }
+    .sum .big { font-size: 20px; font-weight: 800; color: var(--green-dark); }
+    .pay { display: grid; gap: 8px; margin-top: 10px; }
+    .pay input, .pay select {
+      width: 100%; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: #fafaf9;
+    }
+    .go {
+      background: var(--green); color: #fff; border: 0; border-radius: 14px;
+      padding: 13px; font-weight: 800; cursor: pointer;
+    }
+    .go:disabled { opacity: .5; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .sheet {
+      position: fixed; inset: 0; background: rgba(0,0,0,.45);
+      display: none; align-items: center; justify-content: center; z-index: 20; padding: 16px;
+    }
+    .sheet.on { display: flex; }
+    .box { background: #fff; width: min(420px, 100%); border-radius: 18px; padding: 16px; max-height: 86dvh; overflow: auto; }
+    .box h3 { margin-bottom: 10px; }
+    .box label { display: block; font-size: 12px; font-weight: 700; margin: 10px 0 4px; }
+    .his { font-size: 13px; }
+    .his div { padding: 8px 0; border-bottom: 1px solid #f5f5f4; }
+    .ok { color: var(--green); font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <b>Kasir Warung Berkah</b>
+        <span>Aplikasi kasir sederhana • data tersimpan di HP ini</span>
+      </div>
+      <div class="stats">
+        <div class="stat">Hari ini<strong id="sCount">0 transaksi</strong></div>
+        <div class="stat">Omzet<strong id="sOmzet">Rp 0</strong></div>
+      </div>
+    </header>
+
+    <section class="left">
+      <div class="tools">
+        <input id="q" placeholder="Cari menu..." oninput="renderItems()" />
+        <button onclick="openProduk()">+ Menu</button>
+        <button onclick="openHistori()">Riwayat</button>
+      </div>
+      <div class="cats" id="cats"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <aside class="bill">
+      <h3>Struk saat ini</h3>
+      <div class="rows" id="rows"><p class="muted">Ketuk menu untuk menambah.</p></div>
+      <div class="sum">
+        <div><span>Subtotal</span><span id="sub">Rp 0</span></div>
+        <div><span>Diskon</span><span id="discView">Rp 0</span></div>
+        <div class="big"><span>Total</span><span id="tot">Rp 0</span></div>
+      </div>
+      <div class="pay">
+        <select id="bayar">
+          <option value="Tunai">Tunai</option>
+          <option value="QRIS">QRIS</option>
+          <option value="Transfer">Transfer</option>
+        </select>
+        <input id="diskon" type="number" min="0" placeholder="Diskon (Rp)" oninput="refreshBill()" />
+        <input id="uang" type="number" min="0" placeholder="Uang diterima (tunai)" oninput="refreshBill()" />
+        <div class="muted" id="kembali">Kembalian: Rp 0</div>
+        <button class="go" id="btnPay" onclick="selesai()" disabled>Bayar & simpan</button>
+        <button class="ghost" onclick="batal()">Batalkan struk</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="sheet" id="sheetProduk" onclick="if(event.target===this) closeAll()">
+    <div class="box">
+      <h3>Tambah menu</h3>
+      <label>Nama</label>
+      <input id="pNama" placeholder="Nasi goreng" style="width:100%;padding:10px;border-radius:12px;border:1px solid #e7e5e4" />
+      <label>Harga</label>
+      <input id="pHarga" type="number" placeholder="15000" style="width:100%;padding:10px;border-radius:12px;border:1px solid #e7e5e4" />
+      <label>Kategori</label>
+      <input id="pCat" placeholder="Nasi / Lauk / Minuman" style="width:100%;padding:10px;border-radius:12px;border:1px solid #e7e5e4" />
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button class="go" style="flex:1" onclick="simpanProduk()">Simpan menu</button>
+        <button class="ghost" onclick="closeAll()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheetHist" onclick="if(event.target===this) closeAll()">
+    <div class="box">
+      <h3>Riwayat hari ini</h3>
+      <div class="his" id="his"></div>
+      <button class="ghost" style="margin-top:12px" onclick="closeAll()">Tutup</button>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheetOk" onclick="if(event.target===this) closeAll()">
+    <div class="box">
+      <h3 class="ok">Transaksi tersimpan</h3>
+      <pre id="struk" style="white-space:pre-wrap;font-size:13px;background:#f5f5f4;padding:12px;border-radius:12px"></pre>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="go" style="flex:1" onclick="kirimWA()">Kirim struk WA</button>
+        <button class="ghost" onclick="closeAll()">Selesai</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const DEFAULTS = [
+  { id:1, cat:"Nasi", name:"Nasi Goreng", price:18000, emoji:"🍛" },
+  { id:2, cat:"Nasi", name:"Nasi Geprek", price:17000, emoji:"🍗" },
+  { id:3, cat:"Nasi", name:"Nasi Campur", price:16000, emoji:"🍱" },
+  { id:4, cat:"Lauk", name:"Ayam Goreng", price:12000, emoji:"🍖" },
+  { id:5, cat:"Lauk", name:"Telur Dadar", price:6000, emoji:"🍳" },
+  { id:6, cat:"Lauk", name:"Tempe Goreng", price:4000, emoji:"🫘" },
+  { id:7, cat:"Minuman", name:"Es Teh", price:5000, emoji:"🧊" },
+  { id:8, cat:"Minuman", name:"Es Jeruk", price:7000, emoji:"🍊" },
+  { id:9, cat:"Minuman", name:"Kopi", price:6000, emoji:"☕" },
+  { id:10, cat:"Paket", name:"Paket Hemat", price:25000, emoji:"🥡" }
+];
+
+let products = JSON.parse(localStorage.getItem("kasir_produk") || "null") || DEFAULTS;
+let cart = {};
+let cat = "Semua";
+let lastStruk = "";
+const OWNER_WA = "6281356510403";
+
+const rp = n => "Rp " + Math.max(0, Math.round(n)).toLocaleString("id-ID");
+const today = () => new Date().toISOString().slice(0,10);
+function loadSales(){ return JSON.parse(localStorage.getItem("kasir_sales") || "[]"); }
+function saveSales(s){ localStorage.setItem("kasir_sales", JSON.stringify(s)); }
+function saveProduk(){ localStorage.setItem("kasir_produk", JSON.stringify(products)); }
+
+function renderCats(){
+  const names = ["Semua", ...new Set(products.map(p => p.cat))];
+  document.getElementById("cats").innerHTML = names.map(n =>
+    `<button class="${n===cat?"on":""}" onclick="setCat('${n}')">${n}</button>`
+  ).join("");
+}
+function setCat(n){ cat = n; renderItems(); }
+function renderItems(){
+  renderCats();
+  const q = (document.getElementById("q").value || "").toLowerCase();
+  const list = products.filter(p =>
+    (cat==="Semua" || p.cat===cat) && p.name.toLowerCase().includes(q)
+  );
+  document.getElementById("grid").innerHTML = list.map(p => `
+    <button class="item" onclick="add(${p.id})">
+      <div class="emo">${p.emoji || "🍽️"}</div>
+      <h4>${p.name}</h4>
+      <p>${rp(p.price)}</p>
+    </button>
+  `).join("");
+  refreshBill();
+  refreshStats();
+}
+function add(id){ cart[id] = (cart[id] || 0) + 1; refreshBill(); }
+function minus(id){ cart[id] = Math.max(0,(cart[id]||0)-1); if(!cart[id]) delete cart[id]; refreshBill(); }
+function plus(id){ cart[id] = (cart[id]||0)+1; refreshBill(); }
+
+function calc(){
+  let sub = 0;
+  Object.entries(cart).forEach(([id,q]) => {
+    const p = products.find(x => x.id == id);
+    if (p) sub += p.price * q;
+  });
+  const disc = Number(document.getElementById("diskon").value || 0);
+  const total = Math.max(0, sub - disc);
+  const uang = Number(document.getElementById("uang").value || 0);
+  const metode = document.getElementById("bayar").value;
+  const kembali = metode === "Tunai" ? uang - total : 0;
+  return { sub, disc, total, uang, kembali, metode };
+}
+function refreshBill(){
+  const keys = Object.keys(cart);
+  const wrap = document.getElementById("rows");
+  if (!keys.length) wrap.innerHTML = "<p class='muted'>Ketuk menu untuk menambah.</p>";
+  else wrap.innerHTML = keys.map(id => {
+    const p = products.find(x => x.id == id);
+    const q = cart[id];
+    return `<div class="row">
+      <div>
+        <b>${p.name}</b>
+        <div class="qty">
+          <button onclick="minus(${p.id})">−</button>
+          <span>${q}</span>
+          <button onclick="plus(${p.id})">+</button>
+          <span class="muted">${rp(p.price * q)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+  const c = calc();
+  document.getElementById("sub").textContent = rp(c.sub);
+  document.getElementById("discView").textContent = rp(c.disc);
+  document.getElementById("tot").textContent = rp(c.total);
+  document.getElementById("kembali").textContent =
+    c.metode === "Tunai"
+      ? (c.uang ? `Kembalian: ${rp(c.kembali)}` : "Isi uang diterima untuk hitung kembalian")
+      : "Non-tunai: tidak ada kembalian";
+  document.getElementById("btnPay").disabled = !c.total || (c.metode==="Tunai" && c.uang < c.total);
+}
+function refreshStats(){
+  const sales = loadSales().filter(s => s.tanggal === today());
+  const omzet = sales.reduce((a,s) => a + s.total, 0);
+  document.getElementById("sCount").textContent = sales.length + " transaksi";
+  document.getElementById("sOmzet").textContent = rp(omzet);
+}
+function batal(){
+  cart = {};
+  document.getElementById("diskon").value = "";
+  document.getElementById("uang").value = "";
+  refreshBill();
+}
+function selesai(){
+  const c = calc();
+  if (!c.total) return;
+  if (c.metode === "Tunai" && c.uang < c.total) return alert("Uang diterima kurang.");
+  const items = Object.entries(cart).map(([id,q]) => {
+    const p = products.find(x => x.id == id);
+    return { name: p.name, qty: q, price: p.price };
+  });
+  const trx = {
+    id: Date.now(),
+    tanggal: today(),
+    jam: new Date().toLocaleTimeString("id-ID", {hour:"2-digit", minute:"2-digit"}),
+    items, ...c
+  };
+  const sales = loadSales();
+  sales.unshift(trx);
+  saveSales(sales);
+  lastStruk = buatStruk(trx);
+  document.getElementById("struk").textContent = lastStruk;
+  document.getElementById("sheetOk").classList.add("on");
+  batal();
+  refreshStats();
+}
+function buatStruk(t){
+  const lines = t.items.map(i => `${i.name} x${i.qty}  ${rp(i.price*i.qty)}`).join("\n");
+  return `WARUNG BERKAH\nKasir Sederhana\n${t.tanggal} ${t.jam}\n--------------------\n${lines}\n--------------------\nSubtotal  ${rp(t.sub)}\nDiskon    ${rp(t.disc)}\nTOTAL     ${rp(t.total)}\nBayar     ${t.metode}${t.metode==="Tunai" ? " "+rp(t.uang) : ""}\nKembali   ${rp(t.kembali)}\n--------------------\nTerima kasih`;
+}
+function kirimWA(){
+  const text = encodeURIComponent(lastStruk);
+  window.open(`https://wa.me/${OWNER_WA}?text=${text}`, "_blank");
+}
+function openProduk(){ document.getElementById("sheetProduk").classList.add("on"); }
+function openHistori(){
+  const sales = loadSales().filter(s => s.tanggal === today());
+  document.getElementById("his").innerHTML = sales.length ? sales.map(s =>
+    `<div><b>${s.jam}</b> • ${s.metode}<br>${s.items.map(i=>i.name+" x"+i.qty).join(", ")}<br><b>${rp(s.total)}</b></div>`
+  ).join("") : "<p class='muted'>Belum ada transaksi hari ini.</p>";
+  document.getElementById("sheetHist").classList.add("on");
+}
+function closeAll(){
+  document.querySelectorAll(".sheet").forEach(s => s.classList.remove("on"));
+}
+function simpanProduk(){
+  const name = document.getElementById("pNama").value.trim();
+  const price = Number(document.getElementById("pHarga").value);
+  const catv = document.getElementById("pCat").value.trim() || "Lainnya";
+  if (!name || !price) return alert("Nama dan harga wajib.");
+  products.push({ id: Date.now(), name, price, cat: catv, emoji:"🍽️" });
+  saveProduk();
+  document.getElementById("pNama").value = "";
+  document.getElementById("pHarga").value = "";
+  closeAll();
+  renderItems();
+}
+document.getElementById("bayar").addEventListener("change", refreshBill);
+renderItems();
+</script>
+</body>
+</html>

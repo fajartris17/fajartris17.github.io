@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#c2410c" />
+  <title>Warung Berkah — Pesan Online</title>
+  <meta name="description" content="Aplikasi pemesanan Warung Berkah. Makanan rumahan, minuman, dan snack. Pesan via WhatsApp." />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --orange: #c2410c;
+      --orange-dark: #9a3412;
+      --cream: #fff7ed;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --line: #fed7aa;
+      --card: #ffffff;
+      --green: #15803d;
+      --shadow: 0 10px 30px rgba(154, 52, 18, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #fff7ed; color: var(--ink); font-family: "Plus Jakarta Sans", system-ui, sans-serif; }
+    body { max-width: 480px; margin: 0 auto; min-height: 100dvh; position: relative; padding-bottom: 92px; }
+
+    .hero {
+      background: linear-gradient(160deg, #9a3412 0%, #c2410c 55%, #ea580c 100%);
+      color: #fff;
+      padding: 22px 20px 28px;
+      border-radius: 0 0 28px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; right: -30px; top: -20px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: rgba(255,255,255,.08);
+    }
+    .topbar { display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+    .brand { display: flex; gap: 10px; align-items: center; }
+    .logo {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: #fff; color: var(--orange); display: grid; place-items: center;
+      font-weight: 800; font-size: 20px;
+    }
+    .brand h1 { font-size: 18px; line-height: 1.15; }
+    .brand p { font-size: 12px; opacity: .85; font-weight: 500; }
+    .status {
+      background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.25);
+      padding: 6px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
+    }
+    .dot { display: inline-block; width: 7px; height: 7px; background: #86efac; border-radius: 50%; margin-right: 5px; }
+    .hero-copy { margin-top: 18px; position: relative; z-index: 1; }
+    .hero-copy h2 { font-size: 24px; letter-spacing: -0.03em; }
+    .hero-copy p { margin-top: 6px; font-size: 13px; opacity: .92; }
+    .chips { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    .chip { background: rgba(255,255,255,.14); border-radius: 999px; padding: 6px 10px; font-size: 11px; font-weight: 600; }
+
+    .search-wrap { padding: 0 16px; margin-top: -16px; position: relative; z-index: 2; }
+    .search {
+      width: 100%; border: 0; border-radius: 16px; padding: 13px 16px 13px 42px;
+      font: inherit; font-size: 14px; box-shadow: var(--shadow); outline: none;
+    }
+    .search-icon { position: absolute; left: 30px; top: 13px; color: var(--muted); }
+
+    nav.cats {
+      display: flex; gap: 8px; padding: 16px 16px 8px; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.cats::-webkit-scrollbar { display: none; }
+    .cat {
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+      border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+      white-space: nowrap; cursor: pointer;
+    }
+    .cat.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+    .section { padding: 8px 16px 20px; }
+    .section h3 { font-size: 16px; margin-bottom: 12px; }
+
+    .grid { display: grid; gap: 12px; }
+    .card {
+      background: var(--card); border-radius: 18px; padding: 12px;
+      display: grid; grid-template-columns: 72px 1fr auto; gap: 12px; align-items: center;
+      box-shadow: 0 6px 18px rgba(28,25,23,.05);
+    }
+    .thumb {
+      width: 72px; height: 72px; border-radius: 16px;
+      display: grid; place-items: center; font-size: 32px;
+      background: #ffedd5;
+    }
+    .info h4 { font-size: 14px; }
+    .info p { font-size: 12px; color: var(--muted); margin: 3px 0 6px; }
+    .price { font-weight: 800; color: var(--orange-dark); font-size: 14px; }
+    .add {
+      width: 36px; height: 36px; border: 0; border-radius: 12px;
+      background: var(--orange); color: #fff; font-size: 20px; font-weight: 700; cursor: pointer;
+    }
+
+    .empty { text-align: center; color: var(--muted); padding: 30px 10px; font-size: 14px; }
+
+    .cartbar {
+      position: fixed; left: 50%; transform: translateX(-50%);
+      bottom: 14px; width: min(448px, calc(100% - 24px));
+      background: var(--ink); color: #fff; border-radius: 18px;
+      padding: 12px 14px; display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25); z-index: 20;
+    }
+    .cartbar button {
+      background: #fff; color: var(--ink); border: 0; border-radius: 12px;
+      padding: 10px 14px; font-weight: 800; font-size: 13px; cursor: pointer;
+    }
+
+    .sheet {
+      position: fixed; inset: 0; background: rgba(28,25,23,.45);
+      display: none; z-index: 30; align-items: flex-end; justify-content: center;
+    }
+    .sheet.show { display: flex; }
+    .panel {
+      background: #fff; width: min(480px, 100%); max-height: 88dvh;
+      border-radius: 24px 24px 0 0; padding: 18px 18px 28px; overflow: auto;
+    }
+    .handle { width: 44px; height: 5px; background: #e7e5e4; border-radius: 99px; margin: 0 auto 14px; }
+    .row { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f5f5f4; }
+    .qty { display: flex; align-items: center; gap: 8px; }
+    .qty button {
+      width: 28px; height: 28px; border-radius: 8px; border: 1px solid #e7e5e4; background: #fff; cursor: pointer;
+    }
+    label { display: block; font-size: 12px; font-weight: 700; margin: 12px 0 6px; }
+    input, textarea, select {
+      width: 100%; border: 1px solid #e7e5e4; border-radius: 12px; padding: 11px 12px;
+      font: inherit; font-size: 14px; background: #fafaf9;
+    }
+    .wa {
+      width: 100%; margin-top: 14px; border: 0; border-radius: 14px;
+      background: #16a34a; color: #fff; padding: 14px; font-weight: 800; font-size: 15px; cursor: pointer;
+    }
+    .note { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
+    .total { font-size: 18px; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">WB</div>
+        <div>
+          <h1>Warung Berkah</h1>
+          <p>Makanan rumahan • Balikpapan</p>
+        </div>
+      </div>
+      <div class="status"><span class="dot"></span>BUKA</div>
+    </div>
+    <div class="hero-copy">
+      <h2>Pesan menu warung, langsung ke WhatsApp.</h2>
+      <p>Contoh aplikasi UMKM: katalog + keranjang + checkout. Tanpa ribet, owner terima order di WA.</p>
+      <div class="chips">
+        <span class="chip">Buka 08.00–21.00</span>
+        <span class="chip">Ambil sendiri / antar</span>
+        <span class="chip">Bayar tunai / QRIS</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input class="search" id="q" placeholder="Cari nasi goreng, es teh..." oninput="render()" />
+  </div>
+
+  <nav class="cats" id="cats"></nav>
+  <main class="section">
+    <h3 id="title">Semua menu</h3>
+    <div class="grid" id="list"></div>
+  </main>
+
+  <div class="cartbar" id="cartbar" style="display:none">
+    <div>
+      <div style="font-size:12px;opacity:.75" id="cartCount">0 item</div>
+      <div class="total" id="cartTotal">Rp 0</div>
+    </div>
+    <button onclick="openSheet()">Lihat pesanan</button>
+  </div>
+
+  <div class="sheet" id="sheet" onclick="if(event.target===this) closeSheet()">
+    <div class="panel">
+      <div class="handle"></div>
+      <h3>Pesanan kamu</h3>
+      <div id="cartItems"></div>
+      <div class="row"><strong>Total</strong><strong id="sheetTotal">Rp 0</strong></div>
+
+      <label>Nama pemesan</label>
+      <input id="nama" placeholder="Nama kamu" />
+      <label>No. HP</label>
+      <input id="hp" placeholder="08xxxxxxxxxx" />
+      <label>Cara ambil</label>
+      <select id="cara">
+        <option value="Ambil sendiri di warung">Ambil sendiri di warung</option>
+        <option value="Antar (ongkir menyesuaikan)">Antar (ongkir menyesuaikan)</option>
+      </select>
+      <label>Catatan</label>
+      <textarea id="catatan" rows="2" placeholder="Pedas sedang, tanpa kecap, dll"></textarea>
+      <button class="wa" onclick="kirimWA()">Kirim pesanan ke WhatsApp</button>
+      <p class="note">Ini contoh aplikasi UMKM. Pesanan akan terbuka di WhatsApp owner. Nomor demo bisa diganti di pengaturan aplikasi.</p>
+    </div>
+  </div>
+
+  <script>
+    const OWNER_WA = "6281356510403"; // ganti ke nomor warung
+    const MENU = [
+      { id:1, cat:"Nasi", name:"Nasi Goreng Spesial", desc:"Telur, ayam suwir, acar", price:18000, emoji:"🍛" },
+      { id:2, cat:"Nasi", name:"Nasi Ayam Geprek", desc:"Ayam crispy + sambal bawang", price:17000, emoji:"🍗" },
+      { id:3, cat:"Nasi", name:"Nasi Campur", desc:"Ayam, telur, tempe, sambal", price:16000, emoji:"🍱" },
+      { id:4, cat:"Lauk", name:"Ayam Goreng", desc:"1 potong paha/dada", price:12000, emoji:"🍖" },
+      { id:5, cat:"Lauk", name:"Telur Dadar", desc:"Telur ayam kampung", price:6000, emoji:"🍳" },
+      { id:6, cat:"Lauk", name:"Tempe Goreng", desc:"3 potong", price:4000, emoji:"🫘" },
+      { id:7, cat:"Minuman", name:"Es Teh Manis", desc:"Teh tubruk dingin", price:5000, emoji:"🧊" },
+      { id:8, cat:"Minuman", name:"Es Jeruk", desc:"Jeruk peras", price:7000, emoji:"🍊" },
+      { id:9, cat:"Minuman", name:"Kopi Tubruk", desc:"Hangat, gula terpisah", price:6000, emoji:"☕" },
+      { id:10, cat:"Snack", name:"Pisang Goreng", desc:"3 buah + meses", price:8000, emoji:"🍌" },
+      { id:11, cat:"Snack", name:"Bakwan Jagung", desc:"2 buah", price:5000, emoji:"🌽" },
+      { id:12, cat:"Paket", name:"Paket Hemat", desc:"Nasi + ayam + es teh", price:25000, emoji:"🥡" }
+    ];
+
+    let cat = "Semua";
+    let cart = JSON.parse(localStorage.getItem("wb_cart") || "{}");
+
+    function rupiah(n){ return "Rp " + n.toLocaleString("id-ID"); }
+    function save(){ localStorage.setItem("wb_cart", JSON.stringify(cart)); updateCart(); }
+
+    function cats(){
+      const names = ["Semua", ...new Set(MENU.map(m => m.cat))];
+      document.getElementById("cats").innerHTML = names.map(n =>
+        `<button class="cat ${n===cat?"active":""}" onclick="setCat('${n}')">${n}</button>`
+      ).join("");
+    }
+    function setCat(n){ cat = n; render(); }
+
+    function render(){
+      cats();
+      const q = (document.getElementById("q").value || "").toLowerCase();
+      const items = MENU.filter(m =>
+        (cat==="Semua" || m.cat===cat) &&
+        (m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q))
+      );
+      document.getElementById("title").textContent = cat === "Semua" ? "Semua menu" : cat;
+      document.getElementById("list").innerHTML = items.length ? items.map(m => `
+        <article class="card">
+          <div class="thumb">${m.emoji}</div>
+          <div class="info">
+            <h4>${m.name}</h4>
+            <p>${m.desc}</p>
+            <div class="price">${rupiah(m.price)}</div>
+          </div>
+          <button class="add" onclick="add(${m.id})">+</button>
+        </article>
+      `).join("") : `<div class="empty">Menu tidak ditemukan.</div>`;
+      updateCart();
+    }
+
+    function add(id){ cart[id] = (cart[id] || 0) + 1; save(); }
+    function minus(id){ cart[id] = Math.max(0, (cart[id]||0)-1); if(!cart[id]) delete cart[id]; save(); renderSheet(); }
+    function plus(id){ cart[id] = (cart[id]||0)+1; save(); renderSheet(); }
+
+    function totals(){
+      let qty=0, sum=0;
+      Object.entries(cart).forEach(([id,q])=>{
+        const m = MENU.find(x=>x.id==id); if(!m) return;
+        qty += q; sum += q*m.price;
+      });
+      return {qty,sum};
+    }
+    function updateCart(){
+      const t = totals();
+      const bar = document.getElementById("cartbar");
+      if(!t.qty){ bar.style.display="none"; return; }
+      bar.style.display="flex";
+      document.getElementById("cartCount").textContent = t.qty + " item";
+      document.getElementById("cartTotal").textContent = rupiah(t.sum);
+    }
+    function renderSheet(){
+      const wrap = document.getElementById("cartItems");
+      const rows = Object.entries(cart).map(([id,q])=>{
+        const m = MENU.find(x=>x.id==id); if(!m) return "";
+        return `<div class="row">
+          <div><strong>${m.name}</strong><div style="font-size:12px;color:#78716c">${rupiah(m.price)}</div></div>
+          <div class="qty">
+            <button onclick="minus(${m.id})">−</button>
+            <span>${q}</span>
+            <button onclick="plus(${m.id})">+</button>
+          </div>
+        </div>`;
+      }).join("");
+      wrap.innerHTML = rows || "<p class='empty'>Keranjang masih kosong.</p>";
+      document.getElementById("sheetTotal").textContent = rupiah(totals().sum);
+    }
+    function openSheet(){ renderSheet(); document.getElementById("sheet").classList.add("show"); }
+    function closeSheet(){ document.getElementById("sheet").classList.remove("show"); }
+
+    function kirimWA(){
+      const t = totals();
+      if(!t.qty) return alert("Keranjang masih kosong.");
+      const nama = document.getElementById("nama").value.trim() || "Pelanggan";
+      const hp = document.getElementById("hp").value.trim();
+      const cara = document.getElementById("cara").value;
+      const catatan = document.getElementById("catatan").value.trim() || "-";
+      const lines = Object.entries(cart).map(([id,q])=>{
+        const m = MENU.find(x=>x.id==id);
+        return `• ${m.name} x${q} = ${rupiah(m.price*q)}`;
+      }).join("%0A");
+      const text =
+        `*PESANAN WARUNG BERKAH*%0A` +
+        `Nama: ${nama}%0A` +
+        `HP: ${hp||"-"}%0A` +
+        `Pengambilan: ${cara}%0A` +
+        `Catatan: ${catatan}%0A%0A` +
+        `*Menu:*%0A${lines}%0A%0A` +
+        `*Total: ${rupiah(t.sum)}*%0A` +
+        `_Dipesan dari aplikasi Warung Berkah_`;
+      window.open(`https://wa.me/${OWNER_WA}?text=${text}`, "_blank");
+    }
+
+    render();
+  </script>
+</body>
+</html>
