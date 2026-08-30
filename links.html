@@ -15,6 +15,8 @@ main{position:relative;z-index:1}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:16px;background:rgba(2,6,23,.82);border:1px solid rgba(148,163,184,.25);text-align:center;padding:10px 6px}
 .tile i{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px}
 .tile span{font-size:11px;line-height:1.2;color:#e2e8f0}
+.win{display:none}
+.win.on{display:block}
 </style>
 </head>
 <body class="text-slate-100">
@@ -30,9 +32,12 @@ main{position:relative;z-index:1}
     <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
   </section>
 
-  <section class="mt-5 rounded-2xl bg-slate-950/80 border border-emerald-500/30 p-4">
-    <p class="text-emerald-300 text-xs font-semibold uppercase"><i class="fab fa-whatsapp"></i> Share ke WhatsApp</p>
-    <p class="text-slate-400 text-[11px] mt-1">Kirim link ini ke nomor baru tanpa simpan kontak, atau pilih kontak yang sudah ada.</p>
+  <section id="win-kontak" class="win mt-5 rounded-2xl bg-slate-950/90 border border-emerald-500/30 p-4">
+    <div class="flex items-center gap-2">
+      <i class="fas fa-address-book text-emerald-300"></i>
+      <p class="text-emerald-300 text-xs font-semibold uppercase">Kontak · Share</p>
+    </div>
+    <p class="text-slate-400 text-[11px] mt-2">Kirim Link-I ke nomor baru tanpa simpan, atau pilih kontak WhatsApp yang sudah ada.</p>
     <div class="flex gap-2 mt-3">
       <input id="waNum" type="tel" inputmode="numeric" placeholder="08xx atau 62xxx" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm">
       <button type="button" id="waSend" class="bg-emerald-600 px-3 py-2 rounded-xl text-sm font-medium shrink-0">Kirim</button>
@@ -41,10 +46,12 @@ main{position:relative;z-index:1}
       <button type="button" id="waPick" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Pilih kontak WA</button>
       <button type="button" id="waCopy" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Salin link</button>
     </div>
+    <a class="block text-center text-xs text-emerald-400 mt-3" href="https://wa.me/6281356510403">Chat Fajar 0813-5651-0403</a>
   </section>
 
   <nav class="mt-auto pt-6 grid grid-cols-4 gap-2">
     <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
+    <button type="button" class="tile" id="btnKontak"><i class="fas fa-address-book bg-emerald-500/20 text-emerald-300"></i><span>Kontak</span></button>
     <a class="tile" href="index.html#freelance"><i class="fas fa-briefcase bg-violet-500/20 text-violet-300"></i><span>Freelance</span></a>
     <a class="tile" href="aplikasi.html"><i class="fas fa-laptop-code bg-orange-500/20 text-orange-300"></i><span>Aplikasi</span></a>
     <a class="tile" href="album.html"><i class="fas fa-images bg-cyan-500/20 text-cyan-300"></i><span>Album</span></a>
@@ -64,8 +71,12 @@ main{position:relative;z-index:1}
 <script>
 (function(){
   var LINK = 'https://fajartris17.github.io/links.html';
-  var MSG = 'Link-I Fajar Tri Suhartono:\n' + LINK;
-  var TEXT = encodeURIComponent(MSG);
+  var TEXT = encodeURIComponent('Link-I Fajar Tri Suhartono:\n' + LINK);
+  var box = document.getElementById('win-kontak');
+  document.getElementById('btnKontak').onclick = function(){
+    box.classList.toggle('on');
+    if(box.classList.contains('on')) box.scrollIntoView({behavior:'smooth',block:'center'});
+  };
   function to62(raw){
     var n = String(raw||'').replace(/[^0-9]/g,'');
     if(!n) return '';
@@ -85,9 +96,7 @@ main{position:relative;z-index:1}
     if(navigator.clipboard) navigator.clipboard.writeText(LINK).then(function(){ alert('Link disalin'); });
     else prompt('Salin link:', LINK);
   };
-  document.getElementById('waNum').addEventListener('keydown', function(e){
-    if(e.key==='Enter') document.getElementById('waSend').click();
-  });
+  if(location.hash==='#kontak') box.classList.add('on');
 })();
 </script>
 </body>
