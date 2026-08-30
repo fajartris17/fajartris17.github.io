@@ -120,6 +120,18 @@
   <div class="max-w-5xl mx-auto">
     <p class="text-center text-red-400 text-sm font-semibold tracking-wider uppercase mb-3">Jendela Dokumen</p>
     <h2 class="text-3xl font-bold text-center mb-3">Dokumen Pendukung</h2>
+    <div id="cvLock" class="max-w-sm mx-auto text-center mt-8">
+      <i class="fas fa-lock text-3xl text-red-400 mb-4"></i>
+      <p class="text-slate-300 mb-1 font-medium">Akses terbatas</p>
+      <p class="text-slate-500 text-sm mb-6">Masukkan kode otorisasi untuk melihat CV dan lampiran.</p>
+      <form id="cvForm" class="space-y-3">
+        <input id="cvPin" type="password" autocomplete="off" placeholder="Kode akses" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-center tracking-widest">
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-500 font-medium px-4 py-3 rounded-xl">Buka dokumen</button>
+      </form>
+      <p id="cvErr" class="text-red-400 text-sm mt-3 hidden">Kode salah.</p>
+      <button type="button" data-win="utama" class="mt-6 text-sm text-slate-500">Kembali ke Utama</button>
+    </div>
+    <div id="cvOpen" class="hidden">
     <p class="text-center text-slate-400 mb-10 text-sm">CV 6 halaman: ringkasan, SPK Avindo, SK RDMP, SK Hyundai, SK BUMA, dan ijazah.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-lines text-2xl"></i></p><p class="font-medium">Hal. 1 — Curriculum Vitae</p></div>
@@ -129,7 +141,11 @@
       <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 5 — SK BUMA</p></div>
       <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-amber-400 mb-2"><i class="fas fa-graduation-cap text-2xl"></i></p><p class="font-medium">Hal. 6 — Ijazah SMK TI Pratama</p></div>
     </div>
-    <div class="text-center mt-10"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
+    <div class="text-center mt-10 space-y-3">
+      <button type="button" id="cvLogout" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kunci lagi</button>
+      <button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button>
+    </div>
+    </div>
   </div>
 </section>
 </div>
@@ -181,5 +197,25 @@ if(sl){
   box.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX; if(dx>40)go(i-1); if(dx<-40)go(i+1);},{passive:true});
   go(0);
 }
+var CV_HASH='181e6dcd064bc441185921f194d757bf02efcffba862c252cac6d0299b9e1e84';
+async function sha(s){
+  var buf=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+}
+function cvShow(ok){
+  document.getElementById('cvLock').classList.toggle('hidden', ok);
+  document.getElementById('cvOpen').classList.toggle('hidden', !ok);
+}
+if(sessionStorage.getItem('cvok')==='1') cvShow(true);
+document.getElementById('cvForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var pin=document.getElementById('cvPin').value.trim();
+  var h=await sha(pin);
+  if(h===CV_HASH){ sessionStorage.setItem('cvok','1'); document.getElementById('cvErr').classList.add('hidden'); cvShow(true); }
+  else { document.getElementById('cvErr').classList.remove('hidden'); document.getElementById('cvPin').value=''; }
+});
+document.getElementById('cvLogout').addEventListener('click', function(){
+  sessionStorage.removeItem('cvok'); cvShow(false);
+});
 </script>
 </body></html>
