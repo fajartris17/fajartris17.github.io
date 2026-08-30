@@ -49,6 +49,21 @@
     </div>
   </div>
 </section>
+<section class="px-4 pb-12">
+  <p class="text-center text-xs uppercase tracking-wider text-cyan-400 font-semibold mb-3">Contoh tampilan — geser atau sentuh</p>
+  <div id="slider" class="relative max-w-3xl mx-auto overflow-hidden rounded-2xl border border-slate-800 bg-black select-none">
+    <div id="slides" class="flex transition-transform duration-500 ease-out">
+      <figure class="w-full shrink-0"><img src="slide-1.jpg" alt="Dashboard eksekutif RAB RDMP JO Kilangan Balikpapan" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">RDMP JO Kilangan — Executive Construction &amp; RAB Control</figcaption></figure>
+      <figure class="w-full shrink-0"><img src="slide-2.jpg" alt="Method Statement dashboard driven spun pile" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Method Statement — Driven Spun Pile Foundation</figcaption></figure>
+      <figure class="w-full shrink-0"><img src="slide-3.jpg" alt="Dashboard RAB RDMP JO Kilangan Balikpapan" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">RAB Dashboard — anggaran vs realisasi</figcaption></figure>
+      <figure class="w-full shrink-0"><img src="slide-4.jpg" alt="Dashboard planned versus actual budget" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Planned vs Actual — ringkasan anggaran</figcaption></figure>
+      <figure class="w-full shrink-0"><img src="slide-5.jpg" alt="Construction budget dashboard RAB Excel" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Construction Budget Dashboard RAB</figcaption></figure>
+    </div>
+    <button type="button" id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700">‹</button>
+    <button type="button" id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700">›</button>
+    <div id="dots" class="absolute bottom-8 inset-x-0 flex justify-center gap-1.5"></div>
+  </div>
+</section>
 <section class="py-16 max-w-5xl mx-auto px-4 border-t border-slate-800">
   <div class="grid md:grid-cols-3 gap-8">
     <h2 class="text-3xl font-bold border-l-4 border-emerald-500 pl-4">Profil<br>Profesional</h2>
@@ -151,5 +166,20 @@ document.querySelectorAll('[data-win]').forEach(function(btn){
 var hash=(location.hash||'#utama').replace('#','');
 if(['utama','freelance','experience','documents','education'].indexOf(hash)===-1) hash='utama';
 buka(hash);
+var sl=document.getElementById('slides');
+var n=sl? sl.children.length:0, i=0, startX=0;
+function go(k){ if(!n) return; i=(k+n)%n; sl.style.transform='translateX('+(-i*100)+'%)';
+  document.querySelectorAll('#dots button').forEach(function(b,x){b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-600');}); }
+if(sl){
+  var d=document.getElementById('dots');
+  for(var x=0;x<n;x++){ var b=document.createElement('button'); b.type='button'; (function(z){b.onclick=function(){go(z);};})(x); d.appendChild(b); }
+  document.getElementById('nextSlide').onclick=function(){go(i+1)};
+  document.getElementById('prevSlide').onclick=function(){go(i-1)};
+  setInterval(function(){go(i+1)},4000);
+  var box=document.getElementById('slider');
+  box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});
+  box.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX; if(dx>40)go(i-1); if(dx<-40)go(i+1);},{passive:true});
+  go(0);
+}
 </script>
 </body></html>
