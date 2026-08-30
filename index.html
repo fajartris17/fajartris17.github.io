@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fajar Tri Suhartono</title>
+<title>Fajar Tri Suhartono | Site Manager &amp; AI Konstruksi</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>.win{display:none}.win.active{display:block}</style>
@@ -13,209 +13,172 @@
   <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
     <button type="button" data-win="utama" class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">FAJAR.TRI</button>
     <div class="hidden md:flex items-center space-x-4 text-sm">
-      <button type="button" data-win="utama" class="hover:text-blue-400">Utama</button>
-      <button type="button" data-win="freelance" class="hover:text-blue-400">Freelance</button>
-      <button type="button" data-win="experience" class="hover:text-blue-400">Pengalaman</button>
-      <button type="button" data-win="documents" class="hover:text-blue-400">Dokumen</button>
-      <button type="button" data-win="education" class="hover:text-blue-400">Pendidikan</button>
+      <button type="button" data-win="utama" class="hover:text-blue-400" data-i18n="nav_home">Utama</button>
+      <button type="button" data-win="freelance" class="hover:text-blue-400" data-i18n="nav_free">Freelance</button>
+      <button type="button" data-win="experience" class="hover:text-blue-400" data-i18n="nav_exp">Pengalaman</button>
+      <button type="button" data-win="documents" class="hover:text-blue-400" data-i18n="nav_doc">Dokumen</button>
+      <button type="button" data-win="education" class="hover:text-blue-400" data-i18n="nav_edu">Pendidikan</button>
     </div>
-    <a href="https://wa.me/6281356510403" class="text-sm px-3 py-1.5 rounded-lg bg-emerald-600 shrink-0">WhatsApp</a>
+    <div class="flex items-center gap-2 shrink-0">
+      <button type="button" id="langBtn" class="text-xs px-2 py-1 rounded-lg border border-slate-600">EN</button>
+      <a id="waNav" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20profil%20Link-I.%20Ingin%20diskusi%20posisi%20Site%20Manager%20atau%20order%20prompt%20RAB%20%2F%20method%20statement." class="text-sm px-3 py-1.5 rounded-lg bg-emerald-600">WhatsApp</a>
+    </div>
   </div>
 </nav>
 <div id="win-utama" class="win active">
 <section class="min-h-[70vh] flex items-center justify-center px-4 py-16">
   <div class="text-center max-w-3xl">
     <div class="relative w-64 h-64 md:w-72 md:h-72 mx-auto">
-      <img src="bg-profil.jpg" alt="" class="absolute inset-0 w-full h-full object-cover rounded-full shadow-[0_0_40px_rgba(34,211,238,0.25)]">
+      <img src="bg-profil.jpg" alt="" class="absolute inset-0 w-full h-full object-cover rounded-full">
       <div class="absolute inset-0 rounded-full bg-slate-950/35"></div>
-      <img src="https://fajartris17.github.io/foto.jpg" alt="Fajar Tri Suhartono" class="absolute inset-0 m-auto w-36 h-36 md:w-40 md:h-40 rounded-full object-cover object-top border-4 border-cyan-300/80 shadow-2xl bg-slate-800 z-10" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=256&background=0f172a&color=60a5fa&bold=true';">
+      <img src="foto.jpg" alt="Fajar Tri Suhartono" class="absolute inset-0 m-auto w-36 h-36 md:w-40 md:h-40 rounded-full object-cover object-top border-4 border-cyan-300/80 z-10" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=256&background=0f172a&color=60a5fa&bold=true';">
     </div>
-    <span class="mt-6 inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 rounded-full border border-blue-400/20">Tersedia untuk posisi baru &amp; proyek freelance</span>
+    <span class="mt-6 inline-block px-3 py-1 text-xs font-semibold tracking-wider text-emerald-400 uppercase bg-emerald-400/10 rounded-full border border-emerald-400/20" data-i18n="avail">Terbuka untuk posisi &amp; proyek 2026 · On site Balikpapan · siap Jakarta &amp; Batam</span>
     <h1 class="mt-5 text-4xl md:text-6xl font-extrabold">Hai, Saya <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">Fajar</span></h1>
     <p class="mt-3 text-xl text-slate-300 font-medium">Fajar Tri Suhartono</p>
-    <p class="mt-2 text-lg text-slate-400">Site Manager | Construction • Project Operations • AI Konstruksi</p>
+    <p class="mt-2 text-lg text-slate-400" data-i18n="role">Site Manager | Construction · Project Operations · AI Konstruksi</p>
     <p class="mt-2 text-sm text-slate-500">Balikpapan · Jakarta · Batam · Kalimantan Timur · SIM A</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs">
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">Supervisi lapangan</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">QHSE</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">RAB / BOQ</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">Method statement</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">Stock control</span>
+      <span class="px-3 py-1 rounded-full bg-slate-800 border border-slate-700">Prompt AI</span>
+    </div>
     <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
-      <a href="https://wa.me/6281356510403" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-whatsapp text-green-400"></i> 0813-5651-0403</a>
-      <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="far fa-envelope text-blue-400"></i> Email</a>
-      <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-linkedin text-blue-500"></i> LinkedIn</a>
-      <a href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fas fa-briefcase text-amber-400"></i> Jobstreet</a>
-      <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fas fa-bolt text-violet-400"></i> Fastwork</a>
+      <a id="waHero" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20profil%20Link-I.%20Ingin%20diskusi%20posisi%20Site%20Manager%20atau%20order%20prompt%20RAB%20%2F%20method%20statement." target="_blank" class="flex items-center gap-2 bg-emerald-600 px-4 py-2 rounded-xl"><i class="fab fa-whatsapp"></i> <span data-i18n="wa_cta">Chat WhatsApp</span></a>
+      <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50">Email</a>
+      <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50">LinkedIn</a>
+      <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50">Fastwork</a>
     </div>
     <div class="mt-8 flex flex-wrap justify-center gap-3">
-      <button type="button" data-win="freelance" class="bg-violet-600 text-white font-medium px-7 py-3 rounded-xl">Layanan Freelance</button>
-      <button type="button" data-win="experience" class="bg-blue-600 text-white font-medium px-7 py-3 rounded-xl">Pengalaman</button>
-      <button type="button" data-win="documents" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">CV + Lampiran</button>
+      <button type="button" data-win="freelance" class="bg-violet-600 font-medium px-7 py-3 rounded-xl" data-i18n="btn_free">Layanan Freelance</button>
+      <button type="button" data-win="experience" class="bg-blue-600 font-medium px-7 py-3 rounded-xl" data-i18n="btn_exp">Pengalaman</button>
+      <button type="button" data-win="documents" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl" data-i18n="btn_cv">CV + Lampiran</button>
     </div>
   </div>
 </section>
 <section class="px-4 pb-12">
-  <p class="text-center text-xs uppercase tracking-wider text-cyan-400 font-semibold mb-3">Contoh tampilan — geser atau sentuh</p>
-  <div id="slider" class="relative max-w-3xl mx-auto overflow-hidden rounded-2xl border border-slate-800 bg-black select-none">
-    <div id="slides" class="flex transition-transform duration-500 ease-out">
-      <figure class="w-full shrink-0"><img src="slide-1.jpg" alt="Dashboard eksekutif RAB RDMP JO Kilangan Balikpapan" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">RDMP JO Kilangan — Executive Construction &amp; RAB Control</figcaption></figure>
-      <figure class="w-full shrink-0"><img src="slide-2.jpg" alt="Method Statement dashboard driven spun pile" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Method Statement — Driven Spun Pile Foundation</figcaption></figure>
-      <figure class="w-full shrink-0"><img src="slide-3.jpg" alt="Dashboard RAB RDMP JO Kilangan Balikpapan" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">RAB Dashboard — anggaran vs realisasi</figcaption></figure>
-      <figure class="w-full shrink-0"><img src="slide-4.jpg" alt="Dashboard planned versus actual budget" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Planned vs Actual — ringkasan anggaran</figcaption></figure>
-      <figure class="w-full shrink-0"><img src="slide-5.jpg" alt="Construction budget dashboard RAB Excel" class="w-full h-48 md:h-72 object-cover object-top"><figcaption class="text-xs text-slate-400 px-3 py-2">Construction Budget Dashboard RAB</figcaption></figure>
+  <p class="text-center text-xs uppercase tracking-wider text-cyan-400 font-semibold mb-3" data-i18n="slide_cap">Contoh tampilan</p>
+  <div id="slider" class="relative max-w-3xl mx-auto overflow-hidden rounded-2xl border border-slate-800 bg-black">
+    <div id="slides" class="flex transition-transform duration-500">
+      <figure class="w-full shrink-0"><img src="slide-1.jpg" alt="RAB dashboard" class="w-full h-48 md:h-72 object-cover object-top"></figure>
+      <figure class="w-full shrink-0"><img src="slide-2.jpg" alt="Method statement" class="w-full h-48 md:h-72 object-cover object-top"></figure>
+      <figure class="w-full shrink-0"><img src="slide-3.jpg" alt="RAB Kilangan" class="w-full h-48 md:h-72 object-cover object-top"></figure>
+      <figure class="w-full shrink-0"><img src="slide-4.jpg" alt="Planned vs actual" class="w-full h-48 md:h-72 object-cover object-top"></figure>
+      <figure class="w-full shrink-0"><img src="slide-5.jpg" alt="Budget dashboard" class="w-full h-48 md:h-72 object-cover object-top"></figure>
     </div>
-    <button type="button" id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700">‹</button>
-    <button type="button" id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80 border border-slate-700">›</button>
-    <div id="dots" class="absolute bottom-8 inset-x-0 flex justify-center gap-1.5"></div>
+    <button type="button" id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80">‹</button>
+    <button type="button" id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-slate-900/80">›</button>
+    <div id="dots" class="absolute bottom-3 inset-x-0 flex justify-center gap-1.5"></div>
   </div>
 </section>
 <section class="py-16 max-w-5xl mx-auto px-4 border-t border-slate-800">
-  <div class="grid md:grid-cols-3 gap-8">
-    <h2 class="text-3xl font-bold border-l-4 border-emerald-500 pl-4">Profil<br>Profesional</h2>
+  <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <h2 class="text-3xl font-bold border-l-4 border-emerald-500 pl-4" data-i18n="profil_h">Profil Profesional</h2>
     <div class="md:col-span-2 text-lg text-slate-400 space-y-4">
-      <p>Site Manager dengan pengalaman supervisi konstruksi, perencanaan maintenance, manpower planning, monitoring progres, koordinasi sumber daya, pelaporan, dan pengendalian pekerjaan lapangan.</p>
-      <p>Pengalaman terbaru sebagai Site Manager di PT Avindo Energi Nusantara (2024–2026), sesuai Surat Pengalaman Kerja No. SPK 016/AEN/VII/2026.</p>
-      <p>Di samping kerja lapangan, saya juga menerima proyek freelance: merancang prompt AI khusus dokumen konstruksi lewat Fastwork.</p>
+      <p data-i18n="profil_1">Site Manager dengan pengalaman supervisi konstruksi, maintenance planning, manpower planning, monitoring progres, dan pengendalian lapangan.</p>
+      <p data-i18n="profil_2">Terbaru Site Manager PT Avindo Energi Nusantara (2024–2026), termasuk stock control logistik. Freelance: prompt AI dokumen konstruksi.</p>
     </div>
+  </div>
+  <h2 class="text-2xl font-bold mb-6" data-i18n="proj_h">3 proyek lapangan</h2>
+  <div class="grid md:grid-cols-3 gap-5 text-sm">
+    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5"><p class="text-blue-400 text-xs">2024 – 2026</p><h3 class="font-bold text-lg mt-1">PT Avindo Energi Nusantara</h3><p class="text-slate-400 mt-1" data-i18n="p1_role">Site Manager</p><ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside"><li data-i18n="p1a">Memimpin pelaksanaan lapangan.</li><li data-i18n="p1b">Mengendalikan progres, mutu, K3.</li><li data-i18n="p1c">Laporan dan stock control.</li></ul></article>
+    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5"><p class="text-emerald-400 text-xs">2020 – 2024</p><h3 class="font-bold text-lg mt-1">RDMP Balikpapan JO</h3><p class="text-slate-400 mt-1" data-i18n="p2_role">Action Supervisor</p><ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside"><li data-i18n="p2a">Supervisi sesuai kontrak.</li><li data-i18n="p2b">Inspeksi dan solusi lapangan.</li><li data-i18n="p2c">Kontrol mutu dan produksi.</li></ul></article>
+    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5"><p class="text-indigo-400 text-xs">2019 – 2020</p><h3 class="font-bold text-lg mt-1">Hyundai Engineering</h3><p class="text-slate-400 mt-1" data-i18n="p3_role">Action Supervisor — Balikpapan</p><ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside"><li data-i18n="p3a">Supervisi sesuai dokumen.</li><li data-i18n="p3b">Pengendalian mutu.</li><li data-i18n="p3c">Koordinasi produksi.</li></ul></article>
   </div>
 </section>
 </div>
 <div id="win-freelance" class="win">
-<section class="py-16 px-4 min-h-[80vh]">
-  <div class="max-w-5xl mx-auto">
-    <p class="text-center text-violet-400 text-sm font-semibold tracking-wider uppercase mb-3">Jendela Freelance</p>
-    <h2 class="text-3xl font-bold text-center mb-3">Asisten AI Konstruksi 2026</h2>
-    <p class="text-center text-slate-400 max-w-3xl mx-auto mb-12">Prompt RAB, Method Statement, Shop Drawing dan Laporan Proyek — siap pakai di ChatGPT, Claude, Gemini, atau Grok.</p>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 text-sm">
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-calculator text-violet-400 mb-2"></i><p class="font-medium">RAB / BOQ</p><p class="text-slate-500 mt-1">Struktur item, satuan, volume, asumsi, catatan teknis.</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-list-check text-violet-400 mb-2"></i><p class="font-medium">Method Statement</p><p class="text-slate-500 mt-1">Per item: excavation, pile, concrete, formwork, steel, finishing.</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-clipboard-check text-violet-400 mb-2"></i><p class="font-medium">Checklist mutu dan K3</p><p class="text-slate-500 mt-1">Praktik lapangan + acuan SNI.</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-drafting-compass text-violet-400 mb-2"></i><p class="font-medium">Shop drawing dan RFI</p><p class="text-slate-500 mt-1">Deskripsi gambar, RFI, berita acara, notulen.</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-file-lines text-violet-400 mb-2"></i><p class="font-medium">Laporan proyek</p><p class="text-slate-500 mt-1">Laporan harian dan presentasi ke owner/pengawas.</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><i class="fas fa-image text-violet-400 mb-2"></i><p class="font-medium">Prompt visual</p><p class="text-slate-500 mt-1">Mockup bangunan, site layout, poster toolbox.</p></div>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5 mb-10">
-      <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">Basic</p><p class="text-2xl font-bold mt-1">Rp99 rb</p><p class="text-slate-500 text-sm mt-1">1 hari · 1x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>5 custom prompt</li><li>1 contoh output</li><li>File Word/PDF</li></ul></div>
-      <div class="bg-slate-950 rounded-2xl border border-violet-500/40 p-6"><p class="text-violet-400 text-xs uppercase tracking-wider">Standard</p><p class="text-2xl font-bold mt-1">Rp199 rb</p><p class="text-slate-500 text-sm mt-1">2 hari · 2x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>12 prompt + template</li><li>Contoh output</li><li>Cara pakai singkat</li></ul></div>
-      <div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-slate-500 text-xs uppercase tracking-wider">PRO</p><p class="text-2xl font-bold mt-1">Rp399 rb</p><p class="text-slate-500 text-sm mt-1">4 hari · 3x revisi</p><ul class="mt-4 space-y-1 text-sm text-slate-400 list-disc list-inside"><li>25 prompt + workflow</li><li>RAB, MS, shop notes, BA</li><li>Panduan pakai ulang</li></ul></div>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="bg-violet-600 text-white font-medium px-7 py-3 rounded-xl">Order di Fastwork</a>
-      <button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button>
-    </div>
-  </div>
-</section>
+<section class="py-16 px-4 min-h-[80vh]"><div class="max-w-5xl mx-auto">
+<p class="text-center text-violet-400 text-sm font-semibold uppercase mb-3" data-i18n="free_k">Freelance</p>
+<h2 class="text-3xl font-bold text-center mb-3" data-i18n="free_h">Asisten AI Konstruksi 2026</h2>
+<p class="text-center text-slate-400 max-w-3xl mx-auto mb-10" data-i18n="free_d">Prompt RAB, Method Statement, Shop Drawing dan Laporan Proyek.</p>
+<div class="grid md:grid-cols-3 gap-5 mb-12">
+<div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-xs text-slate-500">Basic</p><p class="text-2xl font-bold">Rp99 rb</p></div>
+<div class="bg-slate-950 rounded-2xl border border-violet-500/40 p-6"><p class="text-xs text-violet-400">Standard</p><p class="text-2xl font-bold">Rp199 rb</p></div>
+<div class="bg-slate-950 rounded-2xl border border-slate-800 p-6"><p class="text-xs text-slate-500">PRO</p><p class="text-2xl font-bold">Rp399 rb</p></div>
 </div>
-<div id="win-experience" class="win">
-<section class="py-16 px-4 min-h-[80vh]">
-  <div class="max-w-5xl mx-auto space-y-10">
-    <p class="text-center text-blue-400 text-sm font-semibold tracking-wider uppercase">Jendela Pengalaman</p>
-    <h2 class="text-3xl font-bold text-center">Pengalaman Kerja</h2>
-    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-blue-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Site Manager</h3><p class="text-blue-400">PT Avindo Energi Nusantara</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">2024 – 2026</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Memimpin dan mengoordinasikan pelaksanaan pekerjaan lapangan.</li><li>Mengawasi rencana kerja, metode, spesifikasi teknis, mutu, waktu, dan K3.</li><li>Koordinasi tenaga kerja, peralatan, material, dan operasional proyek.</li><li>Monitoring progres dan laporan perkembangan pekerjaan.</li><li>Koordinasi PM, CM, Engineering, QA/QC, HSE, vendor, dan subkontraktor.</li><li>Penerapan QHSE dan penggunaan sumber daya yang efisien.</li></ul></article>
-    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-emerald-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-emerald-400">RDMP Balikpapan JO</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Mar 2020 – Mei 2024</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Pekerjaan lapangan sesuai desain, spesifikasi, dan dokumen kontrak.</li><li>Inspeksi rutin, identifikasi masalah, dan penyelesaian kendala.</li><li>Pengendalian mutu material/pekerjaan dan kontrol produksi.</li><li>Jadwal pelaksanaan dan pengelolaan sumber daya manusia.</li></ul></article>
-    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-indigo-400">Hyundai Engineering Co., Ltd. — Balikpapan</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Nov 2019 – Mar 2020</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Supervisi lapangan sesuai desain, spesifikasi, dan kontrak.</li><li>Inspeksi, pengendalian mutu, dan kontrol produksi.</li></ul></article>
-    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-amber-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Planner</h3><p class="text-amber-400">Dizamatra Powerindo, Lahat</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Feb 2015 – Okt 2019</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, sistem backlog, dan manpower planning.</li><li>Laporan backlog dan prioritas tindakan perbaikan.</li></ul></article>
-    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Statutory Admin → Admin OB Diggers</h3><p class="text-slate-300">PT Bukit Makmur Mandiri Utama (BUMA), Berau</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Jun 2012 – Feb 2015</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, backlog, dan manpower planning di Binungan–Suaran.</li><li>Analisis data pemeliharaan untuk tren dan area perbaikan.</li></ul></article>
-    <div class="text-center pt-4"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
-  </div>
-</section>
+<h3 class="text-xl font-bold mb-4" data-i18n="sample_h">Contoh hasil (30 detik)</h3>
+<div class="grid md:grid-cols-2 gap-5 mb-12 text-sm">
+<div class="bg-slate-950 rounded-2xl border border-slate-800 p-5"><p class="font-medium mb-3">Cuplikan RAB / BOQ</p>
+<table class="w-full text-left text-slate-400"><thead><tr><th>Item</th><th>Sat.</th><th>Vol.</th></tr></thead><tbody>
+<tr class="border-t border-slate-800"><td class="py-1">Galian tanah biasa</td><td>m³</td><td>120</td></tr>
+<tr class="border-t border-slate-800"><td class="py-1">Urugan + compact</td><td>m³</td><td>80</td></tr>
+<tr class="border-t border-slate-800"><td class="py-1">Pondasi telapak K-250</td><td>m³</td><td>18</td></tr>
+<tr class="border-t border-slate-800"><td class="py-1">Tulangan D16</td><td>kg</td><td>1.450</td></tr>
+<tr class="border-t border-slate-800"><td class="py-1">Bekisting pondasi</td><td>m²</td><td>64</td></tr>
+</tbody></table>
+<p class="text-xs text-slate-500 mt-3" data-i18n="sample_note">Contoh struktur item. Angka klien setelah brief.</p></div>
+<div class="bg-slate-950 rounded-2xl border border-slate-800 p-5"><p class="font-medium mb-3">Kerangka Method Statement</p>
+<ol class="list-decimal list-inside space-y-1 text-slate-400"><li>Lingkup &amp; acuan (gambar, spek, SNI)</li><li>Urutan kerja</li><li>Alat, bahan, tenaga</li><li>QC checkpoints</li><li>HSE / APD / izin kerja</li><li>Kriteria selesai &amp; as-built</li></ol></div>
 </div>
-<div id="win-documents" class="win">
-<section class="py-16 px-4 min-h-[80vh]">
-  <div class="max-w-5xl mx-auto">
-    <p class="text-center text-red-400 text-sm font-semibold tracking-wider uppercase mb-3">Jendela Dokumen</p>
-    <h2 class="text-3xl font-bold text-center mb-3">Dokumen Pendukung</h2>
-    <div id="cvLock" class="max-w-sm mx-auto text-center mt-8">
-      <i class="fas fa-lock text-3xl text-red-400 mb-4"></i>
-      <p class="text-slate-300 mb-1 font-medium">Akses terbatas</p>
-      <p class="text-slate-500 text-sm mb-6">Masukkan kode otorisasi untuk melihat CV dan lampiran.</p>
-      <form id="cvForm" class="space-y-3">
-        <input id="cvPin" type="password" autocomplete="off" placeholder="Kode akses" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-center tracking-widest">
-        <button type="submit" class="w-full bg-red-600 hover:bg-red-500 font-medium px-4 py-3 rounded-xl">Buka dokumen</button>
-      </form>
-      <p id="cvErr" class="text-red-400 text-sm mt-3 hidden">Kode salah.</p>
-      <button type="button" data-win="utama" class="mt-6 text-sm text-slate-500">Kembali ke Utama</button>
-    </div>
-    <div id="cvOpen" class="hidden">
-    <p class="text-center text-slate-400 mb-10 text-sm">CV 6 halaman: ringkasan, SPK Avindo, SK RDMP, SK Hyundai, SK BUMA, dan ijazah.</p>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-lines text-2xl"></i></p><p class="font-medium">Hal. 1 — Curriculum Vitae</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-contract text-2xl"></i></p><p class="font-medium">Hal. 2 — SPK Avindo 016/AEN/VII/2026</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 3 — SK RDMP JO</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 4 — SK Hyundai</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 5 — SK BUMA</p></div>
-      <div class="bg-slate-950 rounded-xl border border-slate-800 p-5"><p class="text-amber-400 mb-2"><i class="fas fa-graduation-cap text-2xl"></i></p><p class="font-medium">Hal. 6 — Ijazah SMK TI Pratama</p></div>
-    </div>
-    <div class="text-center mt-10 space-y-3">
-      <button type="button" id="cvLogout" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kunci lagi</button>
-      <button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button>
-    </div>
-    </div>
-  </div>
-</section>
+<h3 class="text-xl font-bold text-center mb-6" data-i18n="order_h">Cara order — 4 langkah</h3>
+<ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 text-sm">
+<li class="bg-slate-950 border border-slate-800 rounded-xl p-4"><p class="text-violet-400 font-bold">1</p><p class="font-medium" data-i18n="o1t">Chat WhatsApp</p><p class="text-slate-500" data-i18n="o1d">Kirim jenis dokumen.</p></li>
+<li class="bg-slate-950 border border-slate-800 rounded-xl p-4"><p class="text-violet-400 font-bold">2</p><p class="font-medium" data-i18n="o2t">Brief singkat</p><p class="text-slate-500" data-i18n="o2d">Jenis proyek dan lokasi.</p></li>
+<li class="bg-slate-950 border border-slate-800 rounded-xl p-4"><p class="text-violet-400 font-bold">3</p><p class="font-medium" data-i18n="o3t">Draft</p><p class="text-slate-500" data-i18n="o3d">Prompt + contoh output.</p></li>
+<li class="bg-slate-950 border border-slate-800 rounded-xl p-4"><p class="text-violet-400 font-bold">4</p><p class="font-medium" data-i18n="o4t">File jadi</p><p class="text-slate-500" data-i18n="o4d">Word/PDF + revisi.</p></li>
+</ol>
+<div class="flex flex-wrap justify-center gap-3">
+<a id="waFree" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20ingin%20order%20prompt%20RAB%20%2F%20method%20statement." target="_blank" class="bg-emerald-600 font-medium px-7 py-3 rounded-xl" data-i18n="order_wa">Order via WhatsApp</a>
+<a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" target="_blank" class="bg-violet-600 font-medium px-7 py-3 rounded-xl">Fastwork</a>
+<button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl" data-i18n="back">Kembali</button>
+</div></div></section></div>
+<div id="win-experience" class="win"><section class="py-16 px-4"><div class="max-w-5xl mx-auto space-y-8">
+<h2 class="text-3xl font-bold text-center" data-i18n="exp_h">Pengalaman Kerja</h2>
+<article class="pl-6 border-l border-slate-800"><h3 class="text-xl font-bold">Site Manager</h3><p class="text-blue-400">PT Avindo Energi Nusantara · 2024–2026</p></article>
+<article class="pl-6 border-l border-slate-800"><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-emerald-400">RDMP Balikpapan JO · 2020–2024</p></article>
+<article class="pl-6 border-l border-slate-800"><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-indigo-400">Hyundai Engineering · 2019–2020</p></article>
+<article class="pl-6 border-l border-slate-800"><h3 class="text-xl font-bold">Planner</h3><p class="text-amber-400">Dizamatra Powerindo · 2015–2019</p></article>
+<article class="pl-6 border-l border-slate-800"><h3 class="text-xl font-bold">Admin</h3><p class="text-slate-300">PT BUMA Berau · 2012–2015</p></article>
+<div class="text-center"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 px-7 py-3 rounded-xl" data-i18n="back">Kembali</button></div>
+</div></section></div>
+<div id="win-documents" class="win"><section class="py-16 px-4"><div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-bold text-center mb-3" data-i18n="doc_h">Dokumen Pendukung</h2>
+<div id="cvLock" class="max-w-sm mx-auto text-center mt-8">
+<p class="font-medium" data-i18n="lock_t">Akses terbatas</p>
+<p class="text-slate-500 text-sm mb-6" data-i18n="lock_d">Masukkan kode untuk unduh CV.</p>
+<form id="cvForm" class="space-y-3"><input id="cvPin" type="password" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-center"><button class="w-full bg-red-600 px-4 py-3 rounded-xl" data-i18n="lock_btn">Buka</button></form>
+<p id="cvErr" class="text-red-400 text-sm mt-3 hidden" data-i18n="lock_err">Kode salah.</p>
 </div>
-<div id="win-education" class="win">
-<section class="py-16 px-4 min-h-[80vh]">
-  <div class="max-w-3xl mx-auto space-y-5">
-    <p class="text-center text-emerald-400 text-sm font-semibold tracking-wider uppercase">Jendela Pendidikan</p>
-    <h2 class="text-3xl font-bold text-center mb-8">Pendidikan</h2>
-    <div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Teknik Komputer dan Informatika — Multimedia</h3><p class="text-blue-400">SMK TI Pratama Samarinda · 2011/2012</p></div>
-    <div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Ilmu Komunikasi dan Informasi</h3><p class="text-emerald-400">Institut Teknologi Bandung (ITB)</p></div>
-    <p class="text-center text-slate-500 text-sm">Grobogan, 07 Maret 1994 · Domisili Balikpapan · WNI · SIM A</p>
-    <div class="text-center pt-6"><button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl">Kembali ke Utama</button></div>
-  </div>
-</section>
-</div>
+<div id="cvOpen" class="hidden text-center">
+<a href="CV-Fajar-Tri-Suhartono.pdf" class="inline-flex items-center gap-2 bg-red-600 px-7 py-3 rounded-xl"><i class="fas fa-file-pdf"></i> <span data-i18n="dl_cv">Unduh CV PDF</span></a>
+<p class="text-xs text-slate-500 mt-2" data-i18n="dl_note">Unggah file sebagai CV-Fajar-Tri-Suhartono.pdf agar tombol berfungsi.</p>
+<button type="button" id="cvLogout" class="mt-6 bg-slate-800 border border-slate-600 px-7 py-3 rounded-xl" data-i18n="lock_again">Kunci lagi</button>
+</div></div></section></div>
+<div id="win-education" class="win"><section class="py-16 px-4"><div class="max-w-3xl mx-auto space-y-5">
+<h2 class="text-3xl font-bold text-center" data-i18n="edu_h">Pendidikan</h2>
+<div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Teknik Komputer dan Informatika — Multimedia</h3><p class="text-blue-400">SMK TI Pratama Samarinda · 2011/2012</p></div>
+<div class="p-7 bg-slate-950 rounded-2xl border border-slate-800"><h3 class="text-xl font-bold">Ilmu Komunikasi dan Informasi</h3><p class="text-emerald-400">ITB</p></div>
+<button type="button" data-win="utama" class="bg-slate-800 border border-slate-600 px-7 py-3 rounded-xl" data-i18n="back">Kembali</button>
+</div></section></div>
 <nav class="md:hidden fixed bottom-0 inset-x-0 bg-slate-950/95 border-t border-slate-800 grid grid-cols-5 text-[11px] text-center z-50">
-  <button type="button" data-win="utama" class="py-3">Utama</button>
-  <button type="button" data-win="freelance" class="py-3">Freelance</button>
-  <button type="button" data-win="experience" class="py-3">Kerja</button>
-  <button type="button" data-win="documents" class="py-3">Dokumen</button>
-  <button type="button" data-win="education" class="py-3">Sekolah</button>
+<button type="button" data-win="utama" class="py-3">Utama</button>
+<button type="button" data-win="freelance" class="py-3">Freelance</button>
+<button type="button" data-win="experience" class="py-3">Kerja</button>
+<button type="button" data-win="documents" class="py-3">Dokumen</button>
+<button type="button" data-win="education" class="py-3">Sekolah</button>
 </nav>
 <script>
-function buka(id){
-  document.querySelectorAll('.win').forEach(function(w){w.classList.remove('active')});
-  var el=document.getElementById('win-'+id);
-  if(el) el.classList.add('active');
-  window.scrollTo(0,0);
-  if(history.replaceState) history.replaceState(null,'','#'+id);
-}
-document.querySelectorAll('[data-win]').forEach(function(btn){
-  btn.addEventListener('click', function(){ buka(btn.getAttribute('data-win')); });
-});
-var hash=(location.hash||'#utama').replace('#','');
-if(['utama','freelance','experience','documents','education'].indexOf(hash)===-1) hash='utama';
-buka(hash);
-var sl=document.getElementById('slides');
-var n=sl? sl.children.length:0, i=0, startX=0;
-function go(k){ if(!n) return; i=(k+n)%n; sl.style.transform='translateX('+(-i*100)+'%)';
-  document.querySelectorAll('#dots button').forEach(function(b,x){b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-600');}); }
-if(sl){
-  var d=document.getElementById('dots');
-  for(var x=0;x<n;x++){ var b=document.createElement('button'); b.type='button'; (function(z){b.onclick=function(){go(z);};})(x); d.appendChild(b); }
-  document.getElementById('nextSlide').onclick=function(){go(i+1)};
-  document.getElementById('prevSlide').onclick=function(){go(i-1)};
-  setInterval(function(){go(i+1)},4000);
-  var box=document.getElementById('slider');
-  box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});
-  box.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX; if(dx>40)go(i-1); if(dx<-40)go(i+1);},{passive:true});
-  go(0);
-}
+var I18N={id:{nav_home:'Utama',nav_free:'Freelance',nav_exp:'Pengalaman',nav_doc:'Dokumen',nav_edu:'Pendidikan',avail:'Terbuka untuk posisi & proyek 2026 · On site Balikpapan · siap Jakarta & Batam',role:'Site Manager | Construction · Project Operations · AI Konstruksi',wa_cta:'Chat WhatsApp',btn_free:'Layanan Freelance',btn_exp:'Pengalaman',btn_cv:'CV + Lampiran',slide_cap:'Contoh tampilan',profil_h:'Profil Profesional',profil_1:'Site Manager dengan pengalaman supervisi konstruksi, maintenance planning, manpower planning, monitoring progres, dan pengendalian lapangan.',profil_2:'Terbaru Site Manager PT Avindo Energi Nusantara (2024–2026), termasuk stock control logistik. Freelance: prompt AI dokumen konstruksi.',proj_h:'3 proyek lapangan',p1_role:'Site Manager',p1a:'Memimpin pelaksanaan lapangan.',p1b:'Mengendalikan progres, mutu, K3.',p1c:'Laporan dan stock control.',p2_role:'Action Supervisor',p2a:'Supervisi sesuai kontrak.',p2b:'Inspeksi dan solusi lapangan.',p2c:'Kontrol mutu dan produksi.',p3_role:'Action Supervisor — Balikpapan',p3a:'Supervisi sesuai dokumen.',p3b:'Pengendalian mutu.',p3c:'Koordinasi produksi.',free_k:'Freelance',free_h:'Asisten AI Konstruksi 2026',free_d:'Prompt RAB, Method Statement, Shop Drawing dan Laporan Proyek.',sample_h:'Contoh hasil (30 detik)',sample_note:'Contoh struktur item. Angka klien setelah brief.',order_h:'Cara order — 4 langkah',o1t:'Chat WhatsApp',o1d:'Kirim jenis dokumen.',o2t:'Brief singkat',o2d:'Jenis proyek dan lokasi.',o3t:'Draft',o3d:'Prompt + contoh output.',o4t:'File jadi',o4d:'Word/PDF + revisi.',order_wa:'Order via WhatsApp',back:'Kembali',exp_h:'Pengalaman Kerja',doc_h:'Dokumen Pendukung',lock_t:'Akses terbatas',lock_d:'Masukkan kode untuk unduh CV.',lock_btn:'Buka',lock_err:'Kode salah.',dl_cv:'Unduh CV PDF',dl_note:'Unggah file sebagai CV-Fajar-Tri-Suhartono.pdf.',lock_again:'Kunci lagi',edu_h:'Pendidikan'},en:{nav_home:'Home',nav_free:'Freelance',nav_exp:'Experience',nav_doc:'Documents',nav_edu:'Education',avail:'Open for 2026 roles & projects · Balikpapan · Jakarta & Batam',role:'Site Manager | Construction · Project Operations · Construction AI',wa_cta:'WhatsApp chat',btn_free:'Freelance services',btn_exp:'Experience',btn_cv:'CV + files',slide_cap:'Sample dashboards',profil_h:'Professional profile',profil_1:'Site Manager experienced in supervision, planning, progress monitoring, and field control.',profil_2:'Latest: Site Manager at PT Avindo Energi Nusantara (2024–2026), including logistic stock control. Freelance AI prompts for construction documents.',proj_h:'3 field projects',p1_role:'Site Manager',p1a:'Led field execution.',p1b:'Controlled progress, quality, HSE.',p1c:'Reporting and stock control.',p2_role:'Action Supervisor',p2a:'Supervised to contract.',p2b:'Inspections and field fixes.',p2c:'Quality and production control.',p3_role:'Action Supervisor — Balikpapan',p3a:'Supervised to documents.',p3b:'Quality control.',p3c:'Production coordination.',free_k:'Freelance',free_h:'Construction AI assistant 2026',free_d:'Prompts for BOQ, method statements, shop drawings, and reports.',sample_h:'Sample output (30 seconds)',sample_note:'Sample structure. Client quantities after brief.',order_h:'How to order — 4 steps',o1t:'WhatsApp chat',o1d:'Send document type.',o2t:'Short brief',o2d:'Project type and location.',o3t:'Draft',o3d:'Prompt + sample output.',o4t:'Final files',o4d:'Word/PDF + revisions.',order_wa:'Order via WhatsApp',back:'Back',exp_h:'Work history',doc_h:'Documents',lock_t:'Restricted access',lock_d:'Enter code to download CV.',lock_btn:'Unlock',lock_err:'Wrong code.',dl_cv:'Download CV PDF',dl_note:'Upload file as CV-Fajar-Tri-Suhartono.pdf.',lock_again:'Lock again',edu_h:'Education'}}; 
+var lang=localStorage.getItem('lang')||'id';
+var WA_ID='https://wa.me/6281356510403?text='+encodeURIComponent('Halo Fajar, saya lihat profil Link-I. Ingin diskusi posisi Site Manager atau order prompt RAB / method statement.');
+var WA_EN='https://wa.me/6281356510403?text='+encodeURIComponent('Hi Fajar, I saw your Link-I profile. I would like to discuss a Site Manager role or order RAB / method statement prompts.');
+function applyLang(){var pack=I18N[lang]||I18N.id;document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(pack[k])el.textContent=pack[k];});var wa=lang==='en'?WA_EN:WA_ID;['waNav','waHero','waFree'].forEach(function(id){var a=document.getElementById(id);if(a)a.href=wa;});document.getElementById('langBtn').textContent=lang==='id'?'EN':'ID';}
+document.getElementById('langBtn').onclick=function(){lang=lang==='id'?'en':'id';localStorage.setItem('lang',lang);applyLang();};
+function buka(id){document.querySelectorAll('.win').forEach(function(w){w.classList.remove('active')});var el=document.getElementById('win-'+id);if(el)el.classList.add('active');window.scrollTo(0,0);if(history.replaceState)history.replaceState(null,'','#'+id);}
+document.querySelectorAll('[data-win]').forEach(function(btn){btn.addEventListener('click',function(){buka(btn.getAttribute('data-win'));});});
+var hash=(location.hash||'#utama').replace('#','');if(['utama','freelance','experience','documents','education'].indexOf(hash)===-1)hash='utama';buka(hash);applyLang();
+var sl=document.getElementById('slides');var n=sl?sl.children.length:0,i=0,startX=0;
+function go(k){if(!n)return;i=(k+n)%n;sl.style.transform='translateX('+(-i*100)+'%)';document.querySelectorAll('#dots button').forEach(function(b,x){b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-600');});}
+if(sl){var d=document.getElementById('dots');for(var x=0;x<n;x++){var b=document.createElement('button');b.type='button';(function(z){b.onclick=function(){go(z);};})(x);d.appendChild(b);}document.getElementById('nextSlide').onclick=function(){go(i+1)};document.getElementById('prevSlide').onclick=function(){go(i-1)};setInterval(function(){go(i+1)},4000);var box=document.getElementById('slider');box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});box.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX;if(dx>40)go(i-1);if(dx<-40)go(i+1);},{passive:true});go(0);}
 var CV_HASH='181e6dcd064bc441185921f194d757bf02efcffba862c252cac6d0299b9e1e84';
-async function sha(s){
-  var buf=await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
-  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
-}
-function cvShow(ok){
-  document.getElementById('cvLock').classList.toggle('hidden', ok);
-  document.getElementById('cvOpen').classList.toggle('hidden', !ok);
-}
-if(sessionStorage.getItem('cvok')==='1') cvShow(true);
-document.getElementById('cvForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  var pin=document.getElementById('cvPin').value.trim();
-  var h=await sha(pin);
-  if(h===CV_HASH){ sessionStorage.setItem('cvok','1'); document.getElementById('cvErr').classList.add('hidden'); cvShow(true); }
-  else { document.getElementById('cvErr').classList.remove('hidden'); document.getElementById('cvPin').value=''; }
-});
-document.getElementById('cvLogout').addEventListener('click', function(){
-  sessionStorage.removeItem('cvok'); cvShow(false);
-});
+async function sha(s){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');}
+function cvShow(ok){document.getElementById('cvLock').classList.toggle('hidden',ok);document.getElementById('cvOpen').classList.toggle('hidden',!ok);}
+if(sessionStorage.getItem('cvok')==='1')cvShow(true);
+document.getElementById('cvForm').addEventListener('submit',async function(e){e.preventDefault();var h=await sha(document.getElementById('cvPin').value.trim());if(h===CV_HASH){sessionStorage.setItem('cvok','1');document.getElementById('cvErr').classList.add('hidden');cvShow(true);}else{document.getElementById('cvErr').classList.remove('hidden');document.getElementById('cvPin').value='';}});
+document.getElementById('cvLogout').addEventListener('click',function(){sessionStorage.removeItem('cvok');cvShow(false);});
 </script>
 </body></html>
