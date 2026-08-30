@@ -170,7 +170,7 @@ function applyLang(){var pack=I18N[lang]||I18N.id;document.documentElement.lang=
 document.getElementById('langBtn').onclick=function(){lang=lang==='id'?'en':'id';localStorage.setItem('lang',lang);applyLang();};
 function buka(id){document.querySelectorAll('.win').forEach(function(w){w.classList.remove('active')});var el=document.getElementById('win-'+id);if(el)el.classList.add('active');window.scrollTo(0,0);if(history.replaceState)history.replaceState(null,'','#'+id);}
 document.querySelectorAll('[data-win]').forEach(function(btn){btn.addEventListener('click',function(){buka(btn.getAttribute('data-win'));});});
-var hash=(location.hash||'#utama').replace('#','');if(['utama','freelance','experience','documents','education'].indexOf(hash)===-1)hash='utama';buka(hash);applyLang();
+var hash=(location.hash||'#utama').replace('#','');if(['utama','freelance','album','experience','documents','education'].indexOf(hash)===-1)hash='utama';buka(hash);applyLang();
 var sl=document.getElementById('slides');var n=sl?sl.children.length:0,i=0,startX=0;
 function go(k){if(!n)return;i=(k+n)%n;sl.style.transform='translateX('+(-i*100)+'%)';document.querySelectorAll('#dots button').forEach(function(b,x){b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-600');});}
 if(sl){var d=document.getElementById('dots');for(var x=0;x<n;x++){var b=document.createElement('button');b.type='button';(function(z){b.onclick=function(){go(z);};})(x);d.appendChild(b);}document.getElementById('nextSlide').onclick=function(){go(i+1)};document.getElementById('prevSlide').onclick=function(){go(i-1)};setInterval(function(){go(i+1)},4000);var box=document.getElementById('slider');box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});box.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-startX;if(dx>40)go(i-1);if(dx<-40)go(i+1);},{passive:true});go(0);}
@@ -181,4 +181,5 @@ if(sessionStorage.getItem('cvok')==='1')cvShow(true);
 document.getElementById('cvForm').addEventListener('submit',async function(e){e.preventDefault();var h=await sha(document.getElementById('cvPin').value.trim());if(h===CV_HASH){sessionStorage.setItem('cvok','1');document.getElementById('cvErr').classList.add('hidden');cvShow(true);}else{document.getElementById('cvErr').classList.remove('hidden');document.getElementById('cvPin').value='';}});
 document.getElementById('cvLogout').addEventListener('click',function(){sessionStorage.removeItem('cvok');cvShow(false);});
 </script>
+<script src="album-boot.js"></script>
 </body></html>
