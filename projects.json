@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Logistic Stock Control — Avindo",
+    "role": "Fullstack Developer",
+    "category": "Fullstack",
+    "desc": {
+      "id": "Aplikasi kontrol stok logistik dan daily report lapangan: form multi-lembar A4, filter riwayat, dokumentasi foto, serta perbaikan layout print/PDF agar konsisten di lapangan.",
+      "en": "Logistics stock-control and field daily-report app: multi-page A4 forms, history filters, photo documentation, and print/PDF layout fixes for consistent field output."
+    }
+  },
+  {
+    "name": "Email Monitoring + WhatsApp",
+    "role": "Backend & Integration",
+    "category": "Integration",
+    "desc": {
+      "id": "Scaffold monitoring email terintegrasi WhatsApp (Twilio): backend Node.js/Express, PostgreSQL, Docker, dan CI GitHub Actions untuk notifikasi operasional.",
+      "en": "Email monitoring scaffold with WhatsApp (Twilio) integration: Node.js/Express backend, PostgreSQL, Docker, and GitHub Actions CI for operational alerts."
+    }
+  },
+  {
+    "name": "Income Tracker Pro (Lumo)",
+    "role": "Fullstack / PWA",
+    "category": "Fullstack",
+    "desc": {
+      "id": "PWA pencatat keuangan pribadi dengan grafik, notifikasi, dan antarmuka yang bisa dipakai offline untuk memantau arus kas harian.",
+      "en": "Personal finance PWA with charts, notifications, and an offline-capable interface for daily cash-flow tracking."
+    }
+  },
+  {
+    "name": "Saham Pendamping",
+    "role": "Frontend Developer",
+    "category": "Frontend",
+    "desc": {
+      "id": "Aplikasi pendamping belajar trading saham BEI: roadmap 30 hari, jurnal transaksi, kalkulator risiko, dan checklist disiplin.",
+      "en": "BEI stock-trading companion app: 30-day roadmap, trade journal, risk calculator, and discipline checklist."
+    }
+  },
+  {
+    "name": "Construction Standards Toolkit",
+    "role": "Domain Specialist",
+    "category": "Construction",
+    "desc": {
+      "id": "Pendamping teknis standar konstruksi Indonesia: SNI, ASTM, dan ACI — spesifikasi material, method statement, RAB/BOQ, serta istilah teknis lapangan.",
+      "en": "Technical companion for Indonesian construction standards: SNI, ASTM, and ACI — material specs, method statements, BOQ, and field terminology."
+    }
+  }
+]
