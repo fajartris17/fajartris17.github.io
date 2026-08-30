@@ -27,12 +27,17 @@
   <section class="mt-10">
     <h2 class="text-xl font-bold mb-4">Video promo warung</h2>
     <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-950">
-      <video class="w-full aspect-video bg-black" controls playsinline poster="1788097886220.jpg">
-        <source src="gemini_generated_video_1c76450e.mp4" type="video/mp4">
+      <video id="promo" class="w-full aspect-video bg-black" controls playsinline webkit-playsinline preload="auto" controlslist="nodownload">
+        <source src="https://fajartris17.github.io/gemini_generated_video_1c76450e.mp4" type="video/mp4">
+        <source src="https://media.githubusercontent.com/media/fajartris17/fajartris17.github.io/main/gemini_generated_video_1c76450e.mp4" type="video/mp4">
       </video>
       <div class="p-5">
         <p class="font-medium">Kelola warungmu dengan mudah</p>
-        <p class="text-slate-400 text-sm mt-2">Catat penjualan, kelola stok, terima pesanan. Aplikasi disesuaikan kebutuhan warung — bisa dibuka di HP tanpa Play Store.</p>
+        <p class="text-slate-400 text-sm mt-2">Jika tombol play tidak merespons di HP, buka file videonya langsung.</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <button type="button" id="btnPlay" class="bg-cyan-600 px-4 py-2 rounded-lg text-sm font-medium">Putar video</button>
+          <a class="bg-slate-800 border border-slate-600 px-4 py-2 rounded-lg text-sm" href="https://fajartris17.github.io/gemini_generated_video_1c76450e.mp4" target="_blank" rel="noopener">Buka video langsung</a>
+        </div>
       </div>
     </div>
   </section>
@@ -83,14 +88,6 @@
         <p class="text-emerald-400 text-xs font-semibold uppercase">Kasir</p>
         <h3 class="font-bold text-lg mt-1">Aplikasi kasir sederhana</h3>
       </a>
-      <a class="block bg-slate-950 border border-slate-700 rounded-2xl p-5" href="contoh%20menu%20warung.html">
-        <p class="text-slate-400 text-xs font-semibold uppercase">Contoh file</p>
-        <h3 class="font-bold text-lg mt-1">Menu warung</h3>
-      </a>
-      <a class="block bg-slate-950 border border-slate-700 rounded-2xl p-5" href="contoh%20kasir%20.html">
-        <p class="text-slate-400 text-xs font-semibold uppercase">Contoh file</p>
-        <h3 class="font-bold text-lg mt-1">Kasir lengkap</h3>
-      </a>
     </div>
   </section>
 
@@ -108,6 +105,15 @@ document.querySelectorAll('.poster').forEach(function(img){
     document.getElementById('lb').classList.add('on');
   });
 });
+var v = document.getElementById('promo');
+var btn = document.getElementById('btnPlay');
+if (btn && v) {
+  btn.addEventListener('click', function(){
+    v.muted = false;
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){ location.href = v.currentSrc || 'https://fajartris17.github.io/gemini_generated_video_1c76450e.mp4'; });
+  });
+}
 </script>
 </body>
 </html>
