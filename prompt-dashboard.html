@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Dashboard | Fajar Tri Suhartono</title>
+<meta name="theme-color" content="#020617">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root { color-scheme: dark; }
+  .card:hover { border-color: rgb(139 92 246 / 0.45); }
+  textarea { field-sizing: content; }
+  .toast { animation: fade 2.2s ease forwards; }
+  @keyframes fade { 0%{opacity:0;transform:translateY(8px)} 15%{opacity:1;transform:none} 80%{opacity:1} 100%{opacity:0} }
+</style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 pb-24">
+<header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
+    <div class="flex-1 min-w-[200px]">
+      <p class="text-[11px] uppercase tracking-wider text-violet-400 font-semibold">Asisten AI Konstruksi</p>
+      <h1 class="text-lg font-bold">Prompt Dashboard</h1>
+    </div>
+    <input id="q" type="search" placeholder="Cari prompt… RAB, pile, lamaran, Excel"
+      class="w-full sm:w-72 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm outline-none focus:border-violet-500">
+    <button id="btnAdd" class="text-sm bg-violet-600 hover:bg-violet-500 px-3 py-2 rounded-xl"><i class="fas fa-plus mr-1"></i> Prompt saya</button>
+  </div>
+  <div id="cats" class="max-w-6xl mx-auto px-4 pb-3 flex gap-2 overflow-x-auto text-xs"></div>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-6">
+  <p class="text-slate-400 text-sm mb-5">Klik <b>Salin</b> lalu tempel ke Grok / ChatGPT / Claude. Isi placeholder <code class="text-violet-300">{{KAPITAL}}</code> sesuai proyek.</p>
+  <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  <p id="empty" class="hidden text-center text-slate-500 py-16">Tidak ada prompt yang cocok.</p>
+</main>
+<div id="modal" class="hidden fixed inset-0 z-50 bg-black/70 p-4 flex items-end sm:items-center justify-center">
+  <form id="form" class="w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl p-5 space-y-3">
+    <h2 class="font-bold">Simpan prompt sendiri</h2>
+    <input name="title" required placeholder="Judul" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+    <select name="cat" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+      <option>Custom</option><option>RAB / BOQ</option><option>Method Statement</option>
+      <option>Laporan</option><option>Shop Drawing / RFI</option><option>K3 & Mutu</option>
+      <option>Lamaran Kerja</option><option>Excel Lapangan</option>
+    </select>
+    <textarea name="body" required rows="8" placeholder="Isi prompt…" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm"></textarea>
+    <div class="flex justify-end gap-2">
+      <button type="button" id="btnCancel" class="px-3 py-2 text-sm rounded-lg bg-slate-800">Batal</button>
+      <button class="px-3 py-2 text-sm rounded-lg bg-violet-600">Simpan di HP ini</button>
+    </div>
+    <p class="text-[11px] text-slate-500">Disimpan di localStorage browser, tidak terkirim ke server.</p>
+  </form>
+</div>
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-sm px-4 py-2 rounded-full toast z-50">Tersalin</div>
+<script src="prompts.js"></script>
+</body>
+</html>
