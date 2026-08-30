@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Warung Berkah — Pesan Online</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#fff7ed;color:#1c1917;max-width:480px;margin:0 auto;padding-bottom:90px}
+.hero{background:linear-gradient(160deg,#9a3412,#ea580c);color:#fff;padding:22px 18px 28px;border-radius:0 0 28px 28px}
+.hero h1{margin:0;font-size:22px}.hero p{opacity:.9;font-size:13px}
+.search{width:calc(100% - 32px);margin:-16px 16px 0;padding:12px 14px;border:0;border-radius:14px;box-shadow:0 8px 20px #9a34121f}
+.cats{display:flex;gap:8px;padding:14px 16px;overflow:auto}
+.cat{border:1px solid #fed7aa;background:#fff;border-radius:99px;padding:7px 12px}
+.cat.on{background:#c2410c;color:#fff;border-color:#c2410c}
+.card{margin:0 16px 10px;background:#fff;border-radius:16px;padding:12px;display:flex;justify-content:space-between;align-items:center}
+.add{width:36px;height:36px;border:0;border-radius:12px;background:#c2410c;color:#fff;font-size:20px}
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(448px,calc(100% - 24px));background:#1c1917;color:#fff;border-radius:16px;padding:12px 14px;display:none;justify-content:space-between;align-items:center}
+.bar button{border:0;border-radius:10px;padding:8px 12px;font-weight:700}
+.sheet{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;justify-content:center}
+.sheet.on{display:flex}
+.panel{background:#fff;width:min(480px,100%);border-radius:20px 20px 0 0;padding:16px;max-height:88vh;overflow:auto}
+input,select,textarea,button.wa{width:100%;margin:6px 0;padding:10px;border-radius:10px;border:1px solid #e7e5e4;box-sizing:border-box}
+button.wa{background:#16a34a;color:#fff;border:0;font-weight:800}
+</style>
+</head>
+<body>
+<div class="hero"><h1>Warung Berkah</h1><p>Demo aplikasi UMKM · pesan menu ke WhatsApp</p></div>
+<input class="search" id="q" placeholder="Cari menu..." oninput="draw()">
+<div class="cats" id="cats"></div>
+<div id="list"></div>
+<div class="bar" id="bar"><div><div id="cc">0 item</div><b id="ct">Rp 0</b></div><button onclick="openS()">Lihat pesanan</button></div>
+<div class="sheet" id="sheet" onclick="if(event.target===this)this.classList.remove('on')">
+<div class="panel">
+<h3>Pesanan</h3><div id="rows"></div>
+<input id="nama" placeholder="Nama"><input id="hp" placeholder="No. HP">
+<select id="cara"><option>Ambil sendiri</option><option>Antar</option></select>
+<textarea id="cat" rows="2" placeholder="Catatan"></textarea>
+<button class="wa" onclick="wa()">Kirim ke WhatsApp</button>
+</div></div>
+<script>
+const WA="6281356510403";
+const M=[
+{id:1,c:"Nasi",n:"Nasi Goreng Spesial",p:18000},
+{id:2,c:"Nasi",n:"Nasi Ayam Geprek",p:17000},
+{id:3,c:"Nasi",n:"Nasi Campur",p:16000},
+{id:4,c:"Lauk",n:"Ayam Goreng",p:12000},
+{id:5,c:"Minuman",n:"Es Teh Manis",p:5000},
+{id:6,c:"Minuman",n:"Es Jeruk",p:7000},
+{id:7,c:"Paket",n:"Paket Hemat",p:25000}
+];
+let cat="Semua", cart={};
+const rp=n=>"Rp "+n.toLocaleString("id-ID");
+function draw(){
+  const names=["Semua",...new Set(M.map(x=>x.c))];
+  cats.innerHTML=names.map(n=>`<button class="cat ${n===cat?"on":""}" onclick="cat='${n}';draw()">${n}</button>`).join("");
+  const q=(document.getElementById("q").value||"").toLowerCase();
+  list.innerHTML=M.filter(x=>(cat==="Semua"||x.c===cat)&&x.n.toLowerCase().includes(q)).map(x=>`<div class="card"><div><b>${x.n}</b><div>${rp(x.p)}</div></div><button class="add" onclick="add(${x.id})">+</button></div>`).join("");
+  upd();
+}
+function add(id){cart[id]=(cart[id]||0)+1;upd()}
+function ch(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);if(!cart[id])delete cart[id];sheetRows();upd()}
+function tot(){let q=0,s=0;Object.entries(cart).forEach(([id,n])=>{const m=M.find(x=>x.id==id);q+=n;s+=n*m.p});return{q,s}}
+function upd(){const t=tot();bar.style.display=t.q?"flex":"none";cc.textContent=t.q+" item";ct.textContent=rp(t.s)}
+function sheetRows(){rows.innerHTML=Object.entries(cart).map(([id,n])=>{const m=M.find(x=>x.id==id);return `<div style="display:flex;justify-content:space-between;margin:8px 0"><span>${m.n}</span><span><button onclick="ch(${m.id},-1)">−</button> ${n} <button onclick="ch(${m.id},1)">+</button></span></div>`}).join("")}
+function openS(){sheetRows();sheet.classList.add("on")}
+function wa(){const t=tot();if(!t.q)return alert("Keranjang kosong");
+const lines=Object.entries(cart).map(([id,n])=>{const m=M.find(x=>x.id==id);return `• ${m.n} x${n} = ${rp(m.p*n)}`}).join("%0A");
+location.href=`https://wa.me/${WA}?text=*PESANAN WARUNG BERKAH*%0ANama: ${nama.value||"-"}%0AHP: ${hp.value||"-"}%0A${cara.value}%0A${cat.value||"-"}%0A${lines}%0A*Total ${rp(t.s)}*`;}
+draw();
+</script>
+</body></html>

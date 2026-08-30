@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kasir Warung Berkah</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#f5f5f4;color:#1c1917}
+header{background:#14532d;color:#fff;padding:14px 16px;display:flex;justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;padding:12px}
+.item{background:#fff;border:0;border-radius:14px;padding:12px;text-align:left}
+.bill{background:#fff;padding:14px;position:sticky;bottom:0;box-shadow:0 -8px 20px #0001}
+.row{display:flex;justify-content:space-between;margin:6px 0}
+.go{width:100%;background:#15803d;color:#fff;border:0;border-radius:12px;padding:12px;font-weight:800;margin-top:8px}
+</style>
+</head>
+<body>
+<header><div><b>Kasir Warung Berkah</b><div style="font-size:12px;opacity:.8">Demo aplikasi kasir</div></div><div>Omzet <b id="om">Rp 0</b></div></header>
+<div class="grid" id="grid"></div>
+<div class="bill">
+<div id="rows">Ketuk menu.</div>
+<div class="row"><span>Total</span><b id="tot">Rp 0</b></div>
+<select id="bayar"><option>Tunai</option><option>QRIS</option></select>
+<input id="uang" type="number" placeholder="Uang diterima" style="width:100%;margin-top:6px;padding:8px;border-radius:10px;border:1px solid #e7e5e4">
+<div id="kb" style="font-size:12px;color:#78716c">Kembalian: Rp 0</div>
+<button class="go" onclick="pay()">Bayar & simpan</button>
+</div>
+<script>
+const P=[{id:1,n:"Nasi Goreng",p:18000},{id:2,n:"Geprek",p:17000},{id:3,n:"Nasi Campur",p:16000},{id:4,n:"Ayam Goreng",p:12000},{id:5,n:"Es Teh",p:5000},{id:6,n:"Paket Hemat",p:25000}];
+let cart={}, sales=JSON.parse(localStorage.getItem("kasir_demo")||"[]");
+const rp=n=>"Rp "+Math.max(0,n).toLocaleString("id-ID");
+grid.innerHTML=P.map(x=>`<button class="item" onclick="add(${x.id})"><b>${x.n}</b><div>${rp(x.p)}</div></button>`).join("");
+function add(id){cart[id]=(cart[id]||0)+1;draw()}
+function sum(){return Object.entries(cart).reduce((a,[id,q])=>a+q*P.find(x=>x.id==id).p,0)}
+function draw(){
+  const s=sum();
+  rows.innerHTML=Object.keys(cart).length?Object.entries(cart).map(([id,q])=>{const x=P.find(z=>z.id==id);return `<div class="row"><span>${x.n} x${q}</span><span>${rp(x.p*q)}</span></div>`}).join(""):"Ketuk menu.";
+  tot.textContent=rp(s);
+  const uangN=+uang.value||0; kb.textContent=bayar.value==="Tunai"?("Kembalian: "+rp(uangN-s)):"Non-tunai";
+  om.textContent=rp(sales.reduce((a,x)=>a+x,0));
+}
+uang.oninput=bayar.onchange=draw;
+function pay(){const s=sum();if(!s)return alert("Struk kosong");const uangN=+uang.value||0;if(bayar.value==="Tunai"&&uangN<s)return alert("Uang kurang");sales.push(s);localStorage.setItem("kasir_demo",JSON.stringify(sales));alert("Tersimpan "+rp(s));cart={};uang.value="";draw()}
+draw();
+</script>
+</body></html>
