@@ -30,7 +30,20 @@ main{position:relative;z-index:1}
     <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
   </section>
 
-  <nav class="mt-auto pt-8 grid grid-cols-4 gap-2">
+  <section class="mt-5 rounded-2xl bg-slate-950/80 border border-emerald-500/30 p-4">
+    <p class="text-emerald-300 text-xs font-semibold uppercase"><i class="fab fa-whatsapp"></i> Share ke WhatsApp</p>
+    <p class="text-slate-400 text-[11px] mt-1">Kirim link ini ke nomor baru tanpa simpan kontak, atau pilih kontak yang sudah ada.</p>
+    <div class="flex gap-2 mt-3">
+      <input id="waNum" type="tel" inputmode="numeric" placeholder="08xx atau 62xxx" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm">
+      <button type="button" id="waSend" class="bg-emerald-600 px-3 py-2 rounded-xl text-sm font-medium shrink-0">Kirim</button>
+    </div>
+    <div class="grid grid-cols-2 gap-2 mt-2">
+      <button type="button" id="waPick" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Pilih kontak WA</button>
+      <button type="button" id="waCopy" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Salin link</button>
+    </div>
+  </section>
+
+  <nav class="mt-auto pt-6 grid grid-cols-4 gap-2">
     <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
     <a class="tile" href="index.html#freelance"><i class="fas fa-briefcase bg-violet-500/20 text-violet-300"></i><span>Freelance</span></a>
     <a class="tile" href="aplikasi.html"><i class="fas fa-laptop-code bg-orange-500/20 text-orange-300"></i><span>Aplikasi</span></a>
@@ -48,5 +61,34 @@ main{position:relative;z-index:1}
     <a class="tile" href="payment.html"><i class="fas fa-qrcode bg-amber-500/20 text-amber-300"></i><span>Payment</span></a>
   </nav>
 </main>
+<script>
+(function(){
+  var LINK = 'https://fajartris17.github.io/links.html';
+  var MSG = 'Link-I Fajar Tri Suhartono:\n' + LINK;
+  var TEXT = encodeURIComponent(MSG);
+  function to62(raw){
+    var n = String(raw||'').replace(/[^0-9]/g,'');
+    if(!n) return '';
+    if(n.indexOf('62')===0) return n;
+    if(n.indexOf('0')===0) return '62'+n.slice(1);
+    return '62'+n;
+  }
+  document.getElementById('waSend').onclick = function(){
+    var n = to62(document.getElementById('waNum').value);
+    if(!n || n.length<10){ alert('Isi nomor, contoh 081356510403'); return; }
+    location.href = 'https://wa.me/'+n+'?text='+TEXT;
+  };
+  document.getElementById('waPick').onclick = function(){
+    location.href = 'https://wa.me/?text='+TEXT;
+  };
+  document.getElementById('waCopy').onclick = function(){
+    if(navigator.clipboard) navigator.clipboard.writeText(LINK).then(function(){ alert('Link disalin'); });
+    else prompt('Salin link:', LINK);
+  };
+  document.getElementById('waNum').addEventListener('keydown', function(e){
+    if(e.key==='Enter') document.getElementById('waSend').click();
+  });
+})();
+</script>
 </body>
 </html>
