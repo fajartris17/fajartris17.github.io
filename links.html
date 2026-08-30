@@ -3,101 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Link-I Fajar Tri Suhartono</title>
+<title>Fajar Tri Suhartono — Link-I</title>
+<meta name="description" content="Link-I Fajar Tri Suhartono. Site Manager &amp; AI Construction. WhatsApp, CV, LinkedIn, Fastwork.">
 <link rel="canonical" href="https://fajartris17.github.io/links.html">
-<meta name="theme-color" content="#071427">
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="theme-color" content="#1e40af">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-body{min-height:100vh;background:#071427 url("bg-link.jpg") center/cover fixed no-repeat;}
-body:before{content:"";position:fixed;inset:0;background:rgba(2,6,23,.78);pointer-events:none}
-main{position:relative;z-index:1}
-.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:16px;background:rgba(2,6,23,.82);border:1px solid rgba(148,163,184,.25);text-align:center;padding:10px 6px}
-.tile i{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px}
-.tile span{font-size:11px;line-height:1.2;color:#e2e8f0}
-.win{display:none}
-.win.on{display:block}
+:root{--bg-color:#f4f6f9;--text-main:#1e293b;--text-sub:#64748b;--primary-blue:#1e40af;--secondary-blue:#3b82f6;--card-bg:#fff;--wa-green:#25d366}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:var(--bg-color);color:var(--text-main);display:flex;justify-content:center;min-height:100vh;padding:20px 10px}
+.container{width:100%;max-width:480px;background:var(--card-bg);border-radius:24px;padding:24px;box-shadow:0 10px 25px rgba(0,0,0,.05);text-align:center}
+.profile-img{width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--secondary-blue);margin-bottom:12px;background:#e2e8f0}
+h1{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.subtitle{font-size:.9rem;color:var(--secondary-blue);font-weight:600;margin-bottom:12px}
+.tagline{font-size:.85rem;color:var(--text-sub);line-height:1.4;margin-bottom:24px}
+.section-box{margin-bottom:20px;border:1.5px solid #e2e8f0;border-radius:16px;overflow:hidden}
+.section-title{background:var(--primary-blue);color:#fff;font-size:.85rem;font-weight:700;padding:10px;text-transform:uppercase;letter-spacing:.5px}
+.grid-links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:14px}
+.full-width{grid-column:span 2}
+.btn-link{display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;text-decoration:none;padding:14px 10px;border-radius:12px;font-size:.85rem;font-weight:500;min-height:75px}
+.btn-link i{font-size:1.3rem;margin-bottom:6px}
+.btn-link:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(37,99,235,.2)}
+.wa-tool-container{grid-column:span 2;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:14px;margin-top:4px;text-align:left}
+.wa-tool-title{font-size:.8rem;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.wa-tool-title i{color:var(--wa-green)}
+.wa-input-group{display:flex;gap:8px}
+.wa-input-group input{flex:1;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;font-size:.85rem;outline:none}
+.wa-send-btn{background:var(--wa-green);color:#fff;border:none;padding:0 16px;border-radius:8px;font-size:.85rem;font-weight:600}
+footer{font-size:.75rem;color:var(--text-sub);margin-top:8px}
 </style>
 </head>
-<body class="text-slate-100">
-<main class="max-w-md mx-auto px-4 pt-10 pb-6 min-h-screen flex flex-col">
-  <header class="text-center">
-    <img src="foto.jpg" alt="Fajar" class="w-20 h-20 rounded-full object-cover object-top mx-auto border-2 border-cyan-300/80" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=160&background=0f172a&color=67e8f9'">
-    <h1 class="text-xl font-bold mt-3">Fajar Tri Suhartono</h1>
-    <p class="text-slate-300 text-xs mt-1">Site Manager · Aplikasi UMKM · AI konstruksi</p>
-  </header>
-
-  <section class="text-center mt-5">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=https%3A%2F%2Ffajartris17.github.io%2Flinks.html" width="160" height="160" alt="QR Link-I" class="mx-auto bg-white p-2 rounded-xl">
-    <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
-  </section>
-
-  <section id="win-kontak" class="win mt-5 rounded-2xl bg-slate-950/90 border border-emerald-500/30 p-4">
-    <div class="flex items-center gap-2">
-      <i class="fas fa-address-book text-emerald-300"></i>
-      <p class="text-emerald-300 text-xs font-semibold uppercase">Kontak · Share</p>
+<body>
+<div class="container">
+  <img src="foto.jpg" alt="Fajar Tri Suhartono" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=200&background=1e40af&color=fff&bold=true'">
+  <h1>Fajar Tri Suhartono</h1>
+  <div class="subtitle">Site Manager | AI Construction &amp; SME Apps</div>
+  <p class="tagline">Driving Digital Transformation in Construction &amp; SMEs with AI Solutions.</p>
+  <div class="section-box">
+    <div class="section-title">Professional Profile</div>
+    <div class="grid-links">
+      <a href="https://fajartris17.github.io/#documents" class="btn-link"><i class="fa-regular fa-file-lines"></i> CV</a>
+      <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" class="btn-link" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1" class="btn-link full-width" target="_blank" rel="noopener"><i class="fa-solid fa-briefcase"></i> Jobstreet</a>
     </div>
-    <p class="text-slate-400 text-[11px] mt-2">Kirim Link-I ke nomor baru tanpa simpan, atau pilih kontak WhatsApp yang sudah ada.</p>
-    <div class="flex gap-2 mt-3">
-      <input id="waNum" type="tel" inputmode="numeric" placeholder="08xx atau 62xxx" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm">
-      <button type="button" id="waSend" class="bg-emerald-600 px-3 py-2 rounded-xl text-sm font-medium shrink-0">Kirim</button>
+  </div>
+  <div class="section-box">
+    <div class="section-title">Portfolio &amp; Projects</div>
+    <div class="grid-links">
+      <a href="https://fajartris17.github.io/#freelance" class="btn-link"><i class="fa-solid fa-helmet-safety"></i> AI Construction</a>
+      <a href="https://fajartris17.github.io/#utama" class="btn-link"><i class="fa-solid fa-store"></i> SME Apps</a>
+      <a href="https://fajartris17.github.io/#utama" class="btn-link full-width"><i class="fa-regular fa-images"></i> Album Proyek</a>
     </div>
-    <div class="grid grid-cols-2 gap-2 mt-2">
-      <button type="button" id="waPick" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Pilih kontak WA</button>
-      <button type="button" id="waCopy" class="bg-slate-800 border border-slate-600 rounded-xl px-3 py-2 text-xs">Salin link</button>
+  </div>
+  <div class="section-box">
+    <div class="section-title">Direct Contact &amp; Freelance</div>
+    <div class="grid-links">
+      <a href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20Link-I.%20Ingin%20diskusi%20posisi%20Site%20Manager%20atau%20order%20AI%20konstruksi." class="btn-link" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Chat Fajar</a>
+      <a href="mailto:fajartris1994@gmail.com" class="btn-link"><i class="fa-regular fa-envelope"></i> Email</a>
+      <a href="https://fastwork.id/user/p536ayph/ai-automation-86764781" class="btn-link" target="_blank" rel="noopener"><i class="fa-solid fa-bolt"></i> Fastwork</a>
+      <a href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20ingin%20info%20pembayaran%20order." class="btn-link" target="_blank" rel="noopener"><i class="fa-regular fa-credit-card"></i> Payment</a>
+      <div class="wa-tool-container">
+        <div class="wa-tool-title"><i class="fa-brands fa-whatsapp fa-lg"></i> Kirim Link-I ke nomor baru tanpa simpan</div>
+        <div class="wa-input-group">
+          <input type="tel" id="wa-number" placeholder="Contoh: 08123456789" autocomplete="off">
+          <button type="button" class="wa-send-btn" onclick="kirimWA()">Kirim</button>
+        </div>
+      </div>
     </div>
-    <a class="block text-center text-xs text-emerald-400 mt-3" href="https://wa.me/6281356510403">Chat Fajar 0813-5651-0403</a>
-  </section>
-
-  <nav class="mt-auto pt-6 grid grid-cols-4 gap-2">
-    <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
-    <button type="button" class="tile" id="btnKontak"><i class="fas fa-address-book bg-emerald-500/20 text-emerald-300"></i><span>Kontak</span></button>
-    <a class="tile" href="index.html#freelance"><i class="fas fa-briefcase bg-violet-500/20 text-violet-300"></i><span>Freelance</span></a>
-    <a class="tile" href="aplikasi.html"><i class="fas fa-laptop-code bg-orange-500/20 text-orange-300"></i><span>Aplikasi</span></a>
-    <a class="tile" href="album.html"><i class="fas fa-images bg-cyan-500/20 text-cyan-300"></i><span>Album</span></a>
-    <a class="tile" href="apps/warung.html"><i class="fas fa-store bg-orange-500/20 text-orange-200"></i><span>Warung</span></a>
-    <a class="tile" href="apps/kasir.html"><i class="fas fa-cash-register bg-emerald-500/20 text-emerald-300"></i><span>Kasir</span></a>
-    <a class="tile" href="index.html#experience"><i class="fas fa-helmet-safety bg-blue-500/20 text-blue-300"></i><span>Kerja</span></a>
-    <a class="tile" href="index.html#documents"><i class="fas fa-file-pdf bg-red-500/20 text-red-300"></i><span>CV</span></a>
-    <a class="tile" href="index.html#education"><i class="fas fa-graduation-cap bg-indigo-500/20 text-indigo-300"></i><span>Sekolah</span></a>
-    <a class="tile" href="https://wa.me/6281356510403?text=Halo%20Fajar"><i class="fab fa-whatsapp bg-emerald-500/20 text-emerald-300"></i><span>WhatsApp</span></a>
-    <a class="tile" href="mailto:fajartris1994@gmail.com"><i class="fas fa-envelope bg-slate-500/20 text-slate-200"></i><span>Email</span></a>
-    <a class="tile" href="https://fastwork.id/user/p536ayph/ai-automation-86764781"><i class="fas fa-bolt bg-violet-500/20 text-violet-200"></i><span>Fastwork</span></a>
-    <a class="tile" href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131"><i class="fab fa-linkedin-in bg-sky-500/20 text-sky-300"></i><span>LinkedIn</span></a>
-    <a class="tile" href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1"><i class="fas fa-magnifying-glass bg-green-500/20 text-green-300"></i><span>Jobstreet</span></a>
-    <a class="tile" href="payment.html"><i class="fas fa-qrcode bg-amber-500/20 text-amber-300"></i><span>Payment</span></a>
-  </nav>
-</main>
+  </div>
+  <footer>Balikpapan · Link-I 2026</footer>
+</div>
 <script>
-(function(){
-  var LINK = 'https://fajartris17.github.io/links.html';
-  var TEXT = encodeURIComponent('Link-I Fajar Tri Suhartono:\n' + LINK);
-  var box = document.getElementById('win-kontak');
-  document.getElementById('btnKontak').onclick = function(){
-    box.classList.toggle('on');
-    if(box.classList.contains('on')) box.scrollIntoView({behavior:'smooth',block:'center'});
-  };
-  function to62(raw){
-    var n = String(raw||'').replace(/[^0-9]/g,'');
-    if(!n) return '';
-    if(n.indexOf('62')===0) return n;
-    if(n.indexOf('0')===0) return '62'+n.slice(1);
-    return '62'+n;
-  }
-  document.getElementById('waSend').onclick = function(){
-    var n = to62(document.getElementById('waNum').value);
-    if(!n || n.length<10){ alert('Isi nomor, contoh 081356510403'); return; }
-    location.href = 'https://wa.me/'+n+'?text='+TEXT;
-  };
-  document.getElementById('waPick').onclick = function(){
-    location.href = 'https://wa.me/?text='+TEXT;
-  };
-  document.getElementById('waCopy').onclick = function(){
-    if(navigator.clipboard) navigator.clipboard.writeText(LINK).then(function(){ alert('Link disalin'); });
-    else prompt('Salin link:', LINK);
-  };
-  if(location.hash==='#kontak') box.classList.add('on');
-})();
+function kirimWA(){
+  var num=document.getElementById('wa-number').value.trim().replace(/[\s-]/g,'');
+  if(!num){alert('Masukkan nomor WhatsApp tujuan.');return;}
+  if(num.startsWith('0')) num='62'+num.slice(1);
+  else if(num.startsWith('+')) num=num.replace('+','');
+  var pesan=encodeURIComponent('Halo, berikut kartu nama digital (Link-I) Fajar Tri Suhartono: https://fajartris17.github.io/links.html');
+  window.open('https://wa.me/'+num+'?text='+pesan,'_blank');
+}
 </script>
 </body>
 </html>
