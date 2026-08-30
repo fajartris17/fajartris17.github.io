@@ -1,294 +1,93 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fajar Tri Suhartono — Developer & Construction Tech</title>
-    <meta name="description" content="Portofolio Fajar Tri Suhartono. Site Manager & software developer untuk sistem operasional, logistik, dan construction tech. Balikpapan, Jakarta, Batam.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#0f172a',
-                            primary: '#3b82f6',
-                            secondary: '#10b981',
-                            accent: '#6366f1'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fajar Tri Suhartono — Site Manager</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-900 text-slate-100 font-sans antialiased pb-20 md:pb-0 relative">
-    <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">FAJAR.TRI</span>
-                </div>
-                <div class="hidden md:flex flex-1 items-center justify-end space-x-6">
-                    <div class="flex items-baseline space-x-6">
-                        <a href="#home" data-i18n="nav_home" class="hover:text-blue-400 transition-colors">Home</a>
-                        <a href="#about" data-i18n="nav_profile" class="hover:text-blue-400 transition-colors">Profil</a>
-                        <a href="#experience" data-i18n="nav_exp" class="hover:text-blue-400 transition-colors">Pengalaman</a>
-                        <a href="#skills" data-i18n="nav_skills" class="hover:text-blue-400 transition-colors">Keahlian</a>
-                        <a href="#education" data-i18n="nav_edu" class="hover:text-blue-400 transition-colors">Pendidikan</a>
-                    </div>
-                </div>
-                <div class="flex items-center ml-4">
-                    <button onclick="toggleLang()" id="langToggle" class="px-3 py-1.5 bg-slate-800 rounded-lg border border-slate-700 text-sm hover:border-slate-500 transition-all cursor-pointer select-none"></button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <section id="home" class="min-h-[85vh] flex items-center justify-center relative overflow-hidden px-4">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_45%)]"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(16,185,129,0.1),transparent_45%)]"></div>
-        <div class="text-center z-10 max-w-3xl">
-            <span data-i18n="hero_badge" class="px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 rounded-full border border-blue-400/20">Tersedia untuk Proyek</span>
-            <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight">
-                <span data-i18n="hero_hi">Hai, Saya</span> <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">Fajar</span>
-            </h1>
-            <p data-i18n="hero_role" class="mt-4 text-xl md:text-2xl text-slate-400 font-medium">Software Developer | Operational Systems & Construction Tech</p>
-            <p data-i18n="hero_loc" class="mt-2 text-sm text-slate-500">Balikpapan · Jakarta · Batam · Kalimantan Timur</p>
-            <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm text-slate-300">
-                <a href="https://wa.me/6281356510403" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700/50 transition-all"><i class="fab fa-whatsapp text-green-400"></i> 0813-5651-0403</a>
-                <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700/50 transition-all"><i class="far fa-envelope text-blue-400"></i> fajartris1994@gmail.com</a>
-                <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700/50 transition-all"><i class="fab fa-linkedin text-blue-500"></i> LinkedIn</a>
-                <a href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700/50 transition-all"><i class="fas fa-briefcase text-amber-400"></i> Jobstreet</a>
-                <a href="https://github.com/fajartris17" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-xl border border-slate-700/50 transition-all"><i class="fab fa-github text-slate-100"></i> @fajartris17</a>
-            </div>
-            <div class="mt-10">
-                <a href="#experience" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-8 py-3 rounded-xl transition-all shadow-lg shadow-blue-500/20 inline-block">
-                    <span data-i18n="btn_portfolio">Lihat Portofolio</span> <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    <hr class="border-slate-800 max-w-5xl mx-auto">
-    <section id="about" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-8 items-center">
-            <div>
-                <h2 data-i18n="title_profile" class="text-3xl font-bold tracking-tight border-l-4 border-emerald-500 pl-4">Profil<br>Profesional</h2>
-            </div>
-            <div class="md:col-span-2 text-lg text-slate-400 leading-relaxed">
-                <p data-i18n="desc_profile_1">Developer yang membangun sistem operasional nyata di lapangan: kontrol stok logistik, daily report, automasi notifikasi, dan aplikasi pendamping kerja.</p>
-                <p class="mt-4" data-i18n="desc_profile_2">Basis kerja di Balikpapan, Jakarta, dan Batam. Menggabungkan software (Web, PWA, backend) dengan pemahaman standar konstruksi SNI / ASTM / ACI untuk proyek yang butuh ketelitian teknis.</p>
-            </div>
-        </div>
-    </section>
-    <section id="experience" class="py-20 bg-slate-950 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-5xl mx-auto">
-            <h2 data-i18n="title_exp" class="text-3xl font-bold tracking-tight text-center mb-12">Pengalaman Kerja & Proyek</h2>
-            <div class="relative pl-6 sm:pl-8 border-l border-slate-800 pb-12">
-                <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-blue-500"></div>
-                <div class="flex flex-wrap justify-between items-start gap-2 mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Site Manager</h3>
-                        <p class="text-blue-400 font-medium">PKT Soda Ash — Logistic Stock Control</p>
-                    </div>
-                    <span class="px-3 py-1 text-xs bg-slate-800 rounded-full text-slate-400 border border-slate-700">2026</span>
-                </div>
-                <ul class="space-y-2 text-slate-400 list-disc list-inside">
-                    <li data-i18n="exp_av_1"><strong class="text-slate-300">Daily Report Lapangan:</strong> Form A4, filter riwayat, dokumentasi foto, dan output print/PDF yang stabil.</li>
-                    <li data-i18n="exp_av_2"><strong class="text-slate-300">Kontrol Stok:</strong> Aplikasi logistik untuk pencatatan barang dan alur operasional gudang/proyek.</li>
-                    <li data-i18n="exp_av_3"><strong class="text-slate-300">Perbaikan Produksi:</strong> Merapikan layout cetak agar form, preview, PDF, dan JPG konsisten.</li>
-                    <li data-i18n="exp_av_4"><strong class="text-slate-300">Stack:</strong> HTML/CSS, Python, database, dan alur kerja lapangan yang harus cepat dipakai.</li>
-                </ul>
-            </div>
-            <div class="relative pl-6 sm:pl-8 border-l border-slate-800">
-                <div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-emerald-500"></div>
-                <div class="flex flex-wrap justify-between items-start gap-2 mb-6">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Independent Developer</h3>
-                        <p class="text-emerald-400 font-medium">Project-Based</p>
-                    </div>
-                    <span class="px-3 py-1 text-xs bg-slate-800 rounded-full text-slate-400 border border-slate-700">Project-Based</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center">
-                    <div class="relative w-full md:w-72">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-500"><i class="fas fa-search"></i></span>
-                        <input type="text" id="searchProject" data-i18n="placeholder_search" placeholder="Cari nama proyek..." class="w-full bg-slate-950 border border-slate-800 rounded-lg pl-10 pr-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500 transition-colors">
-                    </div>
-                    <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
-                        <button onclick="filterRole('All')" class="role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-600 text-white border border-blue-500 transition-all">All</button>
-                        <button onclick="filterRole('Fullstack')" class="role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all">Fullstack</button>
-                        <button onclick="filterRole('Frontend')" class="role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all">Frontend</button>
-                        <button onclick="filterRole('Integration')" class="role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all">Integration</button>
-                        <button onclick="filterRole('Construction')" class="role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all">Construction</button>
-                    </div>
-                </div>
-                <div class="grid sm:grid-cols-2 gap-4" id="projectContainer"></div>
-            </div>
-        </div>
-    </section>
-    <section id="skills" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-i18n="title_skills" class="text-3xl font-bold tracking-tight text-center mb-12">Keahlian Teknis</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800"><div class="text-blue-400 text-2xl mb-4"><i class="fas fa-code"></i></div><h3 class="text-lg font-bold text-slate-200 mb-3">Programming</h3><div class="flex flex-wrap gap-2"><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">JavaScript</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">TypeScript</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Python</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">HTML/CSS</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Node.js</span></div></div>
-            <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800"><div class="text-emerald-400 text-2xl mb-4"><i class="fas fa-layer-group"></i></div><h3 class="text-lg font-bold text-slate-200 mb-3">Apps & Stack</h3><div class="flex flex-wrap gap-2"><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">PWA</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Express</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Docker</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">GitHub Actions</span></div></div>
-            <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800"><div class="text-indigo-400 text-2xl mb-4"><i class="fas fa-database"></i></div><h3 class="text-lg font-bold text-slate-200 mb-3">Data & Ops</h3><div class="flex flex-wrap gap-2"><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">PostgreSQL</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Excel / Report</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Twilio / WhatsApp</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Print / PDF</span></div></div>
-            <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800"><div class="text-amber-400 text-2xl mb-4"><i class="fas fa-hard-hat"></i></div><h3 class="text-lg font-bold text-slate-200 mb-3">Construction</h3><div class="flex flex-wrap gap-2"><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">SNI</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">ASTM</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">ACI</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">RAB / BOQ</span><span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-slate-300">Method Statement</span></div></div>
-        </div>
-    </section>
-    <section id="education" class="py-20 bg-slate-950 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 data-i18n="title_edu" class="text-3xl font-bold tracking-tight mb-8">Pendidikan</h2>
-            <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 inline-block text-left w-full">
-                <div class="flex flex-wrap justify-between items-center gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Ilmu Komunikasi dan Informasi</h3>
-                        <p class="text-blue-400">Institut Teknologi Bandung (ITB)</p>
-                    </div>
-                    <span class="px-4 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20 text-sm font-semibold">Formal</span>
-                </div>
-                <p data-i18n="desc_edu" class="mt-4 text-slate-400 text-sm border-t border-slate-800 pt-4"><i class="fas fa-info-circle mr-2 text-slate-500"></i>Latar belakang komunikasi dan informasi, dipadukan dengan praktik lapangan konstruksi serta pembangunan sistem operasional.</p>
-            </div>
-        </div>
-    </section>
-    <footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800"><p>© 2026 Fajar Tri Suhartono. All rights reserved.</p></footer>
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 z-50">
-        <div class="flex justify-around items-center h-16">
-            <a href="#experience" class="flex flex-col items-center justify-center w-full h-full text-blue-400 relative">
-                <div class="absolute -top-3 bg-blue-600 text-white w-12 h-12 flex justify-center items-center rounded-full border-4 border-slate-900 shadow-lg"><i class="fas fa-briefcase text-xl"></i></div>
-                <span data-i18n="nav_portofolio_bottom" class="text-[10px] font-bold uppercase tracking-wider mt-7">Portofolio</span>
-            </a>
-            <a href="https://wa.me/6281356510403" class="flex flex-col items-center justify-center w-full h-full text-slate-400 hover:text-blue-400 transition-colors">
-                <i class="fab fa-whatsapp text-xl mb-1"></i>
-                <span class="text-[10px] font-medium uppercase tracking-wider">WhatsApp</span>
-            </a>
-        </div>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased pb-20 md:pb-0">
+<nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur border-b border-slate-800">
+  <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">FAJAR.TRI</span>
+    <div class="hidden md:flex items-center space-x-5 text-sm">
+      <a href="#home" class="hover:text-blue-400">Home</a>
+      <a href="#about" class="hover:text-blue-400">Profil</a>
+      <a href="#experience" class="hover:text-blue-400">Pengalaman</a>
+      <a href="#documents" class="hover:text-blue-400">Dokumen</a>
+      <a href="#education" class="hover:text-blue-400">Pendidikan</a>
     </div>
-    <script>
-        const i18n = {
-            id: {
-                nav_home: "Home", nav_profile: "Profil", nav_exp: "Pengalaman", nav_skills: "Keahlian", nav_edu: "Pendidikan",
-                hero_badge: "Tersedia untuk Proyek", hero_hi: "Hai, Saya",
-                hero_role: "Software Developer | Sistem Operasional & Construction Tech",
-                hero_loc: "Balikpapan · Jakarta · Batam · Kalimantan Timur",
-                btn_portfolio: "Lihat Portofolio",
-                title_profile: "Profil<br>Profesional",
-                desc_profile_1: "Developer yang membangun sistem operasional nyata di lapangan: kontrol stok logistik, daily report, automasi notifikasi, dan aplikasi pendamping kerja.",
-                desc_profile_2: "Basis kerja di Balikpapan, Jakarta, dan Batam. Menggabungkan software <span class='text-slate-200 font-semibold'>(Web, PWA, backend)</span> dengan pemahaman standar konstruksi SNI / ASTM / ACI untuk proyek yang butuh ketelitian teknis.",
-                title_exp: "Pengalaman Kerja & Proyek",
-                exp_av_1: "<strong class='text-slate-300'>Daily Report Lapangan:</strong> Form A4, filter riwayat, dokumentasi foto, dan output print/PDF yang stabil.",
-                exp_av_2: "<strong class='text-slate-300'>Kontrol Stok:</strong> Aplikasi logistik untuk pencatatan barang dan alur operasional gudang/proyek.",
-                exp_av_3: "<strong class='text-slate-300'>Perbaikan Produksi:</strong> Merapikan layout cetak agar form, preview, PDF, dan JPG konsisten.",
-                exp_av_4: "<strong class='text-slate-300'>Stack:</strong> HTML/CSS, Python, database, dan alur kerja lapangan yang harus cepat dipakai.",
-                placeholder_search: "Cari nama proyek...",
-                title_skills: "Keahlian Teknis", title_edu: "Pendidikan",
-                desc_edu: "<i class='fas fa-info-circle mr-2 text-slate-500'></i>Latar belakang komunikasi dan informasi, dipadukan dengan praktik lapangan konstruksi serta pembangunan sistem operasional.",
-                project_not_found: "<i class='fas fa-folder-open mb-2 text-xl block'></i> Proyek tidak ditemukan.",
-                nav_portofolio_bottom: "Portofolio"
-            },
-            en: {
-                nav_home: "Home", nav_profile: "Profile", nav_exp: "Experience", nav_skills: "Skills", nav_edu: "Education",
-                hero_badge: "Available for Projects", hero_hi: "Hi, I am",
-                hero_role: "Software Developer | Operational Systems & Construction Tech",
-                hero_loc: "Balikpapan · Jakarta · Batam · East Kalimantan",
-                btn_portfolio: "View Portfolio",
-                title_profile: "Professional<br>Profile",
-                desc_profile_1: "A developer who builds real operational systems for the field: logistics stock control, daily reports, notification automation, and work-companion apps.",
-                desc_profile_2: "Work base in Balikpapan, Jakarta, and Batam. Combining software <span class='text-slate-200 font-semibold'>(Web, PWA, backend)</span> with construction standards knowledge (SNI / ASTM / ACI) for projects that need technical precision.",
-                title_exp: "Work Experience & Projects",
-                exp_av_1: "<strong class='text-slate-300'>Field Daily Reports:</strong> A4 forms, history filters, photo docs, and stable print/PDF output.",
-                exp_av_2: "<strong class='text-slate-300'>Stock Control:</strong> Logistics app for goods recording and warehouse/project operational flow.",
-                exp_av_3: "<strong class='text-slate-300'>Production Fixes:</strong> Aligning form, preview, PDF, and JPG so printed reports stay consistent.",
-                exp_av_4: "<strong class='text-slate-300'>Stack:</strong> HTML/CSS, Python, database, and field workflows that must be fast to use.",
-                placeholder_search: "Search project name...",
-                title_skills: "Technical Skills", title_edu: "Education",
-                desc_edu: "<i class='fas fa-info-circle mr-2 text-slate-500'></i>Background in communication and information, combined with construction field practice and operational systems development.",
-                project_not_found: "<i class='fas fa-folder-open mb-2 text-xl block'></i> Project not found.",
-                nav_portofolio_bottom: "Portfolio"
-            }
-        };
-        let currentLang = localStorage.getItem('lang') || 'id';
-        function updateLangUI() {
-            const btn = document.getElementById('langToggle');
-            if (currentLang === 'id') {
-                btn.innerHTML = `<span class="text-white font-bold">ID</span> <span class="text-slate-500 mx-1">|</span> <span class="text-slate-500">EN</span>`;
-            } else {
-                btn.innerHTML = `<span class="text-slate-500">ID</span> <span class="text-slate-500 mx-1">|</span> <span class="text-white font-bold">EN</span>`;
-            }
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[currentLang][key]) {
-                    if (el.tagName === 'INPUT') el.placeholder = i18n[currentLang][key];
-                    else el.innerHTML = i18n[currentLang][key];
-                }
-            });
-            renderProjects();
-        }
-        function toggleLang() {
-            currentLang = currentLang === 'id' ? 'en' : 'id';
-            localStorage.setItem('lang', currentLang);
-            updateLangUI();
-        }
-        let projects = [];
-        let currentRole = 'All';
-        let searchQuery = '';
-        async function loadProjects() {
-            try {
-                const response = await fetch('projects.json');
-                if (response.ok) projects = await response.json();
-                else throw new Error('json missing');
-            } catch (error) {
-                projects = [
-                    { name: "Logistic Stock Control — Avindo", role: "Fullstack Developer", category: "Fullstack", desc: { id: "Aplikasi kontrol stok logistik dan daily report lapangan.", en: "Logistics stock-control and field daily-report app." } },
-                    { name: "Email Monitoring + WhatsApp", role: "Backend & Integration", category: "Integration", desc: { id: "Monitoring email terintegrasi WhatsApp (Twilio).", en: "Email monitoring with WhatsApp (Twilio)." } },
-                    { name: "Income Tracker Pro (Lumo)", role: "Fullstack / PWA", category: "Fullstack", desc: { id: "PWA pencatat keuangan pribadi.", en: "Personal finance PWA." } },
-                    { name: "Saham Pendamping", role: "Frontend Developer", category: "Frontend", desc: { id: "Pendamping belajar trading saham BEI.", en: "BEI stock-trading companion app." } },
-                    { name: "Construction Standards Toolkit", role: "Domain Specialist", category: "Construction", desc: { id: "Pendamping standar SNI, ASTM, ACI.", en: "Companion for SNI, ASTM, ACI standards." } }
-                ];
-            }
-            updateLangUI();
-        }
-        function renderProjects() {
-            const container = document.getElementById('projectContainer');
-            if (!container) return;
-            container.innerHTML = '';
-            const filtered = projects.filter(p => {
-                const matchesRole = currentRole === 'All' || p.category.toLowerCase() === currentRole.toLowerCase() || p.role.toLowerCase().includes(currentRole.toLowerCase());
-                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesRole && matchesSearch;
-            });
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="col-span-2 text-center py-8 text-slate-500 text-sm">${i18n[currentLang].project_not_found}</div>`;
-                return;
-            }
-            filtered.forEach(p => {
-                let badgeColor = 'bg-blue-400/10 text-blue-400';
-                if (p.category === 'Frontend') badgeColor = 'bg-emerald-400/10 text-emerald-400';
-                if (p.category === 'Integration') badgeColor = 'bg-indigo-400/10 text-indigo-400';
-                if (p.category === 'Construction') badgeColor = 'bg-amber-400/10 text-amber-400';
-                const descText = p.desc[currentLang] || p.desc.id;
-                const card = document.createElement('div');
-                card.className = "p-5 bg-slate-900 rounded-xl border border-slate-800 hover:border-slate-700 transition-all transform hover:-translate-y-1 duration-200";
-                card.innerHTML = `<div class="flex justify-between items-start gap-4 mb-2"><h4 class="font-bold text-slate-200">${p.name}</h4><span class="text-xs ${badgeColor} px-2 py-0.5 rounded flex-shrink-0 font-medium">${p.role}</span></div><p class="text-sm text-slate-400 leading-relaxed">${descText}</p>`;
-                container.appendChild(card);
-            });
-        }
-        function filterRole(role) {
-            currentRole = role;
-            document.querySelectorAll('.role-btn').forEach(btn => {
-                if (btn.textContent.trim().toLowerCase() === role.toLowerCase()) {
-                    btn.className = "role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-blue-600 text-white border border-blue-500 transition-all";
-                } else {
-                    btn.className = "role-btn px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-950 text-slate-400 border border-slate-800 hover:border-slate-700 transition-all";
-                }
-            });
-            renderProjects();
-        }
-        document.getElementById('searchProject').addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            renderProjects();
-        });
-        window.addEventListener('DOMContentLoaded', loadProjects);
-    </script>
-</body>
-</html>
+    <a href="https://wa.me/6281356510403" class="text-sm px-3 py-1.5 rounded-lg bg-emerald-600">WhatsApp</a>
+  </div>
+</nav>
+<section id="home" class="min-h-[88vh] flex items-center justify-center px-4 py-16">
+  <div class="text-center max-w-3xl">
+    <img src="foto.jpg" alt="Fajar Tri Suhartono" class="w-36 h-36 md:w-44 md:h-44 rounded-full object-cover object-top mx-auto border-4 border-slate-700 shadow-xl">
+    <span class="mt-6 inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 rounded-full border border-blue-400/20">Tersedia untuk posisi baru</span>
+    <h1 class="mt-5 text-4xl md:text-6xl font-extrabold">Hai, Saya <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-emerald-400 bg-clip-text text-transparent">Fajar</span></h1>
+    <p class="mt-3 text-xl text-slate-300 font-medium">Fajar Tri Suhartono</p>
+    <p class="mt-2 text-lg text-slate-400">Site Manager | Construction • Project Operations • Maintenance</p>
+    <p class="mt-2 text-sm text-slate-500">Balikpapan · Jakarta · Batam · Kalimantan Timur · SIM A</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+      <a href="https://wa.me/6281356510403" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-whatsapp text-green-400"></i> 0813-5651-0403</a>
+      <a href="mailto:fajartris1994@gmail.com" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="far fa-envelope text-blue-400"></i> fajartris1994@gmail.com</a>
+      <a href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fab fa-linkedin text-blue-500"></i> LinkedIn</a>
+      <a href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1" target="_blank" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-xl border border-slate-700/50"><i class="fas fa-briefcase text-amber-400"></i> Jobstreet</a>
+    </div>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="#experience" class="bg-blue-600 text-white font-medium px-7 py-3 rounded-xl">Lihat Pengalaman</a>
+      <a href="#documents" class="bg-slate-800 border border-slate-600 font-medium px-7 py-3 rounded-xl"><i class="fas fa-file-pdf text-red-400 mr-2"></i>CV + Lampiran</a>
+    </div>
+  </div>
+</section>
+<section id="about" class="py-20 max-w-5xl mx-auto px-4">
+  <div class="grid md:grid-cols-3 gap-8">
+    <h2 class="text-3xl font-bold border-l-4 border-emerald-500 pl-4">Profil<br>Profesional</h2>
+    <div class="md:col-span-2 text-lg text-slate-400 space-y-4">
+      <p>Site Manager dengan pengalaman supervisi konstruksi, perencanaan maintenance, manpower planning, monitoring progres, koordinasi sumber daya, pelaporan, dan pengendalian pekerjaan lapangan.</p>
+      <p>Pengalaman terbaru sebagai Site Manager di PT Avindo Energi Nusantara (2024–2026), sesuai Surat Pengalaman Kerja No. SPK 016/AEN/VII/2026.</p>
+    </div>
+  </div>
+</section>
+<section id="experience" class="py-20 bg-slate-950 px-4">
+  <div class="max-w-5xl mx-auto space-y-10">
+    <h2 class="text-3xl font-bold text-center mb-12">Pengalaman Kerja</h2>
+    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-blue-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Site Manager</h3><p class="text-blue-400">PT Avindo Energi Nusantara</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">2024 – 2026</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Memimpin dan mengoordinasikan pelaksanaan pekerjaan lapangan.</li><li>Mengawasi rencana kerja, metode, spesifikasi teknis, mutu, waktu, dan K3.</li><li>Koordinasi tenaga kerja, peralatan, material, dan operasional proyek.</li><li>Monitoring progres dan laporan perkembangan pekerjaan.</li><li>Koordinasi PM, CM, Engineering, QA/QC, HSE, vendor, dan subkontraktor.</li><li>Penerapan QHSE dan penggunaan sumber daya yang efisien.</li></ul></article>
+    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-emerald-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-emerald-400">RDMP Balikpapan JO</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Mar 2020 – Mei 2024</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Pekerjaan lapangan sesuai desain, spesifikasi, dan dokumen kontrak.</li><li>Inspeksi rutin, identifikasi masalah, dan penyelesaian kendala.</li><li>Pengendalian mutu material/pekerjaan dan kontrol produksi.</li><li>Jadwal pelaksanaan dan pengelolaan sumber daya manusia.</li></ul></article>
+    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Action Supervisor Construction</h3><p class="text-indigo-400">Hyundai Engineering Co., Ltd. — Balikpapan</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Nov 2019 – Mar 2020</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Supervisi lapangan sesuai desain, spesifikasi, dan kontrak.</li><li>Inspeksi, pengendalian mutu, dan kontrol produksi.</li></ul></article>
+    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-amber-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Planner</h3><p class="text-amber-400">Dizamatra Powerindo, Lahat</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Feb 2015 – Okt 2019</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, sistem backlog, dan manpower planning.</li><li>Laporan backlog dan prioritas tindakan perbaikan.</li></ul></article>
+    <article class="relative pl-6 border-l border-slate-800"><div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-500"></div><div class="flex flex-wrap justify-between gap-2 mb-3"><div><h3 class="text-xl font-bold">Statutory Admin → Admin OB Diggers</h3><p class="text-slate-300">PT Bukit Makmur Mandiri Utama (BUMA), Berau</p></div><span class="px-3 py-1 text-xs bg-slate-800 rounded-full border border-slate-700">Jun 2012 – Feb 2015</span></div><ul class="space-y-1 text-slate-400 text-sm list-disc list-inside"><li>Maintenance scheduling, backlog, dan manpower planning di Binungan–Suaran.</li><li>Analisis data pemeliharaan untuk tren dan area perbaikan.</li></ul></article>
+  </div>
+</section>
+<section id="documents" class="py-20 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-3">Dokumen Pendukung</h2>
+    <p class="text-center text-slate-400 mb-10 text-sm">CV 6 halaman: ringkasan, SPK Avindo, SK RDMP, SK Hyundai, SK BUMA, dan ijazah.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-lines text-2xl"></i></p><p class="font-medium">Hal. 1 — Curriculum Vitae</p><p class="text-xs text-slate-500 mt-1">Ringkasan profil, kompetensi, riwayat kerja</p></div>
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-contract text-2xl"></i></p><p class="font-medium">Hal. 2 — SPK Avindo</p><p class="text-xs text-slate-500 mt-1">016/AEN/VII/2026 · Site Manager 2024–2026</p></div>
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 3 — SK RDMP JO</p><p class="text-xs text-slate-500 mt-1">985/JO-RDMP/HR/V/2024 · 1 Mar 2020 – 8 Mei 2024</p></div>
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 4 — SK Hyundai</p><p class="text-xs text-slate-500 mt-1">352/HYUNDAI/HR/III/2020 · 1 Nov 2019 – 8 Mar 2020</p></div>
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-red-400 mb-2"><i class="fas fa-file-circle-check text-2xl"></i></p><p class="font-medium">Hal. 5 — SK BUMA</p><p class="text-xs text-slate-500 mt-1">B002/PHK/2015/II/000250 · 1 Jun 2012 – 28 Feb 2015</p></div>
+      <div class="bg-slate-900 rounded-xl border border-slate-800 p-5"><p class="text-amber-400 mb-2"><i class="fas fa-graduation-cap text-2xl"></i></p><p class="font-medium">Hal. 6 — Ijazah SMK</p><p class="text-xs text-slate-500 mt-1">SMK TI Pratama Samarinda · Multimedia 2011/2012</p></div>
+    </div>
+  </div>
+</section>
+<section id="education" class="py-20 bg-slate-950 px-4">
+  <div class="max-w-3xl mx-auto space-y-5">
+    <h2 class="text-3xl font-bold text-center mb-8">Pendidikan</h2>
+    <div class="p-7 bg-slate-900 rounded-2xl border border-slate-800"><div class="flex flex-wrap justify-between gap-3"><div><h3 class="text-xl font-bold">Teknik Komputer dan Informatika — Multimedia</h3><p class="text-blue-400">SMK TI Pratama Samarinda</p></div><span class="px-4 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20 text-sm">Lulus 2011/2012</span></div></div>
+    <div class="p-7 bg-slate-900 rounded-2xl border border-slate-800"><div class="flex flex-wrap justify-between gap-3"><div><h3 class="text-xl font-bold">Ilmu Komunikasi dan Informasi</h3><p class="text-emerald-400">Institut Teknologi Bandung (ITB)</p></div><span class="px-4 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20 text-sm">Formal</span></div></div>
+    <p class="text-center text-slate-500 text-sm">Grobogan, 07 Maret 1994 · Domisili Balikpapan · WNI · SIM A</p>
+  </div>
+</section>
+<footer class="py-8 text-center text-sm text-slate-500 border-t border-slate-800">© 2026 Fajar Tri Suhartono</footer>
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 z-50">
+  <div class="flex justify-around items-center h-16 text-[10px] uppercase">
+    <a href="#experience" class="flex flex-col items-center text-blue-400"><i class="fas fa-briefcase mb-1"></i>Kerja</a>
+    <a href="#documents" class="flex flex-col items-center text-slate-400"><i class="fas fa-file-pdf mb-1"></i>CV</a>
+    <a href="https://wa.me/6281356510403" class="flex flex-col items-center text-slate-400"><i class="fab fa-whatsapp mb-1"></i>WA</a>
+  </div>
+</div>
+</body></html>
