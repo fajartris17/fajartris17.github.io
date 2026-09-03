@@ -15,6 +15,8 @@ main{position:relative;z-index:1}
 .tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:16px;background:rgba(2,6,23,.82);border:1px solid rgba(148,163,184,.25);text-align:center;padding:10px 6px}
 .tile i{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px}
 .tile span{font-size:11px;line-height:1.2;color:#e2e8f0}
+#slides{display:flex;transition:transform .5s ease}
+#slides > *{min-width:100%;flex-shrink:0}
 </style>
 </head>
 <body class="text-slate-100">
@@ -28,7 +30,33 @@ main{position:relative;z-index:1}
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=https%3A%2F%2Ffajartris17.github.io%2Flinks.html" width="160" height="160" alt="QR Link-I" class="mx-auto bg-white p-2 rounded-xl">
     <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
   </section>
-  <nav class="mt-auto pt-8 grid grid-cols-4 gap-2">
+  <section class="mt-5">
+    <p class="text-center text-[11px] uppercase tracking-wider text-cyan-300 font-semibold mb-2">Slide berjalan · K3 &amp; portofolio</p>
+    <div id="slider" class="relative overflow-hidden rounded-2xl border border-slate-500/30 bg-slate-950/80">
+      <div id="slides">
+        <figure><img src="slide-1.jpg" alt="RAB dashboard" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-2.jpg" alt="Method statement" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-3.jpg" alt="RAB Kilangan" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-4.jpg" alt="Planned vs actual" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-5.jpg" alt="Budget dashboard" class="w-full h-44 object-cover object-top"></figure>
+        <a href="load-chart.html" class="block bg-gradient-to-br from-amber-50 to-sky-50 text-slate-900 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-amber-700 uppercase">K3 Crane · Load Chart</p>
+          <p class="text-sm font-extrabold leading-tight mt-1 text-blue-800">LOAD CHART DIJELASKAN DENGAN BAHASA SEDERHANA</p>
+          <p class="text-[11px] mt-1 text-slate-600">Grafik Beban (Tabel Kapasitas Angkat) = panduan SWL / Beban Kerja Aman.</p>
+          <div class="mt-2 grid grid-cols-3 gap-1 text-[10px]">
+            <div class="rounded-lg bg-white/80 border border-amber-200 px-2 py-1">Boom length<br><b>panjang boom</b></div>
+            <div class="rounded-lg bg-white/80 border border-sky-200 px-2 py-1">Radius<br><b>jari-jari kerja</b></div>
+            <div class="rounded-lg bg-white/80 border border-emerald-200 px-2 py-1">SWL<br><b>beban aman</b></div>
+          </div>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-blue-700">Buka poster lengkap →</p>
+        </a>
+      </div>
+      <button type="button" id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white">‹</button>
+      <button type="button" id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white">›</button>
+      <div id="dots" class="absolute bottom-2 inset-x-0 flex justify-center gap-1.5"></div>
+    </div>
+  </section>
+  <nav class="mt-auto pt-6 grid grid-cols-4 gap-2">
     <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
     <a class="tile" href="kontak.html"><i class="fas fa-share-nodes bg-emerald-500/20 text-emerald-300"></i><span>Kontak</span></a>
     <a class="tile" href="index.html#freelance"><i class="fas fa-briefcase bg-violet-500/20 text-violet-300"></i><span>Freelance</span></a>
@@ -45,7 +73,40 @@ main{position:relative;z-index:1}
     <a class="tile" href="https://www.linkedin.com/in/fajar-tri-suhartono-992426131"><i class="fab fa-linkedin-in bg-sky-500/20 text-sky-300"></i><span>LinkedIn</span></a>
     <a class="tile" href="https://id.jobstreet.com/id/profiles/fajar-suhartono-pfpyt1x5q1"><i class="fas fa-magnifying-glass bg-green-500/20 text-green-300"></i><span>Jobstreet</span></a>
     <a class="tile" href="payment.html"><i class="fas fa-qrcode bg-amber-500/20 text-amber-300"></i><span>Payment</span></a>
+    <a class="tile" href="load-chart.html"><i class="fas fa-truck-monster bg-yellow-500/20 text-yellow-300"></i><span>Load Chart</span></a>
   </nav>
 </main>
+<script>
+var sl=document.getElementById('slides');
+var n=sl?sl.children.length:0,i=0,startX=0;
+function go(k){
+  if(!n)return;
+  i=(k+n)%n;
+  sl.style.transform='translateX('+(-i*100)+'%)';
+  document.querySelectorAll('#dots button').forEach(function(b,x){
+    b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-500');
+  });
+}
+if(sl){
+  var d=document.getElementById('dots');
+  for(var x=0;x<n;x++){
+    var b=document.createElement('button');
+    b.type='button';
+    (function(z){b.onclick=function(){go(z);};})(x);
+    d.appendChild(b);
+  }
+  document.getElementById('nextSlide').onclick=function(){go(i+1)};
+  document.getElementById('prevSlide').onclick=function(){go(i-1)};
+  setInterval(function(){go(i+1)},4000);
+  var box=document.getElementById('slider');
+  box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});
+  box.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-startX;
+    if(dx>40)go(i-1);
+    if(dx<-40)go(i+1);
+  },{passive:true});
+  go(0);
+}
+</script>
 </body>
 </html>
