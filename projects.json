@@ -9,6 +9,15 @@
     }
   },
   {
+    "name": "Service Workshop Dashboard",
+    "role": "UI / Product",
+    "category": "Construction",
+    "desc": {
+      "id": "Contoh dashboard aplikasi maintenance alat berat: work order harian, monitoring due service per hour meter (HM), daftar part wajib PM 500–2000, dan klasifikasi alat tambang.",
+      "en": "Sample heavy-equipment maintenance dashboard: daily work orders, hour-meter service due monitoring, PM 500–2000 parts checklist, and mining fleet classification."
+    }
+  },
+  {
     "name": "Email Monitoring + WhatsApp",
     "role": "Backend & Integration",
     "category": "Integration",
