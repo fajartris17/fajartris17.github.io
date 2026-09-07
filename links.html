@@ -17,6 +17,7 @@ main{position:relative;z-index:1}
 .tile span{font-size:11px;line-height:1.2;color:#e2e8f0}
 #slides{display:flex;transition:transform .5s ease}
 #slides > *{min-width:100%;flex-shrink:0}
+.chip{display:inline-block;font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(15,23,42,.85);border:1px solid rgba(103,232,249,.25);color:#e2e8f0;margin:3px}
 </style>
 </head>
 <body class="text-slate-100">
@@ -39,6 +40,12 @@ main{position:relative;z-index:1}
         <figure><img src="slide-3.jpg" alt="RAB Kilangan" class="w-full h-44 object-cover object-top"></figure>
         <figure><img src="slide-4.jpg" alt="Planned vs actual" class="w-full h-44 object-cover object-top"></figure>
         <figure><img src="slide-5.jpg" alt="Budget dashboard" class="w-full h-44 object-cover object-top"></figure>
+        <a href="apps/ojekmate/" class="block bg-gradient-to-br from-emerald-950 to-teal-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">Demo aplikasi baru</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">OjekMate — Pendamping Mitra Ojol</p>
+          <p class="text-[11px] mt-1 text-emerald-100/80">Catat order motor &amp; mobil, hitung bersih setelah komisi 8% + BBM, target harian.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-emerald-300">Buka demo →</p>
+        </a>
         <a href="load-chart.html" class="block bg-gradient-to-br from-amber-50 to-sky-50 text-slate-900 h-44 p-3 relative overflow-hidden">
           <p class="text-[10px] font-semibold tracking-wider text-amber-700 uppercase">K3 Crane · Load Chart</p>
           <p class="text-sm font-extrabold leading-tight mt-1 text-blue-800">LOAD CHART DIJELASKAN DENGAN BAHASA SEDERHANA</p>
@@ -56,11 +63,52 @@ main{position:relative;z-index:1}
       <div id="dots" class="absolute bottom-2 inset-x-0 flex justify-center gap-1.5"></div>
     </div>
   </section>
-  <nav class="mt-auto pt-6 grid grid-cols-4 gap-2">
+
+  <section class="mt-6 rounded-2xl border border-slate-500/30 bg-slate-950/75 p-4">
+    <p class="text-center text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">Demo aplikasi</p>
+    <div class="grid grid-cols-1 gap-2 mt-3">
+      <a href="apps/ojekmate/" class="rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">Baru · PWA motor &amp; mobil</p>
+        <p class="font-bold">OjekMate</p>
+        <p class="text-[11px] text-slate-300 mt-1">Pendamping kerja ojek online &amp; taksi online: order, penghasilan bersih, BBM, target, log kendaraan.</p>
+      </a>
+      <a href="apps/warung.html" class="rounded-xl border border-orange-500/25 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-orange-300 font-semibold">UMKM</p>
+        <p class="font-bold">Warung Berkah</p>
+        <p class="text-[11px] text-slate-300 mt-1">Katalog, keranjang, checkout ke WhatsApp.</p>
+      </a>
+      <a href="apps/kasir.html" class="rounded-xl border border-emerald-500/25 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-emerald-200 font-semibold">UMKM</p>
+        <p class="font-bold">Kasir Warung</p>
+        <p class="text-[11px] text-slate-300 mt-1">Hitung total, tunai/QRIS, kembalian, omzet.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-4 rounded-2xl border border-slate-500/30 bg-slate-950/75 p-4">
+    <p class="text-center text-[11px] uppercase tracking-wider text-cyan-300 font-semibold">Keahlian</p>
+    <p class="text-center text-[11px] text-slate-400 mt-1 mb-2">Lapangan konstruksi + pembuatan aplikasi</p>
+    <div class="text-center">
+      <span class="chip">Site Manager</span>
+      <span class="chip">K3 &amp; Load Chart</span>
+      <span class="chip">RAB / BOQ</span>
+      <span class="chip">Method Statement</span>
+      <span class="chip">SNI ASTM ACI</span>
+      <span class="chip">HTML CSS JS</span>
+      <span class="chip">PWA / Aplikasi HP</span>
+      <span class="chip">Kasir &amp; UMKM</span>
+      <span class="chip">Integrasi WhatsApp</span>
+      <span class="chip">AI konstruksi</span>
+      <span class="chip">Excel proyek</span>
+    </div>
+  </section>
+
+  <nav class="mt-6 pt-2 grid grid-cols-4 gap-2">
     <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
     <a class="tile" href="kontak.html"><i class="fas fa-share-nodes bg-emerald-500/20 text-emerald-300"></i><span>Kontak</span></a>
     <a class="tile" href="index.html#freelance"><i class="fas fa-briefcase bg-violet-500/20 text-violet-300"></i><span>Freelance</span></a>
     <a class="tile" href="aplikasi.html"><i class="fas fa-laptop-code bg-orange-500/20 text-orange-300"></i><span>Aplikasi</span></a>
+    <a class="tile" href="apps/ojekmate/"><i class="fas fa-motorcycle bg-emerald-500/20 text-emerald-300"></i><span>OjekMate</span></a>
     <a class="tile" href="album.html"><i class="fas fa-images bg-cyan-500/20 text-cyan-300"></i><span>Album</span></a>
     <a class="tile" href="apps/warung.html"><i class="fas fa-store bg-orange-500/20 text-orange-200"></i><span>Warung</span></a>
     <a class="tile" href="apps/kasir.html"><i class="fas fa-cash-register bg-emerald-500/20 text-emerald-300"></i><span>Kasir</span></a>
