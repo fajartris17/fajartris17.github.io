@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B3D3A" />
+  <title>OjekMate — Pendamping Mitra Ojol & Taksi Online</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" href="./icons/icon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="./icons/icon.svg" alt="OjekMate" />
+        <div>
+          <h1>OjekMate</h1>
+          <small>Pendamping mitra motor & mobil</small>
+        </div>
+      </div>
+      <button class="icon-btn" id="btn-install">+</button>
+    </header>
+    <section id="page-beranda" class="page active">
+      <div class="hero"><div class="overlay"><h2 id="greet">Halo, Mitra</h2><p>Catat order, hitung bersih, jaga target — motor atau mobil.</p></div></div>
+      <div class="stats">
+        <div class="stat"><div class="label">Order hari ini</div><div class="value" id="stat-order">0</div><div class="sub">trip tercatat</div></div>
+        <div class="stat"><div class="label">Omzet kotor</div><div class="value gold" id="stat-gross">Rp 0</div><div class="sub">tarif + tip</div></div>
+        <div class="stat"><div class="label">Bersih hari ini</div><div class="value green" id="stat-net">Rp 0</div><div class="sub">setelah komisi & BBM</div></div>
+        <div class="stat"><div class="label">Pengeluaran</div><div class="value warn" id="stat-exp">Rp 0</div><div class="sub">BBM / makan / tol</div></div>
+        <div class="stat wide"><div class="label">Target harian</div><div class="value" id="stat-target">Rp 0 / Rp 0</div><div class="progress"><span id="target-bar" style="width:0%"></span></div><div class="sub" id="target-pct">0% dari target harian</div></div>
+        <div class="stat wide"><div class="label">Rekap minggu ini</div><div class="value green" id="stat-week">Rp 0</div><div class="sub" id="stat-week-n">0 order minggu ini</div></div>
+      </div>
+      <div class="card"><h3>Order terbaru</h3><div class="list" id="recent-list"></div></div>
+    </section>
+    <section id="page-order" class="page">
+      <div class="card">
+        <h3>Catat order</h3>
+        <form id="form-order">
+          <label>Tanggal</label><input type="date" id="f-date" required />
+          <label>Jenis armada</label>
+          <select id="f-armada"><option value="motor">Motor (ojek / bike)</option><option value="mobil">Mobil (car / taksi online)</option></select>
+          <label>Platform</label>
+          <select id="f-platform"><option>Gojek</option><option>Grab</option><option>Maxim</option><option>inDrive</option><option>Bluebird</option><option>Lainnya</option></select>
+          <label>Tarif order (Rp)</label><input type="number" id="f-tarif" min="0" inputmode="numeric" />
+          <label>Tip (Rp)</label><input type="number" id="f-tip" min="0" inputmode="numeric" />
+          <label>Jarak (km)</label><input type="number" id="f-km" min="0" step="0.1" inputmode="decimal" />
+          <label>Komisi aplikasi (%)</label><input type="number" id="f-komisi" min="0" step="0.1" />
+          <label>Catatan</label><input id="f-note" />
+          <div style="height:12px"></div>
+          <button class="btn btn-primary" type="submit">Simpan order</button>
+        </form>
+      </div>
+      <div class="card"><h3>Riwayat order</h3><div class="list" id="order-list"></div></div>
+    </section>
+    <section id="page-hitung" class="page">
+      <div class="card">
+        <h3>Kalkulator bersih</h3>
+        <label>Jenis armada</label>
+        <select id="c-armada"><option value="motor">Motor</option><option value="mobil">Mobil</option></select>
+        <label>Tarif order (Rp)</label><input type="number" id="c-tarif" inputmode="numeric" />
+        <label>Tip (Rp)</label><input type="number" id="c-tip" inputmode="numeric" />
+        <label>Jarak (km)</label><input type="number" id="c-km" step="0.1" inputmode="decimal" />
+        <label>Komisi aplikasi (%)</label><input type="number" id="c-komisi" step="0.1" />
+        <label>Estimasi BBM per km (Rp)</label><input type="number" id="c-bbm" inputmode="numeric" />
+        <label>Biaya lain (tol / parkir / makan)</label><input type="number" id="c-lain" inputmode="numeric" />
+        <div style="height:12px"></div>
+        <button class="btn btn-primary" type="button" id="btn-hitung">Hitung bersih</button>
+        <div class="result-box" id="calc-result"><div class="muted">Hasil perhitungan muncul di sini.</div></div>
+      </div>
+    </section>
+    <section id="page-motor" class="page">
+      <div class="card">
+        <h3>Log kendaraan</h3>
+        <label>Kilometer sekarang</label><input id="v-km" inputmode="numeric" />
+        <label>Ganti oli terakhir</label><input type="date" id="v-oli" />
+        <label>Servis berkala terakhir</label><input type="date" id="v-servis" />
+        <label>Cek / ganti ban</label><input type="date" id="v-ban" />
+        <label>Catatan</label><textarea id="v-catatan"></textarea>
+        <div style="height:12px"></div>
+        <button class="btn btn-primary" type="button" id="btn-save-vehicle">Simpan log</button>
+      </div>
+      <div class="card"><h3>Checklist siap kerja</h3><div id="check-list"></div></div>
+    </section>
+    <section id="page-lain" class="page">
+      <div class="card">
+        <h3>Profil & target</h3>
+        <label>Nama panggilan</label><input id="p-name" />
+        <label>Armada utama</label>
+        <select id="p-armada"><option value="motor">Motor</option><option value="mobil">Mobil</option><option value="keduanya">Motor & mobil</option></select>
+        <label>Target bersih per hari (Rp)</label><input type="number" id="p-target" inputmode="numeric" />
+        <label>Komisi default (%)</label><input type="number" id="p-komisi" step="0.1" />
+        <label>BBM default per km (Rp)</label><input type="number" id="p-bbm" inputmode="numeric" />
+        <div style="height:12px"></div>
+        <button class="btn btn-primary" type="button" id="btn-save-profile">Simpan profil</button>
+      </div>
+      <div class="card">
+        <h3>Catat pengeluaran</h3>
+        <form id="form-exp">
+          <label>Tanggal</label><input type="date" id="e-date" />
+          <label>Jenis</label>
+          <select id="e-type"><option>BBM</option><option>Tol / parkir</option><option>Makan</option><option>Servis</option><option>Pulsa / kuota</option><option>Lainnya</option></select>
+          <label>Nominal (Rp)</label><input type="number" id="e-amount" inputmode="numeric" />
+          <label>Catatan</label><input id="e-note" />
+          <div style="height:12px"></div>
+          <button class="btn btn-primary" type="submit">Simpan pengeluaran</button>
+        </form>
+        <div class="list" id="exp-list" style="margin-top:12px"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btn-export">Backup data</button>
+        <button class="btn btn-danger" id="btn-reset">Hapus data</button>
+      </div>
+    </section>
+  </div>
+  <nav class="nav">
+    <button class="active" data-page="beranda"><span>Home</span>Beranda</button>
+    <button data-page="order"><span>List</span>Order</button>
+    <button data-page="hitung"><span>Hitung</span>Hitung</button>
+    <button data-page="motor"><span>Motor</span>Kendaraan</button>
+    <button data-page="lain"><span>Lain</span>Lainnya</button>
+  </nav>
+  <div class="toast" id="toast">Tersimpan</div>
+  <script src="./js/app.js"></script>
+</body>
+</html>
