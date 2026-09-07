@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beli Aplikasi — Fajar Tri Suhartono</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+<main class="max-w-md mx-auto px-4 py-6">
+  <p class="text-center text-amber-400 text-[11px] font-semibold tracking-widest uppercase">Lisensi berbayar</p>
+  <h1 class="text-2xl font-bold text-center mt-1" id="judul">Beli aplikasi</h1>
+  <p class="text-center text-slate-400 text-xs mt-2">Demo boleh dicoba. Unduh, pasang, atau minta file aplikasi hanya setelah beli.</p>
+
+  <section class="rounded-2xl border border-emerald-500/30 bg-emerald-950/30 p-4 mt-5 text-sm">
+    <p class="font-bold">Cara beli</p>
+    <ol class="list-decimal list-inside text-slate-300 mt-2 space-y-1 text-[13px]">
+      <li>Chat WhatsApp, minta harga nominal.</li>
+      <li>Bayar sesuai harga lewat QRIS / barcode.</li>
+      <li>Kirim bukti transfer ke WhatsApp.</li>
+      <li>File pasang dikirim setelah pembayaran dikonfirmasi.</li>
+    </ol>
+  </section>
+
+  <a id="wa" class="block text-center bg-emerald-600 font-bold rounded-xl py-3 mt-4" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20coba%20demo%20aplikasi.%20Saya%20ingin%20beli%20versi%20penuh%20atau%20install.%20Mohon%20kirim%20harga%20nominal%20yang%20harus%20dibayar.">Chat WhatsApp minta harga</a>
+
+  <section class="bg-white text-slate-900 rounded-2xl p-4 mt-5 text-center">
+    <p class="text-[11px] font-semibold text-slate-500">QRIS — scan untuk bayar</p>
+    <p class="font-bold text-sm">FAJAR TRI SUHARTONO</p>
+    <p class="text-[11px] text-slate-500">TRANSPORTASI · NMID ID1025434177735</p>
+    <img src="../qris-fajar.jpg" alt="QRIS Fajar" class="w-56 mx-auto mt-3 rounded-lg">
+    <p class="text-[11px] text-slate-500 mt-2">GoPay · DANA · OVO · bank · QRIS</p>
+  </section>
+
+  <section class="mt-4 rounded-2xl border border-slate-700 bg-slate-900 p-4 text-sm">
+    <p class="text-violet-300 text-[11px] font-semibold uppercase">Bank Jago</p>
+    <p class="font-mono font-bold text-lg">1096 9586 4975</p>
+    <p class="text-slate-400 text-xs">a.n. FAJAR TRI SUHARTONO</p>
+    <img class="w-full h-12 object-contain bg-white rounded-lg mt-2 p-1" alt="Barcode Jago" src="https://barcode.tec-it.com/barcode.ashx?data=109695864975&code=Code128&dpi=96">
+  </section>
+
+  <section class="mt-3 rounded-2xl border border-slate-700 bg-slate-900 p-4 text-sm">
+    <p class="text-emerald-300 text-[11px] font-semibold uppercase">GoPay / WhatsApp</p>
+    <p class="font-mono font-bold text-lg">0813-5651-0403</p>
+    <p class="text-slate-400 text-xs">Konfirmasi setelah bayar</p>
+    <img class="w-full h-12 object-contain bg-white rounded-lg mt-2 p-1" alt="Barcode WA" src="https://barcode.tec-it.com/barcode.ashx?data=081356510403&code=Code128&dpi=96">
+  </section>
+
+  <p class="text-center text-slate-500 text-[11px] mt-5">File resmi hanya dikirim setelah bayar dan konfirmasi WA.</p>
+  <div class="flex gap-2 justify-center mt-3 text-sm flex-wrap">
+    <a class="bg-slate-800 border border-slate-600 px-4 py-2 rounded-xl" href="../payment.html">Halaman payment</a>
+    <a class="bg-slate-800 border border-slate-600 px-4 py-2 rounded-xl" href="../links.html">Link-I</a>
+  </div>
+</main>
+<script>
+var q = new URLSearchParams(location.search).get("app") || "aplikasi";
+var nama = { warung: "Warung Berkah", kasir: "Kasir Warung", ojekmate: "OjekMate", aplikasi: "aplikasi" }[q] || q;
+document.getElementById("judul").textContent = "Beli " + nama;
+document.getElementById("wa").href = "https://wa.me/6281356510403?text=" + encodeURIComponent("Halo Fajar, saya coba demo " + nama + ". Saya ingin beli versi penuh atau install di HP. Mohon kirim harga nominal yang harus dibayar. Setelah itu saya bayar lewat QRIS / barcode.");
+</script>
+</body>
+</html>
