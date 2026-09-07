@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07111f" />
+  <title>KasKelas — Kas & Tabungan Kelas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">K</div>
+        <div>
+          <h1>KasKelas</h1>
+          <small>DEMO · kas paguyuban & iuran</small>
+        </div>
+      </div>
+      <a class="icon-btn" href="../beli.html?app=kaskelas">Beli</a>
+    </header>
+    <div class="card paybox">
+      <p class="muted" style="font-size:12px;margin:0">Demo boleh dipakai tanpa batas. Unduh / pasang / versi orang tua bersama hanya setelah beli.</p>
+      <div class="btn-row" style="margin-top:10px">
+        <a class="btn btn-primary" href="../beli.html?app=kaskelas">Bayar via QRIS</a>
+        <a class="btn btn-ghost" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20coba%20demo%20KasKelas.%20Saya%20ingin%20beli%20versi%20penuh.%20Mohon%20kirim%20harga%20nominal%20yang%20harus%20dibayar.">WhatsApp harga</a>
+      </div>
+    </div>
+    <section id="page-beranda" class="page active">
+      <div class="hero">
+        <h2 id="kelas-nama">Kas & Tabungan Kelas</h2>
+        <p id="kelas-sub">Pencatatan paguyuban yang bisa dipantau orang tua</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="label">Saldo kas kelas</div><div class="value gold" id="s-kas">Rp 0</div><div class="sub">paguyuban</div></div>
+        <div class="stat"><div class="label">Total tabungan</div><div class="value green" id="s-tabung">Rp 0</div><div class="sub">milik siswa</div></div>
+        <div class="stat"><div class="label">Sudah iuran</div><div class="value" id="s-lunas">0/0</div><div class="sub" id="s-bulan">bulan ini</div></div>
+        <div class="stat"><div class="label">Tunggakan</div><div class="value warn" id="s-tunggak">Rp 0</div><div class="sub">iuran belum masuk</div></div>
+        <div class="stat wide">
+          <div class="label">Terkumpul iuran bulan ini</div>
+          <div class="value" id="s-iuran">Rp 0 / Rp 0</div>
+          <div class="progress"><span id="s-bar" style="width:0%"></span></div>
+          <div class="sub" id="s-pct">0%</div>
+        </div>
+      </div>
+      <div class="card"><h3>Mutasi terakhir</h3><div class="list" id="recent"></div></div>
+    </section>
+    <section id="page-iuran" class="page">
+      <div class="card">
+        <h3>Iuran wajib</h3>
+        <label>Bulan</label><input type="month" id="i-bulan" />
+        <label>Nominal iuran (Rp)</label><input type="number" id="i-nominal" inputmode="numeric" />
+        <div class="btn-row" style="margin-top:10px"><button class="btn btn-primary" id="btn-set-iuran" type="button">Terapkan tarif</button></div>
+      </div>
+      <div class="card"><h3>Status siswa</h3><div id="iuran-list"></div></div>
+    </section>
+    <section id="page-kas" class="page">
+      <div class="card">
+        <h3>Catat kas / kegiatan</h3>
+        <div class="tabs">
+          <button class="on" data-jenis="masuk" type="button">Pemasukan</button>
+          <button data-jenis="keluar" type="button">Pengeluaran</button>
+        </div>
+        <form id="form-kas">
+          <label>Tanggal</label><input type="date" id="k-date" />
+          <label>Kategori</label>
+          <select id="k-kat">
+            <option>Iuran bulanan</option><option>Iuran kegiatan</option><option>Donasi / infak</option>
+            <option>Konsumsi</option><option>Alat tulis</option><option>Dekorasi / acara</option><option>Transport</option><option>Lainnya</option>
+          </select>
+          <label>Kegiatan (opsional)</label><select id="k-keg"><option value="">— Umum kas kelas —</option></select>
+          <label>Nominal (Rp)</label><input type="number" id="k-nom" inputmode="numeric" />
+          <label>Keterangan</label><input id="k-ket" placeholder="Contoh: snack study tour" />
+          <div style="height:10px"></div>
+          <button class="btn btn-primary" type="submit">Simpan mutasi</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Kegiatan paguyuban</h3>
+        <label>Nama kegiatan</label><input id="g-nama" placeholder="Study tour / perpisahan" />
+        <label>Target dana (Rp)</label><input type="number" id="g-target" inputmode="numeric" />
+        <div class="btn-row" style="margin-top:10px"><button class="btn btn-primary" id="btn-add-keg" type="button">Tambah kegiatan</button></div>
+        <div id="keg-list" style="margin-top:10px"></div>
+      </div>
+      <div class="card"><h3>Buku kas</h3><div class="list" id="kas-list"></div></div>
+    </section>
+    <section id="page-tabung" class="page">
+      <div class="card">
+        <h3>Setor / tarik tabungan</h3>
+        <form id="form-tabung">
+          <label>Siswa</label><select id="t-siswa"></select>
+          <label>Jenis</label>
+          <select id="t-jenis"><option value="setor">Setor tabungan</option><option value="tarik">Tarik tabungan</option></select>
+          <label>Nominal (Rp)</label><input type="number" id="t-nom" inputmode="numeric" />
+          <label>Catatan</label><input id="t-ket" />
+          <div style="height:10px"></div>
+          <button class="btn btn-primary" type="submit">Simpan</button>
+        </form>
+      </div>
+      <div class="card"><h3>Saldo per siswa</h3><div id="tabung-list"></div></div>
+    </section>
+    <section id="page-lapor" class="page">
+      <div class="card">
+        <h3>Laporan transparan</h3>
+        <p class="muted" style="font-size:12px">Bisa dibaca bendahara, wali kelas, dan seluruh orang tua. Versi penuh bisa dibagikan lewat tautan kelas.</p>
+        <div class="kv"><span>Saldo kas</span><strong id="l-kas">Rp 0</strong></div>
+        <div class="kv"><span>Tabungan siswa</span><strong id="l-tab">Rp 0</strong></div>
+        <div class="kv"><span>Pemasukan</span><strong class="in" id="l-in">Rp 0</strong></div>
+        <div class="kv"><span>Pengeluaran</span><strong class="out" id="l-out">Rp 0</strong></div>
+        <div class="btn-row" style="margin-top:12px"><button class="btn btn-primary" id="btn-wa-lapor" type="button">Kirim laporan WA</button></div>
+      </div>
+      <div class="card">
+        <h3>Profil kelas</h3>
+        <label>Nama kelas / paguyuban</label><input id="p-kelas" />
+        <label>Sekolah</label><input id="p-sekolah" />
+        <label>Bendahara</label><input id="p-bendahara" />
+        <label>Iuran default (Rp)</label><input type="number" id="p-iuran" inputmode="numeric" />
+        <div style="height:10px"></div>
+        <button class="btn btn-primary" id="btn-save-profil" type="button">Simpan profil</button>
+      </div>
+      <div class="card">
+        <h3>Tambah siswa / orang tua</h3>
+        <form id="form-siswa">
+          <label>Nama siswa</label><input id="a-nama" />
+          <label>Nama orang tua</label><input id="a-ortu" />
+          <label>No. WhatsApp</label><input id="a-wa" inputmode="tel" />
+          <div style="height:10px"></div>
+          <button class="btn btn-primary" type="submit">Tambah anggota</button>
+        </form>
+        <div id="anggota-list" style="margin-top:10px"></div>
+      </div>
+      <div class="card">
+        <h3>Beli versi kelas</h3>
+        <p class="muted" style="font-size:12px">File install dan tautan pantau orang tua dikirim setelah bayar QRIS/barcode dan konfirmasi WhatsApp.</p>
+        <div class="btn-row" style="margin-top:10px">
+          <a class="btn btn-primary" href="../beli.html?app=kaskelas">Buka QRIS</a>
+          <a class="btn btn-ghost" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20ingin%20beli%20KasKelas.%20Mohon%20harga%20nominalnya.">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <nav class="nav">
+    <button class="active" data-page="beranda"><span>Home</span>Beranda</button>
+    <button data-page="iuran"><span>Iuran</span>Iuran</button>
+    <button data-page="kas"><span>Kas</span>Kas</button>
+    <button data-page="tabung"><span>Tabung</span>Tabungan</button>
+    <button data-page="lapor"><span>Lapor</span>Laporan</button>
+  </nav>
+  <div class="toast" id="toast">Tersimpan</div>
+  <script src="./js/app.js"></script>
+</body>
+</html>
