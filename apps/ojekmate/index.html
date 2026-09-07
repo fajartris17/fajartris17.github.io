@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#0B3D3A" />
-  <title>OjekMate — Pendamping Mitra Ojol & Taksi Online</title>
-  <link rel="manifest" href="./manifest.json" />
+  <title>OjekMate Demo — Beli untuk pakai penuh</title>
   <link rel="icon" href="./icons/icon.svg" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css" />
@@ -17,15 +16,22 @@
         <img src="./icons/icon.svg" alt="OjekMate" />
         <div>
           <h1>OjekMate</h1>
-          <small>Pendamping mitra motor & mobil</small>
+          <small>DEMO GRATIS · beli untuk pakai penuh</small>
         </div>
       </div>
-      <button class="icon-btn" id="btn-install">+</button>
+      <a class="icon-btn" id="btn-install" href="./beli.html" title="Beli lisensi" style="text-decoration:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800">Beli</a>
     </header>
+    <div class="card" style="margin:0 16px 12px">
+      <p class="muted" style="font-size:12px">Ini <b class="gold">demo</b>. Boleh coba hitung dan catat maksimal 3 order. Unduh / pasang / pakai tanpa batas hanya setelah beli.</p>
+      <div class="btn-row" style="margin-top:10px">
+        <a class="btn btn-primary" href="./beli.html">Bayar via QRIS</a>
+        <a class="btn btn-ghost" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20coba%20demo%20OjekMate.%20Saya%20ingin%20beli%20versi%20penuh.%20Mohon%20kirim%20harga%20nominal%20yang%20harus%20dibayar.">WhatsApp harga</a>
+      </div>
+    </div>
     <section id="page-beranda" class="page active">
-      <div class="hero"><div class="overlay"><h2 id="greet">Halo, Mitra</h2><p>Catat order, hitung bersih, jaga target — motor atau mobil.</p></div></div>
+      <div class="hero"><div class="overlay"><h2 id="greet">Halo, Mitra</h2><p>Mode demo. Versi penuh dibuka setelah pembayaran.</p></div></div>
       <div class="stats">
-        <div class="stat"><div class="label">Order hari ini</div><div class="value" id="stat-order">0</div><div class="sub">trip tercatat</div></div>
+        <div class="stat"><div class="label">Order hari ini</div><div class="value" id="stat-order">0</div><div class="sub">maks 3 di demo</div></div>
         <div class="stat"><div class="label">Omzet kotor</div><div class="value gold" id="stat-gross">Rp 0</div><div class="sub">tarif + tip</div></div>
         <div class="stat"><div class="label">Bersih hari ini</div><div class="value green" id="stat-net">Rp 0</div><div class="sub">setelah komisi & BBM</div></div>
         <div class="stat"><div class="label">Pengeluaran</div><div class="value warn" id="stat-exp">Rp 0</div><div class="sub">BBM / makan / tol</div></div>
@@ -36,7 +42,7 @@
     </section>
     <section id="page-order" class="page">
       <div class="card">
-        <h3>Catat order</h3>
+        <h3>Catat order (demo)</h3>
         <form id="form-order">
           <label>Tanggal</label><input type="date" id="f-date" required />
           <label>Jenis armada</label>
@@ -49,7 +55,7 @@
           <label>Komisi aplikasi (%)</label><input type="number" id="f-komisi" min="0" step="0.1" />
           <label>Catatan</label><input id="f-note" />
           <div style="height:12px"></div>
-          <button class="btn btn-primary" type="submit">Simpan order</button>
+          <button class="btn btn-primary" type="submit">Simpan order demo</button>
         </form>
       </div>
       <div class="card"><h3>Riwayat order</h3><div class="list" id="order-list"></div></div>
@@ -85,6 +91,14 @@
     </section>
     <section id="page-lain" class="page">
       <div class="card">
+        <h3>Beli versi penuh</h3>
+        <p class="muted" style="font-size:12px">Harga tidak dipasang di demo. Chat WhatsApp, Fajar akan kirim nominal. Bayar lewat QRIS/barcode, lalu kirim bukti.</p>
+        <div class="btn-row" style="margin-top:10px">
+          <a class="btn btn-primary" href="./beli.html">Buka QRIS / barcode</a>
+          <a class="btn btn-ghost" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20ingin%20beli%20OjekMate.%20Mohon%20harga%20nominalnya.">WhatsApp</a>
+        </div>
+      </div>
+      <div class="card">
         <h3>Profil & target</h3>
         <label>Nama panggilan</label><input id="p-name" />
         <label>Armada utama</label>
@@ -109,8 +123,8 @@
         <div class="list" id="exp-list" style="margin-top:12px"></div>
       </div>
       <div class="btn-row">
-        <button class="btn btn-ghost" id="btn-export">Backup data</button>
-        <button class="btn btn-danger" id="btn-reset">Hapus data</button>
+        <button class="btn btn-ghost" id="btn-export">Backup (berbayar)</button>
+        <button class="btn btn-danger" id="btn-reset">Hapus data demo</button>
       </div>
     </section>
   </div>
@@ -119,7 +133,7 @@
     <button data-page="order"><span>List</span>Order</button>
     <button data-page="hitung"><span>Hitung</span>Hitung</button>
     <button data-page="motor"><span>Motor</span>Kendaraan</button>
-    <button data-page="lain"><span>Lain</span>Lainnya</button>
+    <button data-page="lain"><span>Beli</span>Lainnya</button>
   </nav>
   <div class="toast" id="toast">Tersimpan</div>
   <script src="./js/app.js"></script>
