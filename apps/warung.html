@@ -2,12 +2,15 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Warung Berkah — Pesan Online</title>
+<title>Warung Berkah — Demo</title>
 <style>
 body{margin:0;font-family:system-ui,sans-serif;background:#fff7ed;color:#1c1917;max-width:480px;margin:0 auto;padding-bottom:90px}
 .hero{background:linear-gradient(160deg,#9a3412,#ea580c);color:#fff;padding:22px 18px 28px;border-radius:0 0 28px 28px}
 .hero h1{margin:0;font-size:22px}.hero p{opacity:.9;font-size:13px}
-.search{width:calc(100% - 32px);margin:-16px 16px 0;padding:12px 14px;border:0;border-radius:14px;box-shadow:0 8px 20px #9a34121f}
+.pay{margin:12px 16px;background:#fff;border:1px solid #fed7aa;border-radius:16px;padding:12px;font-size:13px}
+.pay a{display:inline-block;margin:6px 6px 0 0;padding:8px 12px;border-radius:10px;font-weight:700;text-decoration:none}
+.pay .a{background:#c2410c;color:#fff}.pay .b{background:#14532d;color:#fff}
+.search{width:calc(100% - 32px);margin:0 16px;padding:12px 14px;border:0;border-radius:14px;box-shadow:0 8px 20px #9a34121f}
 .cats{display:flex;gap:8px;padding:14px 16px;overflow:auto}
 .cat{border:1px solid #fed7aa;background:#fff;border-radius:99px;padding:7px 12px}
 .cat.on{background:#c2410c;color:#fff;border-color:#c2410c}
@@ -23,7 +26,14 @@ button.wa{background:#16a34a;color:#fff;border:0;font-weight:800}
 </style>
 </head>
 <body>
-<div class="hero"><h1>Warung Berkah</h1><p>Demo aplikasi UMKM · pesan menu ke WhatsApp</p></div>
+<div class="hero"><h1>Warung Berkah</h1><p>DEMO GRATIS · pesan menu ke WhatsApp<br>Unduh / pasang aplikasi harus beli</p></div>
+<div class="pay">
+  Demo boleh dipakai tanpa batas. File install hanya dikirim setelah bayar.
+  <div>
+    <a class="a" href="beli.html?app=warung">Bayar via QRIS</a>
+    <a class="b" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20coba%20demo%20Warung%20Berkah.%20Saya%20ingin%20beli%20versi%20penuh.%20Mohon%20kirim%20harga%20nominal%20yang%20harus%20dibayar.">WhatsApp harga</a>
+  </div>
+</div>
 <input class="search" id="q" placeholder="Cari menu..." oninput="draw()">
 <div class="cats" id="cats"></div>
 <div id="list"></div>

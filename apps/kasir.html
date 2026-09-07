@@ -2,10 +2,13 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kasir Warung Berkah</title>
+<title>Kasir Warung Berkah — Demo</title>
 <style>
 body{margin:0;font-family:system-ui,sans-serif;background:#f5f5f4;color:#1c1917}
 header{background:#14532d;color:#fff;padding:14px 16px;display:flex;justify-content:space-between}
+.pay{margin:10px 12px;background:#fff;border:1px solid #bbf7d0;border-radius:14px;padding:12px;font-size:13px}
+.pay a{display:inline-block;margin:6px 6px 0 0;padding:8px 12px;border-radius:10px;font-weight:700;text-decoration:none;color:#fff}
+.pay .a{background:#15803d}.pay .b{background:#0f766e}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;padding:12px}
 .item{background:#fff;border:0;border-radius:14px;padding:12px;text-align:left}
 .bill{background:#fff;padding:14px;position:sticky;bottom:0;box-shadow:0 -8px 20px #0001}
@@ -14,7 +17,14 @@ header{background:#14532d;color:#fff;padding:14px 16px;display:flex;justify-cont
 </style>
 </head>
 <body>
-<header><div><b>Kasir Warung Berkah</b><div style="font-size:12px;opacity:.8">Demo aplikasi kasir</div></div><div>Omzet <b id="om">Rp 0</b></div></header>
+<header><div><b>Kasir Warung Berkah</b><div style="font-size:12px;opacity:.8">DEMO GRATIS · unduh/pasang harus beli</div></div><div>Omzet <b id="om">Rp 0</b></div></header>
+<div class="pay">
+  Demo kasir boleh dipakai tanpa batas. File install hanya dikirim setelah bayar.
+  <div>
+    <a class="a" href="beli.html?app=kasir">Bayar via QRIS</a>
+    <a class="b" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20coba%20demo%20Kasir%20Warung.%20Saya%20ingin%20beli%20versi%20penuh.%20Mohon%20kirim%20harga%20nominal%20yang%20harus%20dibayar.">WhatsApp harga</a>
+  </div>
+</div>
 <div class="grid" id="grid"></div>
 <div class="bill">
 <div id="rows">Ketuk menu.</div>
