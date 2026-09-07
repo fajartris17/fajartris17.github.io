@@ -9,113 +9,44 @@
 <meta name="theme-color" content="#020617">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  body{background:#020617}
-  .lb{display:none;position:fixed;inset:0;background:rgba(2,6,23,.92);z-index:80;align-items:center;justify-content:center;padding:16px}
-  .lb.on{display:flex}
-  .lb img{max-height:92vh;max-width:96vw;border-radius:16px}
-  .ph{min-height:220px;background:#0f172a}
-</style>
 </head>
-<body class="text-slate-100">
+<body class="bg-slate-950 text-slate-100">
 <main class="max-w-5xl mx-auto px-4 py-10">
   <p class="text-center text-cyan-400 text-xs font-semibold tracking-widest uppercase">Contoh tampilan aplikasi</p>
   <h1 class="text-3xl md:text-4xl font-bold text-center mt-2">Dashboard Service Workshop</h1>
-  <p class="text-center text-slate-400 mt-3 max-w-2xl mx-auto text-sm">
-    Lima slide contoh UI untuk aplikasi maintenance alat berat: work order, due per hour meter (HM),
-    part wajib service, dan klasifikasi alat tambang.
-  </p>
-  <div class="grid gap-6 mt-10">
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-      <img id="img-6" alt="Work Order Service Workshop" class="w-full poster cursor-zoom-in ph">
-      <div class="p-4">
-        <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Slide 6 · Work order</p>
-        <h2 class="font-bold text-lg mt-1">Work Order Service Workshop</h2>
-        <p class="text-slate-400 text-sm mt-2">Board work order: ON PROGRESS, PART READY, CLOSED, OPEN, WAIT PART. Checklist paket part PM-500 s.d. PM-2000 dan weekly Gantt.</p>
-      </div>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-      <img id="img-7" alt="Work Order di monitor bengkel" class="w-full poster cursor-zoom-in ph">
-      <div class="p-4">
-        <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Slide 7 · Mockup workshop</p>
-        <h2 class="font-bold text-lg mt-1">Work Order di layar workshop</h2>
-        <p class="text-slate-400 text-sm mt-2">Tampilan work order service pada monitor lantai bengkel alat berat — contoh UI aplikasi maintenance.</p>
-      </div>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-      <img id="img-8" alt="Monitoring Service Due per HM" class="w-full poster cursor-zoom-in ph">
-      <div class="p-4">
-        <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Slide 8 · Due per HM</p>
-        <h2 class="font-bold text-lg mt-1">Monitoring Service — Due per HM</h2>
-        <p class="text-slate-400 text-sm mt-2">Kartu URGENT ≤50 HM dan due minggu ini ≤150 HM, plus status armada excavator berdasarkan hour meter.</p>
-      </div>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-      <img id="img-9" alt="Daftar Part Wajib Service per HM" class="w-full poster cursor-zoom-in ph">
-      <div class="p-4">
-        <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Slide 9 · Part wajib</p>
-        <h2 class="font-bold text-lg mt-1">Daftar Part Wajib — Service per HM</h2>
-        <p class="text-slate-400 text-sm mt-2">Master part wajib GANTI / SAMPLE / INSPEKSI per interval 500–2000 HM untuk dump truck, excavator, dozer, dan grader.</p>
-      </div>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-      <img id="img-10" alt="Klasifikasi Alat Tambang" class="w-full poster cursor-zoom-in ph">
-      <div class="p-4">
-        <p class="text-cyan-400 text-xs font-semibold uppercase tracking-wider">Slide 10 · Klasifikasi alat</p>
-        <h2 class="font-bold text-lg mt-1">Klasifikasi Alat Tambang</h2>
-        <p class="text-slate-400 text-sm mt-2">Excavator, HD dump truck, dozer, grader, alat pendukung — kapasitas, oli mesin/hidraulik, catatan service workshop.</p>
-      </div>
-    </article>
+  <p class="text-center text-slate-400 mt-3 max-w-2xl mx-auto text-sm">Lima slide contoh UI aplikasi maintenance alat berat: work order harian, due service per hour meter (HM), part wajib PM 500–2000, dan klasifikasi alat tambang.</p>
+  <div class="grid md:grid-cols-2 gap-5 mt-10">
+    <a class="block bg-slate-900 rounded-2xl border border-cyan-500/40 p-6 hover:border-cyan-400" href="dashboard-slide-6.html">
+      <p class="text-cyan-400 text-xs font-semibold uppercase">Slide 6</p>
+      <h2 class="font-bold text-lg mt-1">Work Order Service Workshop</h2>
+      <p class="text-slate-400 text-sm mt-2">Board WO: ON PROGRESS, PART READY, CLOSED, OPEN, WAIT PART + checklist paket part dan Gantt mingguan.</p>
+    </a>
+    <a class="block bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-400" href="dashboard-slide-7.html">
+      <p class="text-cyan-400 text-xs font-semibold uppercase">Slide 7</p>
+      <h2 class="font-bold text-lg mt-1">Work Order di layar workshop</h2>
+      <p class="text-slate-400 text-sm mt-2">Mockup monitor work order di lantai bengkel alat berat.</p>
+    </a>
+    <a class="block bg-slate-900 rounded-2xl border border-amber-500/40 p-6 hover:border-amber-400" href="dashboard-slide-8.html">
+      <p class="text-amber-400 text-xs font-semibold uppercase">Slide 8</p>
+      <h2 class="font-bold text-lg mt-1">Monitoring Service — Due per HM</h2>
+      <p class="text-slate-400 text-sm mt-2">Urgent ≤50 HM, due minggu ini ≤150 HM, status armada excavator.</p>
+    </a>
+    <a class="block bg-slate-900 rounded-2xl border border-slate-800 p-6 hover:border-cyan-400" href="dashboard-slide-9.html">
+      <p class="text-cyan-400 text-xs font-semibold uppercase">Slide 9</p>
+      <h2 class="font-bold text-lg mt-1">Daftar Part Wajib — Service per HM</h2>
+      <p class="text-slate-400 text-sm mt-2">GANTI / SAMPLE / INSPEKSI untuk dump truck, excavator, dozer, grader.</p>
+    </a>
+    <a class="block bg-slate-900 rounded-2xl border border-emerald-500/40 p-6 hover:border-emerald-400 md:col-span-2" href="dashboard-slide-10.html">
+      <p class="text-emerald-400 text-xs font-semibold uppercase">Slide 10</p>
+      <h2 class="font-bold text-lg mt-1">Klasifikasi Alat Tambang</h2>
+      <p class="text-slate-400 text-sm mt-2">Excavator, HD dump truck, dozer, grader, alat pendukung — kapasitas, oli mesin/hidraulik, catatan service.</p>
+    </a>
   </div>
-  <section class="mt-12 grid md:grid-cols-3 gap-4 text-sm">
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5">
-      <p class="text-cyan-400 text-xs font-semibold uppercase">Modul</p>
-      <ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside">
-        <li>Work order harian</li>
-        <li>Status part &amp; mekanik</li>
-        <li>Gantt mingguan</li>
-        <li>Due service per HM</li>
-      </ul>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5">
-      <p class="text-amber-400 text-xs font-semibold uppercase">Interval HM</p>
-      <ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside">
-        <li>PM 500 / 1000 / 1500 / 2000</li>
-        <li>Urgent ≤ 50 HM</li>
-        <li>Due minggu ini ≤ 150 HM</li>
-        <li>Ganti / sample / inspeksi</li>
-      </ul>
-    </article>
-    <article class="bg-slate-950 rounded-2xl border border-slate-800 p-5">
-      <p class="text-emerald-400 text-xs font-semibold uppercase">Alat</p>
-      <ul class="mt-3 space-y-1 text-slate-400 list-disc list-inside">
-        <li>Excavator</li>
-        <li>HD dump truck</li>
-        <li>Bulldozer &amp; grader</li>
-        <li>Alat pendukung site</li>
-      </ul>
-    </article>
-  </section>
   <div class="flex flex-wrap gap-3 justify-center mt-12">
-    <a class="bg-emerald-600 px-7 py-3 rounded-xl font-medium" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20contoh%20dashboard%20workshop.%20Ingin%20diskusi%20aplikasi%20maintenance."><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+    <a class="bg-emerald-600 px-7 py-3 rounded-xl font-medium" href="https://wa.me/6281356510403?text=Halo%20Fajar%2C%20saya%20lihat%20contoh%20dashboard%20workshop."><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
     <a class="bg-slate-800 border border-slate-600 px-7 py-3 rounded-xl" href="index.html">Kembali ke profil</a>
     <a class="bg-slate-800 border border-slate-600 px-7 py-3 rounded-xl" href="aplikasi.html">Demo aplikasi lain</a>
   </div>
 </main>
-<div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
-<script src="workshop/slide-6.js"></script>
-<script src="workshop/slide-7.js"></script>
-<script src="workshop/slide-8.js"></script>
-<script src="workshop/slide-9.js"></script>
-<script src="workshop/slide-10.js"></script>
-<script>
-document.querySelectorAll('.poster').forEach(function(img){
-  img.addEventListener('click', function(){
-    if(!img.getAttribute('src')) return;
-    document.getElementById('lbimg').src = img.src;
-    document.getElementById('lb').classList.add('on');
-  });
-});
-</script>
 </body>
 </html>
