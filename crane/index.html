@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CraneCalc">
+<title>CraneCalc — Kalkulator Kapasitas Crane</title>
+<link rel="canonical" href="https://fajartris17.github.io/crane/">
+<style>
+:root{
+  --bg:#0b1220; --card:#121a2b; --line:#243049; --txt:#e8eefc; --mut:#9aa8c7;
+  --ok:#19c37d; --warn:#e6b325; --bad:#ef5b5b; --acc:#3b82f6; --chip:#1b2740;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+body{max-width:760px;margin:0 auto;padding:14px 14px 40px}
+h1{font-size:1.15rem;margin:4px 0 2px}
+.sub{color:var(--mut);font-size:.82rem;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px}
+label{display:block;font-size:.78rem;color:var(--mut);margin:8px 0 4px}
+input,select{width:100%;background:#0d1524;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{width:100%;border:0;border-radius:12px;padding:12px;font-weight:700;font-size:15px;cursor:pointer}
+.btn{background:var(--acc);color:#fff;margin-top:12px}
+.btn2{background:#22304d;color:var(--txt);margin-top:8px}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi div{background:#0d1524;border:1px solid var(--line);border-radius:10px;padding:10px}
+.kpi b{display:block;font-size:1.05rem}
+.kpi span{color:var(--mut);font-size:.72rem}
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 4px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}
+.tag{font-weight:800;font-size:.72rem;padding:2px 6px;border-radius:6px}
+.tag.ok{background:#143528;color:var(--ok)}
+.tag.warn{background:#3a3010;color:var(--warn)}
+.tag.bad{background:#3a1518;color:var(--bad)}
+.note{font-size:.75rem;color:var(--mut);margin-top:8px}
+details{margin-top:8px}
+summary{cursor:pointer;color:var(--acc);font-size:.85rem}
+</style>
+</head>
+<body>
+  <p style="margin:0 0 10px"><a href="../links.html" style="color:#7dd3fc;text-decoration:none">← Kembali ke Link-I</a></p>
+  <h1>CraneCalc — Kapasitas Crane</h1>
+  <p class="sub">Acuan lapangan: hitung kebutuhan angkat + bandingkan merek 50–220 t. Bukan pengganti load chart unit / LMI. Screening saja. Permenaker 8/2020.</p>
+
+  <div class="card">
+    <div class="row">
+      <div>
+        <label>Berat beban (ton)</label>
+        <input id="w" type="number" step="0.01" min="0" value="5">
+      </div>
+      <div>
+        <label>Rigging / hook (%)</label>
+        <input id="rig" type="number" step="0.5" min="0" value="7.5">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Working radius (m)</label>
+        <input id="r" type="number" step="0.1" min="2" value="10">
+      </div>
+      <div>
+        <label>Kondisi angkat</label>
+        <select id="kond">
+          <option value="1.10,1.25">Normal — DF 1.10 / SF 1.25</option>
+          <option value="1.35,1.50">Berangin / offshore — DF 1.35 / SF 1.50</option>
+          <option value="1.50,1.50">Critical lift — DF 1.50 / SF 1.50</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Preferensi boom</label>
+        <select id="boom">
+          <option value="mid">Sedang (paling realistis)</option>
+          <option value="short">Pendek (kapasitas terbesar)</option>
+          <option value="long">Panjang / full extend</option>
+        </select>
+      </div>
+      <div>
+        <label>Jenis crane</label>
+        <select id="jenis">
+          <option value="all">Semua jenis</option>
+          <option value="Truck">Truck crane</option>
+          <option value="RT">Rough terrain</option>
+          <option value="AT">All-terrain</option>
+          <option value="Crawler">Crawler / lattice</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn" onclick="hitung()">Hitung & bandingkan merek</button>
+    <button class="btn2" onclick="contoh()">Isi contoh 5 t @ 10 m</button>
+  </div>
+
+  <div class="card" id="hasil" hidden>
+    <div class="kpi">
+      <div><span>W total (beban + rigging)</span><b id="wt">—</b></div>
+      <div><span>Kebutuhan crane min.</span><b id="need" class="ok">—</b></div>
+      <div><span>DF × SF</span><b id="fx">—</b></div>
+      <div><span>Kelas rekomendasi</span><b id="kelas">—</b></div>
+    </div>
+    <p class="note" id="rumus"></p>
+  </div>
+
+  <div class="card" id="band" hidden>
+    <strong>Perbandingan merek @ radius kerja</strong>
+    <p class="note" id="boomNote"></p>
+    <div style="overflow:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Merek / model</th>
+            <th>Jenis</th>
+            <th>Kelas</th>
+            <th>Kap. acuan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <p class="note">
+      Hijau = muat dengan sisa ≥ 20%. Kuning = muat tapi mepet (sisa < 20%). Merah = di bawah kebutuhan.
+      Kapasitas = interpolasi envelope publik (bukan sticker kabin unit).
+    </p>
+    <details>
+      <summary>Catatan standar & batasan</summary>
+      <p class="note">
+        Perhitungan mengikuti pola lifting plan: W_total = W × (1 + rigging), Kapasitas min = W_total × DF × SF_crane.
+        Acuan praktik lapangan + ASME B30.5 (crane) / B30.9 (sling).
+        Keputusan angkat final wajib dari load chart + LMI/AML/ACS unit yang berdiri, appointed person, dan method statement.
+        Permenaker No. 8 Tahun 2020 tetap berlaku untuk pesawat angkat.
+      </p>
+    </details>
+  </div>
+<script>
+const FLEET = [
+  {brand:"XCMG", model:"QY50K-II", type:"Truck", classTon:50,
+   short:[[3,50],[5,30.2],[8,17.5],[10,13],[12,9],[16,4.7],[20,2.5],[24,1.4]],
+   mid:[[3,28],[5,18],[8,15.4],[10,10.5],[12,8.8],[16,5],[20,3.4],[24,1.9]],
+   long:[[5,7.5],[8,7.5],[10,7.5],[12,6.6],[16,5],[20,null]]},
+  {brand:"Tadano", model:"GT-550E-2", type:"Truck", classTon:55,
+   short:[[3,55],[5,30.8],[8,18.3],[10,11.6],[12,7.8],[16,3.5],[20,null]],
+   mid:[[3,28],[5,28],[8,17.6],[10,13.5],[12,11.4],[16,5.5],[20,null]],
+   long:[[6,14],[8,12.5],[10,10.4],[12,8],[16,null],[20,null]]},
+  {brand:"Kato", model:"NK-500 B-v", type:"Truck", classTon:50,
+   short:[[3,50],[5,30.2],[8,17.4],[10,11.6],[12,8.2],[16,4.4],[20,1.9],[24,0.5]],
+   mid:[[3,28],[5,18],[8,15.4],[10,10.5],[12,8.8],[16,5],[20,3.4],[24,1.9]],
+   long:[[6,7.5],[8,7.5],[10,7.5],[12,6.6],[16,5],[20,null]]},
+  {brand:"Kato", model:"KR-50H", type:"RT", classTon:50,
+   short:[[3,45],[5,30.2],[8,17.5],[10,13],[12,9],[16,4.7],[20,2.5]],
+   mid:[[3,28],[5,20],[8,12.5],[10,10.3],[12,8.7],[16,5],[20,3.9]],
+   long:[[5,7.6],[8,7.6],[10,7.6],[12,6.6],[16,null]]},
+  {brand:"XCMG", model:"QY100K", type:"Truck", classTon:100,
+   short:[[3,100],[5,70],[8,40.5],[10,30],[12,23],[16,12.2],[20,8.1],[24,5.7],[30,3.3]],
+   mid:[[3,80],[5,54],[8,35],[10,30],[12,24],[16,14.2],[20,9.5],[24,6.8],[30,4]],
+   long:[[5,40],[8,19.3],[10,13.4],[12,11.6],[16,10.1],[20,8.3],[24,7],[30,4.2]]},
+  {brand:"Kato", model:"NK-1000", type:"Truck", classTon:100,
+   short:[[3,100],[5,60],[8,32],[10,22],[12,16],[16,11],[20,8],[24,5]],
+   mid:[[3,70],[5,45],[8,24],[10,16],[12,12],[16,8],[20,6],[24,4]],
+   long:[[8,12],[10,10],[12,8],[16,6],[20,4],[24,3],[30,2]]},
+  {brand:"Tadano", model:"GR-1000EX-4", type:"RT", classTon:100,
+   short:[[3,100],[5,55],[8,35],[10,25],[12,18],[16,12],[20,8],[24,5]],
+   mid:[[3,70],[5,40],[8,28],[10,20],[12,15],[16,10],[20,7],[24,4.5]],
+   long:[[8,14],[10,12],[12,9],[16,6],[20,4],[24,3],[44,1]]},
+  {brand:"XCMG", model:"QUY150", type:"Crawler", classTon:150,
+   short:[[5,150],[6,140],[7,119],[8,99],[9,83],[10,71],[12,55],[14,45],[16,38],[20,28],[24,20],[30,12]],
+   mid:[[5,117],[8,69],[10,54],[12,44],[16,32],[20,23],[24,17],[30,11]],
+   long:[[10,30],[12,25],[16,18],[20,13],[24,10],[30,7],[40,5]]},
+  {brand:"Kato", model:"CCH1500", type:"Crawler", classTon:150,
+   short:[[5,150],[5.6,142],[6.6,125],[7.7,108],[8.2,98],[9.8,80],[10.3,77],[10.8,73],[12.4,60],[17.2,46],[25,28],[33,19],[41,14],[51,9]],
+   mid:[[8,84],[10,73],[12,60],[16,46],[20,33],[25,28],[33,19]],
+   long:[[12,40],[16,28],[20,22],[25,17],[33,12],[41,9],[51,6]]},
+  {brand:"Kobelco", model:"CKE1800-1F", type:"Crawler", classTon:180,
+   short:[[3.75,180],[4.4,160],[5,141],[6,119],[8,90],[10,72],[12,59],[16,40],[20,30],[24,24],[30,17]],
+   mid:[[5,131],[8,90],[10,72],[12,58],[16,40],[20,29],[24,23],[30,18]],
+   long:[[10,65],[12,53],[16,39],[20,28],[24,22],[30,15],[40,10]]},
+  {brand:"Kobelco", model:"CK2000", type:"Crawler", classTon:200,
+   short:[[3.75,181],[4.4,160],[5,141],[6,119],[8,90],[10,70],[12,55],[16,38],[20,28],[24,22]],
+   mid:[[5,130],[8,85],[10,65],[12,50],[16,35],[20,26],[24,20]],
+   long:[[10,50],[12,40],[16,28],[20,20],[24,16],[30,12]]},
+  {brand:"Kato", model:"CCH2000-6", type:"Crawler", classTon:200,
+   short:[[5.2,200],[6,191],[8,150],[10,120],[12,95],[16,65],[20,48],[24,36],[30,24]],
+   mid:[[6,150],[8,120],[10,95],[12,75],[16,55],[20,40],[24,30],[30,20]],
+   long:[[10,60],[12,48],[16,35],[20,26],[24,20],[30,14],[40,9]]},
+  {brand:"Sany", model:"SCC2000A", type:"Crawler", classTon:200,
+   short:[[5,200],[6,200],[7,186],[8,163],[9,145],[10,127],[12,97],[14,78],[16,64],[18,55],[20,47],[24,36],[30,28]],
+   mid:[[6,159],[8,148],[10,114],[12,93],[16,64],[20,47],[24,35],[30,26]],
+   long:[[10,59],[12,53],[16,52],[20,40],[24,32],[30,25],[40,16]]},
+  {brand:"XCMG", model:"XGC200", type:"Crawler", classTon:200,
+   short:[[5,200],[6,175],[8,140],[10,110],[12,85],[16,60],[20,45],[24,32],[30,20]],
+   mid:[[6,140],[8,110],[10,90],[12,70],[16,50],[20,38],[24,28],[30,18]],
+   long:[[10,55],[12,42],[16,30],[20,22],[24,16],[30,12],[40,8]]},
+  {brand:"Tadano", model:"ATF 220G-5", type:"AT", classTon:220,
+   short:[[2.5,220],[3,180],[5,140],[8,90],[10,70],[12,55],[16,38],[20,28],[24,20],[30,12]],
+   mid:[[3,140],[5,100],[8,70],[10,50],[12,40],[16,28],[20,20],[24,15],[30,10]],
+   long:[[8,40],[10,30],[12,24],[16,16],[20,12],[24,9],[30,6],[40,4]]}
+];
+function interp(pts, r){
+  if(!pts || !pts.length) return null;
+  if(r < pts[0][0]) return pts[0][1];
+  for(let i=0;i<pts.length-1;i++){
+    const [r1,c1]=pts[i], [r2,c2]=pts[i+1];
+    if(c1==null || c2==null){
+      if(r<=r1) return c1;
+      continue;
+    }
+    if(r>=r1 && r<=r2){
+      const t=(r-r1)/(r2-r1||1);
+      return c1 + t*(c2-c1);
+    }
+  }
+  const last=pts[pts.length-1];
+  return last[1];
+}
+function n(x){return Number(x).toLocaleString("id-ID",{maximumFractionDigits:2});}
+function contoh(){document.getElementById("w").value=5;document.getElementById("r").value=10;document.getElementById("rig").value=7.5;document.getElementById("kond").value="1.10,1.25";document.getElementById("boom").value="mid";hitung();}
+function hitung(){
+  const W=parseFloat(document.getElementById("w").value)||0;
+  const rig=(parseFloat(document.getElementById("rig").value)||0)/100;
+  const R=parseFloat(document.getElementById("r").value)||0;
+  const [DF,SF]=document.getElementById("kond").value.split(",").map(Number);
+  const boom=document.getElementById("boom").value;
+  const jenis=document.getElementById("jenis").value;
+  const Wt=W*(1+rig);
+  const need=Wt*DF*SF;
+  document.getElementById("hasil").hidden=false;
+  document.getElementById("band").hidden=false;
+  document.getElementById("wt").textContent=n(Wt)+" t";
+  document.getElementById("need").textContent=n(need)+" t";
+  document.getElementById("fx").textContent=DF.toFixed(2)+" × "+SF.toFixed(2);
+  document.getElementById("rumus").textContent=
+    "W_total = "+n(W)+" × (1+"+n(rig*100)+"%) = "+n(Wt)+" t.  Kap. min = "+n(Wt)+" × "+DF+" × "+SF+" = "+n(need)+" t.";
+  const boomLabel={short:"boom pendek (kapasitas terbesar)",mid:"boom sedang (paling sering dipakai)",long:"boom panjang / full"}[boom];
+  document.getElementById("boomNote").textContent="Filter: "+boomLabel+" · radius "+n(R)+" m";
+  const rows=[];
+  FLEET.forEach(c=>{
+    if(jenis!=="all" && c.type!==jenis) return;
+    const cap=interp(c[boom], R);
+    let status="TIDAK", cls="bad", sisa=null;
+    if(cap==null){status="N/A"; cls="bad";}
+    else{
+      sisa=(cap-need)/need;
+      if(cap>=need*1.20){status="AMAN"; cls="ok";}
+      else if(cap>=need){status="MEPET"; cls="warn";}
+      else {status="KURANG"; cls="bad";}
+    }
+    rows.push({c,cap,status,cls,sisa});
+  });
+  rows.sort((a,b)=>{
+    const av=a.cap==null?-1:a.cap, bv=b.cap==null?-1:b.cap;
+    return bv-av;
+  });
+  const ok=rows.filter(x=>x.cls==="ok" || x.cls==="warn");
+  let rec="Naik kelas / cek unit";
+  if(ok.length){
+    const aman=ok.filter(x=>x.cls==="ok").sort((a,b)=>a.c.classTon-b.c.classTon);
+    const pick=(aman[0]||ok.sort((a,b)=>a.c.classTon-b.c.classTon)[0]);
+    rec=pick.c.classTon+" t · "+pick.c.brand+" "+pick.c.model;
+  }
+  document.getElementById("kelas").textContent=rec;
+  document.getElementById("tbody").innerHTML=rows.map(x=>`
+    <tr>
+      <td><b>${x.c.brand}</b><br>${x.c.model}</td>
+      <td>${x.c.type}</td>
+      <td>${x.c.classTon} t</td>
+      <td>${x.cap==null?"—":n(x.cap)+" t"}</td>
+      <td><span class="tag ${x.cls}">${x.status}</span>${x.sisa!=null && x.cap!=null?"<br>"+n(x.sisa*100)+"%":""}</td>
+    </tr>`).join("");
+}
+hitung();
+</script>
+</body>
+</html>
