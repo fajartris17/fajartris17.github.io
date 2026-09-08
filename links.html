@@ -28,8 +28,9 @@ main{position:relative;z-index:1}
     <p class="text-slate-300 text-xs mt-1">Site Manager · Aplikasi UMKM · AI konstruksi</p>
   </header>
   <section class="text-center mt-5">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=https%3A%2F%2Ffajartris17.github.io%2Flinks.html" width="160" height="160" alt="QR Link-I" class="mx-auto bg-white p-2 rounded-xl">
+    <img id="qrLink" src="qr-link-i.svg" width="160" height="160" alt="QR Link-I" class="mx-auto bg-white p-2 rounded-xl" decoding="async" referrerpolicy="no-referrer" onerror="qrFallback(this)">
     <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
+    <p id="qrHint" class="text-[11px] text-slate-500 mt-1 hidden">QR gagal dimuat. Salin: fajartris17.github.io/links.html</p>
   </section>
   <section class="mt-5">
     <p class="text-center text-[11px] uppercase tracking-wider text-cyan-300 font-semibold mb-2">Slide berjalan · K3, workshop & portofolio</p>
@@ -70,7 +71,7 @@ main{position:relative;z-index:1}
           <p class="text-[11px] mt-1 text-slate-600">Grafik Beban = panduan SWL / Beban Kerja Aman.</p>
           <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-blue-700">Buka poster lengkap →</p>
         </a>
-        <a href="crane-calc.html" class="block bg-gradient-to-br from-blue-950 to-indigo-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+        <a href="crane/" class="block bg-gradient-to-br from-blue-950 to-indigo-900 text-slate-100 h-44 p-3 relative overflow-hidden">
           <p class="text-[10px] font-semibold tracking-wider text-sky-300 uppercase">Demo · CraneCalc</p>
           <p class="text-sm font-extrabold leading-tight mt-1">Kalkulator Kapasitas Crane</p>
           <p class="text-[11px] mt-1 text-sky-100/80">Hitung Kap_min + banding merek XCMG, Kato, Tadano, Kobelco, Sany.</p>
@@ -86,7 +87,7 @@ main{position:relative;z-index:1}
   <section class="mt-6 rounded-2xl border border-slate-500/30 bg-slate-950/75 p-4">
     <p class="text-center text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">Demo aplikasi</p>
     <div class="grid grid-cols-1 gap-2 mt-3">
-      <a href="crane-calc.html" class="rounded-xl border border-blue-500/30 bg-blue-950/40 p-3">
+      <a href="crane/" class="rounded-xl border border-blue-500/30 bg-blue-950/40 p-3">
         <p class="text-[10px] uppercase tracking-wider text-blue-300 font-semibold">Baru · lifting plan</p>
         <p class="font-bold">CraneCalc</p>
         <p class="text-[11px] text-slate-300 mt-1">Hitung kebutuhan crane (ton) vs working radius. Banding envelope 50–220 t.</p>
@@ -152,7 +153,7 @@ main{position:relative;z-index:1}
     <a class="tile" href="https://wa.me/6281356510403?text=Halo%20Fajar"><i class="fab fa-whatsapp bg-emerald-500/20 text-emerald-300"></i><span>WhatsApp</span></a>
     <a class="tile" href="payment.html"><i class="fas fa-qrcode bg-amber-500/20 text-amber-300"></i><span>Payment</span></a>
     <a class="tile" href="load-chart.html"><i class="fas fa-truck-monster bg-yellow-500/20 text-yellow-300"></i><span>Load Chart</span></a>
-    <a class="tile" href="crane-calc.html"><i class="fas fa-calculator bg-blue-500/20 text-blue-300"></i><span>CraneCalc</span></a>
+    <a class="tile" href="crane/"><i class="fas fa-calculator bg-blue-500/20 text-blue-300"></i><span>CraneCalc</span></a>
     <a class="tile" href="mailto:fajartris1994@gmail.com"><i class="fas fa-envelope bg-slate-500/20 text-slate-200"></i><span>Email</span></a>
     <a class="tile" href="https://fastwork.id/user/p536ayph/ai-automation-86764781"><i class="fas fa-bolt bg-violet-500/20 text-violet-200"></i><span>Fastwork</span></a>
   </nav>
@@ -187,6 +188,22 @@ if(sl){
     if(dx<-40)go(i+1);
   },{passive:true});
   go(0);
+}
+function qrFallback(img){
+  var url = encodeURIComponent('https://fajartris17.github.io/links.html');
+  var tries = [
+    'https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=' + url,
+    'https://quickchart.io/qr?size=160&margin=1&text=' + url
+  ];
+  var i = Number(img.dataset.try || 0);
+  if(i < tries.length){
+    img.dataset.try = i + 1;
+    img.src = tries[i];
+    return;
+  }
+  img.style.display = 'none';
+  var hint = document.getElementById('qrHint');
+  if(hint){ hint.classList.remove('hidden'); hint.classList.add('block'); }
 }
 </script>
 </body>
