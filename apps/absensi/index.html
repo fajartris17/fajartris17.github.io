@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>Absensi Offline</title>
+  <style>
+    :root {
+      --indigo: #4f46e5;
+      --indigo-dark: #4338ca;
+      --green: #10b981;
+      --green-dark: #059669;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --violet: #8b5cf6;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: var(--indigo); color: #fff;
+      box-shadow: 0 8px 20px rgba(79,70,229,.25);
+    }
+    .wrap { max-width: 430px; margin: 0 auto; padding: 16px; }
+    header h1 { margin: 0; text-align: center; font-size: 18px; }
+    #liveDate { text-align: center; font-size: 13px; opacity: .9; margin: 6px 0 0; }
+    #liveClock { text-align: center; font-size: 30px; font-weight: 800; letter-spacing: 1px; margin: 4px 0 0; font-variant-numeric: tabular-nums; }
+    main { max-width: 430px; margin: 0 auto; padding: 16px 16px 32px; }
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(15,23,42,.06);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    h2 { margin: 0; font-size: 16px; }
+    .badge {
+      padding: 5px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; background: #e2e8f0; color: #334155;
+    }
+    .badge.Hadir { background: #d1fae5; color: #065f46; }
+    .badge.Izin { background: #fef3c7; color: #92400e; }
+    .badge.Sakit { background: #ffe4e6; color: #9f1239; }
+    .badge.Alpa { background: #e2e8f0; color: #334155; }
+    .badge.Libur { background: #ede9fe; color: #5b21b6; }
+    .label { font-size: 11px; color: var(--muted); font-weight: 700; margin: 0 0 8px; text-transform: uppercase; letter-spacing: .4px; }
+    .grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .status-btn {
+      border: 1px solid #e2e8f0; background: #f8fafc; color: #334155;
+      border-radius: 12px; padding: 10px 4px; font-size: 12px; font-weight: 700;
+    }
+    .status-btn.active { outline: 2px solid var(--indigo); outline-offset: 1px; }
+    #btnHadir { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+    #btnIzin { background: #fffbeb; color: #b45309; border-color: #fde68a; }
+    #btnSakit { background: #fff1f2; color: #be123c; border-color: #fecdd3; }
+    #btnAlpa { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+    .btn {
+      width: 100%; border: 0; border-radius: 14px; padding: 14px;
+      font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 10px;
+    }
+    #btnMasuk { background: var(--green); }
+    #btnPulang { background: var(--indigo); }
+    .btn:disabled { opacity: .5; }
+    .btn:active:not(:disabled) { transform: scale(.98); }
+    .times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .box { background: #f8fafc; border-radius: 14px; padding: 12px; text-align: center; }
+    .box p, .durasi p { margin: 0; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+    .box strong { display: block; margin-top: 4px; font-size: 20px; }
+    .durasi { margin-top: 10px; background: #eef2ff; border-radius: 14px; padding: 12px; text-align: center; }
+    .durasi strong { display: block; margin-top: 4px; color: var(--indigo); font-size: 18px; }
+    .tabs { display: flex; border-bottom: 1px solid #e2e8f0; }
+    .tab-btn {
+      flex: 1; border: 0; background: none; padding: 14px 8px;
+      font-size: 13px; font-weight: 600; color: #64748b;
+    }
+    .tab-btn.active { color: var(--indigo); border-bottom: 3px solid var(--indigo); }
+    .tab-content { display: none; padding: 14px; }
+    .tab-content.show { display: block; }
+    .hist {
+      border-left: 4px solid #cbd5e1; background: #f8fafc;
+      border-radius: 0 12px 12px 0; padding: 10px 12px; margin-bottom: 10px;
+    }
+    .hist.Hadir { border-left-color: #10b981; }
+    .hist.Izin { border-left-color: #f59e0b; }
+    .hist.Sakit { border-left-color: #f43f5e; }
+    .hist.Alpa { border-left-color: #94a3b8; }
+    .hist.Libur { border-left-color: #8b5cf6; }
+    .hist-top { display: flex; justify-content: space-between; gap: 8px; }
+    .hist b { font-size: 13px; }
+    .hist small { color: var(--muted); }
+    .hist .right { text-align: right; font-size: 12px; color: #334155; }
+    .hist .dur { color: var(--indigo); font-weight: 700; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .stat { border-radius: 14px; padding: 14px; text-align: center; }
+    .stat b { display: block; font-size: 26px; }
+    .stat span { font-size: 12px; }
+    .s-hadir { background: #ecfdf5; color: #047857; }
+    .s-izin { background: #fffbeb; color: #b45309; }
+    .s-sakit { background: #fff1f2; color: #be123c; }
+    .s-alpa { background: #f1f5f9; color: #475569; }
+    .s-total { margin-top: 10px; background: #eef2ff; color: var(--indigo); border-radius: 14px; padding: 14px; text-align: center; }
+    .empty { text-align: center; color: #94a3b8; padding: 28px 8px; font-size: 13px; }
+    .period { text-align: center; color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+    .tools { display: flex; gap: 8px; margin-top: 12px; }
+    .tools button {
+      flex: 1; border: 1px solid #e2e8f0; background: #fff; color: #334155;
+      border-radius: 10px; padding: 10px; font-size: 12px; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Absensi Offline</h1>
+      <p id="liveDate">-</p>
+      <p id="liveClock">--:--:--</p>
+    </div>
+  </header>
+  <main>
+    <div class="card">
+      <div class="row">
+        <h2>Absensi Hari Ini</h2>
+        <span id="badgeStatus" class="badge">Belum Absen</span>
+      </div>
+      <p class="label">Status Kehadiran</p>
+      <div class="grid4">
+        <button class="status-btn" id="btnHadir" onclick="setStatus('Hadir')">Hadir</button>
+        <button class="status-btn" id="btnIzin" onclick="setStatus('Izin')">Izin</button>
+        <button class="status-btn" id="btnSakit" onclick="setStatus('Sakit')">Sakit</button>
+        <button class="status-btn" id="btnAlpa" onclick="setStatus('Alpa')">Alpa</button>
+      </div>
+      <button class="btn" id="btnMasuk" onclick="absenMasuk()">Absen Masuk</button>
+      <button class="btn" id="btnPulang" onclick="absenPulang()">Absen Pulang</button>
+      <div class="times">
+        <div class="box"><p>Jam Masuk</p><strong id="displayMasuk">--:--</strong></div>
+        <div class="box"><p>Jam Pulang</p><strong id="displayPulang">--:--</strong></div>
+      </div>
+      <div class="durasi"><p>Durasi Kerja</p><strong id="displayDurasi">-</strong></div>
+    </div>
+    <div class="card" style="padding:0; overflow:hidden;">
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-harian-btn" onclick="switchTab('harian')">Harian</button>
+        <button class="tab-btn" id="tab-mingguan-btn" onclick="switchTab('mingguan')">Mingguan</button>
+        <button class="tab-btn" id="tab-bulanan-btn" onclick="switchTab('bulanan')">Bulanan</button>
+      </div>
+      <div id="tab-harian" class="tab-content show"><div id="listHarian"></div></div>
+      <div id="tab-mingguan" class="tab-content"><div id="rekapMingguan"></div></div>
+      <div id="tab-bulanan" class="tab-content"><div id="rekapBulanan"></div></div>
+    </div>
+  </main>
+  <script>
+    const STORAGE_KEY = 'absensiOtomatis_v1';
+    const HARI = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+    let data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"records":{}}');
+    function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    function pad(n) { return String(n).padStart(2,'0'); }
+    function localKey(d) { return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()); }
+    function getTodayKey() { return localKey(new Date()); }
+    function getDayName(dateStr) { return HARI[new Date(dateStr + 'T12:00:00').getDay()]; }
+    function isSunday(dateStr) { return new Date((dateStr || getTodayKey()) + 'T12:00:00').getDay() === 0; }
+    function formatTime(d) { return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+    function calcDurasi(masuk, pulang) {
+      if (!masuk || !pulang) return '-';
+      const [h1,m1] = masuk.split(':').map(Number);
+      const [h2,m2] = pulang.split(':').map(Number);
+      let menit = (h2*60+m2) - (h1*60+m1);
+      if (menit < 0) menit += 1440;
+      return Math.floor(menit/60) + ' jam ' + (menit%60) + ' menit';
+    }
+    function getOrCreateToday() {
+      const key = getTodayKey();
+      if (!data.records[key]) {
+        data.records[key] = { date:key, day:getDayName(key), status: isSunday(key)?'Libur':null, jamMasuk:null, jamPulang:null, durasi:null };
+        save();
+      }
+      if (isSunday(key) && data.records[key].status !== 'Libur') {
+        data.records[key].status = 'Libur';
+        data.records[key].jamMasuk = null;
+        data.records[key].jamPulang = null;
+        data.records[key].durasi = null;
+        save();
+      }
+      return data.records[key];
+    }
+    function renderToday() {
+      const rec = getOrCreateToday();
+      const badge = document.getElementById('badgeStatus');
+      badge.textContent = rec.status || 'Belum Absen';
+      badge.className = 'badge ' + (rec.status || '');
+      document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('active'));
+      if (rec.status === 'Hadir') document.getElementById('btnHadir').classList.add('active');
+      if (rec.status === 'Izin') document.getElementById('btnIzin').classList.add('active');
+      if (rec.status === 'Sakit') document.getElementById('btnSakit').classList.add('active');
+      if (rec.status === 'Alpa') document.getElementById('btnAlpa').classList.add('active');
+      const libur = rec.status === 'Libur';
+      document.getElementById('btnMasuk').disabled = libur || !!rec.jamMasuk;
+      document.getElementById('btnPulang').disabled = libur || !rec.jamMasuk || !!rec.jamPulang;
+      document.getElementById('btnMasuk').textContent = libur ? 'Hari Libur (Minggu)' : (rec.jamMasuk ? ('Masuk: ' + rec.jamMasuk) : 'Absen Masuk');
+      document.getElementById('btnPulang').textContent = libur ? 'Tidak Perlu Absen' : (rec.jamPulang ? ('Pulang: ' + rec.jamPulang) : 'Absen Pulang');
+      document.getElementById('displayMasuk').textContent = rec.jamMasuk || '--:--';
+      document.getElementById('displayPulang').textContent = rec.jamPulang || '--:--';
+      document.getElementById('displayDurasi').textContent = rec.durasi || '-';
+    }
+    function setStatus(status) {
+      const rec = getOrCreateToday();
+      if (rec.status === 'Libur') { alert('Hari Minggu adalah hari Libur. Status tidak dapat diubah.'); return; }
+      rec.status = status;
+      if (['Izin','Sakit','Alpa'].indexOf(status) >= 0) {
+        rec.jamMasuk = rec.jamPulang = rec.durasi = null;
+      }
+      save(); renderToday(); renderAllRekap();
+    }
+    function absenMasuk() {
+      const rec = getOrCreateToday();
+      if (rec.status === 'Libur' || rec.jamMasuk) return;
+      rec.jamMasuk = formatTime(new Date());
+      if (!rec.status || ['Izin','Sakit','Alpa'].indexOf(rec.status) >= 0) rec.status = 'Hadir';
+      save(); renderToday(); renderAllRekap();
+    }
+    function absenPulang() {
+      const rec = getOrCreateToday();
+      if (!rec.jamMasuk || rec.jamPulang) return;
+      rec.jamPulang = formatTime(new Date());
+      rec.durasi = calcDurasi(rec.jamMasuk, rec.jamPulang);
+      save(); renderToday(); renderAllRekap();
+    }
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('show'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('show');
+      document.getElementById('tab-' + tab + '-btn').classList.add('active');
+    }
+    function fmtDate(key) { return key.split('-').reverse().join('/'); }
+    function renderHarian() {
+      const box = document.getElementById('listHarian');
+      const keys = Object.keys(data.records).sort().reverse();
+      if (!keys.length) { box.innerHTML = '<p class="empty">Belum ada data absensi</p>'; return; }
+      box.innerHTML = keys.map(function(key){
+        const r = data.records[key];
+        const jam = r.jamMasuk ? (r.jamMasuk + ' \u2192 ' + (r.jamPulang || '--:--')) : '';
+        const dur = (r.durasi && r.durasi !== '-') ? r.durasi : '';
+        return '<div class="hist ' + (r.status||'') + '"><div class="hist-top"><div><b>' + r.day + ', ' + fmtDate(key) + '</b><br><small>' + (r.status||'-') + '</small></div><div class="right">' + jam + (dur ? '<div class="dur">' + dur + '</div>' : '') + '</div></div></div>';
+      }).join('');
+    }
+    function getWeekRange() {
+      const now = new Date();
+      const day = now.getDay();
+      const diff = day === 0 ? -6 : 1 - day;
+      const mon = new Date(now.getFullYear(), now.getMonth(), now.getDate() + diff);
+      const sun = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + 6);
+      return { start: mon, end: sun };
+    }
+    function countPeriod(startDate, endDate) {
+      const start = localKey(startDate), end = localKey(endDate);
+      const t = { hadir:0, izin:0, sakit:0, alpa:0, libur:0, hariKerja:0 };
+      Object.keys(data.records).forEach(function(key){
+        if (key >= start && key <= end) {
+          const s = data.records[key].status;
+          if (s === 'Hadir') t.hadir++;
+          else if (s === 'Izin') t.izin++;
+          else if (s === 'Sakit') t.sakit++;
+          else if (s === 'Alpa') t.alpa++;
+          else if (s === 'Libur') t.libur++;
+          if (s && s !== 'Libur') t.hariKerja++;
+        }
+      });
+      return t;
+    }
+    function statsHTML(t, period) {
+      return '<p class="period">' + period + '</p>' +
+        '<div class="stats">' +
+        '<div class="stat s-hadir"><b>' + t.hadir + '</b><span>Hadir</span></div>' +
+        '<div class="stat s-izin"><b>' + t.izin + '</b><span>Izin</span></div>' +
+        '<div class="stat s-sakit"><b>' + t.sakit + '</b><span>Sakit</span></div>' +
+        '<div class="stat s-alpa"><b>' + t.alpa + '</b><span>Alpa</span></div>' +
+        '</div><div class="s-total"><div>Total Hari Kerja (non-Libur)</div><b>' + t.hariKerja + ' hari</b></div>' +
+        '<div class="tools"><button onclick="exportData()">Unduh Data JSON</button><button onclick="resetAll()">Hapus Semua Data</button></div>';
+    }
+    function renderMingguan() {
+      const w = getWeekRange();
+      const t = countPeriod(w.start, w.end);
+      const opt = { day:'numeric', month:'short' };
+      document.getElementById('rekapMingguan').innerHTML = statsHTML(t, w.start.toLocaleDateString('id-ID', opt) + ' \u2013 ' + w.end.toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'}));
+    }
+    function renderBulanan() {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), now.getMonth(), 1);
+      const end = new Date(now.getFullYear(), now.getMonth()+1, 0);
+      document.getElementById('rekapBulanan').innerHTML = statsHTML(countPeriod(start, end), now.toLocaleDateString('id-ID', {month:'long', year:'numeric'}));
+    }
+    function renderAllRekap() { renderHarian(); renderMingguan(); renderBulanan(); }
+    function exportData() {
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'absensi-' + getTodayKey() + '.json';
+      a.click();
+    }
+    function resetAll() {
+      if (!confirm('Hapus semua data absensi di HP ini?')) return;
+      data = { records: {} };
+      save();
+      getOrCreateToday();
+      renderToday();
+      renderAllRekap();
+    }
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('liveClock').textContent = pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+      document.getElementById('liveDate').textContent = now.toLocaleDateString('id-ID', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      updateClock();
+      setInterval(updateClock, 1000);
+      getOrCreateToday();
+      renderToday();
+      renderAllRekap();
+    });
+  </script>
+</body>
+</html>
