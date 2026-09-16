@@ -1,5 +1,14 @@
 [
   {
+    "name": "Absensi Offline",
+    "role": "Frontend / PWA",
+    "category": "Field App",
+    "desc": {
+      "id": "Aplikasi absensi lapangan offline: status hadir, izin, sakit, alpa; jam masuk-pulang; durasi kerja; rekap harian, mingguan, dan bulanan. Data tersimpan di perangkat.",
+      "en": "Offline field attendance app: present, leave, sick, absent; clock-in/out; work duration; daily, weekly, and monthly recap. Data stays on the device."
+    }
+  },
+  {
     "name": "Logistic Stock Control — Avindo",
     "role": "Fullstack Developer",
     "category": "Fullstack",
