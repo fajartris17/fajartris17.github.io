@@ -1,0 +1,39 @@
+   <p class="text-2xl font-bold text-rose-600 mt-1" id="kpi-meter-remaining">0</p>
+        <p class="text-xs text-slate-400 mt-1">Sisa meter kerja</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm p-4 border border-blue-200">
+        <p class="text-xs font-medium text-slate-500 uppercase tracking-wide">Est. Hari (Meter)</p>
+        <p class="text-2xl font-bold text-blue-600 mt-1" id="kpi-meter-days">0</p>
+        <p class="text-xs text-slate-400 mt-1">Asumsi rate harian</p>
+      </div>
+    </div>
+
+    <!-- Progress + Input -->
+    <div class="grid lg:grid-cols-5 gap-4">
+      <!-- Overall Progress -->
+      <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-5 border border-slate-200">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-semibold text-slate-800">Progress Titik</h2>
+          <span class="text-sm text-slate-500" id="progress-text">0 / 0</span>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
+          <div id="progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-4 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="mt-4 grid grid-cols-2 gap-2 text-center text-sm">
+          <div class="bg-slate-50 rounded-lg p-2">
+            <p class="text-slate-500 text-xs">NACL Bulk</p>
+            <p class="font-semibold" id="prog-nacl">0/338</p>
+          </div>
+          <div class="bg-slate-50 rounded-lg p-2">
+            <p class="text-slate-500 text-xs">Conveyor</p>
+            <p class="font-semibold" id="prog-conveyor">0/71</p>
+          </div>
+          <div class="bg-slate-50 rounded-lg p-2">
+            <p class="text-slate-500 text-xs">Platform</p>
+            <p class="font-semibold" id="prog-platform">0/60</p>
+          </div>
+          <div class="bg-slate-50 rounded-lg p-2">
+            <p class="text-slate-500 text-xs">Lainnya</p>
+            <p class="font-semibold" id="prog-other">0/6</p>
+          </div>
+        </di
