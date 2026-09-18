@@ -13,26 +13,79 @@ body{min-height:100vh;background:#071427}
 .lb{display:none;position:fixed;inset:0;background:rgba(2,6,23,.94);z-index:80;align-items:center;justify-content:center;padding:16px}
 .lb.on{display:flex}
 .lb img{max-height:90vh;max-width:96vw;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.card img{aspect-ratio:16/11;object-fit:cover;width:100%}
+.card img{aspect-ratio:16/9;object-fit:cover;width:100%;background:#0b1220}
 .card.portrait img{aspect-ratio:3/4;object-fit:contain;background:#0b1220}
+.ph{min-height:160px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:12px}
 </style>
 </head>
 <body class="text-slate-100">
 <main class="max-w-5xl mx-auto px-4 py-8">
   <p class="text-center text-amber-300 text-xs uppercase tracking-wider font-semibold">Gallery · album pekerjaan</p>
-  <h1 class="text-2xl md:text-3xl font-bold text-center mt-1">Lapangan · Tiang Pancang · Dermaga</h1>
-  <p class="text-center text-slate-400 text-sm mt-2 max-w-2xl mx-auto">Foto kerja Site Manager / Construction Supervisor. Mobilisasi, barge loading, pile driving, aerial site, dan layout pondasi. Bukan file model klien.</p>
+  <h1 class="text-2xl md:text-3xl font-bold text-center mt-1">Lapangan · Lifting Dermaga · Vessel</h1>
+  <p class="text-center text-slate-400 text-sm mt-2 max-w-2xl mx-auto">Foto kerja Site Manager. Barge loading, crawler crane SANY SCC1500D, pressure vessel, dan pile driving. Bukan file model klien.</p>
   <div class="flex flex-wrap justify-center gap-2 mt-5 mb-6 text-sm">
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="links.html">← Link-I</a>
     <a class="px-4 py-2 rounded-xl bg-red-700 font-semibold" href="cv-window.html">Window CV</a>
     <a class="px-4 py-2 rounded-xl bg-amber-600 font-semibold text-slate-950" href="portfolio-mep-bim.html">Portfolio 03</a>
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="album.html">Album jasa</a>
+    <a class="px-4 py-2 rounded-xl bg-blue-800 font-semibold" href="#lifting">Lifting Feb 2023</a>
   </div>
-  <div class="grid md:grid-cols-2 gap-4" id="gal"></div>
-  <p class="text-center text-[11px] text-slate-500 mt-5">11 foto. Tap untuk memperbesar. Jika gambar kosong, set sharing Drive: Siapa saja yang memiliki link → Pelihat.</p>
+
+  <section id="lifting" class="mb-10">
+    <p class="text-cyan-300 text-xs uppercase tracking-wider font-semibold">Baru · Feb 2023</p>
+    <h2 class="text-xl font-bold mt-1">Lifting dermaga & pressure vessel</h2>
+    <p class="text-slate-400 text-sm mt-1 mb-4">11 foto: SANY crawler SCC1500D, kapal Rena Samudera Abadi, green tank / mud tank, dan vessel malam.</p>
+    <div class="grid md:grid-cols-2 gap-4" id="galLift"></div>
+  </section>
+
+  <section>
+    <p class="text-amber-300 text-xs uppercase tracking-wider font-semibold">Arsip lapangan</p>
+    <h2 class="text-xl font-bold mt-1 mb-4">Mobilisasi · barge · pile driving</h2>
+    <div class="grid md:grid-cols-2 gap-4" id="gal"></div>
+  </section>
+
+  <p class="text-center text-[11px] text-slate-500 mt-5">22 foto. Tap untuk memperbesar.</p>
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
+<script src="gallery-lift-a.js"></script>
+<script src="gallery-lift-b.js"></script>
 <script>
+var lifts=[
+["01","01 · Sunset barge","Vessel di barge — sunset","Pressure vessel di trailer/barge, tugboat, senja di dermaga.","amber","Pressure vessel sunset"],
+["02","02 · Close vessel","Pressure vessel — lowbed","Detail vessel stainless + rantai lashing di multi-axle trailer.","sky","Pressure vessel close-up"],
+["03","03 · Malam","Vessel malam — dermaga","Mobilisasi malam: vessel di trailer, lighting lapangan.","violet","Vessel malam 1"],
+["04","04 · Malam","Vessel malam — sisi kiri","Sudut lain mobilisasi malam di jetty.","violet","Vessel malam 2"],
+["05","05 · Malam","Vessel — marking pabrik","Pressure vessel malam, marking pabrik di head.","indigo","Vessel malam marking"],
+["06","06 · Kapal & crane","Rena Samudera Abadi","Landing craft merah + mobile crane mengangkat green tank.","cyan","Kapal dan crane 1"],
+["07","07 · Kapal","Rena Samudera Abadi — close","Haluan kapal dan boom crane di dermaga.","cyan","Kapal close"],
+["08","08 · Rigging","Green tank + struktur baja","Sling webbing, spreader/struktur, tank tutup terpal biru.","orange","Rigging green tank"],
+["09","09 · Yard dermaga","Crane truck + kapal","Posisi kerja crane di apron, flare stack di latar.","emerald","Yard dermaga crane"],
+["10","10 · SANY SCC1500D","Crawler crane C1746","SANY SCC1500D Berdikari, counterweight, lifting green tank.","yellow","SANY SCC1500D"],
+["11","11 · Dual lift","Tank + box struktur","Crawler SANY mengangkat modul baja di antara green tank.","yellow","Dual lift struktur"]
+];
+
+function bindLightbox(root){
+  root.querySelectorAll('.poster').forEach(function(img){
+    img.addEventListener('click', function(){
+      document.getElementById('lbimg').src = img.getAttribute('data-full') || img.src;
+      document.getElementById('lb').classList.add('on');
+    });
+  });
+}
+
+var gl=document.getElementById('galLift');
+var pack=window.LIFT_PHOTOS||{};
+lifts.forEach(function(it){
+  var b=pack[it[0]];
+  var uri=b?('data:image/jpeg;base64,'+b):'';
+  gl.insertAdjacentHTML('beforeend',
+    '<figure class="card rounded-2xl overflow-hidden border border-slate-700 bg-slate-950">'+
+    (uri?'<img class="poster" alt="'+it[5]+'" src="'+uri+'" data-full="'+uri+'">':'<div class="ph">Foto belum terunggah</div>')+
+    '<figcaption class="p-4"><p class="text-[10px] uppercase tracking-wider text-'+it[4]+'-300 font-semibold">'+it[1]+'</p>'+
+    '<p class="font-bold mt-0.5">'+it[2]+'</p><p class="text-[12px] text-slate-400 mt-1">'+it[3]+'</p></figcaption></figure>');
+});
+bindLightbox(gl);
+
 var items=[
 ["1U4zeJW3cELQeFCflandJGuIZWzgsJ6Va","01 · Mobilisasi","Lowbed — alat berat","Unit equipment di lowbed trailer. Mobilisasi yard / lapangan.","cyan","Lowbed mobilisasi alat berat"],
 ["1RbJRYZHO1mfZe3ohy2jH3CQCLbnijDWO","02 · Dermaga","Barge — mud tank & equipment","Deck barge: mud tank, genset, container, crane lifting.","amber","Barge loading mud tank"],
@@ -55,12 +108,7 @@ items.forEach(function(it,i){
     '<figcaption class="p-4"><p class="text-[10px] uppercase tracking-wider text-'+it[4]+'-300 font-semibold">'+it[1]+'</p>'+
     '<p class="font-bold mt-0.5">'+it[2]+'</p><p class="text-[12px] text-slate-400 mt-1">'+it[3]+'</p></figcaption></figure>');
 });
-document.querySelectorAll('.poster').forEach(function(img){
-  img.addEventListener('click', function(){
-    document.getElementById('lbimg').src = img.getAttribute('data-full') || img.src;
-    document.getElementById('lb').classList.add('on');
-  });
-});
+bindLightbox(g);
 </script>
 </body>
 </html>
