@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Window CV · Fajar Tri Suhartono</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<style>
+.cv{display:grid;grid-template-columns:32% 68%;min-height:640px}
+@media(max-width:720px){.cv{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
 <main class="max-w-5xl mx-auto px-4 py-6">
@@ -14,21 +18,82 @@
   <div class="flex flex-wrap justify-center gap-2 mb-4 text-sm">
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="links.html">← Link-I</a>
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="documents.html">Dokumen pendukung</a>
-    <a id="dl" class="px-4 py-2 rounded-xl bg-red-600 font-semibold" href="CV_Fajar_Tri_Suhartono_EN.pdf.b64" download="CV_Fajar_Tri_Suhartono_EN.pdf">Unduh PDF EN</a>
+    <a id="dl" class="px-4 py-2 rounded-xl bg-red-600 font-semibold" href="cv-en.html">Unduh / print PDF EN</a>
     <a class="px-4 py-2 rounded-xl bg-emerald-700 font-semibold" href="portfolio-mep-bim.html">Data pendukung</a>
   </div>
-  <iframe id="pdf" class="w-full rounded-xl border border-slate-700 bg-white" style="height:80vh" title="CV English"></iframe>
+
+  <article class="cv rounded-2xl overflow-hidden border border-slate-700 bg-white text-slate-800">
+    <aside class="bg-[#1B365D] text-white p-5">
+      <p class="text-[11px] tracking-[0.18em] uppercase text-cyan-200">Window CV · 02 EN</p>
+      <h2 class="text-xl font-extrabold leading-tight mt-3">FAJAR TRI<br>SUHARTONO</h2>
+      <p class="text-[11px] uppercase tracking-wide text-cyan-100 mt-2">Site Manager<br>Construction Supervisor</p>
+      <p class="text-[11px] text-slate-200 mt-2">Target: MEP BIM Engineer / BIM Coordinator</p>
+      <hr class="border-white/20 my-4">
+      <p class="text-[10px] uppercase tracking-wider text-cyan-200">Contact</p>
+      <p class="text-[12px] mt-1 leading-relaxed">Balikpapan, East Kalimantan<br>0813-5651-0403<br>fajartris1994@gmail.com<br>Driving license A · project-base ready</p>
+      <hr class="border-white/20 my-4">
+      <p class="text-[10px] uppercase tracking-wider text-cyan-200">Field competencies</p>
+      <ul class="text-[12px] mt-2 space-y-1 list-disc list-inside">
+        <li>Site & field management</li>
+        <li>Construction supervision</li>
+        <li>Work control & inspection</li>
+        <li>Progress & reporting</li>
+        <li>Manpower / plant / material</li>
+        <li>PM–CM–Eng–QAQC interface</li>
+        <li>QHSE & site problem-solving</li>
+        <li>Method / work pack control</li>
+      </ul>
+      <hr class="border-white/20 my-4">
+      <p class="text-[10px] uppercase tracking-wider text-cyan-200">Digital / BIM</p>
+      <ul class="text-[12px] mt-2 space-y-1 list-disc list-inside">
+        <li>Revit MEP — assessment-ready</li>
+        <li>Navisworks — assessment-ready</li>
+        <li>AutoCAD / shop drawing</li>
+        <li>Excel / field reporting</li>
+      </ul>
+    </aside>
+    <section class="p-5 text-[12.5px] leading-snug">
+      <p class="text-[10px] font-bold uppercase tracking-wider text-[#1B365D] border-b border-[#1B365D] pb-1">Profile</p>
+      <p class="mt-2">Site Manager and Construction Supervisor with field experience in Oil & Gas and chemical-industry construction. Core track: Action Supervisor Construction on the RDMP Balikpapan JO / Hyundai Engineering refinery megaproject (2019–2024, 360,000 bpd class), then Site Manager at PT Avindo Energi Nusantara (2024–2026), including site support for the PKT Soda Ash Plant at KIE Bontang. Applying for MEP BIM Engineer / BIM Coordinator roles on the strength of drawing-and-spec control, multi-party interface, constructability, and field-clash resolution. Attached portfolio is a sanitized deliverable sample only; Revit and Navisworks practical tests ready.</p>
+      <p class="text-[10px] font-bold uppercase tracking-wider text-[#1B365D] border-b border-[#1B365D] pb-1 mt-4">Work experience</p>
+      <p class="font-bold mt-2">Site Manager</p>
+      <p class="text-[#2C5282] font-semibold">PT Avindo Energi Nusantara — Balikpapan / Bontang site · 2024–2026</p>
+      <ul class="list-disc list-inside mt-1 space-y-0.5">
+        <li>Led site execution coordination: work plans, construction methods, technical specifications, quality, schedule, and safety standards.</li>
+        <li>Controlled manpower, equipment and materials; interfaced with PM, CM, Engineering, QA/QC, HSE, vendors and subcontractors.</li>
+        <li>Field support for the PT Pupuk Kaltim Soda Ash Plant, KIE Bontang (IDR 5 trillion, 300,000 tpy, ~33-month construction, ~800 workers, TCC–ETI and Rekind).</li>
+      </ul>
+      <p class="font-bold mt-3">Action Supervisor Construction</p>
+      <p class="text-[#2C5282] font-semibold">RDMP Balikpapan JO — RU V refinery (Hyundai–SK E&C–Rekind–PT PP) · Mar 2020–May 2024</p>
+      <ul class="list-disc list-inside mt-1 space-y-0.5">
+        <li>Supervised general construction packages to design, specification and contract for 4 years 2 months. Letter: 985/JO-RDMP/HR/V/2024.</li>
+        <li>Routine inspection, material and workmanship control, site constraint resolution, scheduling, and area manpower management.</li>
+        <li>National Strategic Project expanding the refinery from 260,000 to 360,000 bpd (~USD 7.4 billion; peak workforce up to 24,000; physical progress over 90%+ as of assignment, May 2024).</li>
+        <li>Applied site QHSE procedures. Zero LTI is an organizational project result (PT KPB/JO), not a personal claim.</li>
+      </ul>
+      <p class="font-bold mt-3">Action Supervisor Construction</p>
+      <p class="text-[#2C5282] font-semibold">Hyundai Engineering Co., Ltd. — Balikpapan · Nov 2019–Mar 2020</p>
+      <p class="mt-1">Field supervision, inspection, quality control and production control to design and contract documents. Letter: 352/HYUNDAI/HR/III/2020.</p>
+      <p class="font-bold mt-3">Maintenance Planner</p>
+      <p class="text-[#2C5282] font-semibold">Dizamatra Powerindo — Lahat · Feb 2015–Oct 2019</p>
+      <p class="mt-1">Prepared maintenance schedules, managed backlog and planned manpower for plant upkeep activities.</p>
+      <p class="font-bold mt-3">Statutory Admin BIN → Admin OB Diggers BIN</p>
+      <p class="text-[#2C5282] font-semibold">PT BUMA — Binungan–Suaran, Berau · Jun 2012–Feb 2015</p>
+      <p class="mt-1">Mine-site operational administration per official employment records. Resigned February 2015.</p>
+      <p class="text-[10px] font-bold uppercase tracking-wider text-[#1B365D] border-b border-[#1B365D] pb-1 mt-4">Education</p>
+      <p class="mt-2 font-semibold">SMK TI Pratama Samarinda · 2012</p>
+      <p>Computer and Informatics Engineering — Multimedia</p>
+      <p class="mt-1 text-slate-600">Born Grobogan, 7 March 1994 · Domicile Balikpapan · Indonesian citizen · Class A license</p>
+    </section>
+  </article>
 </main>
 <script>
 fetch('CV_Fajar_Tri_Suhartono_EN.pdf.b64').then(function(r){return r.text();}).then(function(b64){
-  var bin=atob(b64.replace(/\s/g,''));
-  var bytes=new Uint8Array(bin.length);
-  for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
-  var url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
-  document.getElementById('pdf').src=url;
   var a=document.getElementById('dl');
-  a.href=url; a.download='CV_Fajar_Tri_Suhartono_EN.pdf';
-});
+  a.href='data:application/pdf;base64,'+b64.replace(/\s/g,'');
+  a.download='CV_Fajar_Tri_Suhartono_EN.pdf';
+  a.textContent='Unduh PDF EN';
+}).catch(function(){});
 </script>
 </body>
 </html>
