@@ -7,79 +7,40 @@
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
-<main class="max-w-3xl mx-auto px-4 py-8">
+<main class="max-w-5xl mx-auto px-4 py-6">
   <p class="text-center text-amber-300 text-xs uppercase tracking-wider font-semibold">Data pendukung</p>
   <h1 class="text-2xl font-bold text-center mt-1">Portfolio MEP BIM — 03</h1>
-  <p class="text-center text-slate-400 text-sm mt-2">Sampel format deliverable, sudah disanitasi. Bukan file model proyek klien.</p>
-  <div class="flex flex-wrap justify-center gap-2 my-5 text-sm">
+  <p class="text-center text-slate-400 text-sm mt-1 mb-4">Sampel format deliverable 10 halaman (disanitasi). Bukan file model klien.</p>
+  <div class="flex flex-wrap justify-center gap-2 mb-4 text-sm">
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="links.html">← Link-I</a>
-    <a class="px-4 py-2 rounded-xl bg-red-700 font-semibold" href="cv-window.html">Window CV · 02 EN</a>
-    <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="documents.html">Semua dokumen</a>
+    <a class="px-4 py-2 rounded-xl bg-red-700 font-semibold" href="cv-window.html">Window CV</a>
+    <a id="dl" class="px-4 py-2 rounded-xl bg-amber-600 font-semibold text-slate-950" href="#">Unduh portfolio PDF</a>
   </div>
-
-  <article class="rounded-2xl border border-amber-500/25 bg-slate-900/80 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-amber-300 font-semibold">Pernyataan confidential</p>
-    <p class="text-sm text-slate-300 mt-2 leading-relaxed">Ini sampel format deliverable MEP BIM, bukan file model proyek klien. Identitas owner dihilangkan. Latar belakang: pengawasan konstruksi Oil & Gas / industri. Siap practical test Revit & Navisworks tanpa mengeluarkan file owner.</p>
-    <p class="text-xs text-slate-500 mt-3">Fajar Tri Suhartono · Balikpapan · 0813-5651-0403 · fajartris1994@gmail.com · September 2026</p>
-  </article>
-
-  <article class="rounded-2xl border border-slate-600/40 bg-slate-900/70 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">01 · Ruang lingkup sampel</p>
-    <h2 class="font-bold mt-1">Yang ditunjukkan di 10 halaman</h2>
-    <ul class="text-sm text-slate-300 mt-2 space-y-1 list-disc list-inside">
-      <li>3D coordination — duct, pipe, tray, sprinkler vs struktur dan plafon</li>
-      <li>Clash detection — hard clash duct vs beam, status Active, usulan resolve</li>
-      <li>Shop drawing — plan koordinasi Level 02 dengan tag, grid, notes</li>
-      <li>Disiplin MEP — HVAC, plumbing wet area, electrical tray/conduit, fire protection</li>
-      <li>Plant room — AHU + piping primer sebagai contoh equipment layout</li>
-      <li>Workflow — LOD, software, langkah koordinasi, kesiapan tes praktik</li>
-    </ul>
-    <p class="text-xs text-slate-400 mt-3">Software siap dites: Revit MEP · Navisworks · AutoCAD · BIM 360 / ACC</p>
-  </article>
-
-  <article class="rounded-2xl border border-slate-600/40 bg-slate-900/70 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">02 · Ceiling coordination</p>
-    <h2 class="font-bold mt-1">3D MEP di zona plafon</h2>
-    <ul class="text-sm text-slate-300 mt-2 space-y-1 list-disc list-inside">
-      <li>Pisahkan elevasi: tray di atas, pipe mid, sprinkler mengikuti plafond.</li>
-      <li>Duct utama lewat zona corridor; cabang masuk ruangan dengan diffuser.</li>
-      <li>Offset di sekitar beam dan opening; hanger mengikuti grid.</li>
-      <li>View 3D untuk rapat koordinasi, bukan hanya rendering.</li>
-    </ul>
-  </article>
-
-  <article class="rounded-2xl border border-slate-600/40 bg-slate-900/70 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">03–06 · Clash, shop drawing, routing</p>
-    <h2 class="font-bold mt-1">Dari model ke gambar kerja</h2>
-    <p class="text-sm text-slate-300 mt-2">Hard clash duct vs beam ditandai Active, lalu diusulkan reroute. Plan Level 02 memakai tag, grid, dan notes instalasi. Title block sampel: PROJECT NO. SAMPLE · SHEET M-02 · REV 0. Tujuan: model 3D bisa diturunkan jadi gambar kerja.</p>
-  </article>
-
-  <article class="rounded-2xl border border-slate-600/40 bg-slate-900/70 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">07–08 · Plumbing, electrical, plant</p>
-    <h2 class="font-bold mt-1">Wet area + tray + AHU</h2>
-    <ul class="text-sm text-slate-300 mt-2 space-y-1 list-disc list-inside">
-      <li>Soil, vent, cold/hot water, floor drain, cleanout pada toilet core & shaft.</li>
-      <li>Cable tray, conduit, lighting, panel board — tray tidak memotong duct/pipe.</li>
-      <li>AHU di housekeeping pad; chilled water + valves; ruang service di depan panel.</li>
-      <li>Tes praktik: 1 zona toilet + corridor tray dalam 45–60 menit.</li>
-    </ul>
-  </article>
-
-  <article class="rounded-2xl border border-slate-600/40 bg-slate-900/70 p-5 mb-4">
-    <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">09 · Workflow & tes</p>
-    <h2 class="font-bold mt-1">Yang bisa diuji di kantor Anda</h2>
-    <ol class="text-sm text-slate-300 mt-2 space-y-1 list-decimal list-inside">
-      <li>Terima input arsitektur + struktur + skema MEP / IFC / CAD</li>
-      <li>Setup model: template, workset, naming, view template, shared coordinates</li>
-      <li>Model LOD 300 koordinasi; LOD 350–400 shop bila diminta</li>
-      <li>Clash test Navisworks: MEP vs struktur, MEP vs MEP, clearance</li>
-      <li>Koordinasi: usulan resolve, RFI jika perlu keputusan desain</li>
-      <li>Deliver: shop drawing, clash report, model update, serah ke site</li>
-    </ol>
-    <p class="text-sm text-slate-300 mt-3">Practical test siap: model 1 zona corridor, tutup 3 clash dengan reroute masuk akal, turunkan 1 sheet shop drawing, jelaskan kenapa duct yang digeser bukan beam yang dilubangi.</p>
-  </article>
-
-  <p class="text-center text-xs text-slate-500 mt-6">Revit MEP dicantumkan assessment-ready — tidak mengklaim sertifikasi atau tahun pengalaman BIM yang tidak ada.</p>
+  <p id="status" class="text-center text-xs text-slate-400 mb-3">Memuat PDF…</p>
+  <iframe id="pdf" class="w-full rounded-xl border border-slate-700 bg-white" style="height:80vh" title="Portfolio MEP BIM"></iframe>
 </main>
+<script>
+(function(){
+  var n=6;
+  Promise.all(Array.from({length:n},function(_,i){
+    return fetch('Portfolio_MEP_BIM_Sanitized.pdf.b64.p'+(i+1)).then(function(r){
+      if(!r.ok) throw new Error('part '+(i+1)+' '+r.status);
+      return r.text();
+    });
+  })).then(function(parts){
+    var b64=parts.join('').replace(/\s/g,'');
+    var bin=atob(b64);
+    var bytes=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    var url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+    document.getElementById('pdf').src=url;
+    var a=document.getElementById('dl');
+    a.href=url; a.download='03_Portfolio_MEP_BIM_10halaman_Sanitized.pdf';
+    document.getElementById('status').textContent='PDF 10 halaman · sampel sanitasi · siap unduh';
+  }).catch(function(err){
+    document.getElementById('status').textContent='Gagal memuat PDF: '+err.message;
+  });
+})();
+</script>
 </body>
 </html>
