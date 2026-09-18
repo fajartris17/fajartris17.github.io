@@ -1,0 +1,46 @@
+name: assemble-pile-payload
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'apps/pile-monitoring/_payload/**'
+      - '.github/workflows/assemble-pile-payload.yml'
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: demo/pile-monitoring-mobile
+      - name: Assemble payload shards into final files
+        run: |
+          python3 <<'PY'
+          import base64, hashlib
+          from pathlib import Path
+          from collections import defaultdict
+          root = Path('apps/pile-monitoring/_payload')
+          groups = defaultdict(list)
+          for p in sorted(root.glob('*.b64')):
+              name = p.name[:-4]
+              base, _, idx = name.rpartition('__')
+              path = base.replace('__','/')
+              groups[path].append((int(idx), p.read_text().strip()))
+          for path, shards in groups.items():
+              shards.sort()
+              b64 = ''.join(s for _, s in shards)
+              data = base64.b64decode(b64)
+              out = Path(path)
+              out.parent.mkdir(parents=True, exist_ok=True)
+              out.write_bytes(data)
+              print(path, len(data), hashlib.md5(data).hexdigest()[:8])
+          PY
+      - name: Commit assembled files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/pile-monitoring/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "feat(pile-monitoring): assemble loader+parts+assets from payload shards"
+          git push origin HEAD:demo/pile-monitoring-mobile
