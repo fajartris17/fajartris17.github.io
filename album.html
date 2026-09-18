@@ -12,7 +12,7 @@
   body{background:#071427}
   .grad-app{background:linear-gradient(160deg,#0e7490 0%,#1e1b4b 55%,#6d28d9 100%)}
   .grad-des{background:linear-gradient(160deg,#0891b2 0%,#312e81 50%,#7c3aed 100%)}
-  .poster{cursor:zoom-in}
+  .poster{cursor:zoom-in;width:100%;aspect-ratio:768/1036;object-fit:cover;object-position:top center;display:block}
   .lb{display:none;position:fixed;inset:0;background:rgba(2,6,23,.92);z-index:80;align-items:center;justify-content:center;padding:16px}
   .lb.on{display:flex}
   .lb img{max-height:92vh;max-width:96vw;border-radius:16px}
@@ -46,11 +46,11 @@
     <h2 class="text-xl font-bold mb-4">Poster paket harga</h2>
     <div class="grid md:grid-cols-2 gap-5">
       <figure class="bg-slate-950 rounded-2xl border border-cyan-500/30 overflow-hidden">
-        <img src="1788097886220.jpg" alt="Paket harga aplikasi" class="w-full poster">
+        <img src="1788097886220.jpg?v=crop1" alt="Paket harga aplikasi" class="poster" data-keep="0.753">
         <figcaption class="p-4 text-sm text-slate-300">Pengembangan aplikasi — tap untuk perbesar</figcaption>
       </figure>
       <figure class="bg-slate-950 rounded-2xl border border-violet-500/30 overflow-hidden">
-        <img src="1788097530299.jpg" alt="Paket harga desain grafis" class="w-full poster">
+        <img src="1788097530299.jpg?v=crop1" alt="Paket harga desain grafis" class="poster" data-keep="0.753">
         <figcaption class="p-4 text-sm text-slate-300">Desain grafis — tap untuk perbesar</figcaption>
       </figure>
     </div>
@@ -79,11 +79,11 @@
 
   <section class="mt-12">
     <h2 class="text-xl font-bold mb-2">Album pekerjaan lapangan</h2>
-    <p class="text-slate-400 text-sm mb-4">Foto mobilisasi, yard, dan barge loading.</p>
+    <p class="text-slate-400 text-sm mb-4">Foto mobilisasi, yard, barge, dan lifting SANY.</p>
     <a class="block bg-slate-950 border border-cyan-500/40 rounded-2xl p-5" href="album-kerja.html">
       <p class="text-cyan-300 text-xs font-semibold uppercase">Gallery</p>
       <h3 class="font-bold text-lg mt-1">Buka album pekerjaan</h3>
-      <p class="text-slate-400 text-sm mt-1">4 foto: lowbed, barge mud tank, yard crane, barge container.</p>
+      <p class="text-slate-400 text-sm mt-1">Lifting Feb 2023 + arsip lapangan. Tap foto untuk memperbesar.</p>
     </a>
   </section>
 
@@ -109,11 +109,26 @@
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
 <script>
-document.querySelectorAll('.poster').forEach(function(img){
-  img.addEventListener('click', function(){
-    document.getElementById('lbimg').src = img.src;
+function showCropped(img){
+  var keep=parseFloat(img.getAttribute('data-keep')||'0.753');
+  function paint(){
+    try{
+      var c=document.createElement('canvas');
+      var w=img.naturalWidth, h=Math.round(img.naturalHeight*keep);
+      if(!w){ document.getElementById('lbimg').src=img.src; return; }
+      c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h,0,0,w,h);
+      document.getElementById('lbimg').src=c.toDataURL('image/jpeg',0.92);
+    }catch(e){
+      document.getElementById('lbimg').src=img.src;
+    }
     document.getElementById('lb').classList.add('on');
-  });
+  }
+  if(img.complete && img.naturalWidth) paint();
+  else img.addEventListener('load', paint, {once:true});
+}
+document.querySelectorAll('.poster').forEach(function(img){
+  img.addEventListener('click', function(){ showCropped(img); });
 });
 var v = document.getElementById('promo');
 var btn = document.getElementById('btnPlay');
