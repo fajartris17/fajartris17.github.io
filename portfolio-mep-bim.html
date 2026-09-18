@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Pendukung · Portfolio MEP BIM</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+<main class="max-w-5xl mx-auto px-4 py-6">
+  <p class="text-center text-amber-300 text-xs uppercase tracking-wider font-semibold">Data pendukung</p>
+  <h1 class="text-2xl font-bold text-center mt-1">Portfolio MEP BIM — 03</h1>
+  <p class="text-center text-slate-400 text-sm mt-1 mb-4">Sampel format deliverable (disanitasi). Bukan file model klien.</p>
+  <div class="flex flex-wrap justify-center gap-2 mb-4 text-sm">
+    <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="links.html">← Link-I</a>
+    <a class="px-4 py-2 rounded-xl bg-red-700 font-semibold" href="cv-window.html">Window CV</a>
+    <a id="dl" class="px-4 py-2 rounded-xl bg-amber-600 font-semibold text-slate-950" href="Portfolio_MEP_BIM_Sanitized.pdf.b64" download="Portfolio_MEP_BIM_Sanitized.pdf">Unduh portfolio PDF</a>
+  </div>
+  <iframe id="pdf" class="w-full rounded-xl border border-slate-700 bg-white" style="height:80vh" title="Portfolio MEP BIM"></iframe>
+</main>
+<script>
+fetch('Portfolio_MEP_BIM_Sanitized.pdf.b64').then(function(r){return r.text();}).then(function(b64){
+  var bin=atob(b64.replace(/\s/g,''));
+  var bytes=new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  var url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+  document.getElementById('pdf').src=url;
+  var a=document.getElementById('dl');
+  a.href=url; a.download='Portfolio_MEP_BIM_Sanitized.pdf';
+});
+</script>
+</body>
+</html>
