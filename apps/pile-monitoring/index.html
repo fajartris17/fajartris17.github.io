@@ -1,1 +1,32 @@
-@/workspace/pile-index-single.html
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pile Monitoring — loading…</title>
+<style>html,body{margin:0;background:#0f172a;color:#e2e8f0;font:14px system-ui,sans-serif}#s{display:grid;place-items:center;min-height:100vh;padding:1rem;text-align:center}</style>
+</head><body><div id="s">Memuat demo Pile Monitoring…</div>
+<script>
+(async () => {
+  const n = 13;
+  const s = document.getElementById('s');
+  const b64s = [];
+  try {
+    for (let i = 0; i < n; i++) {
+      s.textContent = 'Memuat… ' + (i + 1) + '/' + n;
+      const r = await fetch('_gz/' + i + '.b64');
+      if (!r.ok) throw new Error('chunk ' + i + ' HTTP ' + r.status);
+      b64s.push(await r.text());
+    }
+    s.textContent = 'Mendekompresi…';
+    const bin = Uint8Array.from(atob(b64s.join('')), c => c.charCodeAt(0));
+    const ds = new DecompressionStream('gzip');
+    const stream = new Blob([bin]).stream().pipeThrough(ds);
+    const html = await new Response(stream).text();
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    s.innerHTML = 'Gagal memuat demo.<br><small>' + e.message + '</small><br><a href="../../links.html" style="color:#67e8f9">← Portfolio</a>';
+  }
+})();
+</script></body></html>
