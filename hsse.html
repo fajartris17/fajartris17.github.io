@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>HSSE Daily Report + E-Permit WhatsApp</title>
+<style>
+:root{--bg:#07111f;--card:#101d31;--card2:#0c1728;--line:#243654;--text:#f4f7fb;--muted:#aab8cd;--blue:#1d63ff;--green:#11a36a;--red:#d94141;--yellow:#f0b429;--dark:#0a0f1a;--input:#0b1628;--shadow:0 14px 35px rgba(0,0,0,.35);--radius:16px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:linear-gradient(180deg,#081426 0%,#040812 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+.app{width:100%;max-width:780px;margin:0 auto;padding:14px 12px 28px}
+.topby{text-align:right;font-size:12px;color:var(--muted);padding:4px 4px 8px}
+.header{background:linear-gradient(135deg,#123b86,#0c1728 55%,#12283f);border:1px solid #2a4774;border-radius:20px;padding:18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.header:before{content:"";position:absolute;right:-40px;top:-50px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07)}
+.header h1{margin:0;font-size:24px;letter-spacing:.4px;text-transform:uppercase;line-height:1.15}
+.header p{margin:6px 0 0;color:#d8e4f8;font-size:13px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.tab{border:1px solid var(--line);background:#0b1628;color:var(--text);padding:12px 10px;border-radius:14px;font-weight:700;font-size:14px;cursor:pointer}
+.tab.active{background:linear-gradient(135deg,#1d63ff,#0e45c7);border-color:#5f8dff;color:white}
+.card{background:rgba(16,29,49,.96);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:12px 0}
+.card h2{margin:0 0 12px;font-size:16px;text-transform:uppercase;letter-spacing:.35px;color:#dfe9ff;border-left:4px solid var(--blue);padding-left:9px}
+label{display:block;margin:10px 0 6px;font-weight:700;font-size:12px;color:#cbd7ea}
+input,textarea,select{width:100%;background:var(--input);border:1px solid #324461;color:var(--text);border-radius:12px;padding:11px 12px;font-size:15px;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#6291ff}
+textarea{min-height:84px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkrow{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid #263855;border-radius:12px;padding:10px;margin:7px 0}
+.checkrow input{width:18px;height:18px;accent-color:var(--green)}
+.small{font-size:12px;color:var(--muted);margin:8px 0 0}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.btn{border:0;border-radius:14px;color:#fff;background:var(--blue);padding:12px 10px;font-weight:800;font-size:14px;cursor:pointer}
+.btn.green{background:var(--green)}.btn.dark{background:#202b3d}.btn.red{background:var(--red)}
+.preview{white-space:pre-wrap;background:#050a13;border:1px dashed #3a4d6e;border-radius:14px;padding:14px;font-size:14px;line-height:1.45;min-height:240px;overflow:auto}
+.section{display:none}.section.active{display:block}
+.toolbar{position:sticky;bottom:0;background:rgba(7,17,31,.94);border:1px solid #273856;border-radius:18px;padding:10px;margin-top:12px;z-index:5}
+.footer{text-align:center;font-size:11px;color:var(--muted);padding:10px 4px 2px}
+.status{display:none;margin-top:10px;border-radius:12px;padding:10px;font-size:13px;font-weight:700;background:rgba(17,163,106,.14);border:1px solid rgba(17,163,106,.45);color:#9df0cc}
+.status.show{display:block}
+.badge{display:inline-block;margin-left:6px;padding:3px 8px;border-radius:999px;background:rgba(240,180,41,.15);border:1px solid rgba(240,180,41,.45);color:#ffd77d;font-size:11px}
+@media(max-width:560px){.app{padding:10px 9px 24px}.header h1{font-size:20px}.grid,.btns{grid-template-columns:1fr}input,textarea,select{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topby"><a href="links.html" style="color:#aab8cd;text-decoration:none">← Link-I</a> · by Fajar</div>
+  <div class="header">
+    <h1>HSSE Daily Report + E-Permit</h1>
+    <p>Format WhatsApp otomatis siap kirim</p>
+  </div>
+  <div class="tabs">
+    <button class="tab active" id="tabHsse" onclick="showTab('hsse')">HSSE Daily</button>
+    <button class="tab" id="tabPermit" onclick="showTab('permit')">E-Permit</button>
+  </div>
+  <section class="section active" id="sectionHsse">
+    <div class="card">
+      <h2>Data Utama</h2>
+      <label>Tanggal Report</label>
+      <input type="date" id="reportDate" data-save="hsse">
+      <label>Project / Lokasi</label>
+      <input id="project" value="Project Site" data-save="hsse">
+      <div class="grid"><div><label>Day Shift / POB</label><input type="number" id="dayShift" value="5" min="0" data-save="hsse"></div><div><label>Overtime / POB</label><input type="number" id="overtime" value="0" min="0" data-save="hsse"></div></div>
+      <div class="grid"><div><label>Jam Day Shift</label><input type="number" id="dayHours" value="8" min="0" step="0.5" data-save="hsse"></div><div><label>Jam Overtime</label><input type="number" id="otHours" value="0" min="0" step="0.5" data-save="hsse"></div></div>
+      <label>Tanggal Mulai Cumulative</label>
+      <input type="date" id="startDate" value="2026-05-18" data-save="hsse">
+      <label>Cumulative Tambahan Manual / Adjustment MH</label>
+      <input type="number" id="adjustMH" value="0" step="1" data-save="hsse">
+      <p class="small">Today MH = Day Shift × Jam + Overtime × Jam OT. Cumulative dari tanggal mulai sampai tanggal report.</p>
+    </div>
+    <div class="card">
+      <h2>Vehicle Movement</h2>
+      <div class="grid"><div><label>KM Driven / Day</label><input type="number" id="kmDay" placeholder="KM" min="0" step="0.1" data-save="hsse"></div><div><label>Driven / Cumulative</label><input id="kmCumulative" placeholder=".... KMs" data-save="hsse"></div></div>
+    </div>
+    <div class="card">
+      <h2>HSSE Activities</h2>
+      <textarea id="activities" data-save="hsse">Toolbox Meeting
+HSE Patrol & Monitoring
+Conducted Pile Driving Preparatory Works</textarea>
+      <h2 style="margin-top:14px">Permit Monitoring</h2>
+      <div class="checkrow"><input type="checkbox" id="cold" checked data-save="hsse"><span>Cold Work Permit</span></div>
+      <div class="checkrow"><input type="checkbox" id="hot" checked data-save="hsse"><span>Hot Work Permit</span></div>
+      <div class="checkrow"><input type="checkbox" id="workingHeight" data-save="hsse"><span>Working at Height Permit</span></div>
+      <div class="checkrow"><input type="checkbox" id="excavation" data-save="hsse"><span>Excavation Permit</span></div>
+      <div class="checkrow"><input type="checkbox" id="heavyPermit" checked data-save="hsse"><span>Permit Alat Berat / Heavy Equipment Permit</span></div>
+      <div class="checkrow"><input type="checkbox" id="liftingPermit" checked data-save="hsse"><span>Lifting Permit</span></div>
+      <label>TBT Topic</label>
+      <textarea id="tbt" data-save="hsse">sosialisasi komitmen perusahaan</textarea>
+      <label>Inspection</label>
+      <textarea id="inspection" data-save="hsse"></textarea>
+    </div>
+    <div class="card">
+      <h2>Incident Status</h2>
+      <div class="checkrow"><input type="checkbox" id="incident" checked data-save="hsse"><span>Nihil Incident</span></div>
+      <div class="checkrow"><input type="checkbox" id="nearmiss" checked data-save="hsse"><span>Nihil Nearmiss</span></div>
+      <div class="checkrow"><input type="checkbox" id="property" checked data-save="hsse"><span>Nihil Property Damage</span></div>
+      <div class="checkrow"><input type="checkbox" id="oilspill" checked data-save="hsse"><span>Nihil Oil Spill</span></div>
+    </div>
+    <div class="card"><h2>Preview WhatsApp</h2><div class="preview" id="previewHsse"></div></div>
+    <div class="toolbar"><div class="btns">
+      <button class="btn" onclick="generateHsse()">Tampilkan Report</button>
+      <button class="btn green" onclick="copyText('hsse')">Copy untuk WhatsApp</button>
+      <button class="btn dark" onclick="shareText('hsse')">Kirim ke WhatsApp</button>
+      <button class="btn red" onclick="resetHsse()">Reset HSSE</button>
+    </div><div class="status" id="statusHsse">Berhasil.</div></div>
+  </section>
+  <section class="section" id="sectionPermit">
+    <div class="card">
+      <h2>E-Permit <span class="badge">Siap WhatsApp</span></h2>
+      <label>Sub-Kontraktor</label>
+      <input id="subkontraktor" placeholder="Nama perusahaan / subkon" value="" data-save="permit">
+      <label>Permit Holder</label>
+      <input id="permitHolder" value="" placeholder="Nama pemegang permit" data-save="permit">
+      <label>No NPK / Badge</label>
+      <input id="npkBadge" value="" placeholder="Nomor NPK / badge" data-save="permit">
+      <label>Area Kerja</label>
+      <input id="areaKerja" value="" placeholder="Area kerja" data-save="permit">
+      <div class="grid"><div><label>Tanggal</label><input type="date" id="permitDate" data-save="permit"></div><div><label>Jam Kerja</label><input id="permitJam" value="07.00-17.00" data-save="permit"></div></div>
+      <label>Jenis Permit</label>
+      <input id="jenisPermit" value="Permit Alat Berat" data-save="permit">
+      <label>Kegiatan Yang Akan Dilaksanakan</label>
+      <input id="kegiatanPermit" value="Pile Driving" data-save="permit">
+      <label>Peralatan Yang Akan Digunakan</label>
+      <textarea id="peralatanPermit" data-save="permit">Excavator
+Crawler Crane</textarea>
+      <label>Jumlah POB</label>
+      <input id="jumlahPobPermit" value="10 Orang" data-save="permit">
+    </div>
+    <div class="card">
+      <h2>Kontrol Tambahan Permit</h2>
+      <div class="checkrow"><input type="checkbox" id="ctrlTbt" checked data-save="permit"><span>TBT / Toolbox Meeting sudah dilakukan</span></div>
+      <div class="checkrow"><input type="checkbox" id="ctrlApd" checked data-save="permit"><span>APD lengkap</span></div>
+      <div class="checkrow"><input type="checkbox" id="ctrlBarricade" checked data-save="permit"><span>Barricade & warning sign tersedia</span></div>
+      <div class="checkrow"><input type="checkbox" id="ctrlAreaSteril" checked data-save="permit"><span>Area line of fire steril</span></div>
+      <div class="checkrow"><input type="checkbox" id="ctrlOperator" checked data-save="permit"><span>Operator / signalman siap</span></div>
+      <label>Catatan Tambahan</label>
+      <textarea id="permitNote" placeholder="Catatan lapangan" data-save="permit"></textarea>
+    </div>
+    <div class="card"><h2>Preview WhatsApp E-Permit</h2><div class="preview" id="previewPermit"></div></div>
+    <div class="toolbar"><div class="btns">
+      <button class="btn" onclick="generatePermit()">Tampilkan E-Permit</button>
+      <button class="btn green" onclick="copyText('permit')">Copy untuk WhatsApp</button>
+      <button class="btn dark" onclick="shareText('permit')">Kirim ke WhatsApp</button>
+      <button class="btn red" onclick="resetPermit()">Reset E-Permit</button>
+    </div><div class="status" id="statusPermit">Berhasil.</div></div>
+  </section>
+  <div class="footer">#OneGoal_OneSpirit_ZeroIncident#</div>
+</div>
+<script>
+const STORE_KEY="hsse_epermit_whatsapp_v2";
+function $(id){return document.getElementById(id)}
+function pad(n){return String(n).padStart(2,"0")}
+function todayInput(){const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
+function dateID(v){if(!v)return"";return new Date(v+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"})}
+function dateSlash(v){if(!v)return"";const d=new Date(v+"T00:00:00");return pad(d.getDate())+"/"+pad(d.getMonth()+1)+"/"+d.getFullYear()}
+function workDays(a,b){if(!a||!b)return 0;const s=new Date(a+"T00:00:00"),e=new Date(b+"T00:00:00");if(isNaN(s)||isNaN(e)||s>e)return 0;let n=0,c=new Date(s);while(c<=e){if(c.getDay()!==0)n++;c.setDate(c.getDate()+1)}return n}
+function linesFromText(t,p="- "){return String(t||"").split("\n").map(x=>x.trim()).filter(Boolean).map(x=>p+x).join("\n")||p}
+function bulletLines(t){return String(t||"").split("\n").map(x=>x.trim()).filter(Boolean).map(x=>"* "+x).join("\n")||"* -"}
+function numberedTbt(t){return String(t||"").split("\n").map(x=>x.trim()).filter(Boolean).map((x,i)=>(i+1)+". "+x).join("\n")||"1. -"}
+function saveAll(){const d={};document.querySelectorAll("[data-save]").forEach(el=>{d[el.id]=el.type==="checkbox"?el.checked:el.value});localStorage.setItem(STORE_KEY,JSON.stringify(d))}
+function loadAll(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return;const d=JSON.parse(raw);Object.keys(d).forEach(id=>{const el=$(id);if(!el)return;if(el.type==="checkbox")el.checked=!!d[id];else el.value=d[id]})}catch(e){}}
+function bindAutoSave(){document.querySelectorAll("[data-save]").forEach(el=>{el.addEventListener("input",()=>{saveAll();autoGenerate()});el.addEventListener("change",()=>{saveAll();autoGenerate()})})}
+function showTab(w){$("sectionHsse").classList.toggle("active",w==="hsse");$("sectionPermit").classList.toggle("active",w==="permit");$("tabHsse").classList.toggle("active",w==="hsse");$("tabPermit").classList.toggle("active",w==="permit");localStorage.setItem(STORE_KEY+"_tab",w);autoGenerate()}
+function permitList(){const a=[];if($("cold").checked)a.push("✅ Cold Work Permit");if($("hot").checked)a.push("✅ Hot Work Permit");if($("workingHeight").checked)a.push("✅ Working at Height Permit");if($("excavation").checked)a.push("✅ Excavation Permit");if($("heavyPermit").checked)a.push("✅ Permit Alat Berat / Heavy Equipment Permit");if($("liftingPermit").checked)a.push("✅ Lifting Permit");return a.join("\n")||"-"}
+function incidentList(){const a=[];if($("incident").checked)a.push("✅ Nihil Incident");if($("nearmiss").checked)a.push("✅ Nihil Nearmiss");if($("property").checked)a.push("✅ Nihil Property Damage");if($("oilspill").checked)a.push("✅ Nihil Oil Spill");return a.join("\n")||"-"}
+function generateHsse(){const rd=$("reportDate").value||todayInput();const ds=+($("dayShift").value||0),ot=+($("overtime").value||0),dh=+($("dayHours").value||0),oh=+($("otHours").value||0);const todayMH=ds*dh+ot*oh;const totalDay=workDays($("startDate").value,rd);const cumulative=totalDay*todayMH+(+$("adjustMH").value||0);const kmD=$("kmDay").value?$("kmDay").value+" KM":" KM";const kmC=$("kmCumulative").value||".... KMs";const text=`*HSSE DAILY REPORT*\n📅 ${dateID(rd)}\n📍 ${$("project").value}\n\n👷 *POB*\n* Day Shift : ${ds} Persons\n* Overtime : ${ot} Persons\n\n🕒 *Safe Manhours*\n• Today : ${todayMH.toLocaleString("id-ID")} MH\n• Cumulative : ${cumulative.toLocaleString("id-ID")} MH\n• Total Day : ${totalDay} Days\n\n🚗 *Vehicle Movement*\n- KM Driven/Day : ${kmD}\n- Driven/Cumulative : ${kmC}\n---\n*HSSE Activities :*\n${linesFromText($("activities").value)}\n---\n*Permit Monitoring:*\n${permitList()}\n\n---\n*TBT Topic*\n${numberedTbt($("tbt").value)}\n---\n*Inspection :*\n${linesFromText($("inspection").value)}\n---\n*Incident Status :*\n${incidentList()}\n\n*#OneGoal_OneSpirit_ZeroIncident#*`;$("previewHsse").textContent=text;return text}
+function permitControls(){const a=[];if($("ctrlTbt").checked)a.push("✅ TBT / Toolbox Meeting sudah dilakukan");if($("ctrlApd").checked)a.push("✅ APD lengkap");if($("ctrlBarricade").checked)a.push("✅ Barricade & warning sign tersedia");if($("ctrlAreaSteril").checked)a.push("✅ Area line of fire steril");if($("ctrlOperator").checked)a.push("✅ Operator / signalman siap");const n=$("permitNote").value.trim();if(n)a.push("📝 Catatan: "+n);return a.join("\n")}
+function generatePermit(){const c=permitControls();const k=c?`\n\n*KONTROL TAMBAHAN:*\n${c}`:"";const text=`>>> E-Permit<<<\n\n1. SUB-KONTRAKTOR : \n* ${$("subkontraktor").value||"-"}\n2. PERMIT HOLDER : \n* ${$("permitHolder").value||"-"}\n3. NO NPK/ BADGE : \n        • ${$("npkBadge").value||"-"}\n4. AREA KERJA :\n* ${$("areaKerja").value||"-"}\n5.TANGGAL / JAM :\n* ${dateSlash($("permitDate").value)||"-"}/ ${$("permitJam").value||"-"} \n6.  JENIS PERMIT :\n* ${$("jenisPermit").value||"-"}\n7. KEGIATAN YANG AKAN DILAKSANAKAN :\n* ${$("kegiatanPermit").value||"-"}\n8. PERALATAN YANG AKAN DIGUNAKAN :  \n${bulletLines($("peralatanPermit").value)}\n9. JUMLAH POB : ${$("jumlahPobPermit").value||"-"}${k}`;$("previewPermit").textContent=text;return text}
+function autoGenerate(){if($("sectionHsse").classList.contains("active"))generateHsse();if($("sectionPermit").classList.contains("active"))generatePermit()}
+async function copyText(type){const text=type==="permit"?generatePermit():generateHsse();try{await navigator.clipboard.writeText(text);showStatus(type,"Berhasil dicopy. Buka WhatsApp lalu paste/kirim.")}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);showStatus(type,"Teks sudah dipilih. Salin lalu kirim ke WhatsApp.")}}
+function shareText(type){const text=type==="permit"?generatePermit():generateHsse();window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank")}
+function showStatus(type,msg){const el=type==="permit"?$("statusPermit"):$("statusHsse");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2600)}
+function resetHsse(){if(!confirm("Reset form HSSE?"))return;$("reportDate").value=todayInput();$("project").value="Project Site";$("dayShift").value=5;$("overtime").value=0;$("dayHours").value=8;$("otHours").value=0;$("startDate").value="2026-05-18";$("adjustMH").value=0;$("kmDay").value="";$("kmCumulative").value="";$("activities").value="Toolbox Meeting\nHSE Patrol & Monitoring\nConducted Pile Driving Preparatory Works";$("cold").checked=true;$("hot").checked=true;$("workingHeight").checked=false;$("excavation").checked=false;$("heavyPermit").checked=true;$("liftingPermit").checked=true;$("tbt").value="sosialisasi komitmen perusahaan";$("inspection").value="";$("incident").checked=true;$("nearmiss").checked=true;$("property").checked=true;$("oilspill").checked=true;saveAll();generateHsse();showStatus("hsse","Form HSSE sudah direset.")}
+function resetPermit(){if(!confirm("Reset form E-Permit?"))return;$("subkontraktor").value="";$("permitHolder").value="";$("npkBadge").value="";$("areaKerja").value="";$("permitDate").value=todayInput();$("permitJam").value="07.00-17.00";$("jenisPermit").value="Permit Alat Berat";$("kegiatanPermit").value="Pile Driving";$("peralatanPermit").value="Excavator\nCrawler Crane";$("jumlahPobPermit").value="10 Orang";$("ctrlTbt").checked=true;$("ctrlApd").checked=true;$("ctrlBarricade").checked=true;$("ctrlAreaSteril").checked=true;$("ctrlOperator").checked=true;$("permitNote").value="";saveAll();generatePermit();showStatus("permit","Form E-Permit sudah direset.")}
+(function(){if(!$("reportDate").value)$("reportDate").value=todayInput();if(!$("permitDate").value)$("permitDate").value=todayInput();loadAll();bindAutoSave();generateHsse();generatePermit();showTab(localStorage.getItem(STORE_KEY+"_tab")||"permit")})();
+</script>
+</body>
+</html>
