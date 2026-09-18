@@ -13,7 +13,7 @@ body{min-height:100vh;background:#071427}
 .lb{display:none;position:fixed;inset:0;background:rgba(2,6,23,.94);z-index:80;align-items:center;justify-content:center;padding:16px}
 .lb.on{display:flex}
 .lb img{max-height:90vh;max-width:96vw;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.card img{aspect-ratio:16/9;object-fit:cover;width:100%;background:#0b1220}
+.card img{aspect-ratio:16/9;object-fit:cover;width:100%;background:#0b1220;display:block}
 .card.portrait img{aspect-ratio:3/4;object-fit:contain;background:#0b1220}
 .ph{min-height:160px;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:12px}
 </style>
@@ -32,7 +32,7 @@ body{min-height:100vh;background:#071427}
   </div>
   <section id="lifting" class="mb-10">
     <p class="text-cyan-300 text-xs uppercase tracking-wider font-semibold">Baru · Feb 2023</p>
-    <h2 class="text-xl font-bold mt-1">Lifting dermaga & pressure vessel</h2>
+    <h2 class="text-xl font-bold mt-1">Lifting dermaga &amp; pressure vessel</h2>
     <p class="text-slate-400 text-sm mt-1 mb-4">11 foto: SANY crawler SCC1500D, kapal Rena Samudera Abadi, green tank / mud tank, dan vessel malam.</p>
     <div class="grid md:grid-cols-2 gap-4" id="galLift"></div>
   </section>
@@ -44,11 +44,29 @@ body{min-height:100vh;background:#071427}
   <p class="text-center text-[11px] text-slate-500 mt-5">22 foto. Tap untuk memperbesar.</p>
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
-<script src="gallery-lift-1.js"></script>
-<script src="gallery-lift-2.js"></script>
-<script src="gallery-lift-3.js"></script>
-<script src="gallery-lift-4.js"></script>
+<script src="gallery-lift-1.js?v=3"></script>
+<script src="gallery-lift-2.js?v=3"></script>
+<script src="gallery-lift-3.js?v=3"></script>
+<script src="gallery-lift-4.js?v=3"></script>
 <script>
+function b64ToUrl(b64){
+  try{
+    var bin=atob(b64);
+    var arr=new Uint8Array(bin.length);
+    for(var i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
+    return URL.createObjectURL(new Blob([arr],{type:'image/jpeg'}));
+  }catch(e){
+    return 'data:image/jpeg;base64,'+b64;
+  }
+}
+function bindLightbox(root){
+  root.querySelectorAll('.poster').forEach(function(img){
+    img.addEventListener('click', function(){
+      document.getElementById('lbimg').src = img.getAttribute('data-full') || img.src;
+      document.getElementById('lb').classList.add('on');
+    });
+  });
+}
 var lifts=[
 ["01","01 · Sunset barge","Vessel di barge — sunset","Pressure vessel di trailer/barge, tugboat, senja di dermaga.","amber","Pressure vessel sunset"],
 ["02","02 · Close vessel","Pressure vessel — lowbed","Detail vessel stainless + rantai lashing di multi-axle trailer.","sky","Pressure vessel close-up"],
@@ -62,24 +80,32 @@ var lifts=[
 ["10","10 · SANY SCC1500D","Crawler crane C1746","SANY SCC1500D Berdikari, counterweight, lifting green tank.","yellow","SANY SCC1500D"],
 ["11","11 · Dual lift","Tank + box struktur","Crawler SANY mengangkat modul baja di antara green tank.","yellow","Dual lift struktur"]
 ];
-function bindLightbox(root){
-  root.querySelectorAll('.poster').forEach(function(img){
-    img.addEventListener('click', function(){
-      document.getElementById('lbimg').src = img.getAttribute('data-full') || img.src;
-      document.getElementById('lb').classList.add('on');
-    });
-  });
-}
 var gl=document.getElementById('galLift');
 var pack=window.LIFT_PHOTOS||{};
 lifts.forEach(function(it){
   var b=pack[it[0]];
-  var uri=b?('data:image/jpeg;base64,'+b):'';
-  gl.insertAdjacentHTML('beforeend',
-    '<figure class="card rounded-2xl overflow-hidden border border-slate-700 bg-slate-950">'+
-    (uri?'<img class="poster" alt="'+it[5]+'" src="'+uri+'" data-full="'+uri+'">':'<div class="ph">Foto belum terunggah</div>')+
-    '<figcaption class="p-4"><p class="text-[10px] uppercase tracking-wider text-'+it[4]+'-300 font-semibold">'+it[1]+'</p>'+
-    '<p class="font-bold mt-0.5">'+it[2]+'</p><p class="text-[12px] text-slate-400 mt-1">'+it[3]+'</p></figcaption></figure>');
+  var fig=document.createElement('figure');
+  fig.className='card rounded-2xl overflow-hidden border border-slate-700 bg-slate-950';
+  if(b){
+    var url=b64ToUrl(b);
+    var img=document.createElement('img');
+    img.className='poster';
+    img.alt=it[5];
+    img.src=url;
+    img.setAttribute('data-full',url);
+    fig.appendChild(img);
+  }else{
+    var ph=document.createElement('div');
+    ph.className='ph';
+    ph.textContent='Foto belum terunggah';
+    fig.appendChild(ph);
+  }
+  var cap=document.createElement('figcaption');
+  cap.className='p-4';
+  cap.innerHTML='<p class="text-[10px] uppercase tracking-wider text-'+it[4]+'-300 font-semibold">'+it[1]+'</p>'+
+    '<p class="font-bold mt-0.5">'+it[2]+'</p><p class="text-[12px] text-slate-400 mt-1">'+it[3]+'</p>';
+  fig.appendChild(cap);
+  gl.appendChild(fig);
 });
 bindLightbox(gl);
 var items=[
