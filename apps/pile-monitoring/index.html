@@ -2,19 +2,32 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pile Monitoring Demo — Site Manager / Digital Engineering</title>
-<meta name="theme-color" content="#0f172a">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pile Monitoring — memuat…</title>
+<style>html,body{margin:0;background:#0f172a;color:#e2e8f0;font:15px system-ui,sans-serif}
+#s{min-height:100vh;display:grid;place-items:center;padding:1.25rem;text-align:center}</style>
 </head>
-<body class="bg-slate-100 min-h-screen">
-<div class="p-4 text-center">
-<p class="text-slate-600">Memuat demo Pile Monitoring…</p>
-<p class="text-xs text-slate-400 mt-2">Jika halaman ini tetap muncul, buka kembali setelah merge PR (index penuh ~96KB).</p>
-</div>
-<script src="app.min.js"></script>
-<p class="text-center text-rose-600 text-sm p-4">Shell index sementara — upload penuh masih dalam proses via MCP.</p>
+<body>
+<div id="s">Memuat demo Pile Monitoring…</div>
+<script>
+(async () => {
+  const n = 5;
+  const s = document.getElementById('s');
+  try {
+    const parts = [];
+    for (let i = 0; i < n; i++) {
+      s.textContent = 'Memuat… ' + (i + 1) + '/' + n;
+      const r = await fetch('parts/' + i + '.txt');
+      if (!r.ok) throw new Error('bagian ' + i + ' gagal (' + r.status + ')');
+      parts.push(await r.text());
+    }
+    document.open();
+    document.write(parts.join(''));
+    document.close();
+  } catch (e) {
+    s.innerHTML = 'Gagal memuat demo.<br><small>' + e.message + '</small><br><a style="color:#67e8f9" href="../../links.html">← Portfolio</a>';
+  }
+})();
+</script>
 </body>
 </html>
