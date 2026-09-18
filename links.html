@@ -1,1 +1,269 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link-I Fajar Tri Suhartono</title>
+<link rel="canonical" href="https://fajartris17.github.io/links.html">
+<meta name="theme-color" content="#071427">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body{min-height:100vh;background:#071427 url("bg-link.jpg") center/cover fixed no-repeat;}
+body:before{content:"";position:fixed;inset:0;background:rgba(2,6,23,.78);pointer-events:none}
+main{position:relative;z-index:1}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;border-radius:16px;background:rgba(2,6,23,.82);border:1px solid rgba(148,163,184,.25);text-align:center;padding:10px 6px}
+.tile i{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px}
+.tile span{font-size:11px;line-height:1.2;color:#e2e8f0}
+#slides{display:flex;transition:transform .5s ease}
+#slides > *{min-width:100%;flex-shrink:0}
+.chip{display:inline-block;font-size:11px;padding:6px 10px;border-radius:999px;background:rgba(15,23,42,.85);border:1px solid rgba(103,232,249,.25);color:#e2e8f0;margin:3px}
+</style>
+</head>
+<body class="text-slate-100">
+<main class="max-w-md mx-auto px-4 pt-10 pb-6 min-h-screen flex flex-col">
+  <header class="text-center">
+    <img src="foto.jpg" alt="Fajar" class="w-20 h-20 rounded-full object-cover object-top mx-auto border-2 border-cyan-300/80" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=160&background=0f172a&color=67e8f9'">
+    <h1 class="text-xl font-bold mt-3">Fajar Tri Suhartono</h1>
+    <p class="text-slate-300 text-xs mt-1">Site Manager · Aplikasi UMKM · AI konstruksi</p>
+  </header>
+  <section class="text-center mt-5">
+    <img id="qrLink" src="qr-link-i.svg" width="160" height="160" alt="QR Link-I" class="mx-auto bg-white p-2 rounded-xl" decoding="async" referrerpolicy="no-referrer" onerror="qrFallback(this)">
+    <p class="text-[11px] text-slate-400 mt-2">Scan ke Link-I</p>
+    <p id="qrHint" class="text-[11px] text-slate-500 mt-1 hidden">QR gagal dimuat. Salin: fajartris17.github.io/links.html</p>
+  </section>
+  <section class="mt-5">
+    <p class="text-center text-[11px] uppercase tracking-wider text-cyan-300 font-semibold mb-2">Slide berjalan · K3, workshop & portofolio</p>
+    <div id="slider" class="relative overflow-hidden rounded-2xl border border-slate-500/30 bg-slate-950/80">
+      <div id="slides">
+        <a href="apps/absensi/" class="block bg-gradient-to-br from-indigo-950 to-violet-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-indigo-300 uppercase">Baru · absensi lapangan</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">Absensi Offline</p>
+          <p class="text-[11px] mt-1 text-indigo-100/80">Jam masuk-pulang, izin/sakit, rekap harian-mingguan-bulanan. Tanpa internet.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-indigo-300">Buka aplikasi →</p>
+        </a>
+        <figure><img src="slide-1.jpg" alt="RAB dashboard" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-2.jpg" alt="Method statement" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-3.jpg" alt="RAB Kilangan" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-4.jpg" alt="Planned vs actual" class="w-full h-44 object-cover object-top"></figure>
+        <figure><img src="slide-5.jpg" alt="Budget dashboard" class="w-full h-44 object-cover object-top"></figure>
+        <a href="dashboard-workshop.html" class="block">
+          <figure><img src="slide-6.jpg" alt="Work Order Service Workshop" class="w-full h-44 object-cover object-top"></figure>
+        </a>
+        <a href="dashboard-workshop.html" class="block">
+          <figure><img src="slide-7.jpg" alt="Monitoring Service Due per HM" class="w-full h-44 object-cover object-top"></figure>
+        </a>
+        <a href="dashboard-workshop.html" class="block">
+          <figure><img src="slide-8.jpg" alt="Daftar Part Wajib Service per HM" class="w-full h-44 object-cover object-top"></figure>
+        </a>
+        <a href="dashboard-workshop.html" class="block">
+          <figure><img src="slide-9.jpg" alt="Klasifikasi Alat Tambang" class="w-full h-44 object-cover object-top"></figure>
+        </a>
+        <a href="apps/kaskelas/" class="block bg-gradient-to-br from-sky-950 to-indigo-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-sky-300 uppercase">Demo aplikasi baru</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">KasKelas — Kas & Tabungan Kelas</p>
+          <p class="text-[11px] mt-1 text-sky-100/80">Iuran paguyuban, kegiatan, tabungan siswa, laporan transparan orang tua.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-sky-300">Buka demo →</p>
+        </a>
+        <a href="apps/ojekmate/" class="block bg-gradient-to-br from-emerald-950 to-teal-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-emerald-300 uppercase">Demo ojol</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">OjekMate — Pendamping Mitra Ojol</p>
+          <p class="text-[11px] mt-1 text-emerald-100/80">Catat order motor & mobil, hitung bersih setelah komisi + BBM.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-emerald-300">Buka demo →</p>
+        </a>
+        <a href="load-chart.html" class="block bg-gradient-to-br from-amber-50 to-sky-50 text-slate-900 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] uppercase tracking-wider text-amber-700 font-semibold">K3 Crane · Load Chart</p>
+          <p class="text-sm font-extrabold leading-tight mt-1 text-blue-800">LOAD CHART DIJELASKAN DENGAN BAHASA SEDERHANA</p>
+          <p class="text-[11px] mt-1 text-slate-600">Grafik Beban = panduan SWL / Beban Kerja Aman.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-blue-700">Buka poster lengkap →</p>
+        </a>
+        <a href="crane/" class="block bg-gradient-to-br from-blue-950 to-indigo-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-sky-300 uppercase">Demo · CraneCalc</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">Kalkulator Kapasitas Crane</p>
+          <p class="text-[11px] mt-1 text-sky-100/80">Hitung Kap_min + banding merek XCMG, Kato, Tadano, Kobelco, Sany.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-sky-300">Buka kalkulator →</p>
+        </a>
+        <a href="album-kerja.html#lifting" class="block bg-gradient-to-br from-amber-950 to-slate-900 text-slate-100 h-44 p-3 relative overflow-hidden">
+          <p class="text-[10px] font-semibold tracking-wider text-amber-300 uppercase">Baru · Gallery lifting</p>
+          <p class="text-sm font-extrabold leading-tight mt-1">SANY SCC1500D · Vessel · Barge</p>
+          <p class="text-[11px] mt-1 text-amber-100/80">11 foto Feb 2023: crawler crane, Rena Samudera Abadi, green tank, pressure vessel malam.</p>
+          <p class="absolute bottom-2 right-3 text-[10px] font-semibold text-amber-300">Buka gallery →</p>
+        </a>
+      </div>
+      <button type="button" id="prevSlide" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white">‹</button>
+      <button type="button" id="nextSlide" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white">›</button>
+      <div id="dots" class="absolute bottom-2 inset-x-0 flex justify-center gap-1.5"></div>
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-2xl border border-slate-500/30 bg-slate-950/75 p-4">
+    <p class="text-center text-[11px] uppercase tracking-wider text-emerald-300 font-semibold">Demo aplikasi</p>
+    <div class="grid grid-cols-1 gap-2 mt-3">
+      <a href="apps/absensi/" class="rounded-xl border border-indigo-500/30 bg-indigo-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-indigo-300 font-semibold">Baru · absensi lapangan</p>
+        <p class="font-bold">Absensi Offline</p>
+        <p class="text-[11px] text-slate-300 mt-1">Hadir, izin, sakit, alpa. Minggu otomatis libur. Data tersimpan di HP.</p>
+      </a>
+      <a href="crane/" class="rounded-xl border border-blue-500/30 bg-blue-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-blue-300 font-semibold">Baru · lifting plan</p>
+        <p class="font-bold">CraneCalc</p>
+        <p class="text-[11px] text-slate-300 mt-1">Hitung kebutuhan crane (ton) vs working radius. Banding envelope 50–220 t.</p>
+      </a>
+      <a href="dashboard-workshop.html" class="rounded-xl border border-cyan-500/30 bg-cyan-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">Baru · workshop alat berat</p>
+        <p class="font-bold">Service Workshop Dashboard</p>
+        <p class="text-[11px] text-slate-300 mt-1">Work order harian, due service per HM, part wajib PM 500–2000, klasifikasi alat tambang.</p>
+      </a>
+      <a href="apps/kaskelas/" class="rounded-xl border border-sky-500/30 bg-sky-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-sky-300 font-semibold">Baru · sekolah / paguyuban</p>
+        <p class="font-bold">KasKelas</p>
+        <p class="text-[11px] text-slate-300 mt-1">Kas kelas, iuran kegiatan, tabungan siswa, laporan transparan orang tua.</p>
+      </a>
+      <a href="apps/ojekmate/" class="rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">PWA motor & mobil</p>
+        <p class="font-bold">OjekMate</p>
+        <p class="text-[11px] text-slate-300 mt-1">Pendamping kerja ojek online & taksi online.</p>
+      </a>
+      <a href="apps/warung.html" class="rounded-xl border border-orange-500/25 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-orange-300 font-semibold">UMKM</p>
+        <p class="font-bold">Warung Berkah</p>
+        <p class="text-[11px] text-slate-300 mt-1">Katalog, keranjang, checkout ke WhatsApp.</p>
+      </a>
+      <a href="apps/kasir.html" class="rounded-xl border border-emerald-500/25 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-emerald-200 font-semibold">UMKM</p>
+        <p class="font-bold">Kasir Warung</p>
+        <p class="text-[11px] text-slate-300 mt-1">Hitung total, tunai/QRIS, kembalian, omzet.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-4 rounded-2xl border border-slate-500/30 bg-slate-950/75 p-4">
+    <p class="text-center text-[11px] uppercase tracking-wider text-cyan-300 font-semibold">Keahlian</p>
+    <p class="text-center text-[11px] text-slate-400 mt-1 mb-2">Lapangan konstruksi + pembuatan aplikasi</p>
+    <div class="text-center">
+      <span class="chip">Site Manager</span>
+      <span class="chip">K3 & Load Chart</span>
+      <span class="chip">CraneCalc</span>
+      <span class="chip">RAB / BOQ</span>
+      <span class="chip">Workshop alat berat</span>
+      <span class="chip">HTML CSS JS</span>
+      <span class="chip">Absensi Offline</span>
+      <span class="chip">PWA / Aplikasi HP</span>
+      <span class="chip">Kasir & UMKM</span>
+      <span class="chip">Kas kelas / paguyuban</span>
+      <span class="chip">Integrasi WhatsApp</span>
+      <span class="chip">AI konstruksi</span>
+    </div>
+  </section>
+
+  <section class="mt-4 rounded-2xl border border-red-500/25 bg-slate-950/75 p-4">
+    <p class="text-center text-[11px] uppercase tracking-wider text-red-300 font-semibold">Dokumen pendukung</p>
+    <p class="text-center text-[11px] text-slate-400 mt-1 mb-3">Window CV · data pendukung</p>
+    <div class="grid grid-cols-1 gap-2">
+      <a href="cv-window.html" class="rounded-xl border border-red-500/30 bg-red-950/30 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-red-300 font-semibold">Window CV</p>
+        <p class="font-bold">CV English — 02 EN</p>
+        <p class="text-[11px] text-slate-300 mt-1">Buka jendela CV English (PDF). Site Manager / Construction Supervisor, target MEP BIM.</p>
+      </a>
+      <a href="portfolio-mep-bim.html" class="rounded-xl border border-amber-500/30 bg-amber-950/20 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-amber-300 font-semibold">Data pendukung</p>
+        <p class="font-bold">Portfolio MEP BIM — 03</p>
+        <p class="text-[11px] text-slate-300 mt-1">Sampel deliverable 10 halaman, sudah disanitasi (tanpa data klien).</p>
+      </a>
+      <a href="album-kerja.html" class="rounded-xl border border-cyan-500/30 bg-cyan-950/20 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">Gallery</p>
+        <p class="font-bold">Album pekerjaan lapangan</p>
+        <p class="text-[11px] text-slate-300 mt-1">Lifting SANY SCC1500D, vessel malam, barge loading, pile driving. 22 foto.</p>
+      </a>
+      <a href="documents.html" class="rounded-xl border border-slate-500/30 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-slate-300 font-semibold">Semua dokumen</p>
+        <p class="font-bold">Halaman dokumen pendukung</p>
+        <p class="text-[11px] text-slate-300 mt-1">CV EN, portfolio, CV Indonesia, versi print.</p>
+      </a>
+      <a href="CV_FAJAR_TRI_SUHARTONO_LENGKAP_FINAL_2026.pdf" class="rounded-xl border border-slate-500/30 bg-slate-900/60 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-slate-300 font-semibold">PDF Indonesia</p>
+        <p class="font-bold">Unduh CV lengkap</p>
+      </a>
+      <a href="cv-en.html" class="rounded-xl border border-sky-500/30 bg-sky-950/30 p-3">
+        <p class="text-[10px] uppercase tracking-wider text-sky-300 font-semibold">PDF English</p>
+        <p class="font-bold">CV English (halaman teks)</p>
+        <p class="text-[11px] text-slate-300 mt-1">Lihat versi HTML / print dari browser.</p>
+      </a>
+      <a href="cv-window.html" class="rounded-xl border border-emerald-500/30 bg-emerald-950/20 p-3 text-center font-semibold">
+        Buka Window CV · unduh PDF EN
+      </a>
+    </div>
+  </section>
+
+  <nav class="mt-6 pt-2 grid grid-cols-4 gap-2">
+    <a class="tile" href="index.html#utama"><i class="fas fa-user bg-sky-500/20 text-sky-300"></i><span>Profil</span></a>
+    <a class="tile" href="kontak.html"><i class="fas fa-share-nodes bg-emerald-500/20 text-emerald-300"></i><span>Kontak</span></a>
+    <a class="tile" href="aplikasi.html"><i class="fas fa-laptop-code bg-orange-500/20 text-orange-300"></i><span>Aplikasi</span></a>
+    <a class="tile" href="dashboard-workshop.html"><i class="fas fa-screwdriver-wrench bg-cyan-500/20 text-cyan-300"></i><span>Workshop</span></a>
+    <a class="tile" href="apps/absensi/"><i class="fas fa-clipboard-user bg-indigo-500/20 text-indigo-300"></i><span>Absensi</span></a>
+    <a class="tile" href="apps/kaskelas/"><i class="fas fa-piggy-bank bg-sky-500/20 text-sky-300"></i><span>KasKelas</span></a>
+    <a class="tile" href="apps/ojekmate/"><i class="fas fa-motorcycle bg-emerald-500/20 text-emerald-300"></i><span>OjekMate</span></a>
+    <a class="tile" href="apps/warung.html"><i class="fas fa-store bg-orange-500/20 text-orange-200"></i><span>Warung</span></a>
+    <a class="tile" href="apps/kasir.html"><i class="fas fa-cash-register bg-emerald-500/20 text-emerald-300"></i><span>Kasir</span></a>
+    <a class="tile" href="album.html"><i class="fas fa-images bg-cyan-500/20 text-cyan-300"></i><span>Album</span></a>
+    <a class="tile" href="album-kerja.html"><i class="fas fa-camera bg-amber-500/20 text-amber-300"></i><span>Gallery</span></a>
+    <a class="tile" href="index.html#experience"><i class="fas fa-helmet-safety bg-blue-500/20 text-blue-300"></i><span>Kerja</span></a>
+    <a class="tile" href="cv-window.html"><i class="fas fa-file-pdf bg-red-500/20 text-red-300"></i><span>CV</span></a>
+    <a class="tile" href="https://wa.me/6281356510403?text=Halo%20Fajar"><i class="fab fa-whatsapp bg-emerald-500/20 text-emerald-300"></i><span>WhatsApp</span></a>
+    <a class="tile" href="payment.html"><i class="fas fa-qrcode bg-amber-500/20 text-amber-300"></i><span>Payment</span></a>
+    <a class="tile" href="load-chart.html"><i class="fas fa-truck-monster bg-yellow-500/20 text-yellow-300"></i><span>Load Chart</span></a>
+    <a class="tile" href="crane/"><i class="fas fa-calculator bg-blue-500/20 text-blue-300"></i><span>CraneCalc</span></a>
+    <a class="tile" href="mailto:fajartris1994@gmail.com"><i class="fas fa-envelope bg-slate-500/20 text-slate-200"></i><span>Email</span></a>
+    <a class="tile" href="https://fastwork.id/user/p536ayph/ai-automation-86764781"><i class="fas fa-bolt bg-violet-500/20 text-violet-200"></i><span>Fastwork</span></a>
+  </nav>
+</main>
+<script>
+var sl=document.getElementById('slides');
+var n=sl?sl.children.length:0,i=0,startX=0;
+function go(k){
+  if(!n)return;
+  i=(k+n)%n;
+  sl.style.transform='translateX('+(-i*100)+'%)';
+  document.querySelectorAll('#dots button').forEach(function(b,x){
+    b.className='w-2 h-2 rounded-full '+(x===i?'bg-cyan-400':'bg-slate-500');
+  });
+}
+if(sl){
+  var d=document.getElementById('dots');
+  for(var x=0;x<n;x++){
+    var b=document.createElement('button');
+    b.type='button';
+    (function(z){b.onclick=function(){go(z);};})(x);
+    d.appendChild(b);
+  }
+  document.getElementById('nextSlide').onclick=function(){go(i+1)};
+  document.getElementById('prevSlide').onclick=function(){go(i-1)};
+  setInterval(function(){go(i+1)},4000);
+  var box=document.getElementById('slider');
+  box.addEventListener('touchstart',function(e){startX=e.changedTouches[0].clientX;},{passive:true});
+  box.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-startX;
+    if(dx>40)go(i-1);
+    if(dx<-40)go(i+1);
+  },{passive:true});
+  go(0);
+}
+function qrFallback(img){
+  var url = encodeURIComponent('https://fajartris17.github.io/links.html');
+  var tries = [
+    'https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=6&data=' + url,
+    'https://quickchart.io/qr?size=160&margin=1&text=' + url
+  ];
+  var i = Number(img.dataset.try || 0);
+  if(i < tries.length){
+    img.dataset.try = i + 1;
+    img.src = tries[i];
+    return;
+  }
+  img.style.display = 'none';
+  var hint = document.getElementById('qrHint');
+  if(hint){ hint.classList.remove('hidden'); hint.classList.add('block'); }
+}
+</script>
+</body>
+</html>
