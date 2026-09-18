@@ -9,15 +9,16 @@
 <style>
 @media print {
   .no-print{display:none!important}
-  body{background:#fff;color:#111}
+  body{background:#fff!important;color:#111}
+  article{box-shadow:none!important;border-radius:0!important}
 }
 </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen">
 <main class="max-w-3xl mx-auto px-4 py-8">
   <div class="no-print flex flex-wrap gap-2 mb-6">
-    <a href="index.html#documents" class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm">← Dokumen Pendukung</a>
-    <button type="button" id="dlBtn" class="px-4 py-2 rounded-xl bg-red-600 text-sm font-semibold"><i class="fas fa-file-pdf"></i> Download PDF English</button>
+    <a href="documents.html" class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm">← Dokumen Pendukung</a>
+    <button type="button" onclick="window.print()" class="px-4 py-2 rounded-xl bg-red-600 text-sm font-semibold"><i class="fas fa-file-pdf"></i> Print / Save PDF</button>
     <a href="links.html" class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm">Link-I</a>
   </div>
   <article class="bg-white text-slate-800 rounded-2xl p-6 md:p-8 shadow-xl">
@@ -78,23 +79,5 @@
     <p class="text-sm mt-2">Born: Grobogan, 7 March 1994 · Domicile: Balikpapan · Indonesian citizen · Class A driving license</p>
   </article>
 </main>
-<script src="cv-en-data.js"></script>
-<script>
-function downloadEnCv(){
-  var b64 = window.CV_EN_PDF_B64;
-  if(!b64){ alert('File PDF belum termuat'); return; }
-  var bin = atob(b64);
-  var bytes = new Uint8Array(bin.length);
-  for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
-  var blob = new Blob([bytes], {type:'application/pdf'});
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'CV_Fajar_Tri_Suhartono_EN.pdf';
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-document.getElementById('dlBtn').onclick = downloadEnCv;
-if(/[?&]dl=1/.test(location.search)) downloadEnCv();
-</script>
 </body>
 </html>
