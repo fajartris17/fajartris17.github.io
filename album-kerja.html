@@ -30,25 +30,24 @@ body{min-height:100vh;background:#071427}
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="album.html">Album jasa</a>
     <a class="px-4 py-2 rounded-xl bg-blue-800 font-semibold" href="#lifting">Lifting Feb 2023</a>
   </div>
-
   <section id="lifting" class="mb-10">
     <p class="text-cyan-300 text-xs uppercase tracking-wider font-semibold">Baru · Feb 2023</p>
     <h2 class="text-xl font-bold mt-1">Lifting dermaga & pressure vessel</h2>
     <p class="text-slate-400 text-sm mt-1 mb-4">11 foto: SANY crawler SCC1500D, kapal Rena Samudera Abadi, green tank / mud tank, dan vessel malam.</p>
     <div class="grid md:grid-cols-2 gap-4" id="galLift"></div>
   </section>
-
   <section>
     <p class="text-amber-300 text-xs uppercase tracking-wider font-semibold">Arsip lapangan</p>
     <h2 class="text-xl font-bold mt-1 mb-4">Mobilisasi · barge · pile driving</h2>
     <div class="grid md:grid-cols-2 gap-4" id="gal"></div>
   </section>
-
   <p class="text-center text-[11px] text-slate-500 mt-5">22 foto. Tap untuk memperbesar.</p>
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
-<script src="gallery-lift-a.js"></script>
-<script src="gallery-lift-b.js"></script>
+<script src="gallery-lift-1.js"></script>
+<script src="gallery-lift-2.js"></script>
+<script src="gallery-lift-3.js"></script>
+<script src="gallery-lift-4.js"></script>
 <script>
 var lifts=[
 ["01","01 · Sunset barge","Vessel di barge — sunset","Pressure vessel di trailer/barge, tugboat, senja di dermaga.","amber","Pressure vessel sunset"],
@@ -63,7 +62,6 @@ var lifts=[
 ["10","10 · SANY SCC1500D","Crawler crane C1746","SANY SCC1500D Berdikari, counterweight, lifting green tank.","yellow","SANY SCC1500D"],
 ["11","11 · Dual lift","Tank + box struktur","Crawler SANY mengangkat modul baja di antara green tank.","yellow","Dual lift struktur"]
 ];
-
 function bindLightbox(root){
   root.querySelectorAll('.poster').forEach(function(img){
     img.addEventListener('click', function(){
@@ -72,7 +70,6 @@ function bindLightbox(root){
     });
   });
 }
-
 var gl=document.getElementById('galLift');
 var pack=window.LIFT_PHOTOS||{};
 lifts.forEach(function(it){
@@ -85,7 +82,6 @@ lifts.forEach(function(it){
     '<p class="font-bold mt-0.5">'+it[2]+'</p><p class="text-[12px] text-slate-400 mt-1">'+it[3]+'</p></figcaption></figure>');
 });
 bindLightbox(gl);
-
 var items=[
 ["1U4zeJW3cELQeFCflandJGuIZWzgsJ6Va","01 · Mobilisasi","Lowbed — alat berat","Unit equipment di lowbed trailer. Mobilisasi yard / lapangan.","cyan","Lowbed mobilisasi alat berat"],
 ["1RbJRYZHO1mfZe3ohy2jH3CQCLbnijDWO","02 · Dermaga","Barge — mud tank & equipment","Deck barge: mud tank, genset, container, crane lifting.","amber","Barge loading mud tank"],
