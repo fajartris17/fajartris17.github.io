@@ -14,13 +14,14 @@
   <div class="flex flex-wrap justify-center gap-2 mb-4 text-sm">
     <a class="px-4 py-2 rounded-xl bg-slate-800 border border-slate-700" href="links.html">← Link-I</a>
     <a class="px-4 py-2 rounded-xl bg-red-700 font-semibold" href="cv-window.html">Window CV</a>
-    <a id="dl" class="px-4 py-2 rounded-xl bg-amber-600 font-semibold text-slate-950" href="Portfolio_MEP_BIM_Sanitized.pdf.b64" download="Portfolio_MEP_BIM_Sanitized.pdf">Unduh portfolio PDF</a>
+    <a id="dl" class="px-4 py-2 rounded-xl bg-amber-600 font-semibold text-slate-950" href="#">Unduh portfolio PDF</a>
   </div>
   <iframe id="pdf" class="w-full rounded-xl border border-slate-700 bg-white" style="height:80vh" title="Portfolio MEP BIM"></iframe>
 </main>
 <script>
-fetch('Portfolio_MEP_BIM_Sanitized.pdf.b64').then(function(r){return r.text();}).then(function(b64){
-  var bin=atob(b64.replace(/\s/g,''));
+Promise.all([1,2,3].map(function(i){return fetch('Portfolio_MEP_BIM_Sanitized.pdf.b64.p'+i).then(function(r){return r.text();});})).then(function(parts){
+  var b64=parts.join('').replace(/\s/g,'');
+  var bin=atob(b64);
   var bytes=new Uint8Array(bin.length);
   for(var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
   var url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
