@@ -1,14 +1,121 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Link-I · Fajar Tri Suhartono</title>
-  <meta http-equiv="refresh" content="0; url=/links.html">
-  <link rel="canonical" href="https://fajartris17.github.io/links.html">
-  <script>location.replace("/links.html" + location.search + location.hash);</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sampel RAB Excel · Fajar Tri Suhartono</title>
+<meta name="description" content="Sampel jasa penyusunan RAB Excel, rekap biaya, dan rekap material. Angka fiktif, bukan penawaran.">
+<meta name="author" content="Fajar Tri Suhartono">
+<meta name="theme-color" content="#071427">
+<link rel="canonical" href="https://fajartris17.github.io/l/">
+<meta property="og:title" content="Sampel RAB Excel · Fajar Tri Suhartono">
+<meta property="og:description" content="Slide sampel RAB, rekap biaya, dan rekap material. Dokumen Excel pendukung tersedia.">
+<meta property="og:image" content="https://fajartris17.github.io/l/RAB_sampel.png">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #071427; color: #e2e8f0; font-family: "Segoe UI", Calibri, sans-serif; }
+  body { min-height: 100vh; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 20px 16px 40px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .brand { font-size: 11px; letter-spacing: .16em; font-weight: 700; color: #67e8f9; }
+  .back { color: #cbd5e1; text-decoration: none; font-size: 12px; font-weight: 700; }
+  .panel { background: rgba(2, 6, 23, .78); border: 1px solid rgba(148, 163, 184, .2); border-radius: 18px; padding: 18px; }
+  h1 { margin: 8px 0 6px; font-size: 26px; line-height: 1.2; }
+  .sub { margin: 0; color: #94a3b8; font-size: 13px; line-height: 1.5; }
+  .stage { margin-top: 16px; position: relative; background: #f8fafc; border-radius: 14px; overflow: hidden; border: 1px solid rgba(148, 163, 184, .28); }
+  .viewport { aspect-ratio: 3 / 4; max-height: 78vh; overflow: hidden; background: #fff; }
+  .track { display: flex; height: 100%; transition: transform .45s ease; }
+  .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #fff; }
+  .slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .nav { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border: 0; border-radius: 999px; background: rgba(7, 20, 39, .72); color: #fff; font-size: 20px; cursor: pointer; }
+  .prev { left: 10px; }
+  .next { right: 10px; }
+  .meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; background: #0f172a; color: #e2e8f0; }
+  .meta b { font-size: 13px; }
+  .meta span { color: #94a3b8; font-size: 12px; }
+  .dots { display: flex; gap: 6px; justify-content: center; margin-top: 12px; }
+  .dots button { width: 8px; height: 8px; border: 0; border-radius: 99px; background: #334155; padding: 0; cursor: pointer; }
+  .dots button.on { background: #22d3ee; }
+  .doc { margin-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+  .doc h2 { margin: 0 0 4px; font-size: 16px; }
+  .doc p { margin: 0; color: #94a3b8; font-size: 12px; line-height: 1.45; }
+  .dl { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 14px; border-radius: 12px; background: #0e7490; color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; white-space: nowrap; }
+  .note { margin: 12px 0 0; font-size: 11px; color: #64748b; }
+  @media (max-width: 640px) {
+    h1 { font-size: 22px; }
+    .doc { grid-template-columns: 1fr; }
+    .dl { width: 100%; }
+  }
+</style>
 </head>
 <body>
-  <p>Membuka halaman tautan… <a href="/links.html">lanjut ke links.html</a></p>
+  <main class="wrap">
+    <div class="top">
+      <span class="brand">FAJAR TRI SUHARTONO</span>
+      <a class="back" href="/links.html">Semua tautan</a>
+    </div>
+    <section class="panel">
+      <p class="brand">SAMPEL JASA</p>
+      <h1>RAB Excel, rekap biaya, dan material</h1>
+      <p class="sub">Tiga lembar sampel berjalan otomatis. Angka fiktif untuk rumah tipe 36, bukan harga pasar dan bukan penawaran.</p>
+      <div class="stage">
+        <div class="viewport" id="viewport">
+          <div class="track" id="track">
+            <figure class="slide"><img src="RAB_sampel.png" alt="Sampel rencana anggaran biaya Excel"></figure>
+            <figure class="slide"><img src="Rekap_sampel.png" alt="Sampel rekapitulasi biaya"></figure>
+            <figure class="slide"><img src="Material_sampel.png" alt="Sampel rekap kebutuhan material"></figure>
+          </div>
+        </div>
+        <button class="nav prev" id="prev" type="button" aria-label="Slide sebelumnya">‹</button>
+        <button class="nav next" id="next" type="button" aria-label="Slide berikutnya">›</button>
+        <div class="meta">
+          <b id="caption">RAB — sampel fiktif</b>
+          <span id="count">1 / 3</span>
+        </div>
+      </div>
+      <div class="dots" id="dots"></div>
+      <div class="doc">
+        <div>
+          <h2>Dokumen pendukung</h2>
+          <p>Template Excel dengan rumus otomatis. Sel kuning adalah input. Sel hitam dan hijau adalah hitungan.</p>
+        </div>
+        <a class="dl" href="Template_RAB_Excel_Sampel_Fajar.xlsx" download>Unduh Excel</a>
+      </div>
+      <p class="note">Koefisien material contoh, bukan SNI resmi. Data klien tidak dipakai.</p>
+    </section>
+  </main>
+<script>
+var captions = ["RAB — sampel fiktif", "Rekap biaya — terhubung ke RAB", "Rekap material — contoh koefisien"];
+var i = 0, n = 3, timer;
+var track = document.getElementById("track");
+var dots = document.getElementById("dots");
+function go(k) {
+  i = (k + n) % n;
+  track.style.transform = "translateX(" + (-i * 100) + "%)";
+  document.getElementById("caption").textContent = captions[i];
+  document.getElementById("count").textContent = (i + 1) + " / " + n;
+  Array.prototype.forEach.call(dots.children, function (b, x) { b.className = x === i ? "on" : ""; });
+}
+for (var x = 0; x < n; x++) {
+  var b = document.createElement("button");
+  b.type = "button";
+  b.setAttribute("aria-label", "Slide " + (x + 1));
+  (function (z) { b.onclick = function () { go(z); restart(); }; })(x);
+  dots.appendChild(b);
+}
+function restart() { clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 4500); }
+document.getElementById("next").onclick = function () { go(i + 1); restart(); };
+document.getElementById("prev").onclick = function () { go(i - 1); restart(); };
+var startX = 0;
+document.getElementById("viewport").addEventListener("touchstart", function (e) { startX = e.changedTouches[0].clientX; }, { passive: true });
+document.getElementById("viewport").addEventListener("touchend", function (e) {
+  var dx = e.changedTouches[0].clientX - startX;
+  if (dx > 40) { go(i - 1); restart(); }
+  if (dx < -40) { go(i + 1); restart(); }
+}, { passive: true });
+go(0);
+restart();
+</script>
 </body>
 </html>
