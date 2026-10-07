@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0f172a" />
+<title>Daily Report CCMP-01</title>
+<style>
+  :root { --bg:#0b1220; --card:#121a2b; --line:#243044; --text:#e7eef8; --muted:#93a4bd; --blue:#60a5fa; --green:#34d399; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--text); }
+  header { padding:16px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#152033,#0b1220); }
+  h1 { font-size:18px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:12px; }
+  .wrap { padding:12px 12px 88px; max-width:980px; margin:0 auto; }
+  .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:12px 0; }
+  .kpi { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:10px; }
+  .kpi b { display:block; font-size:22px; color:var(--green); }
+  .kpi span { color:var(--muted); font-size:11px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; margin-bottom:12px; }
+  label { display:block; font-size:11px; color:var(--muted); margin:8px 0 4px; }
+  input, select, textarea, button { font:inherit; color:var(--text); background:#182338; border:1px solid var(--line); border-radius:10px; padding:10px; width:100%; }
+  textarea { min-height:72px; resize:vertical; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:640px) { .grid2, .kpis { grid-template-columns:1fr 1fr; } }
+  button { cursor:pointer; width:auto; }
+  button.primary { background:#16a34a; border-color:#16a34a; color:white; font-weight:700; }
+  button.blue { background:#1d4ed8; border-color:#1d4ed8; }
+  .rowbtns { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:6px 4px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  th { color:var(--muted); font-size:11px; }
+  td input, td select { padding:8px; }
+  .x { background:transparent; color:#f87171; border-color:#7f1d1d; padding:8px 10px; }
+  .codes { display:flex; gap:6px; flex-wrap:wrap; max-height:140px; overflow:auto; }
+  .codes button { padding:6px 8px; font-size:12px; background:#0f172a; }
+  .codes button.on { border-color:var(--green); color:var(--green); }
+  pre {
+    white-space:pre-wrap; background:#020617; border-radius:12px; padding:12px;
+    font-size:13px; line-height:1.45; border:1px solid var(--line);
+  }
+  .note { color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Daily Report Pemancangan · CCMP-01</h1>
+  <div class="sub">NaCl Bulk Storage · SAKIED-000-CIV-DWG-004-03 · 1 titik joint = 22 m · siap kirim WhatsApp</div>
+</header>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><span>Titik hari ini</span><b id="nTitik">0</b></div>
+    <div class="kpi"><span>Total meter</span><b id="nMeter">0 m</b></div>
+    <div class="kpi"><span>Norma 8 jam</span><b id="nNorma">0/12</b><span>target 12 titik · 264 m</span></div>
+  </div>
+
+  <div class="card">
+    <div class="grid2">
+      <div><label>Tanggal</label><input type="date" id="tgl" /></div>
+      <div><label>Shift / jam</label><input id="shift" value="07:00–16:00 (8 jam)" /></div>
+      <div><label>Unit</label><input id="unit" value="CCMP-01" /></div>
+      <div><label>Pelapor</label><input id="pelapor" placeholder="nama pengawas" /></div>
+      <div><label>Situasi cuaca</label>
+        <select id="cuaca">
+          <option>Cerah</option><option>Berawan</option><option>Gerimis</option>
+          <option>Hujan</option><option>Hujan deras — berhenti</option><option>Panas terik</option>
+        </select>
+      </div>
+      <div><label>Lokasi</label><input id="lokasi" value="NaCl Bulk Storage, KIE Bontang Utara" /></div>
+    </div>
+    <label>Kendala umum hari ini</label>
+    <textarea id="kendalaUmum" placeholder="Tidak ada / macet joint / menunggu survey / HOLD grid ...">Tidak ada</textarea>
+  </div>
+
+  <div class="card">
+    <b>Input code titik dari drawing</b>
+    <p class="note">Ketuk code lalu tambah. Satu code = 1 pile joint 22 m. Meter bisa diubah kalau bukan 22 m. Total hari = jumlah meter semua code.</p>
+    <div class="codes" id="picker"></div>
+    <div class="grid2" style="margin-top:8px">
+      <div><label>Code titik lain</label><input id="manual" placeholder="contoh A12.3" /></div>
+      <div><label>Meter joint</label><input id="manualM" type="number" value="22" min="0" step="0.1" /></div>
+    </div>
+    <div class="rowbtns">
+      <button class="blue" id="addManual" type="button">Tambah code</button>
+      <button type="button" id="add22">Isi 22 m ke code terpilih</button>
+    </div>
+    <div style="overflow-x:auto;margin-top:10px">
+      <table>
+        <thead>
+          <tr><th>No</th><th>Code titik</th><th>Meter</th><th>Kendala</th><th>Cuaca</th><th></th></tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <b>Format WhatsApp</b>
+    <pre id="preview"></pre>
+    <div class="rowbtns">
+      <button class="primary" id="kirim" type="button">Kirim WhatsApp</button>
+      <button type="button" id="salin">Salin teks</button>
+      <input id="wa" placeholder="08... nomor tujuan, kosongkan = pilih kontak" style="max-width:280px" />
+    </div>
+    <p class="note">Di HP Android tombol kirim membuka WhatsApp dengan teks lengkap. Tinggal pilih kontak atau isi nomor.</p>
+  </div>
+</div>
+<script>
+const CODES = [];
+[1,3,5,7,9,11,13,15,17].forEach(g => { for (let n=1;n<=4;n++) CODES.push(`A${g}.${n}`); });
+["B1.1","B1.2","B21.1","B21.2"].forEach(c => CODES.push(c));
+[2,4,6,8,10,12,14,16,18,20].forEach(g => { CODES.push(`J${g}.1`); CODES.push(`J${g}.2`); });
+["E4.1","E8.1","E10.1","E12.1","E14.1","E16.1","E18.1","F20.1","G21.1","F19.1","F19.2","E21.1","E21.2"].forEach(c => CODES.push(c));
+
+const KEY = "ccmp01-daily-v1";
+let rows = JSON.parse(localStorage.getItem(KEY) || "[]");
+const tgl = document.getElementById("tgl");
+tgl.value = new Date().toISOString().slice(0,10);
+
+function save() { localStorage.setItem(KEY, JSON.stringify(rows)); }
+function add(code, meter) {
+  code = (code || "").trim().toUpperCase();
+  if (!code) return;
+  if (rows.some(r => r.code === code)) return;
+  rows.push({ code, meter: Number(meter) || 22, kendala: "-", cuaca: document.getElementById("cuaca").value });
+  save(); render();
+}
+function totalMeter() { return rows.reduce((s,r) => s + (Number(r.meter) || 0), 0); }
+function msg() {
+  const lines = rows.map((r,i) => `${i+1}. ${r.code} — ${r.meter} m | kendala: ${r.kendala || "-"} | cuaca: ${r.cuaca || "-"}`);
+  const m = totalMeter();
+  return [
+    "*DAILY REPORT PEMANCANGAN*",
+    `Unit: ${document.getElementById("unit").value || "CCMP-01"}`,
+    `Tanggal: ${tgl.value}`,
+    `Shift: ${document.getElementById("shift").value}`,
+    `Lokasi: ${document.getElementById("lokasi").value}`,
+    `Gambar: SAKIED-000-CIV-DWG-004-03`,
+    `Pelapor: ${document.getElementById("pelapor").value || "-"}`,
+    `Situasi cuaca: ${document.getElementById("cuaca").value}`,
+    `Kendala: ${document.getElementById("kendalaUmum").value || "-"}`,
+    "",
+    "*Titik dipancang*",
+    lines.length ? lines.join("\n") : "- belum ada input",
+    "",
+    `Total titik: ${rows.length}`,
+    `Total panjang: ${m} m`,
+    `Rincian: ${rows.length} titik x joint (default 22 m) = ${m} m`,
+    `Norma: 12 titik / 8 jam / 1 unit CCMP-01 (target 264 m)`,
+    `Sisa norma hari ini: ${Math.max(0, 12 - rows.length)} titik`,
+    "",
+    "Joint 1 titik = 1 pile 12 m + 10 m = 22 m, kecuali meter diubah."
+  ].join("\n");
+}
+function render() {
+  document.getElementById("nTitik").textContent = rows.length;
+  document.getElementById("nMeter").textContent = totalMeter() + " m";
+  document.getElementById("nNorma").textContent = rows.length + "/12";
+  document.getElementById("body").innerHTML = rows.map((r,i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td><b>${r.code}</b></td>
+      <td><input type="number" step="0.1" value="${r.meter}" data-i="${i}" data-f="meter"></td>
+      <td><input value="${r.kendala}" data-i="${i}" data-f="kendala"></td>
+      <td>
+        <select data-i="${i}" data-f="cuaca">
+          ${["Cerah","Berawan","Gerimis","Hujan","Hujan deras — berhenti","Panas terik"].map(c => `<option ${c===r.cuaca?"selected":""}>${c}</option>`).join("")}
+        </select>
+      </td>
+      <td><button class="x" data-del="${i}" type="button">hapus</button></td>
+    </tr>`).join("") || `<tr><td colspan="6" class="note">Belum ada code titik.</td></tr>`;
+  document.getElementById("preview").textContent = msg();
+  document.querySelectorAll("#picker button").forEach(b => b.classList.toggle("on", rows.some(r => r.code === b.dataset.code)));
+  document.querySelectorAll("[data-f]").forEach(el => el.onchange = () => {
+    const r = rows[el.dataset.i];
+    r[el.dataset.f] = el.dataset.f === "meter" ? Number(el.value) : el.value;
+    save(); render();
+  });
+  document.querySelectorAll("[data-del]").forEach(el => el.onclick = () => {
+    rows.splice(Number(el.dataset.del), 1); save(); render();
+  });
+}
+document.getElementById("picker").innerHTML = CODES.map(c => `<button type="button" data-code="${c}">${c}</button>`).join("");
+document.getElementById("picker").onclick = (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (rows.some(r => r.code === b.dataset.code)) rows = rows.filter(r => r.code !== b.dataset.code);
+  else rows.push({ code: b.dataset.code, meter: 22, kendala: "-", cuaca: document.getElementById("cuaca").value });
+  save(); render();
+};
+document.getElementById("addManual").onclick = () => { add(document.getElementById("manual").value, document.getElementById("manualM").value); document.getElementById("manual").value = ""; };
+document.getElementById("add22").onclick = () => { rows.forEach(r => r.meter = 22); save(); render(); };
+["tgl","shift","unit","pelapor","cuaca","lokasi","kendalaUmum"].forEach(id => document.getElementById(id).oninput = render);
+document.getElementById("salin").onclick = async () => { await navigator.clipboard.writeText(msg()); alert("Teks tersalin."); };
+document.getElementById("kirim").onclick = () => {
+  const text = encodeURIComponent(msg());
+  let no = document.getElementById("wa").value.replace(/\D/g, "");
+  if (no.startsWith("0")) no = "62" + no.slice(1);
+  const url = no ? `https://wa.me/${no}?text=${text}` : `https://wa.me/?text=${text}`;
+  window.open(url, "_blank");
+};
+render();
+</script>
+</body>
+</html>

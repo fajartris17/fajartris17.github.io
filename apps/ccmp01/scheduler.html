@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0f172a" />
+<title>Pile Scheduler · CCMP-01 · NaCl Bulk Storage</title>
+<style>
+  :root {
+    --bg: #0b1220;
+    --card: #121a2b;
+    --card2: #182338;
+    --line: #243044;
+    --text: #e7eef8;
+    --muted: #93a4bd;
+    --blue: #60a5fa;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --violet: #c4b5fd;
+    --cyan: #67e8f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.4;
+  }
+  header {
+    padding: 16px 16px 8px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #152033, #0b1220);
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; letter-spacing: .2px; }
+  .sub { color: var(--muted); font-size: 12px; }
+  .wrap { padding: 12px 12px 72px; max-width: 1100px; margin: 0 auto; }
+  .kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 12px 0; }
+  @media (min-width: 800px) { .kpis { grid-template-columns: repeat(4, 1fr); } }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+  .kpi b { display: block; font-size: 20px; }
+  .kpi span { color: var(--muted); font-size: 11px; }
+  .bar { height: 8px; background: #1e293b; border-radius: 99px; overflow: hidden; margin-top: 8px; }
+  .bar i { display: block; height: 100%; background: linear-gradient(90deg, #2563eb, #34d399); width: 0; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; margin: 8px 0 12px; }
+  label { font-size: 11px; color: var(--muted); display: block; margin-bottom: 4px; }
+  input, select, button {
+    font: inherit; color: var(--text); background: var(--card2);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;
+  }
+  button { cursor: pointer; }
+  button.primary { background: #1d4ed8; border-color: #1d4ed8; }
+  button.ghost { background: transparent; }
+  .days { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; }
+  .day {
+    min-width: 92px; text-align: left; padding: 8px 10px;
+    border-radius: 12px; border: 1px solid var(--line); background: var(--card);
+  }
+  .day.on { border-color: #3b82f6; background: #172554; }
+  .day small { display: block; color: var(--muted); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-size: 11px; font-weight: 600; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 10px; margin-bottom: 12px; overflow-x: auto;
+  }
+  .tag { display: inline-block; border-radius: 99px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+  .PB1 { background: #1e3a8a; color: #dbeafe; }
+  .PB1A { background: #155e75; color: #cffafe; }
+  .PB2 { background: #14532d; color: #dcfce7; }
+  .PB3 { background: #7c2d12; color: #ffedd5; }
+  .PB4 { background: #4c1d95; color: #ede9fe; }
+  .done { opacity: .55; text-decoration: line-through; }
+  .note { color: var(--muted); font-size: 12px; }
+  .tabs { display: flex; gap: 6px; margin: 8px 0; }
+  .tabs button.on { background: #1e293b; border-color: #60a5fa; }
+  .hide { display: none; }
+  .chk { width: 22px; height: 22px; }
+  footer.nav {
+    position: sticky; bottom: 0; background: #0b1220ee; border-top: 1px solid var(--line);
+    padding: 8px 12px; display: flex; justify-content: space-between; gap: 8px;
+  }
+  @media print {
+    body { background: white; color: black; }
+    header, .tabs, footer.nav, .noprint { display: none !important; }
+    .card, .kpi { break-inside: avoid; border-color: #ccc; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pile Scheduler · Crane CCMP-01</h1>
+  <div class="sub">NaCl Bulk Storage · SAKIED-000-CIV-DWG-004-03 · KIE Bontang · 1 unit · 8 jam · 12 titik/hari</div>
+</header>
+<div class="wrap">
+  <div class="kpis">
+    <div class="kpi"><span>Unit</span><b>CCMP-01</b><span>1 crane pancang</span></div>
+    <div class="kpi"><span>Norma</span><b>12 titik</b><span>per 8 jam · joint 12 m → 22 m</span></div>
+    <div class="kpi"><span>Titik list</span><b id="kpiTotal">73</b><span id="kpiLeft">sisa dihitung</span></div>
+    <div class="kpi"><span>Durasi</span><b id="kpiDays">7 hari</b><span id="kpiRange">—</span>
+      <div class="bar"><i id="prog"></i></div>
+    </div>
+  </div>
+
+  <div class="row noprint">
+    <div>
+      <label>Mulai kerja</label>
+      <input type="date" id="start" value="2026-10-08" />
+    </div>
+    <div>
+      <label>Hari kerja</label>
+      <select id="cal">
+        <option value="6">Senin–Sabtu</option>
+        <option value="5">Senin–Jumat</option>
+        <option value="7">Setiap hari</option>
+      </select>
+    </div>
+    <div>
+      <label>Jam mulai</label>
+      <input type="time" id="shift" value="07:00" />
+    </div>
+    <button class="primary" id="rebuild">Susun ulang</button>
+    <button class="ghost" id="reset">Reset progres</button>
+    <button class="ghost" onclick="window.print()">Cetak hari ini</button>
+  </div>
+  <p class="note">Satu titik = 40 menit di dalam 8 jam. Desain PB1/PB1A/PB2 = 21 m, dikerjakan joint 12 m + 10 m = 22 m. PB4 = 12 m tunggal, tanpa joint. PB3 = 18 m, joint dicek di gambar. Ini jadwal produksi, bukan lifting plan.</p>
+
+  <div class="tabs noprint">
+    <button class="on" data-tab="jadwal">Jadwal harian</button>
+    <button data-tab="bahan">Bahan joint</button>
+    <button data-tab="semua">Semua titik</button>
+  </div>
+
+  <section id="jadwal">
+    <div class="days" id="days"></div>
+    <div class="card">
+      <div id="dayTitle" style="font-weight:700;margin-bottom:8px"></div>
+      <table>
+        <thead>
+          <tr><th></th><th>Jam</th><th>Titik</th><th>Tipe</th><th>Grid</th><th>Joint</th><th>Zona</th></tr>
+        </thead>
+        <tbody id="slots"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="bahan" class="hide">
+    <div class="card" id="material"></div>
+  </section>
+  <section id="semua" class="hide">
+    <div class="card">
+      <table>
+        <thead><tr><th>No</th><th>Titik</th><th>Tipe</th><th>Hari</th><th>Joint</th><th>Status</th></tr></thead>
+        <tbody id="all"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<script>
+const RATE = 12;
+const HOURS = 8;
+const KEY = "ccmp01-nacl-v1";
+
+function pile(id, grid, type, len, zone) {
+  let joint = "12 m tunggal";
+  if (len >= 21) joint = "12 + 10 = 22 m";
+  else if (len >= 18) joint = "12 + 6 = 18 m";
+  return { id, grid, type, len, zone, joint };
+}
+const MASTER = [];
+[1,3,5,7,9,11,13,15,17].forEach(g => {
+  for (let n = 1; n <= 4; n++) MASTER.push(pile(`A${g}.${n}`, `${g}/A`, "PB1", 21, "Selatan"));
+});
+[["B1.1","1/B"],["B1.2","1/B"],["B21.1","21/B"],["B21.2","21/B"]].forEach(([id,g]) => MASTER.push(pile(id, g, "PB1A", 21, "Ujung")));
+[2,4,6,8,10,12,14,16,18,20].forEach(g => {
+  MASTER.push(pile(`J${g}.1`, `${g}/J`, "PB2", 21, "Utara"));
+  MASTER.push(pile(`J${g}.2`, `${g}/J`, "PB2", 21, "Utara"));
+});
+[["E4.1","4/E"],["E8.1","8/E"],["E10.1","10/E"],["E12.1","12/E"],["E14.1","14/E"],["E16.1","16/E"],["E18.1","18/E"],["F20.1","20/F"],["G21.1","21/G"]]
+  .forEach(([id,g]) => MASTER.push(pile(id, g, "PB3", 18, "Conveyor")));
+[["F19.1","19/F"],["F19.2","19/F"],["E21.1","21/E"],["E21.2","21/E"]]
+  .forEach(([id,g]) => MASTER.push(pile(id, g, "PB4", 12, "Head frame")));
+
+let done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
+let active = 0;
+
+function workdays(start, mode) {
+  const out = [];
+  const d = new Date(start + "T00:00:00");
+  const need = Math.ceil(MASTER.length / RATE);
+  while (out.length < need) {
+    const wd = d.getDay();
+    const ok = mode === "7" || (mode === "6" && wd !== 0) || (mode === "5" && wd !== 0 && wd !== 6);
+    if (ok) out.push(new Date(d));
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
+}
+function fmt(d) {
+  return d.toLocaleDateString("id-ID", { weekday: "short", day: "2-digit", month: "short" });
+}
+function addMin(hhmm, m) {
+  const [h, min] = hhmm.split(":").map(Number);
+  const t = h * 60 + min + m;
+  return String(Math.floor(t / 60)).padStart(2,"0") + ":" + String(t % 60).padStart(2,"0");
+}
+function slotsFor(dayIndex) {
+  const start = document.getElementById("shift").value || "07:00";
+  const rows = [];
+  for (let i = 0; i < RATE; i++) {
+    const idx = dayIndex * RATE + i;
+    if (idx >= MASTER.length) break;
+    let clock = addMin(start, i * 40);
+    if (i >= 6) clock = addMin(start, i * 40 + 60);
+    rows.push({ clock, pile: MASTER[idx], idx });
+  }
+  return rows;
+}
+function save() { localStorage.setItem(KEY, JSON.stringify([...done])); }
+
+function render() {
+  const start = document.getElementById("start").value;
+  const days = workdays(start, document.getElementById("cal").value);
+  const left = MASTER.length - done.size;
+  document.getElementById("kpiTotal").textContent = MASTER.length;
+  document.getElementById("kpiLeft").textContent = left + " sisa · " + done.size + " selesai";
+  document.getElementById("kpiDays").textContent = days.length + " hari";
+  document.getElementById("kpiRange").textContent = fmt(days[0]) + " – " + fmt(days[days.length - 1]);
+  document.getElementById("prog").style.width = (done.size / MASTER.length * 100) + "%";
+
+  const box = document.getElementById("days");
+  box.innerHTML = "";
+  days.forEach((d, i) => {
+    const slice = MASTER.slice(i * RATE, i * RATE + RATE);
+    const fin = slice.filter(p => done.has(p.id)).length;
+    const b = document.createElement("button");
+    b.className = "day" + (i === active ? " on" : "");
+    b.innerHTML = `<b>Hari ${i + 1}</b><small>${fmt(d)}</small><small>${fin}/${slice.length} titik</small>`;
+    b.onclick = () => { active = i; render(); };
+    box.appendChild(b);
+  });
+
+  const rows = slotsFor(active);
+  document.getElementById("dayTitle").textContent =
+    `CCMP-01 · Hari ${active + 1} · ${fmt(days[active])} · ${rows.length} titik · istirahat 60 menit setelah titik ke-6`;
+  document.getElementById("slots").innerHTML = rows.map(r => `
+    <tr class="${done.has(r.pile.id) ? "done" : ""}">
+      <td><input class="chk" type="checkbox" data-id="${r.pile.id}" ${done.has(r.pile.id) ? "checked" : ""}></td>
+      <td>${r.clock}</td>
+      <td><b>${r.pile.id}</b></td>
+      <td><span class="tag ${r.pile.type}">${r.pile.type}</span></td>
+      <td>${r.pile.grid}</td>
+      <td>${r.pile.joint}</td>
+      <td>${r.pile.zone}</td>
+    </tr>`).join("");
+  document.querySelectorAll(".chk").forEach(el => {
+    el.onchange = () => {
+      if (el.checked) done.add(el.dataset.id); else done.delete(el.dataset.id);
+      save(); render();
+    };
+  });
+
+  const count = {};
+  MASTER.forEach(p => { count[p.joint] = (count[p.joint] || 0) + 1; });
+  document.getElementById("material").innerHTML = `
+    <b>Bahan joint untuk CCMP-01</b>
+    <p class="note">Norma kunci: 12 m di-joint sampai 22 m, 12 titik dalam 8 jam, 1 unit.</p>
+    <table>
+      <tr><th>Segmen</th><th>Jumlah titik</th><th>Batang 12 m</th><th>Batang sambungan</th></tr>
+      <tr><td>12 + 10 = 22 m (PB1, PB1A, PB2)</td><td>60</td><td>60</td><td>60 × 10 m</td></tr>
+      <tr><td>12 + 6 = 18 m (PB3)</td><td>9</td><td>9</td><td>9 × 6 m</td></tr>
+      <tr><td>12 m tunggal (PB4)</td><td>4</td><td>4</td><td>tidak di-joint</td></tr>
+      <tr><td><b>Total</b></td><td><b>73</b></td><td><b>73</b></td><td>60×10 m + 9×6 m</td></tr>
+    </table>
+    <p class="note">Urutan: selatan PB1 barat→timur, cap selesai dulu, lalu ujung PB1A, utara PB2, conveyor PB3, head frame PB4. Zona HOLD di gambar tidak diberi tanggal sampai dilepas.</p>`;
+
+  document.getElementById("all").innerHTML = MASTER.map((p, i) => `
+    <tr class="${done.has(p.id) ? "done" : ""}">
+      <td>${i + 1}</td><td>${p.id}</td><td>${p.type}</td>
+      <td>H${Math.floor(i / RATE) + 1}</td><td>${p.joint}</td>
+      <td>${done.has(p.id) ? "selesai" : "rencana"}</td>
+    </tr>`).join("");
+}
+document.getElementById("rebuild").onclick = () => { active = 0; render(); };
+document.getElementById("reset").onclick = () => { done = new Set(); save(); render(); };
+document.querySelectorAll(".tabs button").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.remove("on"));
+  b.classList.add("on");
+  ["jadwal","bahan","semua"].forEach(id => document.getElementById(id).classList.toggle("hide", id !== b.dataset.tab));
+});
+render();
+</script>
+</body>
+</html>
