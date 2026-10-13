@@ -25,7 +25,11 @@ body { background: #071427; color: #e2e8f0; min-height: 100vh; }
   <p class="text-center text-xs text-slate-500 mt-10">Gambar project Mentari Pesisir. Tap untuk memperbesar.</p>
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
-<script src="mentari-images.js"></script>
+<script src="mentari-img-1.js"></script>
+<script src="mentari-img-2.js"></script>
+<script src="mentari-img-3.js"></script>
+<script src="mentari-img-4.js"></script>
+<script src="mentari-img-5.js"></script>
 <script>
 function b64ToUrl(b64) {
   return 'data:image/jpeg;base64,' + b64;
@@ -37,7 +41,7 @@ function openLb(src) {
 const gal = document.getElementById('gallery');
 const images = window.MENTARI_IMAGES || {};
 const titles = window.MENTARI_TITLES || {};
-Object.keys(images).forEach(key => {
+Object.keys(images).sort().forEach(key => {
   const url = b64ToUrl(images[key]);
   const fig = document.createElement('figure');
   fig.className = 'bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 p-3';
