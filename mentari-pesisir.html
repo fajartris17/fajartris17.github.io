@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 body { background: #071427; color: #e2e8f0; min-height: 100vh; }
-.gallery img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); cursor: pointer; }
+.card img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); cursor: pointer; background: #0b1220; }
 .lb { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:100; align-items:center; justify-content:center; padding: 10px; }
 .lb.on { display:flex; }
 .lb img { max-height: 92vh; max-width: 96vw; border-radius: 8px; }
@@ -21,34 +21,51 @@ body { background: #071427; color: #e2e8f0; min-height: 100vh; }
   </div>
   <h1 class="text-2xl md:text-3xl font-bold text-center">Project Mentari Pesisir</h1>
   <p class="text-center text-slate-400 mt-2 mb-8">Dermaga Kayu 50 Meter · Visualisasi & Gambar Teknik</p>
+
   <div class="grid md:grid-cols-2 gap-6" id="gallery"></div>
-  <p class="text-center text-xs text-slate-500 mt-10">Gambar project Mentari Pesisir. Tap untuk memperbesar.</p>
+
+  <div class="mt-12">
+    <h2 class="text-xl font-bold mb-4 text-center">Video Animasi</h2>
+    <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 p-4 text-center">
+      <p class="text-sm text-slate-400 mb-3">Video gemini_generated_video_062261c0.mp4</p>
+      <a href="https://drive.google.com/file/d/1IdnSO6euEdd15WKDkBjtsb_B7KxtcbhI/view" target="_blank" class="inline-block bg-emerald-600 px-6 py-2 rounded-xl">Buka Video di Drive</a>
+    </div>
+  </div>
+
+  <p class="text-center text-xs text-slate-500 mt-10">Gambar project Mentari Pesisir. Tap untuk memperbesar.<br>Pastikan file di Google Drive di-share "Anyone with the link" agar tampil.</p>
 </main>
 <div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
-<script src="mentari-img-1.js"></script>
-<script src="mentari-img-2.js"></script>
-<script src="mentari-img-3.js"></script>
-<script src="mentari-img-4.js"></script>
-<script src="mentari-img-5.js"></script>
 <script>
-function b64ToUrl(b64) {
-  return 'data:image/jpeg;base64,' + b64;
-}
+const items = [
+  ["1XYdk1gDPRX0kH5q-yLuuQop0IlQcYexe", "Animasi Frame 1 - Pondasi Tiang"],
+  ["1fyk20t0Q4I3Sn32WrIY8TFbthapdUzJh", "Animasi Frame 2 - Struktur Balok"],
+  ["1FfcvYwyWb7sidd1lrdOKGwKJ5vLSiMSx", "Animasi Frame 3 - Pengecoran"],
+  ["1rA4-IcxI3FcGs4wrSF3o3ILEIdtHr_f8", "Animasi Frame 4 - Selesai"],
+  ["1sos7a4J9Lsu9nJZYBac9OvM7-4fFD0dq", "Dermaga 50m - Gabungan 3 View"],
+  ["1A0_oK6AnjxQ71XAT9EY1zTP_JomtNHvY", "Dermaga 50m - Gambar Teknik Rapi"],
+  ["1SKn6sOxWb2nVUJqeLwFfFNoj8HMFqZfi", "Dermaga 50m - Potongan Melintang 2D"],
+  ["1gHoqk_4OFwTDhnVS3jDN04oNZVwe6BZj", "Dermaga 50m - Tampak Kanan 2D"],
+  ["1X5gViykw17v0BAn7SHnLszt0_YFJrlV6", "Dermaga 50m - Denah 2D"],
+  ["1ujOcAXbxC74XxLbQl-j6FDHCbZIyuYi1", "Denah Jarak Tiang 2m"],
+  ["1z6vIzP9YekQyEk0x6nSzgXpbUDmVhhS-", "Detail Struktur Material 3D"],
+  ["10Y0Sq92qp6tPe5MiGgmK2-BHSnpW-t7s", "Visualisasi 5D Dermaga"]
+];
+const gal = document.getElementById('gallery');
+items.forEach(([id, title]) => {
+  const fig = document.createElement('figure');
+  fig.className = 'card bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 p-3';
+  fig.innerHTML = `
+    <img src="https://lh3.googleusercontent.com/d/${id}=w1600" alt="${title}" 
+         onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=${id}&sz=w1600';"
+         onclick="openLb(this.src)">
+    <figcaption class="mt-2 text-sm font-medium text-center">${title}</figcaption>
+  `;
+  gal.appendChild(fig);
+});
 function openLb(src) {
   document.getElementById('lbimg').src = src;
   document.getElementById('lb').classList.add('on');
 }
-const gal = document.getElementById('gallery');
-const images = window.MENTARI_IMAGES || {};
-const titles = window.MENTARI_TITLES || {};
-Object.keys(images).sort().forEach(key => {
-  const url = b64ToUrl(images[key]);
-  const fig = document.createElement('figure');
-  fig.className = 'bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 p-3';
-  fig.innerHTML = `<img src="${url}" alt="${titles[key]||''}" onclick="openLb(this.src)">
-    <figcaption class="mt-2 text-sm font-medium text-center">${titles[key]||''}</figcaption>`;
-  gal.appendChild(fig);
-});
 </script>
 </body>
 </html>
