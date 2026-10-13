@@ -1,0 +1,1 @@
+window.MENTARI_IMAGES = {}; // large file to be replaced
