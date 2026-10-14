@@ -3,70 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Tools & Aplikasi · Fajar Tri Suhartono</title>
+<title>Project Mentari Pesisir - Dermaga Kayu 50m</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body { background: #071427; color: #e2e8f0; min-height: 100vh; }
+.card img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); cursor: pointer; background: #0b1220; }
+.lb { display:none; position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:100; align-items:center; justify-content:center; padding: 10px; }
+.lb.on { display:flex; }
+.lb img { max-height: 92vh; max-width: 96vw; border-radius: 8px; }
+.video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; background: #000; }
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-<main class="max-w-4xl mx-auto px-4 py-10">
+<body class="p-4 md:p-8">
+<main class="max-w-5xl mx-auto">
   <div class="flex items-center justify-between mb-6">
     <a href="links.html" class="text-cyan-400 text-sm hover:underline">&larr; Links</a>
   </div>
-  <p class="text-center text-cyan-300 text-xs uppercase tracking-wider font-semibold">Professional Documents</p>
-  <h1 class="text-3xl font-bold text-center mt-2">Demo Tools & Aplikasi</h1>
-  <p class="text-center text-slate-400 text-sm mt-2 mb-8">Semua demo tools dan aplikasi siap pakai. Akses langsung.</p>
 
-  <div class="grid sm:grid-cols-2 gap-4">
-    <a href="https://drive.google.com/file/d/1Cu0I02PVrlTkq3P6ZYwIU8CoWkpRwO8g/view?usp=drivesdk" target="_blank" class="rounded-2xl border border-emerald-500/40 bg-slate-900 p-5 hover:border-emerald-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">Baru · Siap Pakai</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-file-alt text-emerald-400"></i> Daily Report Dermaga Pro</p>
-      <p class="text-xs text-slate-400 mt-2">HTML laporan progres dermaga, siap pakai.</p>
-    </a>
-    <a href="apps/ccmp01/" class="rounded-2xl border border-amber-500/40 bg-slate-900 p-5 hover:border-amber-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-amber-300 font-semibold">Pancang</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-calendar-alt text-amber-400"></i> CCMP-01 Scheduler</p>
-      <p class="text-xs text-slate-400 mt-2">Jadwal pemancangan, daily report, drawing.</p>
-    </a>
-    <a href="apps/absensi/" class="rounded-2xl border border-indigo-500/40 bg-slate-900 p-5 hover:border-indigo-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-indigo-300 font-semibold">Lapangan</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-user-check text-indigo-400"></i> Absensi Offline</p>
-      <p class="text-xs text-slate-400 mt-2">Absensi harian offline, rekap mingguan/bulanan.</p>
-    </a>
-    <a href="crane-calc.html" class="rounded-2xl border border-blue-500/40 bg-slate-900 p-5 hover:border-blue-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-blue-300 font-semibold">Crane</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-calculator text-blue-400"></i> CraneCalc</p>
-      <p class="text-xs text-slate-400 mt-2">Kalkulator kapasitas crane, working radius.</p>
-    </a>
-    <a href="dashboard-workshop.html" class="rounded-2xl border border-cyan-500/40 bg-slate-900 p-5 hover:border-cyan-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-semibold">Dashboard</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-tools text-cyan-400"></i> Service Workshop</p>
-      <p class="text-xs text-slate-400 mt-2">Dashboard workshop service.</p>
-    </a>
-    <a href="apps/kaskelas/" class="rounded-2xl border border-sky-500/40 bg-slate-900 p-5 hover:border-sky-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-sky-300 font-semibold">Sekolah</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-school text-sky-400"></i> KasKelas</p>
-      <p class="text-xs text-slate-400 mt-2">Demo kas kelas.</p>
-    </a>
-    <a href="apps/ojekmate/" class="rounded-2xl border border-emerald-500/40 bg-slate-900 p-5 hover:border-emerald-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">Ojol</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-motorcycle text-emerald-400"></i> OjekMate</p>
-      <p class="text-xs text-slate-400 mt-2">Demo ojek online.</p>
-    </a>
-    <a href="apps/warung.html" class="rounded-2xl border border-orange-500/40 bg-slate-900 p-5 hover:border-orange-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-orange-300 font-semibold">UMKM</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-store text-orange-400"></i> Warung Berkah</p>
-      <p class="text-xs text-slate-400 mt-2">Demo warung.</p>
-    </a>
-    <a href="apps/kasir.html" class="rounded-2xl border border-emerald-500/40 bg-slate-900 p-5 hover:border-emerald-400/60">
-      <p class="text-[10px] uppercase tracking-wider text-emerald-300 font-semibold">UMKM</p>
-      <p class="font-bold text-lg mt-1"><i class="fas fa-cash-register text-emerald-400"></i> Kasir Warung</p>
-      <p class="text-xs text-slate-400 mt-2">Demo kasir.</p>
-    </a>
+  <h1 class="text-2xl md:text-3xl font-bold text-center">Project Mentari Pesisir</h1>
+  <p class="text-center text-slate-400 mt-2 mb-6">Dermaga Kayu 50 Meter · Visualisasi & Gambar Teknik</p>
+
+  <div class="mb-10">
+    <h2 class="text-lg font-semibold mb-3 text-center text-cyan-300">Video Animasi</h2>
+    <div class="video-wrap shadow-xl">
+      <iframe src="https://drive.google.com/file/d/1IdnSO6euEdd15WKDkBjtsb_B7KxtcbhI/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
   </div>
 
-  <div class="text-center mt-10">
-    <a href="links.html" class="px-5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm">← Kembali ke Links</a>
-  </div>
+  <div class="grid md:grid-cols-2 gap-6" id="gallery"></div>
+
+  <p class="text-center text-xs text-slate-500 mt-10">Gambar project Mentari Pesisir. Tap untuk memperbesar.</p>
 </main>
+<div id="lb" class="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
+<script>
+const items = [
+  ["1XYdk1gDPRX0kH5q-yLuuQop0IlQcYexe", "Animasi Frame 1 - Pondasi Tiang"],
+  ["1fyk20t0Q4I3Sn32WrIY8TFbthapdUzJh", "Animasi Frame 2 - Struktur Balok"],
+  ["1FfcvYwyWb7sidd1lrdOKGwKJ5vLSiMSx", "Animasi Frame 3 - Pengecoran"],
+  ["1rA4-IcxI3FcGs4wrSF3o3ILEIdtHr_f8", "Animasi Frame 4 - Selesai"],
+  ["1sos7a4J9Lsu9nJZYBac9OvM7-4fFD0dq", "Dermaga 50m - Gabungan 3 View"],
+  ["1A0_oK6AnjxQ71XAT9EY1zTP_JomtNHvY", "Dermaga 50m - Gambar Teknik Rapi"],
+  ["1SKn6sOxWb2nVUJqeLwFfFNoj8HMFqZfi", "Dermaga 50m - Potongan Melintang 2D"],
+  ["1gHoqk_4OFwTDhnVS3jDN04oNZVwe6BZj", "Dermaga 50m - Tampak Kanan 2D"],
+  ["1X5gViykw17v0BAn7SHnLszt0_YFJrlV6", "Dermaga 50m - Denah 2D"]
+];
+const gal = document.getElementById('gallery');
+items.forEach(([id, title]) => {
+  const fig = document.createElement('figure');
+  fig.className = 'card bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 p-3';
+  fig.innerHTML = `
+    <img src="https://lh3.googleusercontent.com/d/${id}=w1600" alt="${title}" 
+         onerror="this.onerror=null;this.src='https://drive.google.com/thumbnail?id=${id}&sz=w1600';"
+         onclick="openLb(this.src)">
+    <figcaption class="mt-2 text-sm font-medium text-center">${title}</figcaption>
+  `;
+  gal.appendChild(fig);
+});
+function openLb(src) {
+  document.getElementById('lbimg').src = src;
+  document.getElementById('lb').classList.add('on');
+}
+</script>
 </body>
 </html>
