@@ -124,6 +124,7 @@ main{position:relative;z-index:1}
 </section>
 
 <footer class="text-center pt-6 pb-2">
+  <p class="text-[10px] text-slate-500 mb-1" id="visitor-count">Kunjungan: —</p>
   <p class="text-[10px] text-slate-500">Fajar Tri Suhartono · Construction & Digital Engineering Portfolio</p>
 </footer>
 
@@ -220,6 +221,17 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+
+async function updateVisitorCount() {
+  try {
+    const res = await fetch("https://api.countapi.xyz/hit/fajartris17.github.io/links");
+    const data = await res.json();
+    document.getElementById("visitor-count").textContent = `Kunjungan: ${data.value}`;
+  } catch (e) {
+    document.getElementById("visitor-count").textContent = "Kunjungan: —";
+  }
+}
+updateVisitorCount();
 </script>
 </body>
 </html>
