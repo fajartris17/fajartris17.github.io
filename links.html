@@ -124,10 +124,7 @@ main{position:relative;z-index:1}
 </section>
 
 <footer class="text-center pt-6 pb-2">
-  <div class="text-[10px] text-slate-500 mb-1 flex items-center justify-center gap-1">
-    <span>Kunjungan:</span>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Ffajartris17.github.io%2Flinks.html&count_bg=%231e293b&title_bg=%230f172a&icon=&icon_color=%2367e8f9&title=hits&edge_flat=false" alt="visitor count" style="height:14px;vertical-align:middle">
-  </div>
+  <p class="text-[10px] text-slate-500 mb-1" id="visitor-count">Kunjungan: —</p>
   <p class="text-[10px] text-slate-500">Fajar Tri Suhartono · Construction & Digital Engineering Portfolio</p>
 </footer>
 
@@ -224,6 +221,18 @@ function updateClock() {
 }
 updateClock();
 setInterval(updateClock, 1000);
+
+// Simple stable visitor counter (localStorage, increments once per browser)
+(function() {
+  let count = parseInt(localStorage.getItem("visitorCount") || "0", 10);
+  if (!sessionStorage.getItem("visited")) {
+    count += 1;
+    localStorage.setItem("visitorCount", count);
+    sessionStorage.setItem("visited", "1");
+  }
+  const el = document.getElementById("visitor-count");
+  if (el) el.textContent = "Kunjungan: " + count;
+})();
 </script>
 </body>
 </html>
