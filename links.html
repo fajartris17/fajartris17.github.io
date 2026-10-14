@@ -36,12 +36,13 @@ main{position:relative;z-index:1}
 .navbar{position:sticky;top:8px;z-index:5}
 .lang-btn{font-size:10px;padding:4px 8px;border-radius:8px;border:1px solid rgba(148,163,184,.3);background:rgba(15,23,42,.6);color:#cbd5e1;cursor:pointer}
 .lang-btn.active{background:rgba(34,211,238,.2);color:#67e8f9;border-color:rgba(103,232,249,.5)}
+.clock-bar{font-size:10px;color:#94a3b8;text-align:center;padding:6px 0;letter-spacing:.03em}
 </style>
 </head>
 <body class="text-slate-100">
 <main class="max-w-md mx-auto px-4 pt-4 pb-8">
 
-<div class="navbar glass rounded-2xl px-3 py-2 mb-4 flex items-center justify-between">
+<div class="navbar glass rounded-2xl px-3 py-2 mb-1 flex items-center justify-between">
   <span class="text-[10px] font-bold tracking-widest text-cyan-300">FAJAR TRI SUHARTONO</span>
   <div class="flex items-center gap-2">
     <button class="lang-btn active" data-lang="en">EN</button>
@@ -49,8 +50,9 @@ main{position:relative;z-index:1}
     <a href="#contact" class="text-[10px] font-bold text-slate-300" data-i18n="contact">CONTACT ↗</a>
   </div>
 </div>
+<div class="clock-bar" id="clock">—</div>
 
-<header class="hero rounded-3xl p-5 text-center shadow-2xl">
+<header class="hero rounded-3xl p-5 text-center shadow-2xl mt-2">
   <img src="foto.jpg" alt="Fajar Tri Suhartono" class="w-24 h-24 rounded-full object-cover object-top mx-auto border-2 border-cyan-300/80 shadow-lg" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=192&background=0f172a&color=67e8f9'">
   <p class="text-[10px] uppercase tracking-[.18em] text-cyan-300 font-bold mt-4" data-i18n="tagline">Construction • Engineering • Digital Solutions</p>
   <h1 class="text-2xl font-extrabold mt-2">Fajar Tri Suhartono</h1>
@@ -203,6 +205,21 @@ document.querySelectorAll(".lang-btn").forEach(btn => {
 
 const saved = localStorage.getItem("lang") || "en";
 setLang(saved);
+
+function updateClock() {
+  const now = new Date();
+  const days = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+  const months = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+  const d = days[now.getDay()];
+  const date = now.getDate();
+  const mon = months[now.getMonth()];
+  const year = now.getFullYear();
+  const h = String(now.getHours()).padStart(2,"0");
+  const m = String(now.getMinutes()).padStart(2,"0");
+  document.getElementById("clock").textContent = `${d}, ${date} ${mon} ${year} · ${h}:${m} WITA`;
+}
+updateClock();
+setInterval(updateClock, 1000);
 </script>
 </body>
 </html>
