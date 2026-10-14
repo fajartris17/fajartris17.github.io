@@ -31,12 +31,11 @@ main{position:relative;z-index:1}
 .btn:hover{transform:translateY(-1px);border-color:rgba(103,232,249,.45)}
 .section-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
 .card{border-radius:16px;padding:14px;background:rgba(2,6,23,.68);border:1px solid rgba(148,163,184,.18)}
-.chip{display:inline-block;font-size:10px;padding:6px 9px;border-radius:999px;background:rgba(15,23,42,.86);border:1px solid rgba(103,232,249,.18);color:#dbeafe;margin:3px}
 .metric{border-radius:14px;padding:12px;text-align:center;background:rgba(15,23,42,.6);border:1px solid rgba(148,163,184,.15)}
 .metric b{display:block;font-size:18px}
-#slides{display:flex;transition:transform .45s ease}
-#slides>*{min-width:100%;flex-shrink:0}
 .navbar{position:sticky;top:8px;z-index:5}
+.lang-btn{font-size:10px;padding:4px 8px;border-radius:8px;border:1px solid rgba(148,163,184,.3);background:rgba(15,23,42,.6);color:#cbd5e1;cursor:pointer}
+.lang-btn.active{background:rgba(34,211,238,.2);color:#67e8f9;border-color:rgba(103,232,249,.5)}
 </style>
 </head>
 <body class="text-slate-100">
@@ -44,73 +43,77 @@ main{position:relative;z-index:1}
 
 <div class="navbar glass rounded-2xl px-3 py-2 mb-4 flex items-center justify-between">
   <span class="text-[10px] font-bold tracking-widest text-cyan-300">FAJAR TRI SUHARTONO</span>
-  <a href="#contact" class="text-[10px] font-bold text-slate-300">CONTACT ↗</a>
+  <div class="flex items-center gap-2">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="id">ID</button>
+    <a href="#contact" class="text-[10px] font-bold text-slate-300" data-i18n="contact">CONTACT ↗</a>
+  </div>
 </div>
 
 <header class="hero rounded-3xl p-5 text-center shadow-2xl">
   <img src="foto.jpg" alt="Fajar Tri Suhartono" class="w-24 h-24 rounded-full object-cover object-top mx-auto border-2 border-cyan-300/80 shadow-lg" onerror="this.src='https://ui-avatars.com/api/?name=Fajar+Tri+Suhartono&size=192&background=0f172a&color=67e8f9'">
-  <p class="text-[10px] uppercase tracking-[.18em] text-cyan-300 font-bold mt-4">Construction • Engineering • Digital Solutions</p>
+  <p class="text-[10px] uppercase tracking-[.18em] text-cyan-300 font-bold mt-4" data-i18n="tagline">Construction • Engineering • Digital Solutions</p>
   <h1 class="text-2xl font-extrabold mt-2">Fajar Tri Suhartono</h1>
-  <h2 class="text-sm font-bold text-slate-200 mt-2">Construction Site Manager | Civil & Foundation | Project Controls | Digital Engineering</h2>
-  <p class="text-xs leading-relaxed text-slate-300 mt-3">Construction professional combining field execution, engineering documentation and practical digital tools to improve project visibility, reporting and day-to-day workflows.</p>
+  <h2 class="text-sm font-bold text-slate-200 mt-2" data-i18n="subtitle">Construction Site Manager | Civil & Foundation | Project Controls | Digital Engineering</h2>
+  <p class="text-xs leading-relaxed text-slate-300 mt-3" data-i18n="desc">Construction professional combining field execution, engineering documentation and practical digital tools to improve project visibility, reporting and day-to-day workflows.</p>
   <div class="grid grid-cols-3 gap-2 mt-5">
-    <a class="btn bg-cyan-500/15 text-cyan-200" href="cv-window.html"><i class="fas fa-file-user"></i> View CV</a>
-    <a class="btn bg-orange-500/15 text-orange-200" href="tools-apk-demo.html"><i class="fas fa-tools"></i> Tools apk Demo</a>
-    <a class="btn bg-emerald-500/15 text-emerald-200" href="https://wa.me/6281356510403?text=Hello%20Fajar"><i class="fab fa-whatsapp"></i> Contact</a>
+    <a class="btn bg-cyan-500/15 text-cyan-200" href="cv-window.html"><i class="fas fa-file-user"></i> <span data-i18n="view_cv">View CV</span></a>
+    <a class="btn bg-orange-500/15 text-orange-200" href="tools-apk-demo.html"><i class="fas fa-tools"></i> <span data-i18n="tools">Tools apk Demo</span></a>
+    <a class="btn bg-emerald-500/15 text-emerald-200" href="https://wa.me/6281356510403?text=Hello%20Fajar"><i class="fab fa-whatsapp"></i> <span data-i18n="contact_btn">Contact</span></a>
   </div>
 </header>
 
 <section class="grid grid-cols-3 gap-2 mt-4">
-  <div class="metric"><b>2024–2026</b><span class="text-[9px] text-slate-400">Site Manager experience</span></div>
-  <div class="metric"><b>10</b><span class="text-[9px] text-slate-400">Core domains</span></div>
-  <div class="metric"><b>10+</b><span class="text-[9px] text-slate-400">Digital projects & tools</span></div>
+  <div class="metric"><b>2024–2026</b><span class="text-[9px] text-slate-400" data-i18n="metric1">Site Manager experience</span></div>
+  <div class="metric"><b>10</b><span class="text-[9px] text-slate-400" data-i18n="metric2">Core domains</span></div>
+  <div class="metric"><b>10+</b><span class="text-[9px] text-slate-400" data-i18n="metric3">Digital projects & tools</span></div>
 </section>
 
 <section class="mt-6">
-  <p class="section-title text-orange-300">Selected project portfolio</p>
+  <p class="section-title text-orange-300" data-i18n="portfolio_title">Selected project portfolio</p>
   <div class="grid gap-3 mt-3">
     <a href="mentari-pesisir.html" class="card block">
       <p class="text-[10px] uppercase tracking-wider text-cyan-300 font-bold">Coastal / Pier</p>
       <p class="font-bold mt-1">Project Mentari Pesisir</p>
-      <p class="text-[11px] text-slate-300 mt-1">Dermaga kayu galam 50m × 2m dengan lantai cor beton. Lengkap dengan RAB, time schedule, drawing, dan visualisasi 5D.</p>
-      <p class="text-[10px] text-cyan-300 font-bold mt-2">View gallery & data →</p>
+      <p class="text-[11px] text-slate-300 mt-1" data-i18n="mentari_desc">Dermaga kayu galam 50m × 2m dengan lantai cor beton. Lengkap dengan RAB, time schedule, drawing, dan visualisasi 5D.</p>
+      <p class="text-[10px] text-cyan-300 font-bold mt-2" data-i18n="view_gallery">View gallery & data →</p>
     </a>
     <a href="pile-foundation.html" class="card block">
       <p class="text-[10px] uppercase tracking-wider text-orange-300 font-bold">Civil / Foundation</p>
       <p class="font-bold mt-1">Pile Foundation 3D</p>
-      <p class="text-[11px] text-slate-300 mt-1">Interactive foundation visualization covering PC pile Ø400, project layout, 3D representation and engineering information.</p>
-      <p class="text-[10px] text-cyan-300 font-bold mt-2">View project →</p>
+      <p class="text-[11px] text-slate-300 mt-1" data-i18n="pile_desc">Interactive foundation visualization covering PC pile Ø400, project layout, 3D representation and engineering information.</p>
+      <p class="text-[10px] text-cyan-300 font-bold mt-2" data-i18n="view_project">View project →</p>
     </a>
     <a href="hsse.html" class="card block">
       <p class="text-[10px] uppercase tracking-wider text-lime-300 font-bold">HSSE / Construction</p>
       <p class="font-bold mt-1">HSSE Daily + E-Permit</p>
-      <p class="text-[11px] text-slate-300 mt-1">Practical digital workflow for daily HSE reporting and permit communication, including WhatsApp-ready output.</p>
-      <p class="text-[10px] text-cyan-300 font-bold mt-2">Open demo →</p>
+      <p class="text-[11px] text-slate-300 mt-1" data-i18n="hsse_desc">Practical digital workflow for daily HSE reporting and permit communication, including WhatsApp-ready output.</p>
+      <p class="text-[10px] text-cyan-300 font-bold mt-2" data-i18n="open_demo">Open demo →</p>
     </a>
     <a href="crane/" class="card block">
       <p class="text-[10px] uppercase tracking-wider text-blue-300 font-bold">Lifting / Engineering</p>
       <p class="font-bold mt-1">CraneCalc</p>
-      <p class="text-[11px] text-slate-300 mt-1">Interactive crane capacity and working-radius support tool for lifting-plan preparation.</p>
-      <p class="text-[10px] text-cyan-300 font-bold mt-2">Open tool →</p>
+      <p class="text-[11px] text-slate-300 mt-1" data-i18n="crane_desc">Interactive crane capacity and working-radius support tool for lifting-plan preparation.</p>
+      <p class="text-[10px] text-cyan-300 font-bold mt-2" data-i18n="open_tool">Open tool →</p>
     </a>
   </div>
 </section>
 
 <section class="glass rounded-2xl p-4 mt-6">
-  <p class="section-title text-orange-300">Professional documents</p>
+  <p class="section-title text-orange-300" data-i18n="docs_title">Professional documents</p>
   <div class="grid gap-2 mt-3">
-    <a href="tools-apk-demo.html" class="btn bg-cyan-500/10 text-cyan-200"><i class="fas fa-tools"></i> Tools apk Demo</a>
+    <a href="tools-apk-demo.html" class="btn bg-cyan-500/10 text-cyan-200"><i class="fas fa-tools"></i> <span data-i18n="tools">Tools apk Demo</span></a>
     <a href="https://drive.google.com/drive/folders/1P_Q0GzoqSesP-QZpll1-0wVA8a1u-xVR" target="_blank" class="btn bg-amber-500/10 text-amber-200"><i class="fas fa-folder-open"></i> Data Pendukung Mentari Pesisir (Drive)</a>
-    <a href="CV_FAJAR_TRI_SUHARTONO_LENGKAP_FINAL_2026.pdf" class="btn bg-slate-500/10 text-slate-200"><i class="fas fa-download"></i> Download Complete CV</a>
-    <a href="album-kerja.html" class="btn bg-cyan-500/10 text-cyan-200"><i class="fas fa-camera"></i> Field Work Gallery</a>
-    <a href="documents.html" class="btn bg-slate-500/10 text-slate-200"><i class="fas fa-folder-open"></i> Supporting Documents</a>
+    <a href="CV_FAJAR_TRI_SUHARTONO_LENGKAP_FINAL_2026.pdf" class="btn bg-slate-500/10 text-slate-200"><i class="fas fa-download"></i> <span data-i18n="download_cv">Download Complete CV</span></a>
+    <a href="album-kerja.html" class="btn bg-cyan-500/10 text-cyan-200"><i class="fas fa-camera"></i> <span data-i18n="field_gallery">Field Work Gallery</span></a>
+    <a href="documents.html" class="btn bg-slate-500/10 text-slate-200"><i class="fas fa-folder-open"></i> <span data-i18n="supporting_docs">Supporting Documents</span></a>
   </div>
 </section>
 
 <section id="contact" class="mt-6">
   <div class="hero rounded-2xl p-5 text-center">
-    <p class="section-title text-cyan-300">Let's work together</p>
-    <h2 class="text-lg font-extrabold mt-2">Have a project, site requirement, or workflow to improve?</h2>
+    <p class="section-title text-cyan-300" data-i18n="together">Let's work together</p>
+    <h2 class="text-lg font-extrabold mt-2" data-i18n="cta">Have a project, site requirement, or workflow to improve?</h2>
     <div class="grid grid-cols-2 gap-2 mt-4">
       <a href="https://wa.me/6281356510403?text=Hello%20Fajar" class="btn bg-emerald-500/15 text-emerald-200"><i class="fab fa-whatsapp"></i> WhatsApp</a>
       <a href="mailto:fajartris1994@gmail.com" class="btn bg-slate-500/15 text-slate-200"><i class="fas fa-envelope"></i> Email</a>
@@ -123,5 +126,83 @@ main{position:relative;z-index:1}
 </footer>
 
 </main>
+<script>
+const translations = {
+  en: {
+    contact: "CONTACT ↗",
+    tagline: "Construction • Engineering • Digital Solutions",
+    subtitle: "Construction Site Manager | Civil & Foundation | Project Controls | Digital Engineering",
+    desc: "Construction professional combining field execution, engineering documentation and practical digital tools to improve project visibility, reporting and day-to-day workflows.",
+    view_cv: "View CV",
+    tools: "Tools apk Demo",
+    contact_btn: "Contact",
+    metric1: "Site Manager experience",
+    metric2: "Core domains",
+    metric3: "Digital projects & tools",
+    portfolio_title: "Selected project portfolio",
+    mentari_desc: "Dermaga kayu galam 50m × 2m dengan lantai cor beton. Lengkap dengan RAB, time schedule, drawing, dan visualisasi 5D.",
+    view_gallery: "View gallery & data →",
+    pile_desc: "Interactive foundation visualization covering PC pile Ø400, project layout, 3D representation and engineering information.",
+    view_project: "View project →",
+    hsse_desc: "Practical digital workflow for daily HSE reporting and permit communication, including WhatsApp-ready output.",
+    open_demo: "Open demo →",
+    crane_desc: "Interactive crane capacity and working-radius support tool for lifting-plan preparation.",
+    open_tool: "Open tool →",
+    docs_title: "Professional documents",
+    download_cv: "Download Complete CV",
+    field_gallery: "Field Work Gallery",
+    supporting_docs: "Supporting Documents",
+    together: "Let's work together",
+    cta: "Have a project, site requirement, or workflow to improve?"
+  },
+  id: {
+    contact: "KONTAK ↗",
+    tagline: "Konstruksi • Engineering • Solusi Digital",
+    subtitle: "Site Manager Konstruksi | Sipil & Pondasi | Project Controls | Digital Engineering",
+    desc: "Profesional konstruksi yang menggabungkan pelaksanaan lapangan, dokumentasi engineering, dan tools digital praktis untuk meningkatkan visibilitas proyek, pelaporan, dan workflow harian.",
+    view_cv: "Lihat CV",
+    tools: "Tools apk Demo",
+    contact_btn: "Kontak",
+    metric1: "Pengalaman Site Manager",
+    metric2: "Domain inti",
+    metric3: "Proyek & tools digital",
+    portfolio_title: "Portofolio proyek pilihan",
+    mentari_desc: "Dermaga kayu galam 50m × 2m dengan lantai cor beton. Lengkap dengan RAB, time schedule, drawing, dan visualisasi 5D.",
+    view_gallery: "Lihat galeri & data →",
+    pile_desc: "Visualisasi pondasi interaktif meliputi PC pile Ø400, layout proyek, representasi 3D, dan informasi engineering.",
+    view_project: "Lihat proyek →",
+    hsse_desc: "Workflow digital praktis untuk laporan HSE harian dan komunikasi permit, termasuk output siap WhatsApp.",
+    open_demo: "Buka demo →",
+    crane_desc: "Tool interaktif kapasitas crane dan working radius untuk persiapan lifting plan.",
+    open_tool: "Buka tool →",
+    docs_title: "Dokumen profesional",
+    download_cv: "Unduh CV Lengkap",
+    field_gallery: "Galeri Kerja Lapangan",
+    supporting_docs: "Dokumen Pendukung",
+    together: "Mari bekerja sama",
+    cta: "Punya proyek, kebutuhan site, atau workflow yang ingin diperbaiki?"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+  });
+  localStorage.setItem("lang", lang);
+}
+
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => setLang(btn.getAttribute("data-lang")));
+});
+
+const saved = localStorage.getItem("lang") || "en";
+setLang(saved);
+</script>
 </body>
 </html>
